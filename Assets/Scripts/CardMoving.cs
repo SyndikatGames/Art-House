@@ -27,7 +27,7 @@ public class CardMoving : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
         _rectTransform.SetParent(UI.Canvas);
 
         if (_itemInstance != null)
-            GlobalGrid.RemoveItem(_itemInstance);
+            ItemList.Remove(_itemInstance);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -42,7 +42,7 @@ public class CardMoving : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
             Vector2 worldPointerPosition 
                 = Camera.main.ScreenToWorldPoint(eventData.position);
 
-            GlobalGrid.Placing(_itemInstance, worldPointerPosition);
+            //GlobalGrid.TryPlacing(_itemInstance, worldPointerPosition);
 
             _canvasGroup.alpha = 0f;
         }
@@ -57,8 +57,9 @@ public class CardMoving : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
     {
         Vector2 worldPointerPosition
                 = Camera.main.ScreenToWorldPoint(eventData.position);
-
-        bool placeSuccess = GlobalGrid.SetPlace(_itemInstance, worldPointerPosition);
+        /*
+        bool placeSuccess = GlobalGrid.TryPlacing(_itemInstance, worldPointerPosition);
+        if (placeSuccess) _itemInstance.Place()*/
         
     }
 }
