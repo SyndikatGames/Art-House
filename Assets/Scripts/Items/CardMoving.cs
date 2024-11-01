@@ -27,7 +27,7 @@ public class CardMoving : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
         _rectTransform.SetParent(UI.Canvas);
 
         if (_itemInstance != null)
-            ItemList.Remove(_itemInstance);
+            ItemList.Items.Remove(_itemInstance);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -42,7 +42,18 @@ public class CardMoving : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
             Vector2 worldPointerPosition 
                 = Camera.main.ScreenToWorldPoint(eventData.position);
 
-            //GlobalGrid.TryPlacing(_itemInstance, worldPointerPosition);
+            if (TryPlace(_itemInstance, worldPointerPosition, 
+                out var resultPosition, out var resultGridPosition))
+            {
+                _itemInstance.transform.position = resultPosition;
+                _itemInstance.SetTransparent(false);
+                _itemInstance.Placing(resultGridPosition);
+            }
+            else
+            {
+                _itemInstance.transform.position = worldPointerPosition;
+                _itemInstance.SetTransparent(true);
+            }
 
             _canvasGroup.alpha = 0f;
         }
@@ -57,9 +68,36 @@ public class CardMoving : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
     {
         Vector2 worldPointerPosition
                 = Camera.main.ScreenToWorldPoint(eventData.position);
-        /*
-        bool placeSuccess = GlobalGrid.TryPlacing(_itemInstance, worldPointerPosition);
-        if (placeSuccess) _itemInstance.Place()*/
-        
+
+        if (TryPlace(_itemInstance, worldPointerPosition, 
+            out _, out var resultGridPosition))
+        {
+            _itemInstance.SetPlace(resultGridPosition);
+            print(resultGridPosition);
+        }
+            
     }
+
+
+    private bool TryPlace(Item item, Vector2 worldPosition, 
+        out Vector2 resultWorldPosition, out Vector3Int resultGridPosition)
+    {
+        foreach (var placedItem in ItemList.Items)
+        {
+            foreach (var placeGrid in placedItem.PlaceGrids)
+            {
+                if (placeGrid.TryPlaceItem(item, worldPosition,
+                    out resultWorldPosition, out resultGridPosition))
+                    return true;
+            }
+        }
+
+        resultWorldPosition = default;
+        resultGridPosition = default;
+        return false;
+    }
+
+
+
+
 }

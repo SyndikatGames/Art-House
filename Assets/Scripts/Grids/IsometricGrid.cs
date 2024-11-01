@@ -2,10 +2,12 @@ using UnityEngine;
 
 public enum GridType { Floor, ToLeft, ToRight }
 
-public class IsometricGrid : MonoBehaviour
+
+public abstract class IsometricGrid
 {
-    [field: SerializeField] public GridType Type { get; private set; }
-    [field: SerializeField] public Vector2Int Size { get; private set; }
+    protected GridType gridType;
+    protected Vector2Int size;
+    protected Vector3Int position;
 
     private const float edgeSize = 0.0699f;
 
@@ -20,13 +22,25 @@ public class IsometricGrid : MonoBehaviour
     public static readonly Vector2 toRightAxisY = Vector2.up * edgeSize;
 
 
-
-    public Vector2Int WorldToCell(Vector2 position)
+    private Vector2 GetWorldPosition()
     {
-        Vector2 localPosition = position - (Vector2)transform.position;
+        Vector2 result = Vector2.zero;
+
+        result += floorAxisX * position.x;
+        result += floorAxisY * position.y;
+        result += toRightAxisY * position.z;
+
+        return result;
+    }
+
+
+    protected void CartesianToIsometric(Vector2 position, 
+        out Vector2Int local, out Vector3Int world)
+    {
+        Vector2 localPosition = position - GetWorldPosition();
         Vector2 W = localPosition, U = Vector2.zero, V = Vector2.zero;
 
-        switch (Type)
+        switch (gridType)
         {
             case GridType.Floor:
                 U = floorAxisX; V = floorAxisY;
@@ -53,15 +67,33 @@ public class IsometricGrid : MonoBehaviour
 
         if (y < 0f) y -= 1f;
         if (x < 0f) x -= 1f;
-        
-        return new Vector2Int((int)x, (int)y);
+
+        int X = 0, Y = 0, Z = 0;
+
+        switch (gridType)
+        {
+            case GridType.Floor:
+                X = (int)x; Y = (int)y;
+                break;
+
+            case GridType.ToLeft:
+                Y = (int)x; Z = (int)y;
+                break;
+
+            case GridType.ToRight:
+                X = (int)x; Z = (int)y;
+                break;
+        }
+
+        local = new Vector2Int((int)x, (int)y);
+        world = new Vector3Int(X, Y, Z);
     }
 
-    public Vector2 CellToWorld(Vector2Int gridPosition)
+    protected Vector2 CellToWorld(Vector2Int gridPosition)
     {
         Vector2 result = Vector2.zero;
 
-        switch (Type)
+        switch (gridType)
         {
             case GridType.Floor:
                 result = floorAxisX * gridPosition.x + floorAxisY * gridPosition.y;
@@ -76,7 +108,7 @@ public class IsometricGrid : MonoBehaviour
                 break;
         }
 
-        return result + (Vector2)transform.position;
+        return result + GetWorldPosition();
     }
 
 
