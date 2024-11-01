@@ -5,9 +5,9 @@ public enum GridType { Floor, ToLeft, ToRight }
 
 public abstract class IsometricGrid
 {
-    protected GridType gridType;
+    protected GridType gridType; public GridType GridType => gridType;
     protected Vector2Int size;
-    protected Vector3Int position;
+    protected Vector3Int position; public Vector3Int Position => position;
 
     private const float edgeSize = 0.0699f;
 

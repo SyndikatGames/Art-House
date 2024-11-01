@@ -3,30 +3,29 @@ using UnityEngine;
 
 public class ItemList : MonoBehaviour
 {
-    public static List<Item> Items { get; private set; }
+    public static List<Item> PlacedItems { get; private set; }
 
 
     private void Awake()
     {
-        Items = new List<Item>();
+        PlacedItems = new List<Item>();
     }
 
     public static void ResortSprites()
     {
-        var orderItemList = new List<Item>();
+        for (int i = 0; i < PlacedItems.Count; i++)
+            PlacedItems[i].SortingOrder = 0;
 
-
-        for (int i = 0; i < Items.Count; i++)
-            Items[i].SortingOrder = 0;
-
-        for (int i = 0; i < Items.Count; i++)
+        for (int i = 0; i < PlacedItems.Count; i++)
         {
-            var item = Items[i];
+            var item = PlacedItems[i];
             Vector3Int itemFrontPosition = item.Position + item.Size;
 
-            for (int j = i + 1; j < Items.Count; j++)
+            for (int j = 0; j < PlacedItems.Count; j++)
             {
-                var otherItem = Items[j];
+                if (j == i) continue;
+
+                var otherItem = PlacedItems[j];
 
                 if (itemFrontPosition.x <= otherItem.Position.x ||
                     itemFrontPosition.y <= otherItem.Position.y ||
@@ -41,10 +40,10 @@ public class ItemList : MonoBehaviour
 
     public static bool CheckNoIntersetion(Vector3Int position, Vector3Int size)
     {
-        for (int i = 0; i < Items.Count; i++)
+        for (int i = 0; i < PlacedItems.Count; i++)
         {
             if (CheckCubeIntersection(position, size,
-                Items[i].Position, Items[i].Size))
+                PlacedItems[i].Position, PlacedItems[i].Size))
                 return false;
         }
 

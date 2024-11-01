@@ -9,7 +9,7 @@ public class Test : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
-            foreach (var item in ItemList.Items)
+            foreach (var item in ItemList.PlacedItems)
             {
                 print($"{item.name}: {item.Position} {item.Position + item.Size}");
             }

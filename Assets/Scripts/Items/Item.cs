@@ -8,6 +8,7 @@ public enum Side { Left, Right }
 public class Item : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer _sprite;
+    [SerializeField] private Canvas _clickCanvas;
 
     [field: SerializeField] public ItemPlaceType PlaceType { get; private set; }
     [field: SerializeField] public Vector3Int Size { get; private set; }
@@ -16,7 +17,7 @@ public class Item : MonoBehaviour
     public Vector3Int Position { get; private set; }
     public List<PlaceGrid> PlaceGrids { get; private set; }
 
-    private Side _currentSide = Side.Left;
+    private Side _currentSide = Side.Left; public Side CurrentSide => _currentSide;
 
 
     public void SetPlace(Vector3Int position)
@@ -27,7 +28,7 @@ public class Item : MonoBehaviour
         foreach (var placeGridData in _placeGridDataList)
             PlaceGrids.Add(new PlaceGrid(placeGridData, position, _currentSide));
 
-        ItemList.Items.Add(this);
+        ItemList.PlacedItems.Add(this);
         ItemList.ResortSprites();
     }
 
@@ -35,9 +36,9 @@ public class Item : MonoBehaviour
     {
         Position = position;
 
-        ItemList.Items.Add(this);
+        ItemList.PlacedItems.Add(this);
         ItemList.ResortSprites();
-        ItemList.Items.Remove(this);
+        ItemList.PlacedItems.Remove(this);
     }
 
     public void SetSide(Side side)
@@ -57,8 +58,17 @@ public class Item : MonoBehaviour
 
     public int SortingOrder
     {
-        get => _sprite.sortingOrder;
-        set => _sprite.sortingOrder = value;
+        get
+        {
+            if (_sprite == null) return 0;
+            else return _sprite.sortingOrder;
+        }
+        set
+        {
+            if (_sprite == null) return;
+            _sprite.sortingOrder = value;
+            _clickCanvas.sortingOrder = value;
+        }
     }
 
     public void SetTransparent(bool value)
