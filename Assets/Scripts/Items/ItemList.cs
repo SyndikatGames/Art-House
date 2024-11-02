@@ -11,7 +11,7 @@ public class ItemList : MonoBehaviour
         PlacedItems = new List<Item>();
     }
 
-    public static void ResortSprites()
+    public static void ResortOrder()
     {
         for (int i = 0; i < PlacedItems.Count; i++)
             PlacedItems[i].SortingOrder = 0;

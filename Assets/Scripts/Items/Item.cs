@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public enum ItemPlaceType { Floor, Wall }
 public enum Side { Left, Right }
@@ -23,13 +24,10 @@ public class Item : MonoBehaviour
     public void SetPlace(Vector3Int position)
     {
         Position = position;
-
-        PlaceGrids = new List<PlaceGrid>(_placeGridDataList.Count);
-        foreach (var placeGridData in _placeGridDataList)
-            PlaceGrids.Add(new PlaceGrid(placeGridData, position, _currentSide));
+        UpdatePlaceGrids();
 
         ItemList.PlacedItems.Add(this);
-        ItemList.ResortSprites();
+        ItemList.ResortOrder();
     }
 
     public void Placing(Vector3Int position)
@@ -37,7 +35,7 @@ public class Item : MonoBehaviour
         Position = position;
 
         ItemList.PlacedItems.Add(this);
-        ItemList.ResortSprites();
+        ItemList.ResortOrder();
         ItemList.PlacedItems.Remove(this);
     }
 
@@ -50,9 +48,14 @@ public class Item : MonoBehaviour
             Vector3 newScale = transform.localScale;
             newScale.x = -newScale.x;
             transform.localScale = newScale;
-        }
 
-        _currentSide = side;
+            for (int i = 0; i < _placeGridDataList.Count; i++)
+                _placeGridDataList[i] = _placeGridDataList[i].GetOtherSide();
+
+            _currentSide = side;
+
+            UpdatePlaceGrids();
+        }
     }
 
 
@@ -77,6 +80,13 @@ public class Item : MonoBehaviour
         color.a = value ? 0.5f : 1f;
         _sprite.color = color;
         _sprite.sortingLayerName = value ? "Front" : "Item";
+    }
+
+    private void UpdatePlaceGrids()
+    {
+        PlaceGrids = new List<PlaceGrid>(_placeGridDataList.Count);
+        foreach (var placeGridData in _placeGridDataList)
+            PlaceGrids.Add(new PlaceGrid(placeGridData, Position));
     }
 
 

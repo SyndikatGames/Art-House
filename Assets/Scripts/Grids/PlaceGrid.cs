@@ -3,15 +3,11 @@ using UnityEngine;
 [System.Serializable]
 public class PlaceGrid : IsometricGrid
 {
-    public PlaceGrid(PlaceGridData data, Vector3Int position, Side side)
+    public PlaceGrid(PlaceGridData data, Vector3Int position)
     {
         gridType = data.gridType;
         size = data.size;
-
-        Vector3Int offset = side == Side.Left ?
-            data.offset : new Vector3Int(data.offset.y, data.offset.x, data.offset.z);
-
-        base.position = position + offset;
+        base.position = position + data.offset;
     }
 
 
