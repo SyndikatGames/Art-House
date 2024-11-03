@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,9 @@ public enum Side { Left, Right }
 
 public class Item : MonoBehaviour
 {
+    public Action onPlaced;
+
+
     [SerializeField] private SpriteRenderer _sprite;
     [SerializeField] private Canvas _clickCanvas;
     

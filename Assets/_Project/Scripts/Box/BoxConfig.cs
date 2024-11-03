@@ -1,18 +1,16 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BoxConfig : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private List<Item> _items;
+
+
+    public Item GetRandomItem()
     {
-        
+        int randomIndex = Random.Range(0, _items.Count);
+        return _items[randomIndex];
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
