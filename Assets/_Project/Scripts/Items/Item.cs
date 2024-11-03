@@ -8,7 +8,7 @@ public enum Side { Left, Right }
 
 public class Item : MonoBehaviour
 {
-    public Action onPlaced;
+    public event Action onPlaced;
 
 
     [SerializeField] private SpriteRenderer _sprite;
@@ -47,6 +47,8 @@ public class Item : MonoBehaviour
 
         ItemList.PlacedItems.Add(this);
         ItemList.ResortOrder();
+
+        onPlaced?.Invoke();
     }
 
     public void Placing(Vector3Int position)

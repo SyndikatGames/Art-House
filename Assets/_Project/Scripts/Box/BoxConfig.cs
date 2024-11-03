@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoxConfig : MonoBehaviour
+[CreateAssetMenu(menuName = "Project/Box", fileName = "Box")]
+
+public class BoxConfig : ScriptableObject
 {
     [SerializeField] private List<Item> _items;
 
