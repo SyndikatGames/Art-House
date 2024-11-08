@@ -10,7 +10,7 @@ public class Item : MonoBehaviour
 {
     public event Action onPlaced;
 
-
+    [field: SerializeField] public ItemType ItemType { get; private set; }
     [SerializeField] private SpriteRenderer _sprite;
     [SerializeField] private Canvas _clickCanvas;
     
@@ -25,8 +25,17 @@ public class Item : MonoBehaviour
     public Item ParentItem { get; private set; } 
     public List<Item> ChildItems { get; private set; } = new List<Item>();
     public Side CurrentSide { get; private set; } = Side.Left;
+    public RarityType RarityType{ get; private set; }
 
     private ItemHighlighter _highlighter;
+
+
+    public void SetRarity(RarityType rarityType)
+    {
+        var sprite = Configs.GetItem(ItemType).GetSprite(rarityType);
+        _sprite.sprite = sprite;
+        RarityType = rarityType;
+    }
 
     public void Highlight()
     {
@@ -43,10 +52,10 @@ public class Item : MonoBehaviour
         ParentItem = parent;
 
         Position = position;
+        transform.position = IsometricGrid.GlobaleIsometricToCartesian(position);
         UpdatePlaceGrids();
 
         ItemList.PlacedItems.Add(this);
-        ItemList.ResortOrder();
 
         onPlaced?.Invoke();
     }
@@ -54,6 +63,7 @@ public class Item : MonoBehaviour
     public void Placing(Vector3Int position)
     {
         Position = position;
+        transform.position = IsometricGrid.GlobaleIsometricToCartesian(position);
 
         ItemList.PlacedItems.Add(this);
         ItemList.ResortOrder();
@@ -132,9 +142,9 @@ public class Item : MonoBehaviour
         {
             Vector2 position = transform.position;
             position += 
-                placeGridData.offset.x * IsometricGrid.floorAxisX +
-                placeGridData.offset.y * IsometricGrid.floorAxisY +
-                placeGridData.offset.z * IsometricGrid.toRightAxisY;
+                placeGridData.offset.x * IsometricGrid.AxisX +
+                placeGridData.offset.y * IsometricGrid.AxisY +
+                placeGridData.offset.z * IsometricGrid.AxisZ;
 
             Gizmos.color = Color.white;
             GridGizmosDrawer.Draw(position, placeGridData.gridType, placeGridData.size);

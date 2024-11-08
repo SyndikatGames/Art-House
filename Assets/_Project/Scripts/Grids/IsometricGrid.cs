@@ -12,27 +12,24 @@ public abstract class IsometricGrid
     private const float edgeSize = 0.0699f;
 
 
-    public static readonly Vector2 floorAxisX = new Vector2(-0.89415f, -0.44776f) * edgeSize;
-    public static readonly Vector2 floorAxisY = new Vector2(0.89415f, -0.44776f) * edgeSize;
-
-    public static readonly Vector2 toLeftAxisX = floorAxisY;
-    public static readonly Vector2 toLeftAxisY = Vector2.up * edgeSize;
-
-    public static readonly Vector2 toRightAxisX = floorAxisX;
-    public static readonly Vector2 toRightAxisY = Vector2.up * edgeSize;
+    public static readonly Vector2 AxisX = new Vector2(-0.89415f, -0.44776f) * edgeSize;
+    public static readonly Vector2 AxisY = new Vector2(0.89415f, -0.44776f) * edgeSize;
+    public static readonly Vector2 AxisZ = Vector2.up * edgeSize;
 
 
     private Vector2 GetWorldPosition()
     {
         Vector2 result = Vector2.zero;
 
-        result += floorAxisX * position.x;
-        result += floorAxisY * position.y;
-        result += toRightAxisY * position.z;
+        result += AxisX * position.x;
+        result += AxisY * position.y;
+        result += AxisZ * position.z;
 
         return result;
     }
 
+    public static Vector2 GlobaleIsometricToCartesian(Vector3Int position)
+        => AxisX * position.x + AxisY * position.y + AxisZ * position.z;
 
     protected void CartesianToIsometric(Vector2 position, 
         out Vector2Int local, out Vector3Int world)
@@ -43,15 +40,15 @@ public abstract class IsometricGrid
         switch (gridType)
         {
             case GridType.Floor:
-                U = floorAxisX; V = floorAxisY;
+                U = AxisX; V = AxisY;
                 break;
 
             case GridType.ToLeft:
-                U = toLeftAxisX; V = toLeftAxisY;
+                U = AxisY; V = AxisZ;
                 break;
 
             case GridType.ToRight:
-                U = toRightAxisX; V = toRightAxisY;
+                U = AxisX; V = AxisZ;
                 break;
         }
 
@@ -88,29 +85,6 @@ public abstract class IsometricGrid
         local = new Vector2Int((int)x, (int)y);
         world = new Vector3Int(X, Y, Z);
     }
-
-    protected Vector2 CellToWorld(Vector2Int gridPosition)
-    {
-        Vector2 result = Vector2.zero;
-
-        switch (gridType)
-        {
-            case GridType.Floor:
-                result = floorAxisX * gridPosition.x + floorAxisY * gridPosition.y;
-                break;
-
-            case GridType.ToLeft:
-                result = toLeftAxisX * gridPosition.x + toLeftAxisY * gridPosition.y;
-                break;
-
-            case GridType.ToRight:
-                result = toRightAxisX * gridPosition.x + toRightAxisY * gridPosition.y;
-                break;
-        }
-
-        return result + GetWorldPosition();
-    }
-
 
 
 }

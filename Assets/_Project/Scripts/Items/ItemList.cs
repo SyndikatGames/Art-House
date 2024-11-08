@@ -1,15 +1,17 @@
 using System.Collections.Generic;
 using UnityEngine;
+using VG;
 
-public class ItemList : MonoBehaviour
+public static class ItemList
 {
-    public static List<Item> PlacedItems { get; private set; }
+    public static List<Item> PlacedItems { get; private set; } = new List<Item>();
 
 
-    private void Awake()
+    public static void SaveRoomItems()
     {
-        PlacedItems = new List<Item>();
+        Saves.SetRoomItems(roomIndex: 0, PlacedItems);
     }
+
 
     public static void ResortOrder()
     {

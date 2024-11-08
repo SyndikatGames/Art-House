@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e43bd702595aba4990d2b39d9524c68, type: 3}
+  m_Name: SquareClothes
+  m_EditorClassIdentifier: 
+  <ItemPrefab>k__BackingField: {fileID: 3249215549721550924, guid: d859a50609e040944821e3d403262879, type: 3}
+  _sprites:
+  - rarityType: 0
+    sprite: {fileID: 21300000, guid: 5065a34221b74214d9058c4554c0f171, type: 3}
+  - rarityType: 1
+    sprite: {fileID: 21300000, guid: 8af7902c9eb28c04b8ec6ffcb94d736b, type: 3}
+  - rarityType: 2
+    sprite: {fileID: 21300000, guid: 02471188d989e3f4db91c1e330f1665c, type: 3}
+  - rarityType: 3
+    sprite: {fileID: 21300000, guid: 4837cb33db33b174abee2aa7b53fee95, type: 3}
+  - rarityType: 4
+    sprite: {fileID: 21300000, guid: 486c6588fc1df0f49bec72a866da3c38, type: 3}
+  - rarityType: 5
+    sprite: {fileID: 21300000, guid: 50949bc227612d64e9a88b0f55d76dc9, type: 3}

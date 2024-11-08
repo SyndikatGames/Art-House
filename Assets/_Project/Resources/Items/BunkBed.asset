@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e43bd702595aba4990d2b39d9524c68, type: 3}
+  m_Name: BunkBed
+  m_EditorClassIdentifier: 
+  <ItemPrefab>k__BackingField: {fileID: 3717036483057297988, guid: 7ac049b0b4e44bb408ba654472656eb7, type: 3}
+  _sprites:
+  - rarityType: 0
+    sprite: {fileID: 21300000, guid: 3baed4b5702f97e4394175454ca0052d, type: 3}
+  - rarityType: 1
+    sprite: {fileID: 21300000, guid: 37b8135d9f9b0c44998c02e304c4bc53, type: 3}
+  - rarityType: 2
+    sprite: {fileID: 21300000, guid: 3ee21fe3bc602bb45b5e94492d302301, type: 3}
+  - rarityType: 3
+    sprite: {fileID: 21300000, guid: 29e1227396955b347a01e195f634f4c8, type: 3}
+  - rarityType: 4
+    sprite: {fileID: 21300000, guid: d87037d227d8d8d49bae1bed71927dd3, type: 3}
+  - rarityType: 5
+    sprite: {fileID: 21300000, guid: d22a8ef87ffa64c4db636ce1171157ab, type: 3}

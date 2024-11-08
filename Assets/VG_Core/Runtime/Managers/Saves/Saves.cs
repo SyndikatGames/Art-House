@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace VG
 {
-    public class Saves : Manager
+    public partial class Saves : Manager
     {
         public static event Action onDeleted;
         private static bool reseting = false;

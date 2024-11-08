@@ -4,6 +4,9 @@ using UnityEngine.EventSystems;
 
 public class ItemMoving : MonoBehaviour
 {
+    public static Item DraggableItem { get; private set; } = null;
+
+
     [SerializeField] private Item _item;
     [SerializeField] private InteractionHandler _interactionHandler;
 
@@ -42,16 +45,15 @@ public class ItemMoving : MonoBehaviour
 
         _item.ParentItem?.ChildItems.Remove(_item);
         ItemList.PlacedItems.Remove(_item);
+        DraggableItem = _item;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         Vector2 worldPointerPosition = Camera.main.ScreenToWorldPoint(eventData.position);
 
-        if (TryPlace(_item, worldPointerPosition, out _,
-                out var resultPosition, out var resultGridPosition))
+        if (TryPlace(_item, worldPointerPosition, out _, out var resultGridPosition))
         {
-            _item.transform.position = resultPosition;
             _item.SetTransparent(false);
             _item.Placing(resultGridPosition);
         }
@@ -67,30 +69,30 @@ public class ItemMoving : MonoBehaviour
         Vector2 worldPointerPosition
                 = Camera.main.ScreenToWorldPoint(eventData.position);
 
-        if (TryPlace(_item, worldPointerPosition, out Item parent, 
-            out _, out var resultGridPosition))
+        if (TryPlace(_item, worldPointerPosition, out Item parent, out var resultGridPosition))
         {
             _item.SetPlace(resultGridPosition, parent);
-            print(resultGridPosition);
+            ItemList.SaveRoomItems();
         }
             
+
+        DraggableItem = null;
     }
 
 
-    private bool TryPlace(Item item, Vector2 worldPosition, out Item parent,
-        out Vector2 resultWorldPosition, out Vector3Int resultGridPosition)
+    private bool TryPlace(Item item, Vector2 worldPosition, 
+        out Item parent, out Vector3Int resultGridPosition)
     {
         var availablePlaceGrids = new List<PlaceGrid>();
         var availableParents = new List<Item>();
 
-        resultWorldPosition = default;
         resultGridPosition = default;
         parent = null;
 
         foreach (var placedItem in ItemList.PlacedItems)
         {
             foreach (var placeGrid in placedItem.PlaceGrids)
-                if (placeGrid.TryPlaceItem(item, worldPosition, out _, out _))
+                if (placeGrid.TryPlaceItem(item, worldPosition, out _))
                 {
                     availablePlaceGrids.Add(placeGrid);
                     availableParents.Add(placedItem);
@@ -126,8 +128,8 @@ public class ItemMoving : MonoBehaviour
             }
         }
 
-        availablePlaceGrids[selectedIndex].TryPlaceItem(item, worldPosition, 
-            out resultWorldPosition, out resultGridPosition);
+        availablePlaceGrids[selectedIndex]
+            .TryPlaceItem(item, worldPosition, out resultGridPosition);
 
         parent = availableParents[selectedIndex];
 

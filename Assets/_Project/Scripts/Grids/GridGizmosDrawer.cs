@@ -10,18 +10,18 @@ public static class GridGizmosDrawer
         switch (gridType)
         {
             case GridType.Floor:
-                axisX = IsometricGrid.floorAxisX; 
-                axisY = IsometricGrid.floorAxisY;
+                axisX = IsometricGrid.AxisX; 
+                axisY = IsometricGrid.AxisY;
                 break;
 
             case GridType.ToLeft:
-                axisX = IsometricGrid.toLeftAxisX; 
-                axisY = IsometricGrid.toLeftAxisY;
+                axisX = IsometricGrid.AxisY; 
+                axisY = IsometricGrid.AxisZ;
                 break;
 
             case GridType.ToRight:
-                axisX = IsometricGrid.toRightAxisX; 
-                axisY = IsometricGrid.toRightAxisY;
+                axisX = IsometricGrid.AxisX; 
+                axisY = IsometricGrid.AxisZ;
                 break;
         }
 

@@ -11,10 +11,8 @@ public class PlaceGrid : IsometricGrid
     }
 
 
-    public bool TryPlaceItem(Item item, Vector2 position, 
-        out Vector2 resultPosition, out Vector3Int resultGridPosition)
+    public bool TryPlaceItem(Item item, Vector2 position, out Vector3Int resultGridPosition)
     {
-        resultPosition = default;
         resultGridPosition = default;
         if (CheckPlaceType(item) == false) return false;
 
@@ -24,8 +22,6 @@ public class PlaceGrid : IsometricGrid
         if (CheckInsideGrid(item, localPosition) && 
             ItemList.CheckNoIntersetion(resultGridPosition, item.Size))
         {
-            resultPosition = CellToWorld(localPosition);
-
             if (gridType == GridType.ToLeft) item.SetSide(Side.Left);
             else if (gridType == GridType.ToRight) item.SetSide(Side.Right);
 

@@ -1,10 +1,13 @@
 using UnityEngine;
 using DG.Tweening;
+using System;
+using VG;
 
 public class Box : MonoBehaviour
 {
+    public event Action onOpened;
 
-    [SerializeField] private BoxConfig _boxConfig;
+    [SerializeField] private RarityType _rarityType;
 
     private Item _itemInstance;
     private Vector2 _originPosition;
@@ -12,19 +15,19 @@ public class Box : MonoBehaviour
     private const float itemMoveY = 0.5f;
     private const float showDuration = 0.5f;
 
-
-
-
     private void Start()
     {
         _originPosition = transform.position;
     }
 
+    
+
 
     public void Open()
     {
-        var itemPrefab = _boxConfig.GetRandomItem();
+        Item itemPrefab = GetRandomItemPrefab();
         _itemInstance = Instantiate(itemPrefab, _originPosition, Quaternion.identity);
+        _itemInstance.SetRarity(_rarityType);
 
         _itemInstance.transform.DOMoveY(_originPosition.y + itemMoveY, showDuration);
 
@@ -32,23 +35,37 @@ public class Box : MonoBehaviour
         _itemInstance.transform.DOScale(1f, showDuration);
 
         transform.DOMoveY(_originPosition.y - itemMoveY, showDuration);
-        transform.DOScale(0f, showDuration);
+        transform.DOScale(0f, showDuration)
+            .onComplete += () => Destroy(gameObject);
 
         _itemInstance.onPlaced += OnItemPlaced;
+
+        onOpened?.Invoke();
+        Saves.Int[Key_Save.boxes_amount(_rarityType)].Value--;
     }
+
+    private Item GetRandomItemPrefab()
+    {
+        var allItems = Configs.GetAllItems();
+        int randomIndex = UnityEngine.Random.Range(0, allItems.Length);
+
+        return allItems[randomIndex].ItemPrefab;
+    }
+
 
     private void OnItemPlaced()
     {
         _itemInstance.onPlaced -= OnItemPlaced;
-        Show();
+        //Show();
 
     }
 
+    /*
     public void Show()
     {
         transform.DOMoveY(_originPosition.y, showDuration);
         transform.DOScale(1f, showDuration);
     }
-
+    */
 
 }
