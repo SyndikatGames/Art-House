@@ -7,6 +7,7 @@ public struct ItemData
     public ItemType itemType;
     public RarityType rarityType;
     public Vector3Int position;
+    public Side side;
     public List<ItemData> childItems;
 
     public ItemData(Item item)
@@ -14,6 +15,7 @@ public struct ItemData
         itemType = item.ItemType;
         rarityType = item.RarityType;
         position = item.Position;
+        side = item.CurrentSide;
 
         if (item.ChildItems.Count > 0)
         {
@@ -26,10 +28,13 @@ public struct ItemData
 
     public ItemData(string data)
     {
-        int splitIndex = data.IndexOf('(');
+        Debug.Log(data);
+        FindBracketPair(data, out int openIndex, out int closeIndex);
 
-        string mainData = data.Substring(0, splitIndex);
-        string childData = data.Substring(splitIndex + 1);
+        string mainData = data.Substring(0, openIndex);
+        string childData = data.Substring(openIndex + 1, closeIndex - openIndex - 1);
+        Debug.Log(mainData);
+        Debug.Log(childData);
 
         string[] mainSplitData = mainData.Split('_');
         itemType = (ItemType)int.Parse(mainSplitData[0]);
@@ -39,21 +44,61 @@ public struct ItemData
             y: int.Parse(mainSplitData[3]),
             z: int.Parse(mainSplitData[4]));
 
+        side = (Side)int.Parse(mainSplitData[5]);
+
         if (childData.Length > 0)
         {
             childItems = new List<ItemData>();
-            string[] splitChildData = childData.Split(')');
+            var splitChildData = SplitByItemData(childData);
 
-            for (int i = 0; i < splitChildData.Length - 1; i++)
+            for (int i = 0; i < splitChildData.Count; i++)
                 childItems.Add(new ItemData(splitChildData[i]));
         }
         else childItems = null;
     }
 
+    private static void FindBracketPair(string data, out int openIndex, out int closeIndex)
+    {
+        openIndex = data.IndexOf('(');
+        closeIndex = 0;
+
+        for (int i = openIndex + 1, depth = 1; i < data.Length; i++)
+        {
+            if (data[i] == '(') depth++;
+            if (data[i] == ')') depth--;
+
+            if (depth == 0)
+            {
+                closeIndex = i;
+                return;
+            }
+        }
+    }
+
+    public static List<string> SplitByItemData(string data)
+    {
+        List<string> result = new List<string>();
+        var noHandledData = new string(data);
+
+        while (noHandledData.Length > 0)
+        {
+            FindBracketPair(noHandledData, out int openIndex, out int closeIndex);
+            string itemData = noHandledData.Substring(0, closeIndex + 1);
+            result.Add(itemData);
+
+            noHandledData = noHandledData.Substring
+                (closeIndex + 1, noHandledData.Length - itemData.Length);
+        }
+        
+        return result;
+    }
+
+
+
     public string ToDataString()
     {
         string data = $"{(int)itemType}_{(int)rarityType}_" +
-            $"{position.x}_{position.y}_{position.z}(";
+            $"{position.x}_{position.y}_{position.z}_{(int)side}(";
 
         if (childItems != null)
             foreach (ItemData childItem in childItems)
@@ -79,7 +124,7 @@ namespace VG
             for (int i = 0; i < items.Count; i++)
             {
                 var item = items[i];
-                if (item.ItemType != ItemType.Room && item.ParentItem.ItemType == ItemType.Room)
+                if (item.ItemType != ItemType.Room && item.ParentItem == null)
                     data += new ItemData(items[i]).ToDataString();
             }
                 
@@ -94,9 +139,10 @@ namespace VG
             if (String[Key_Save.room_data(roomIndex)].Value == string.Empty) 
                 return items;
 
-            string[] splitData = String[Key_Save.room_data(roomIndex)].Value.Split(')');
+            string data = String[Key_Save.room_data(roomIndex)].Value;
+            var splitData = ItemData.SplitByItemData(data);
 
-            for (int i = 0; i < splitData.Length - 1; i++)
+            for (int i = 0; i < splitData.Count; i++)
                 items.Add(new ItemData(splitData[i]));
 
             return items;

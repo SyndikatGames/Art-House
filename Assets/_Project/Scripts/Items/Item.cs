@@ -49,10 +49,10 @@ public class Item : MonoBehaviour
     public void SetPlace(Vector3Int position, Item parent)
     {
         parent?.ChildItems.Add(this);
-        ParentItem = parent;
+        ParentItem = parent != null && parent.ItemType == ItemType.Room ? null : parent;
 
         Position = position;
-        transform.position = IsometricGrid.GlobaleIsometricToCartesian(position);
+        transform.position = IsometricGrid.GlobalIsometricToCartesian(position);
         UpdatePlaceGrids();
 
         ItemList.PlacedItems.Add(this);
@@ -63,7 +63,7 @@ public class Item : MonoBehaviour
     public void Placing(Vector3Int position)
     {
         Position = position;
-        transform.position = IsometricGrid.GlobaleIsometricToCartesian(position);
+        transform.position = IsometricGrid.GlobalIsometricToCartesian(position);
 
         ItemList.PlacedItems.Add(this);
         ItemList.ResortOrder();

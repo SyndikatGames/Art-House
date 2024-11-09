@@ -14,28 +14,24 @@ public class RoomBuilder : MonoBehaviour
 
         var roomItemsDataList = Saves.GetRoomItems(roomIndex: 0);
 
-        foreach (var roomItem in roomItemsDataList)
-        {
+        foreach (var itemData in roomItemsDataList)
+            InstantiateItem(itemData, parent: null);
 
-        }
-
+        ItemList.ResortOrder();
     }
 
-    private Item InstantiateItem(ItemData itemData)
+    private void InstantiateItem(ItemData itemData, Item parent)
     {
-        foreach (var childData in itemData.childItems)
-        {
-            var instChild = InstantiateItem(childData);
-        }
-
-        /*
         var itemInstance = Instantiate(Configs.GetItem(itemData.itemType)
-            .ItemPrefab, position, Quaternion.identity);
+            .ItemPrefab, Vector3.zero, Quaternion.identity);
 
-        itemInstance.SetPlace(itemData.position, parent: null);
-        itemInstance.
-        */
-        return null;
+        itemInstance.SetPlace(itemData.position, parent);
+        itemInstance.SetSide(itemData.side);
+        itemInstance.SetRarity(itemData.rarityType);
+
+        if (itemData.childItems != null)
+            foreach (var childData in itemData.childItems)
+                InstantiateItem(childData, itemInstance);
     }
 
 

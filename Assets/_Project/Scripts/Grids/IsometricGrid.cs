@@ -28,7 +28,7 @@ public abstract class IsometricGrid
         return result;
     }
 
-    public static Vector2 GlobaleIsometricToCartesian(Vector3Int position)
+    public static Vector2 GlobalIsometricToCartesian(Vector3Int position)
         => AxisX * position.x + AxisY * position.y + AxisZ * position.z;
 
     protected void CartesianToIsometric(Vector2 position, 

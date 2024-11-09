@@ -30,6 +30,8 @@ public class ItemMoving : MonoBehaviour
 
         else if (_item.CurrentSide == Side.Right) 
             _item.SetSide(Side.Left);
+
+        ItemList.SaveRoomItems();
     }
 
     private void OnBeginDrag(PointerEventData eventData)
