@@ -34,3 +34,16 @@ MonoBehaviour:
     probabilityPercentage: 20
   - rarityType: 4
     probabilityPercentage: 15
+  <RarityPrestiges>k__BackingField:
+  - rarityType: 0
+    prestige: 10
+  - rarityType: 1
+    prestige: 50
+  - rarityType: 2
+    prestige: 300
+  - rarityType: 3
+    prestige: 1500
+  - rarityType: 4
+    prestige: 5000
+  - rarityType: 5
+    prestige: 25000

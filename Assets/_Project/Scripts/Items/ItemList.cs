@@ -1,15 +1,19 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using VG;
 
 public static class ItemList
 {
+    public static event Action onUpdated;
+
     public static List<Item> PlacedItems { get; private set; } = new List<Item>();
 
 
-    public static void SaveRoomItems()
+    public static void UpdateItems()
     {
         Saves.SetRoomItems(roomIndex: 0, PlacedItems);
+        onUpdated?.Invoke();
     }
 
 

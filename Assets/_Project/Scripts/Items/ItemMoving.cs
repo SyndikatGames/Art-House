@@ -31,7 +31,7 @@ public class ItemMoving : MonoBehaviour
         else if (_item.CurrentSide == Side.Right) 
             _item.SetSide(Side.Left);
 
-        ItemList.SaveRoomItems();
+        ItemList.UpdateItems();
     }
 
     private void OnBeginDrag(PointerEventData eventData)
@@ -74,7 +74,7 @@ public class ItemMoving : MonoBehaviour
         if (TryPlace(_item, worldPointerPosition, out Item parent, out var resultGridPosition))
         {
             _item.SetPlace(resultGridPosition, parent);
-            ItemList.SaveRoomItems();
+            ItemList.UpdateItems();
         }
             
 

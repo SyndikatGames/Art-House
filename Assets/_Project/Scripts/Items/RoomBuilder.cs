@@ -6,18 +6,19 @@ public class RoomBuilder : MonoBehaviour
     [SerializeField] private Item _rootItem;
 
 
-    private void Awake() => BuildRoom();
+    private void Start() => BuildRoom();
 
     private void BuildRoom()
     {
         _rootItem.SetPlace(Vector3Int.zero, parent: null);
 
-        var roomItemsDataList = Saves.GetRoomItems(roomIndex: 0);
+        var roomItemsDataList = Saves.GetRoomItemAcrhitecture(roomIndex: 0);
 
         foreach (var itemData in roomItemsDataList)
             InstantiateItem(itemData, parent: null);
 
         ItemList.ResortOrder();
+        ItemList.UpdateItems();
     }
 
     private void InstantiateItem(ItemData itemData, Item parent)

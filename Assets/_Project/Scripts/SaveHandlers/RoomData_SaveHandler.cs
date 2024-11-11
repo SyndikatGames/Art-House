@@ -133,7 +133,7 @@ namespace VG
 
 
 
-        public static List<ItemData> GetRoomItems(int roomIndex)
+        public static List<ItemData> GetRoomItemAcrhitecture(int roomIndex)
         {
             var items = new List<ItemData>();
             if (String[Key_Save.room_data(roomIndex)].Value == string.Empty) 

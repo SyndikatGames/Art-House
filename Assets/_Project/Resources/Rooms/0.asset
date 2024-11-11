@@ -10,12 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c99d5995b3c3f2246886d57bd77babbc, type: 3}
-  m_Name: 2
+  m_Name: 0
   m_EditorClassIdentifier: 
-  _levelPrestigeBonuses:
-  - bonusList:
-    - type: 10
-      value: 5
-  - bonusList:
-    - type: 0
-      value: 1
+  _prestigeRequires: 64000000f4010000a00f000010270000
+  _levelBonuses: []
