@@ -28,13 +28,10 @@ public struct ItemData
 
     public ItemData(string data)
     {
-        Debug.Log(data);
         FindBracketPair(data, out int openIndex, out int closeIndex);
 
         string mainData = data.Substring(0, openIndex);
         string childData = data.Substring(openIndex + 1, closeIndex - openIndex - 1);
-        Debug.Log(mainData);
-        Debug.Log(childData);
 
         string[] mainSplitData = mainData.Split('_');
         itemType = (ItemType)int.Parse(mainSplitData[0]);

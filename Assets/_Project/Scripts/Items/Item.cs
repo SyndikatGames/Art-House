@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum ItemPlaceType { Floor, Wall }
 public enum Side { Left, Right }
@@ -28,6 +29,20 @@ public class Item : MonoBehaviour
     public RarityType RarityType{ get; private set; }
 
     private ItemHighlighter _highlighter;
+    public ItemHighlighter Highlighter
+    {
+        get
+        {
+            _highlighter ??= new ItemHighlighter(_sprite, this);
+            return _highlighter;
+        }
+    }
+
+    public bool BlockRaycast
+    {
+        get => _clickCanvas.GetComponent<GraphicRaycaster>().enabled;
+        set => _clickCanvas.GetComponent<GraphicRaycaster>().enabled = value;
+    }
 
 
     public void SetRarity(RarityType rarityType)
@@ -35,15 +50,6 @@ public class Item : MonoBehaviour
         var sprite = Configs.GetItem(ItemType).GetSprite(rarityType);
         _sprite.sprite = sprite;
         RarityType = rarityType;
-    }
-
-    public void Highlight()
-    {
-        _highlighter ??= new ItemHighlighter(_sprite);
-        _highlighter.Highlight();
-
-        foreach (var item in ChildItems)
-            item.Highlight();
     }
 
     public void SetPlace(Vector3Int position, Item parent)

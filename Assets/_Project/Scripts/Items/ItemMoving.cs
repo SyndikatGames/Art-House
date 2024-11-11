@@ -39,13 +39,14 @@ public class ItemMoving : MonoBehaviour
         if (_item.ChildItems.Count != 0)
         {
             foreach (var item in _item.ChildItems)
-                item.Highlight();
-
+                item.Highlighter.Highlight(HighlightType.Overlap);
+                
             _interactionHandler.DisableDragAction();
             return;
         }
 
         _item.ParentItem?.ChildItems.Remove(_item);
+        _item.BlockRaycast = false;
         ItemList.PlacedItems.Remove(_item);
         DraggableItem = _item;
     }
@@ -79,6 +80,7 @@ public class ItemMoving : MonoBehaviour
             
 
         DraggableItem = null;
+        _item.BlockRaycast = true;
     }
 
 

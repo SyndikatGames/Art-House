@@ -5058,7 +5058,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e0bf0cfb93f49543991f653025f898c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _debugLogs: 1
+  _debugLogs: 0
   _services:
   - {fileID: 8090846151886812608}
   - {fileID: 2258312118686129026}
