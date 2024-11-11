@@ -7,8 +7,11 @@ public static class TotalRules
     public static Dictionary<RarityType, float> BoxProbabilities { get; private set; }
 
     private static Dictionary<RarityType, int> _sellPrices;
+    private static Dictionary<RarityType, int> _prestiges;
 
     public static int GetSellPrice(RarityType rarityType) => _sellPrices[rarityType];
+
+    public static int GetPrestige(RarityType rarityType) => _prestiges[rarityType];
 
 
     public static void Update()
@@ -25,6 +28,12 @@ public static class TotalRules
         _sellPrices = new Dictionary<RarityType, int>();
         foreach (var sellPrice in basicRules.SellPrices)
             _sellPrices.Add(sellPrice.rarityType, sellPrice.price);
+
+        _prestiges = new Dictionary<RarityType, int>();
+        foreach (var prestige in basicRules.RarityPrestiges)
+            _prestiges.Add(prestige.rarityType, prestige.prestige);
+
+
     }
 
 

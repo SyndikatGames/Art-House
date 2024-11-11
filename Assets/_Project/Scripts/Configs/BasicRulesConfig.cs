@@ -13,6 +13,13 @@ public class BasicRulesConfig : ScriptableObject
     }
 
     [System.Serializable]
+    public struct RarityPrestige
+    {
+        public RarityType rarityType;
+        public int prestige;
+    }
+
+    [System.Serializable]
     public struct BoxProbability
     {
         public RarityType rarityType;
@@ -24,7 +31,7 @@ public class BasicRulesConfig : ScriptableObject
     [field: SerializeField] public float BoxEveryMinutes { get; private set; }
     [field: SerializeField] public List<RarityPrice> SellPrices { get; private set; }
     [field: SerializeField] public List<BoxProbability> BoxProbabilities { get; private set; }
-
+    [field: SerializeField] public List<RarityPrestige> RarityPrestiges { get; private set; }
 
 }
 
