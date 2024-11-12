@@ -10,9 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1026697625298815826}
   - component: {fileID: 3717036483057297988}
-  - component: {fileID: 1272110651602330044}
   - component: {fileID: 163185074799265245}
-  - component: {fileID: 6778214195450677001}
+  - component: {fileID: 401984403207302871}
   m_Layer: 0
   m_Name: Bunk Bed
   m_TagString: Untagged
@@ -58,20 +57,6 @@ MonoBehaviour:
   - gridType: 0
     offset: {x: 8, y: 5, z: 15}
     size: {x: 10, y: 6}
---- !u!114 &1272110651602330044
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1325785960547255914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6488177c778ae0b4a8729ae83f7b617b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _item: {fileID: 3717036483057297988}
-  _interactionHandler: {fileID: 736278533155413540}
 --- !u!114 &163185074799265245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,7 +70,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _item: {fileID: 3717036483057297988}
---- !u!114 &6778214195450677001
+--- !u!114 &401984403207302871
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,7 +79,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1325785960547255914}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9daa08fbb18286e4f85e41ca208de749, type: 3}
+  m_Script: {fileID: 11500000, guid: e2f49c5d1c40e5d4893d4ee8b2089830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _item: {fileID: 3717036483057297988}

@@ -1,42 +1,39 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class ItemMerging : MonoBehaviour
+public class ItemMergeHandler
 {
     [SerializeField] private Item _item;
-    [SerializeField] private InteractionHandler _interactionHandler;
 
-    private void Awake()
+    public ItemMergeHandler(Item item)
     {
-        _interactionHandler.onBeginDrag += OnBeginDrag;
-        _interactionHandler.onEndDrag += OnEndDrag;
-        _interactionHandler.onPointerEnter += OnPointerEnter;
-        _interactionHandler.onPointerExit += OnPointerExit;
-        _interactionHandler.onDrop += OnDrop;
+        _item = item;
     }
 
-    private void OnDrop(PointerEventData data)
+
+    public bool OnDrop()
     {
-        if (ItemMoving.DraggableItem != null && MergingAvailable(ItemMoving.DraggableItem, _item))
+        if (ItemMoveHandler.DraggableItem != null && MergingAvailable(ItemMoveHandler.DraggableItem, _item))
         {
-            ItemList.PlacedItems.Remove(ItemMoving.DraggableItem);
-            Destroy(ItemMoving.DraggableItem.gameObject);
+            ItemList.PlacedItems.Remove(ItemMoveHandler.DraggableItem);
+            Object.Destroy(ItemMoveHandler.DraggableItem.gameObject);
 
             RarityType newRarity = (RarityType)((int)_item.RarityType + 1);
             _item.SetRarity(newRarity);
             _item.Highlighter.Stop(HighlightType.MergingSelect);
 
             ItemList.UpdateItems();
+            return true;
         }
 
+        return false;
 
     }
 
-    private void OnPointerExit(PointerEventData data)
+    public void OnPointerExit()
     {
-        if (ItemMoving.DraggableItem == null) return;
+        if (ItemMoveHandler.DraggableItem == null) return;
 
-        if (MergingAvailable(ItemMoving.DraggableItem, _item))
+        if (MergingAvailable(ItemMoveHandler.DraggableItem, _item))
         {
             _item.Highlighter.Stop(HighlightType.MergingSelect);
             SetMergingHiglight(true);
@@ -45,23 +42,23 @@ public class ItemMerging : MonoBehaviour
 
     }
 
-    private void OnPointerEnter(PointerEventData data)
+    public void OnPointerEnter()
     {
-        if (ItemMoving.DraggableItem == null) return;
+        if (ItemMoveHandler.DraggableItem == null) return;
 
-        if (MergingAvailable(ItemMoving.DraggableItem, _item))
+        if (MergingAvailable(ItemMoveHandler.DraggableItem, _item))
         {
             SetMergingHiglight(false);
             _item.Highlighter.Highlight(HighlightType.MergingSelect);
         }
     }
 
-    private void OnEndDrag(PointerEventData data)
+    public void OnEndDrag()
     {
         SetMergingHiglight(false);
     }
 
-    private void OnBeginDrag(PointerEventData data)
+    public void OnBeginDrag()
     {
         if (_item.ChildItems.Count > 0) return;
         SetMergingHiglight(true);

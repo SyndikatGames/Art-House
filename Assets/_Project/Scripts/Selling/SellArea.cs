@@ -31,7 +31,7 @@ public class SellArea : MonoBehaviour
 
     private void OnPointerEnter(PointerEventData eventData)
     {
-        if (ItemMoving.DraggableItem == null) return;
+        if (ItemMoveHandler.DraggableItem == null) return;
 
         foreach (var spriteRenderer in _highligthableSprites)
             spriteRenderer.color = _highlightColor;
@@ -46,7 +46,7 @@ public class SellArea : MonoBehaviour
 
     private void OnDrop(PointerEventData eventData)
     {
-        if (ItemMoving.DraggableItem != null)
+        if (ItemMoveHandler.DraggableItem != null)
             SellItem();
 
         foreach (var spriteRenderer in _highligthableSprites)
@@ -56,7 +56,7 @@ public class SellArea : MonoBehaviour
 
     private void SellItem()
     {
-        var item = ItemMoving.DraggableItem;
+        var item = ItemMoveHandler.DraggableItem;
         int sellPrice = TotalRules.GetSellPrice(item.RarityType);
 
         Vector2 sellPosition = item.transform.position;

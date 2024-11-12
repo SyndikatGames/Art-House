@@ -2,26 +2,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ItemMoving : MonoBehaviour
+public class ItemMoveHandler
 {
     public static Item DraggableItem { get; private set; } = null;
 
-
-    [SerializeField] private Item _item;
-    [SerializeField] private InteractionHandler _interactionHandler;
+    private Item _item;
 
 
-    private void Awake()
+    public ItemMoveHandler(Item item)
     {
-        _interactionHandler.onBeginDrag += OnBeginDrag;
-        _interactionHandler.onDrag += OnDrag;
-        _interactionHandler.onEndDrag += OnEndDrag;
-        _interactionHandler.onClick += OnClick;
+        _item = item;
     }
 
 
-
-    private void OnClick(PointerEventData eventData)
+    public void OnClick()
     {
         if (_item.PlaceType != ItemPlaceType.Floor) return;
 
@@ -34,21 +28,21 @@ public class ItemMoving : MonoBehaviour
         ItemList.UpdateItems();
     }
 
-    private void OnBeginDrag(PointerEventData eventData)
+    public bool OnBeginDrag()
     {
         if (_item.ChildItems.Count != 0)
         {
             foreach (var item in _item.ChildItems)
                 item.Highlighter.Highlight(HighlightType.Overlap);
-                
-            _interactionHandler.DisableDragAction();
-            return;
+
+            return false;
         }
 
         _item.ParentItem?.ChildItems.Remove(_item);
         _item.BlockRaycast = false;
         ItemList.PlacedItems.Remove(_item);
         DraggableItem = _item;
+        return true;
     }
 
     public void OnDrag(PointerEventData eventData)
