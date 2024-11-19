@@ -9,12 +9,15 @@ namespace VG
         {
             "None",
             no_ads,
-            test_consumable,
+            epic_pack,
+            fantastic_box,
+            legendary_box
         };
 
         public const string no_ads = nameof(no_ads);
-        public const string test_consumable = nameof(test_consumable);
-
+        public const string epic_pack = nameof(epic_pack);
+        public const string fantastic_box = nameof(fantastic_box);
+        public const string legendary_box = nameof(legendary_box);
 
 
     }

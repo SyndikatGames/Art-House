@@ -112,7 +112,7 @@ namespace VG
 {
     public partial class Saves
     {
-        public const int roomsAmount = 10;
+        public const int roomsAmount = 1;
 
         public static void SetRoomItems(int roomIndex, List<Item> items)
         {

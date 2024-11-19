@@ -57,7 +57,7 @@ public class SellArea : MonoBehaviour
     private void SellItem()
     {
         var item = ItemMoveHandler.DraggableItem;
-        int sellPrice = TotalRules.GetSellPrice(item.RarityType);
+        int sellPrice = TotalRules.GetItemSellPrice(item.RarityType);
 
         Vector2 sellPosition = item.transform.position;
 

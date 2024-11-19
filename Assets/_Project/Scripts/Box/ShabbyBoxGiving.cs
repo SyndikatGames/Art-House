@@ -19,7 +19,7 @@ public class ShabbyBoxGiving : MonoBehaviour
     private void OnItemPlaced()
     {
         if (Saves.GetBoxesAmount() == 0)
-            Saves.Int[Key_Save.boxes_amount(RarityType.Shabby)].Value++;
+            Saves.AddBoxes(RarityType.Shabby, 1);
     }
 
     

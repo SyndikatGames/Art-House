@@ -21,18 +21,16 @@ public class BoxSpawner : MonoBehaviour
 
     private void OnEnable()
     {
+        Saves.String[Key_Save.boxes_data(0)].onChanged += OnBoxAmountChanged;
         foreach (var rarityType in EnumData.GetRarityTypes())
-        {
-            Saves.Int[Key_Save.boxes_amount(rarityType)].onChanged += OnBoxAmountChanged;
             _boxAmounts.Add(rarityType, 0);
-        }
+
         OnBoxAmountChanged();   
     }
 
     private void OnDisable()
     {
-        foreach (var rarityType in EnumData.GetRarityTypes())
-            Saves.Int[Key_Save.boxes_amount(rarityType)].onChanged -= OnBoxAmountChanged;
+        Saves.String[Key_Save.boxes_data(0)].onChanged -= OnBoxAmountChanged;
     }
 
 
@@ -40,7 +38,7 @@ public class BoxSpawner : MonoBehaviour
     {
         foreach (var rarityType in EnumData.GetRarityTypes())
         {
-            int amount = Saves.Int[Key_Save.boxes_amount(rarityType)].Value;
+            int amount = Saves.GetBoxes(rarityType);
 
             var boxPrefab = _boxPrefabs.Find
                 ((rarityBox) => rarityBox.rarityType == rarityType).boxPrefab;

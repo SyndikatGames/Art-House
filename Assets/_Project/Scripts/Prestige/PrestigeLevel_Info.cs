@@ -17,7 +17,7 @@ public class PrestigeLevel_Info : Info
     
     protected override void UpdateValue()
     {
-        text.text = Configs.GetRoom(roomIndex).GetCurrentLevel().ToString();
+        text.text = Configs.GetRoom(roomIndex).CurrentLevel.ToString();
     }
     
 }

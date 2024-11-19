@@ -13,7 +13,13 @@ public class TotalRulesInitializer : Initializable
     {
         yield return new WaitUntil(() => Saves.Initialized);
 
+        Saves.Int[Key_Save.current_room_index].onChanged += () => TotalRules.Update();
+
+        for (int i = 0; i < Saves.roomsAmount; i++)
+            Saves.String[Key_Save.room_data(i)].onChanged += () => TotalRules.Update();
+
         TotalRules.Update();
+
         InitCompleted();
     }
 

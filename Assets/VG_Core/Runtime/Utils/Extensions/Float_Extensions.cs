@@ -29,7 +29,7 @@ namespace VG
             return value.ToString("0.##") + names[n];
         }
 
-        public static string ToTimeString(this float value)
+        public static string ToTimeHoursString(this float value)
         {
             int seconds = (int)value;
             string secondStr = (seconds % 60).ToString();
@@ -39,6 +39,16 @@ namespace VG
             if (minuteStr.Length == 1) minuteStr = "0" + minuteStr;
             if (secondStr.Length == 1) secondStr = "0" + secondStr;
             return hourStr + ":" + minuteStr + ":" + secondStr;
+        }
+
+        public static string ToTimeMinutesString(this float value)
+        {
+            int seconds = (int)value;
+            string secondStr = (seconds % 60).ToString();
+            string minuteStr = (seconds / 60 % 60).ToString();
+            if (minuteStr.Length == 1) minuteStr = "0" + minuteStr;
+            if (secondStr.Length == 1) secondStr = "0" + secondStr;
+            return minuteStr + ":" + secondStr;
         }
 
 

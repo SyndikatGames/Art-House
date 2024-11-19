@@ -1,0 +1,24 @@
+using VG;
+
+
+public class TakeTimeBoxes_Button : ButtonHandler
+{
+    
+    protected override void OnClick()
+    {
+        int roomIndex = Saves.Int[Key_Save.current_room_index].Value;
+        int fullBoxes = (int)Saves.Float[Key_Save.time_boxes(roomIndex)].Value;
+
+        Saves.Float[Key_Save.time_boxes(roomIndex)].Value -= fullBoxes;
+        for (int i = 0; i < fullBoxes; i++)
+        {
+            var boxRarity = TotalRules.GenerateTimeBoxRarity();
+            Saves.AddBoxes(boxRarity, 1);
+        }
+
+    }
+
+
+
+    
+}

@@ -27,8 +27,8 @@ public class BasicRulesConfig : ScriptableObject
     }
 
 
-    [field: SerializeField] public int BoxLimit { get; private set; }
-    [field: SerializeField] public float BoxEveryMinutes { get; private set; }
+    [field: SerializeField] public float OfflineHoursLimit { get; private set; }
+    [field: SerializeField] public float BoxesPerHour { get; private set; }
     [field: SerializeField] public List<RarityPrice> SellPrices { get; private set; }
     [field: SerializeField] public List<BoxProbability> BoxProbabilities { get; private set; }
     [field: SerializeField] public List<RarityPrestige> RarityPrestiges { get; private set; }

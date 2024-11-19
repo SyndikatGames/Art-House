@@ -41,7 +41,7 @@ public class Box : MonoBehaviour
         _itemInstance.onPlaced += OnItemPlaced;
 
         onOpened?.Invoke();
-        Saves.Int[Key_Save.boxes_amount(_rarityType)].Value--;
+        Saves.RemoveBoxes(_rarityType, 1);
     }
 
     private Item GetRandomItemPrefab()

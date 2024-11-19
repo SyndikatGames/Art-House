@@ -6,7 +6,7 @@ namespace VG
 {
     public abstract class Info : MonoBehaviour
     {
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             Subscribe();
             UpdateValue();

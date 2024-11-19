@@ -13,4 +13,27 @@ MonoBehaviour:
   m_Name: 0
   m_EditorClassIdentifier: 
   _prestigeRequires: 64000000f4010000a00f000010270000
-  _levelBonuses: []
+  _levelBonuses:
+  - bonusList: []
+  - bonusList:
+    - type: 3
+      value: 10
+    - type: 2
+      value: 25
+    - type: 1
+      value: 60
+  - bonusList:
+    - type: 3
+      value: 10
+    - type: 4
+      value: 30
+  - bonusList:
+    - type: 3
+      value: 20
+    - type: 10
+      value: 5
+  - bonusList:
+    - type: 3
+      value: 20
+    - type: 2
+      value: 25

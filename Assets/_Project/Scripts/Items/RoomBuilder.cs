@@ -6,7 +6,10 @@ public class RoomBuilder : MonoBehaviour
     [SerializeField] private Item _rootItem;
 
 
-    private void Start() => BuildRoom();
+    private void Awake()
+    {
+        if (Saves.Initialized) BuildRoom();
+    }
 
     private void BuildRoom()
     {

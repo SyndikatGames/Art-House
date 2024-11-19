@@ -1,44 +1,20 @@
-using System;
 using UnityEngine;
 
 namespace VG
 {
-    public abstract class TimeHandler : MonoBehaviour
+    public static class TimeHandler
     {
-        protected float OfflineSeconds { get; private set; }
-        protected abstract string TimeSaveKey { get; }
-
-
-        private void OnEnable()
+        
+        public static void HandlePassedTime(float seconds)
         {
-            OfflineSeconds = HandlePassedTime(useTimeSpan: true);
-            Repeater.handlers[Key_Repeat.one_second].onUpdate += OnOneSecondPassed;
+
+            // ===== Handle time boxes =====
+            int offlineSecondsLimit = (int)(TotalRules.OfflineHoursLimit * 3600f);
+            seconds = Mathf.Min(seconds, offlineSecondsLimit);
+            float boxesPerSecond = TotalRules.BoxesPerHour / 3600f;
+            Saves.Float[Key_Save.time_boxes(0)].Value += boxesPerSecond * seconds;
+
         }
-
-        private void OnDisable()
-        {
-            Repeater.handlers[Key_Repeat.one_second].onUpdate -= OnOneSecondPassed;
-        }
-
-        private void OnOneSecondPassed() => HandlePassedTime(useTimeSpan: false);
-
-
-        private float HandlePassedTime(bool useTimeSpan)
-        {
-            float passedSeconds = 1f;
-
-            if (useTimeSpan)
-            {
-                passedSeconds = (float)(DateTime.Now - DateTime.Parse
-                    (Saves.String[TimeSaveKey].Value)).TotalSeconds;
-            }
-
-            Saves.String[TimeSaveKey].Value = DateTime.Now.ToString();
-            OnTimePassed(passedSeconds);
-            return passedSeconds;
-        }
-
-        protected abstract void OnTimePassed(float seconds);
 
 
 

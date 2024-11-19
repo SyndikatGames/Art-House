@@ -14,7 +14,7 @@ namespace VG
                 if (itemDataList[i].ItemType == ItemType.Room) 
                     continue;
 
-                result += TotalRules.GetPrestige(itemDataList[i].RarityType);
+                result += TotalRules.GetItemPrestige(itemDataList[i].RarityType);
             }
                 
 

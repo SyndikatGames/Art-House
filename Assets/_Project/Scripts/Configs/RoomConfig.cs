@@ -2,59 +2,85 @@ using System.Collections.Generic;
 using UnityEngine;
 using VG;
 
-public enum BonusType
-{
-    IncreaseBoxLimit = 0,
-    DecreaseBoxEveryMinutes,
-    IncreaseSellPricePercentage,
-    IncreaseHourIncome,
-    IncreaseIncomeHourLimit,
 
-    IncreaseProbabilityRareBox = 10,
-    IncreaseProbabilityEpicBox,
-    IncreaseProbabilityFantasticBox,
-}
 
-[System.Serializable]
-public struct BonusValue
-{
-    public BonusType type;
-    public float value;
-}
+
 
 
 [CreateAssetMenu(menuName = "Project/Room", fileName = "Room")]
 public class RoomConfig : ScriptableObject
 {
     [System.Serializable]
+    private struct BonusValue
+    {
+        public BonusType type;
+        public float value;
+    }
+
+    [System.Serializable]
     private struct LevelRoomBonuses
     {
         public List<BonusValue> bonusList;
     }
+
 
     [SerializeField] private List<int> _prestigeRequires;
     [SerializeField] private List<LevelRoomBonuses> _levelBonuses;
 
     private int RoomIndex => int.Parse(name);
 
-    public int GetCurrentPrestigeRequire()
-        => _prestigeRequires[GetCurrentLevel() - 1];
+    public int GetCurrentPrestigeRequire() => _prestigeRequires[CurrentLevel];
 
-    public List<BonusValue> GetBonuses(int level)
-        => _levelBonuses[level].bonusList;
-
-    public int GetCurrentLevel()
+    public Dictionary<BonusType, float> GetNewLevelBonuses(int level)
     {
-        int prestige = Saves.GetPrestige(RoomIndex);
+        var result = new Dictionary<BonusType, float>();
+        for (int i = 0; i < _levelBonuses[level].bonusList.Count; i++)
+            result.Add(_levelBonuses[level].bonusList[i].type, 
+                _levelBonuses[level].bonusList[i].value);
 
-        for (int levelIndex = 0; levelIndex < _prestigeRequires.Count; levelIndex++)
+        return result;
+    }
+
+    public Dictionary<BonusType, float> CurrentBonuses
+    {
+        get
         {
-            if (prestige < _prestigeRequires[levelIndex]) 
-                return levelIndex + 1;
+            var result = new Dictionary<BonusType, float>();
+            int roomLevel = CurrentLevel;
 
-            prestige -= _prestigeRequires[levelIndex];
+            for (int i = 0; i <= roomLevel; i++)
+            {
+                foreach (var bonus in _levelBonuses[i].bonusList)
+                {
+                    if (result.ContainsKey(bonus.type))
+                        result[bonus.type] += bonus.value;
+
+                    else result.Add(bonus.type, bonus.value);
+                }
+            }
+
+            return result;
         }
-        return _prestigeRequires.Count;
+    }
+
+
+    public int CurrentLevel
+    {
+        get
+        {
+            
+            int prestige = Saves.GetPrestige(RoomIndex);
+            Debug.Log(prestige);
+
+            for (int level = 0; level < _prestigeRequires.Count; level++)
+            {
+                if (prestige < _prestigeRequires[level])
+                    return level;
+
+                prestige -= _prestigeRequires[level];
+            }
+            return _prestigeRequires.Count;
+        }
     }
 
     public int GetCurrentPrestige()

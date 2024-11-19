@@ -4,22 +4,19 @@ namespace VG
 {
     public static class Key_Save
     {
-        public static class time
-        {
-            public static string box_accumulation => "t_ba";
-        }
+        public static string last_enter_time => "last";
 
-        public static string box_accumulated => "bap";
+        public static string time_boxes(int roomIndex) => $"tb{roomIndex}";
 
-        public static string test_count => "test";
         public static string ads_enabled => "ads";
         public static string gems => "g";
 
 
-        public static string boxes_amount(RarityType rarityType) => $"b{(int)rarityType}";
+        public static string boxes_data(int roomIndex) => $"b{roomIndex}";
 
         public static string room_data(int index) => $"r{index}";
 
+        public static string current_room_index => "cri";
 
     }
 }

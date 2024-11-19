@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6161406234519724466, guid: aa3878bc1b67da64d9131a5b18246a11, type: 3}
       propertyPath: _rarityType
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6516939224673951147, guid: aa3878bc1b67da64d9131a5b18246a11, type: 3}
       propertyPath: m_Pivot.x

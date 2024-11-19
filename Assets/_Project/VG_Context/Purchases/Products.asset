@@ -15,5 +15,9 @@ MonoBehaviour:
   <products>k__BackingField:
   - <key>k__BackingField: no_ads
     <consumable>k__BackingField: 0
-  - <key>k__BackingField: test_consumable
+  - <key>k__BackingField: epic_pack
+    <consumable>k__BackingField: 1
+  - <key>k__BackingField: fantastic_box
+    <consumable>k__BackingField: 1
+  - <key>k__BackingField: legendary_box
     <consumable>k__BackingField: 1
