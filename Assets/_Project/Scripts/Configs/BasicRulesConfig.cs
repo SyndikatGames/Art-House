@@ -9,7 +9,7 @@ public class BasicRulesConfig : ScriptableObject
     public struct RarityPrice
     {
         public RarityType rarityType;
-        public int price;
+        public float price;
     }
 
     [System.Serializable]

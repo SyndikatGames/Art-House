@@ -31,19 +31,19 @@ public class TimeBoxes_Info : Info
 
     private void SubscribeForTimeBoxes()
     {
-        Saves.Float[Key_Save.time_boxes(_roomIndex)].onChanged -= UpdateValue;
+        Saves.Float[Key_Save.random_boxes(_roomIndex)].onChanged -= UpdateValue;
         _roomIndex =  Saves.Int[Key_Save.current_room_index].Value;
-        Saves.Float[Key_Save.time_boxes(_roomIndex)].onChanged += UpdateValue;
+        Saves.Float[Key_Save.random_boxes(_roomIndex)].onChanged += UpdateValue;
     }
 
     
     
     protected override void UpdateValue()
     {
-        float timeBoxes = Saves.Float[Key_Save.time_boxes(_roomIndex)].Value;
+        float timeBoxes = Saves.Float[Key_Save.random_boxes(_roomIndex)].Value;
 
         float boxFullness = timeBoxes % 1f;
-        float secondsLeft = ((1f - boxFullness) * 3600f / TotalRules.BoxesPerHour);
+        float secondsLeft = (1f - boxFullness) * 3600f / TotalRules.GetBoxesPerHour(_roomIndex);
         _timerText.text = secondsLeft.ToTimeMinutesString();
 
         if (timeBoxes < 1f)

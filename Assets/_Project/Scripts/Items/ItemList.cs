@@ -19,28 +19,48 @@ public static class ItemList
 
     public static void ResortOrder()
     {
-        for (int i = 0; i < PlacedItems.Count; i++)
-            PlacedItems[i].SortingOrder = 0;
+        var itemSortedList = new List<Item>(PlacedItems.Count); 
 
         for (int i = 0; i < PlacedItems.Count; i++)
         {
-            var item = PlacedItems[i];
-            Vector3Int itemFrontPosition = item.Position + item.Size;
+            var currentItem = PlacedItems[i];
+            Vector3Int itemFrontPosition = currentItem.Position + currentItem.Size;
 
-            for (int j = 0; j < PlacedItems.Count; j++)
+            bool itemSorted = false;
+            for (int j = itemSortedList.Count - 1; j >= 0; j--)
             {
-                if (j == i) continue;
+                var otherItem = itemSortedList[j];
 
-                var otherItem = PlacedItems[j];
-
-                if (itemFrontPosition.x <= otherItem.Position.x ||
+                bool currentItemIsBehind = 
+                    itemFrontPosition.x <= otherItem.Position.x ||
                     itemFrontPosition.y <= otherItem.Position.y ||
-                    itemFrontPosition.z <= otherItem.Position.z)
-                    otherItem.SortingOrder++;
+                    itemFrontPosition.z <= otherItem.Position.z;
 
-                else item.SortingOrder++;
+                if (!currentItemIsBehind)
+                {
+                    Debug.Log($"{currentItem.name}: {itemFrontPosition} front {otherItem}: {otherItem.Position}");
+
+                    if (j == itemSortedList.Count - 1)
+                        itemSortedList.Add(currentItem);
+
+                    else itemSortedList.Insert(j + 1, currentItem);
+
+                    itemSorted = true;
+                    break;
+                }   
+            }
+
+            if (!itemSorted)
+            {
+                itemSortedList.Add(currentItem);
+                Debug.Log($"{currentItem.name} front");
             }
         }
+
+        for (int i = 0; i < itemSortedList.Count; i++)
+            itemSortedList[i].SortingOrder = i;
+            
+
     }
 
 

@@ -6,10 +6,11 @@ namespace VG
     {
         public static string last_enter_time => "last";
 
-        public static string time_boxes(int roomIndex) => $"tb{roomIndex}";
+        public static string offline_time_seconds(int roomIndex) => $"off{roomIndex}";
+        public static string random_boxes(int roomIndex) => $"tb{roomIndex}";
 
         public static string ads_enabled => "ads";
-        public static string gems => "g";
+        public static string soft_money => "g";
 
 
         public static string boxes_data(int roomIndex) => $"b{roomIndex}";

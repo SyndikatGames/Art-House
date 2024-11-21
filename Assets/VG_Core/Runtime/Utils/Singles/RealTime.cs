@@ -6,8 +6,6 @@ namespace VG
 {
     public class RealTime : Initializable
     {
-        public static float OfflineSeconds { get; private set; }
-
         public override void Initialize()
         {
             StartCoroutine(Init());
@@ -18,28 +16,26 @@ namespace VG
             yield return new WaitUntil(() 
                 => Saves.Initialized && TotalRules.Initialized);
 
-            OfflineSeconds = HandlePassedTime(useTimeSpan: true);
+            HandleOfflineTime();
             Repeater.handlers[Key_Repeat.one_second].onUpdate += OnOneSecondPassed;
             InitCompleted();
         }
 
-        private void OnOneSecondPassed() => HandlePassedTime(useTimeSpan: false);
-
-
-        private float HandlePassedTime(bool useTimeSpan)
+        private void OnOneSecondPassed()
         {
-            float passedSeconds = 1f;
+            TimeHandler.HandleOnlineTime(1f);
+            Saves.String[Key_Save.last_enter_time].Value = DateTime.Now.ToString();
+        }
 
-            if (useTimeSpan)
-            {
-                passedSeconds = (float)(DateTime.Now - DateTime.Parse
-                    (Saves.String[Key_Save.last_enter_time].Value)).TotalSeconds;
-            }
+
+        private void HandleOfflineTime()
+        {
+            float passedSeconds = (float)(DateTime.Now - DateTime.Parse
+                (Saves.String[Key_Save.last_enter_time].Value)).TotalSeconds;
 
             Saves.String[Key_Save.last_enter_time].Value = DateTime.Now.ToString();
             
-            TimeHandler.HandlePassedTime(passedSeconds);
-            return passedSeconds;
+            TimeHandler.HandleOfflineTime(passedSeconds);
         }
 
         

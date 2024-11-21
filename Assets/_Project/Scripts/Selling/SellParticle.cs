@@ -18,7 +18,7 @@ public class SellParticle : MonoBehaviour
 
 
 
-    public void SetSellPrice(int sellPrice)
+    public void SetSellPrice(float sellPrice)
         => _sellPriceText.text = $"<sprite=0> {sellPrice}";
 
 

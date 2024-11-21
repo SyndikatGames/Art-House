@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D;
 using UnityEngine.UI;
 
 public enum ItemPlaceType { Floor, Wall }
@@ -9,6 +10,14 @@ public enum Side { Left, Right }
 
 public class Item : MonoBehaviour
 {
+    [System.Serializable]
+    private struct RaritySprite
+    {
+        public RarityType rarityType;
+        public Sprite sprite;
+    }
+
+
     public event Action onPlaced;
 
     [field: SerializeField] public ItemType ItemType { get; private set; }
@@ -19,7 +28,9 @@ public class Item : MonoBehaviour
     [field: SerializeField] public ItemPlaceType PlaceType { get; private set; }
     [field: SerializeField] public Vector3Int Size { get; private set; }
     [SerializeField] private List<PlaceGridData> _placeGridDataList = new List<PlaceGridData>();
-    
+
+    [SerializeField] private List<RaritySprite> _sprites;
+
     public Vector3Int Position { get; private set; }
     public List<PlaceGrid> PlaceGrids { get; private set; }
 
@@ -44,11 +55,18 @@ public class Item : MonoBehaviour
         set => _clickCanvas.GetComponent<GraphicRaycaster>().enabled = value;
     }
 
+    public bool RarityExists(RarityType rarityType)
+    {
+        for (int i = 0; i < _sprites.Count; i++)
+            if (_sprites[i].rarityType == rarityType)
+                return true;
+
+        return false;
+    }
 
     public void SetRarity(RarityType rarityType)
     {
-        var sprite = Configs.GetItem(ItemType).GetSprite(rarityType);
-        _sprite.sprite = sprite;
+        _sprite.sprite = _sprites.Find((sprite) => sprite.rarityType == rarityType).sprite;
         RarityType = rarityType;
     }
 
@@ -71,9 +89,11 @@ public class Item : MonoBehaviour
         Position = position;
         transform.position = IsometricGrid.GlobalIsometricToCartesian(position);
 
-        ItemList.PlacedItems.Add(this);
+        bool wasPlaced = ItemList.PlacedItems.Contains(this);
+
+        if (!wasPlaced) ItemList.PlacedItems.Add(this);
         ItemList.ResortOrder();
-        ItemList.PlacedItems.Remove(this);
+        if (!wasPlaced) ItemList.PlacedItems.Remove(this);
     }
 
     public void SetSide(Side side)
@@ -158,7 +178,21 @@ public class Item : MonoBehaviour
 
 
     }
+}
 
 
+public static partial class Prefabs
+{
+    private static Item[] _allItems;
+    public static Item[] GetAllItems()
+    {
+        if (_allItems == null)
+            _allItems = Resources.LoadAll<Item>("Items");
 
+        return _allItems;
+    }
+
+
+    public static Item GetItem(ItemType itemType)
+        => Resources.Load<Item>($"Items/{itemType}");
 }

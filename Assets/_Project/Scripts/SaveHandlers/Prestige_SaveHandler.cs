@@ -6,17 +6,10 @@ namespace VG
 
         public static int GetPrestige(int roomIndex)
         {
-            var itemDataList = ItemList.PlacedItems;
-
             int result = 0;
-            for (int i = 0; i < itemDataList.Count; i++)
-            {
-                if (itemDataList[i].ItemType == ItemType.Room) 
-                    continue;
 
-                result += TotalRules.GetItemPrestige(itemDataList[i].RarityType);
-            }
-                
+            foreach (var item in GetItems(roomIndex))
+                result += TotalRules.GetItemPrestige(item.rarityType);
 
             return result;
         }

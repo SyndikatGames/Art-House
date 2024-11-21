@@ -46,10 +46,16 @@ public class Box : MonoBehaviour
 
     private Item GetRandomItemPrefab()
     {
-        var allItems = Configs.GetAllItems();
-        int randomIndex = UnityEngine.Random.Range(0, allItems.Length);
+        while (true)
+        {
+            var allItemConfigs = Prefabs.GetAllItems();
+            int randomIndex = UnityEngine.Random.Range(0, allItemConfigs.Length);
 
-        return allItems[randomIndex].ItemPrefab;
+            var item = allItemConfigs[randomIndex];
+
+            if (item.RarityExists(_rarityType))
+                return item;
+        }
     }
 
 

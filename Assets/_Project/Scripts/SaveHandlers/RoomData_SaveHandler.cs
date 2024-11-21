@@ -114,6 +114,9 @@ namespace VG
     {
         public const int roomsAmount = 1;
 
+        private static List<List<ItemData>> _itemArchitectures;
+        private static List<List<ItemData>> _itemsLists;
+
         public static void SetRoomItems(int roomIndex, List<Item> items)
         {
             string data = string.Empty;
@@ -124,26 +127,70 @@ namespace VG
                 if (item.ItemType != ItemType.Room && item.ParentItem == null)
                     data += new ItemData(items[i]).ToDataString();
             }
-                
+
+            GenerateItems(roomIndex, data);
             String[Key_Save.room_data(roomIndex)].Value = data;
         }
 
+        private static void GenerateItems(int roomIndex, string data)
+        {
+            if (_itemArchitectures == null)
+            {
+                _itemArchitectures = new List<List<ItemData>>(roomsAmount);
+                _itemsLists = new List<List<ItemData>>(roomsAmount);
+                for (int i = 0; i < roomsAmount; i++)
+                {
+                    _itemArchitectures.Add(null);
+                    _itemsLists.Add(null);
+                }
+            }
 
+            var itemArchitecture = _itemArchitectures[roomIndex] = new List<ItemData>();
+            if (data != string.Empty)
+            {
+                var splitData = ItemData.SplitByItemData(data);
+
+                for (int i = 0; i < splitData.Count; i++)
+                    itemArchitecture.Add(new ItemData(splitData[i]));
+            }
+
+            var itemList = _itemsLists[roomIndex] = new List<ItemData>();
+            AddItemsToList(itemList, itemArchitecture);
+        }
+
+        private static void AddItemsToList(List<ItemData> listForAdd, List<ItemData> items)
+        {
+            foreach (ItemData item in items)
+            {
+                listForAdd.Add(item);
+
+                if (item.childItems != null)
+                    AddItemsToList(listForAdd, item.childItems);
+            }
+        }
 
         public static List<ItemData> GetRoomItemAcrhitecture(int roomIndex)
         {
-            var items = new List<ItemData>();
-            if (String[Key_Save.room_data(roomIndex)].Value == string.Empty) 
-                return items;
+            if (_itemArchitectures == null || _itemArchitectures[roomIndex] == null)
+            {
+                var data = String[Key_Save.room_data(roomIndex)].Value;
+                GenerateItems(roomIndex, data);
+            }
 
-            string data = String[Key_Save.room_data(roomIndex)].Value;
-            var splitData = ItemData.SplitByItemData(data);
-
-            for (int i = 0; i < splitData.Count; i++)
-                items.Add(new ItemData(splitData[i]));
-
-            return items;
+            return _itemArchitectures[roomIndex];
         }
+
+        public static List<ItemData> GetItems(int roomIndex)
+        {
+            if (_itemsLists == null || _itemsLists[roomIndex] == null)
+            {
+                var data = String[Key_Save.room_data(roomIndex)].Value;
+                GenerateItems(roomIndex, data);
+            }
+
+            return _itemsLists[roomIndex];
+        }
+
 
     }
 

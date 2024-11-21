@@ -57,7 +57,7 @@ public class SellArea : MonoBehaviour
     private void SellItem()
     {
         var item = ItemMoveHandler.DraggableItem;
-        int sellPrice = TotalRules.GetItemSellPrice(item.RarityType);
+        float sellPrice = TotalRules.GetItemSellPrice(item.RarityType);
 
         Vector2 sellPosition = item.transform.position;
 
@@ -70,7 +70,7 @@ public class SellArea : MonoBehaviour
 
 
 
-        Saves.Int[Key_Save.gems].Value += sellPrice;
+        Saves.Float[Key_Save.soft_money].Value += sellPrice;
     }
 
 

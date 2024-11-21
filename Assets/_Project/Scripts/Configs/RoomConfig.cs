@@ -68,9 +68,7 @@ public class RoomConfig : ScriptableObject
     {
         get
         {
-            
             int prestige = Saves.GetPrestige(RoomIndex);
-            Debug.Log(prestige);
 
             for (int level = 0; level < _prestigeRequires.Count; level++)
             {

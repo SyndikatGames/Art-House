@@ -26,8 +26,8 @@ public class RoomBuilder : MonoBehaviour
 
     private void InstantiateItem(ItemData itemData, Item parent)
     {
-        var itemInstance = Instantiate(Configs.GetItem(itemData.itemType)
-            .ItemPrefab, Vector3.zero, Quaternion.identity);
+        var itemInstance = Instantiate(Prefabs.GetItem(itemData.itemType), 
+            Vector3.zero, Quaternion.identity);
 
         itemInstance.SetPlace(itemData.position, parent);
         itemInstance.SetSide(itemData.side);

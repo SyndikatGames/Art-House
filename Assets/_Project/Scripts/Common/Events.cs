@@ -16,7 +16,6 @@ public class Events : MonoBehaviour
 
         Saves.String[Key_Save.room_data(roomIndex)].onChanged += OnRoomDataChanged;
         _previousRoomLevel = Configs.GetRoom(roomIndex).CurrentLevel;
-        print(Configs.GetRoom(roomIndex).CurrentLevel);
     }
 
     private void OnRoomDataChanged()

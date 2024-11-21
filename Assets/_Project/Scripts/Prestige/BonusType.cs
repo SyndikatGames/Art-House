@@ -5,7 +5,6 @@ public enum BonusType
     IncreaseSellPricePercentage,
     HourGemIncome,
     IncreaseOfflineHours,
-    IncreasePrestigePercentage,
 
     IncreaseProbabilityRareBox = 10,
     IncreaseProbabilityEpicBox,
@@ -30,9 +29,6 @@ public static class BonusDescription
 
             case BonusType.IncreaseOfflineHours:
                 return $"{BonusType.IncreaseOfflineHours}: {value}";
-
-            case BonusType.IncreasePrestigePercentage:
-                return $"{BonusType.IncreasePrestigePercentage}: {value}";
 
             case BonusType.IncreaseProbabilityRareBox:
                 return $"{BonusType.IncreaseProbabilityRareBox}: {value}";
