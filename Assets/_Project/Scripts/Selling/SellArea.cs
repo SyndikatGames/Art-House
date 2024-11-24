@@ -68,9 +68,8 @@ public class SellArea : MonoBehaviour
         Instantiate(_sellParticlePrefab, sellPosition, Quaternion.identity)
             .SetSellPrice(sellPrice);
 
-
-
         Saves.Float[Key_Save.soft_money].Value += sellPrice;
+        Sound.Play(Key_Sound.SellItem);
     }
 
 

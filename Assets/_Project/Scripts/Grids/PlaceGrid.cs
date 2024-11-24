@@ -19,7 +19,7 @@ public class PlaceGrid : IsometricGrid
         CartesianToIsometric(position, out var localPosition, out var worldPosition);
         resultGridPosition = base.position + worldPosition;
 
-        if (CheckInsideGrid(item, localPosition) && 
+        if (CheckInsideGrid(item.Size, localPosition) && 
             ItemList.CheckNoIntersetion(resultGridPosition, item.Size))
         {
             if (gridType == GridType.ToLeft) item.SetSide(Side.Left);
@@ -36,28 +36,28 @@ public class PlaceGrid : IsometricGrid
         item.PlaceType == ItemPlaceType.Wall && gridType == GridType.ToLeft ||
         item.PlaceType == ItemPlaceType.Wall && gridType == GridType.ToRight;
 
-    private bool CheckInsideGrid(Item item, Vector2Int gridPosition)
+    private bool CheckInsideGrid(Vector3Int size, Vector2Int gridPosition)
     {
         Vector2Int itemSize = default;
 
         switch (gridType)
         {
             case GridType.Floor:
-                itemSize = new Vector2Int(item.Size.x, item.Size.y);
+                itemSize = new Vector2Int(size.x, size.y);
                 break;
 
             case GridType.ToLeft:
-                itemSize = new Vector2Int(item.Size.y, item.Size.z);
+                itemSize = new Vector2Int(size.y, size.z);
                 break;
 
             case GridType.ToRight:
-                itemSize = new Vector2Int(item.Size.x, item.Size.z);
+                itemSize = new Vector2Int(size.x, size.z);
                 break;
         }
 
         return gridPosition.x >= 0 && gridPosition.y >= 0 &&
-            size.x >= gridPosition.x + itemSize.x &&
-            size.y >= gridPosition.y + itemSize.y;
+            base.size.x >= gridPosition.x + itemSize.x &&
+            base.size.y >= gridPosition.y + itemSize.y;
     }
 
 

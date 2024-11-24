@@ -22,7 +22,8 @@ public class Item : MonoBehaviour
 
     [field: SerializeField] public ItemType ItemType { get; private set; }
     [SerializeField] private SpriteRenderer _sprite;
-    [SerializeField] private Canvas _clickCanvas;
+    [SerializeField] private Canvas _clickCanvas; 
+    public RectTransform CanvasRect => _clickCanvas.GetComponent<RectTransform>();
     
 
     [field: SerializeField] public ItemPlaceType PlaceType { get; private set; }
@@ -33,6 +34,7 @@ public class Item : MonoBehaviour
 
     public Vector3Int Position { get; private set; }
     public List<PlaceGrid> PlaceGrids { get; private set; }
+    public Bounds SpriteBounds => _sprite.bounds;
 
     public Item ParentItem { get; private set; } 
     public List<Item> ChildItems { get; private set; } = new List<Item>();
@@ -82,6 +84,7 @@ public class Item : MonoBehaviour
         ItemList.PlacedItems.Add(this);
 
         onPlaced?.Invoke();
+        Events.ItemPlaced();
     }
 
     public void Placing(Vector3Int position)
@@ -178,6 +181,12 @@ public class Item : MonoBehaviour
 
 
     }
+
+    private void OnValidate()
+    {
+        name = ItemType.ToString();
+    }
+
 }
 
 

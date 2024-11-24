@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1026697625298815826, guid: 7ac049b0b4e44bb408ba654472656eb7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.003
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1026697625298815826, guid: 7ac049b0b4e44bb408ba654472656eb7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -57,9 +57,25 @@ PrefabInstance:
       value: Wardrobe
       objectReference: {fileID: 0}
     - target: {fileID: 1945529843281153289, guid: 7ac049b0b4e44bb408ba654472656eb7, type: 3}
+      propertyPath: m_Size.x
+      value: 2.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945529843281153289, guid: 7ac049b0b4e44bb408ba654472656eb7, type: 3}
+      propertyPath: m_Size.y
+      value: 5.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945529843281153289, guid: 7ac049b0b4e44bb408ba654472656eb7, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 2333a6351af17bc4eaedaf20b718be86, type: 3}
+      objectReference: {fileID: 21300000, guid: f6593dba9b7d7fe45a0d5d7130455936, type: 3}
+    - target: {fileID: 1945529843281153289, guid: 7ac049b0b4e44bb408ba654472656eb7, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3717036483057297988, guid: 7ac049b0b4e44bb408ba654472656eb7, type: 3}
+      propertyPath: _sprites.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3717036483057297988, guid: 7ac049b0b4e44bb408ba654472656eb7, type: 3}
       propertyPath: <Size>k__BackingField.x
       value: 4
@@ -87,15 +103,15 @@ PrefabInstance:
     - target: {fileID: 3717036483057297988, guid: 7ac049b0b4e44bb408ba654472656eb7, type: 3}
       propertyPath: _sprites.Array.data[0].sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 2333a6351af17bc4eaedaf20b718be86, type: 3}
+      objectReference: {fileID: 21300000, guid: 314c80a9b1c10ae43922f2d00082e70b, type: 3}
     - target: {fileID: 3717036483057297988, guid: 7ac049b0b4e44bb408ba654472656eb7, type: 3}
       propertyPath: _sprites.Array.data[1].sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 314c80a9b1c10ae43922f2d00082e70b, type: 3}
+      objectReference: {fileID: 21300000, guid: a955f0bee60fa9246923fefa5b82280a, type: 3}
     - target: {fileID: 3717036483057297988, guid: 7ac049b0b4e44bb408ba654472656eb7, type: 3}
       propertyPath: _sprites.Array.data[2].sprite
       value: 
-      objectReference: {fileID: 21300000, guid: a955f0bee60fa9246923fefa5b82280a, type: 3}
+      objectReference: {fileID: 21300000, guid: f6593dba9b7d7fe45a0d5d7130455936, type: 3}
     - target: {fileID: 3717036483057297988, guid: 7ac049b0b4e44bb408ba654472656eb7, type: 3}
       propertyPath: _sprites.Array.data[3].sprite
       value: 
@@ -108,6 +124,18 @@ PrefabInstance:
       propertyPath: _sprites.Array.data[5].sprite
       value: 
       objectReference: {fileID: 21300000, guid: f6593dba9b7d7fe45a0d5d7130455936, type: 3}
+    - target: {fileID: 3717036483057297988, guid: 7ac049b0b4e44bb408ba654472656eb7, type: 3}
+      propertyPath: _sprites.Array.data[0].rarityType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3717036483057297988, guid: 7ac049b0b4e44bb408ba654472656eb7, type: 3}
+      propertyPath: _sprites.Array.data[1].rarityType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3717036483057297988, guid: 7ac049b0b4e44bb408ba654472656eb7, type: 3}
+      propertyPath: _sprites.Array.data[2].rarityType
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3717036483057297988, guid: 7ac049b0b4e44bb408ba654472656eb7, type: 3}
       propertyPath: _placeGridDataList.Array.data[0].size.x
       value: 4

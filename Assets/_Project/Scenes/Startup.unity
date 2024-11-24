@@ -4465,7 +4465,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5c4a6d77a4110444ba6fe08114fcedf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cashedClipNames: []
+  _cashedClipNames:
+  - can_not_move_item.wav
+  - click.wav
+  - merge_items.wav
+  - music.wav
+  - place_item.wav
+  - sell_item.wav
+  - take_item.wav
 --- !u!114 &3511429739643363053
 MonoBehaviour:
   m_ObjectHideFlags: 0

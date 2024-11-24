@@ -5,6 +5,7 @@ using VG;
 public class Events : MonoBehaviour
 {
     public static event Action onNewLevelReached;
+    public static event Action onItemPlaced; public static void ItemPlaced() => onItemPlaced?.Invoke();
 
     private int _previousRoomLevel;
 

@@ -43,7 +43,7 @@ namespace VG
 
         private static void UpdateTime()
         {
-            AudioListener.pause = false;
+            AudioListener.volume = 1f;
 
             foreach (var priorityTimeScale in priorityTimeScales)
             {
@@ -53,7 +53,7 @@ namespace VG
                         Time.timeScale = priorityTimeScale.Value;
 
                         if (priorityTimeScale.Key == TimeType.StopAll)
-                            AudioListener.pause = true;
+                            AudioListener.volume = 0f;
 
                         return;
                     }

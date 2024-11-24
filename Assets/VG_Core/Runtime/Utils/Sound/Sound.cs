@@ -4,12 +4,6 @@ using UnityEngine.Audio;
 
 namespace VG
 {
-    public static class SoundExtensions
-    {
-        public static AudioSource Play(this SoundUnit soundUnit) => Sound.Play(soundUnit);
-    }
-
-
 
     public class Sound : Initializable
     {
@@ -75,8 +69,10 @@ namespace VG
 
 
 
-        public static AudioSource Play(SoundUnit soundUnit)
+        public static AudioSource Play(string soundKey)
         {
+            var soundUnit = Resources.Load<SoundUnit>($"Sounds/{soundKey}");
+
             AudioSource audioSource = soundUnit.channel == Channel.Music ? 
                 instance._musicAudioSource : instance._sfxAudioStack.GetAudioSource();
 

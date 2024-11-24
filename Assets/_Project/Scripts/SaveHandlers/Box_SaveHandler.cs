@@ -39,8 +39,8 @@ namespace VG
             int roomIndex = Int[Key_Save.current_room_index].Value;
             string[] data = String[Key_Save.boxes_data(roomIndex)].Value.Split('_');
             int result = 0;
-            foreach (string dataString in data)
-                result += int.Parse(dataString);
+            for (int i = 1; i < data.Length; i++)
+                result += int.Parse(data[i]);   
 
             return result;
         }

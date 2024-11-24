@@ -50,12 +50,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1325785960547255914, guid: 7ac049b0b4e44bb408ba654472656eb7, type: 3}
       propertyPath: m_Name
-      value: Square Clothes
+      value: SquareClothes
       objectReference: {fileID: 0}
     - target: {fileID: 1945529843281153289, guid: 7ac049b0b4e44bb408ba654472656eb7, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 50949bc227612d64e9a88b0f55d76dc9, type: 3}
+    - target: {fileID: 3717036483057297988, guid: 7ac049b0b4e44bb408ba654472656eb7, type: 3}
+      propertyPath: _sprites.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3717036483057297988, guid: 7ac049b0b4e44bb408ba654472656eb7, type: 3}
       propertyPath: <Size>k__BackingField.x
       value: 4
@@ -83,11 +87,11 @@ PrefabInstance:
     - target: {fileID: 3717036483057297988, guid: 7ac049b0b4e44bb408ba654472656eb7, type: 3}
       propertyPath: _sprites.Array.data[1].sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 8af7902c9eb28c04b8ec6ffcb94d736b, type: 3}
+      objectReference: {fileID: 21300000, guid: 02471188d989e3f4db91c1e330f1665c, type: 3}
     - target: {fileID: 3717036483057297988, guid: 7ac049b0b4e44bb408ba654472656eb7, type: 3}
       propertyPath: _sprites.Array.data[2].sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 02471188d989e3f4db91c1e330f1665c, type: 3}
+      objectReference: {fileID: 21300000, guid: 50949bc227612d64e9a88b0f55d76dc9, type: 3}
     - target: {fileID: 3717036483057297988, guid: 7ac049b0b4e44bb408ba654472656eb7, type: 3}
       propertyPath: _sprites.Array.data[3].sprite
       value: 
@@ -95,11 +99,15 @@ PrefabInstance:
     - target: {fileID: 3717036483057297988, guid: 7ac049b0b4e44bb408ba654472656eb7, type: 3}
       propertyPath: _sprites.Array.data[4].sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 486c6588fc1df0f49bec72a866da3c38, type: 3}
+      objectReference: {fileID: 21300000, guid: 4837cb33db33b174abee2aa7b53fee95, type: 3}
     - target: {fileID: 3717036483057297988, guid: 7ac049b0b4e44bb408ba654472656eb7, type: 3}
       propertyPath: _sprites.Array.data[5].sprite
       value: 
       objectReference: {fileID: 21300000, guid: 50949bc227612d64e9a88b0f55d76dc9, type: 3}
+    - target: {fileID: 3717036483057297988, guid: 7ac049b0b4e44bb408ba654472656eb7, type: 3}
+      propertyPath: _sprites.Array.data[4].rarityType
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3717036483057297988, guid: 7ac049b0b4e44bb408ba654472656eb7, type: 3}
       propertyPath: _placeGridDataList.Array.data[0].size.x
       value: 4

@@ -10,9 +10,9 @@ public class PurchaseWithGems_Button : ButtonHandler
     {
         int price = Configs.Shop.GetGemProductPrice(_product.ProductType);
 
-        if (Saves.Int[Key_Save.soft_money].Value >= price)
+        if (Saves.Float[Key_Save.soft_money].Value >= price)
         {
-            Saves.Int[Key_Save.soft_money].Value -= price;
+            Saves.Float[Key_Save.soft_money].Value -= price;
             Configs.Shop.HandleGemPurchase(_product.ProductType);
         }
 

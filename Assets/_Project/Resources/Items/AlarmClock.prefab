@@ -91,7 +91,7 @@ PrefabInstance:
     - target: {fileID: 3717036483057297988, guid: 7ac049b0b4e44bb408ba654472656eb7, type: 3}
       propertyPath: _sprites.Array.data[0].sprite
       value: 
-      objectReference: {fileID: 21300000, guid: df5bea8420422524c88cad11135c5023, type: 3}
+      objectReference: {fileID: 21300000, guid: fceb8f6d5ea589a4ca4d20e39e510d02, type: 3}
     - target: {fileID: 3717036483057297988, guid: 7ac049b0b4e44bb408ba654472656eb7, type: 3}
       propertyPath: _sprites.Array.data[1].sprite
       value: 
@@ -99,7 +99,7 @@ PrefabInstance:
     - target: {fileID: 3717036483057297988, guid: 7ac049b0b4e44bb408ba654472656eb7, type: 3}
       propertyPath: _sprites.Array.data[2].sprite
       value: 
-      objectReference: {fileID: 21300000, guid: fceb8f6d5ea589a4ca4d20e39e510d02, type: 3}
+      objectReference: {fileID: 21300000, guid: df5bea8420422524c88cad11135c5023, type: 3}
     - target: {fileID: 3717036483057297988, guid: 7ac049b0b4e44bb408ba654472656eb7, type: 3}
       propertyPath: _sprites.Array.data[3].sprite
       value: 
@@ -114,19 +114,19 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: f6593dba9b7d7fe45a0d5d7130455936, type: 3}
     - target: {fileID: 3717036483057297988, guid: 7ac049b0b4e44bb408ba654472656eb7, type: 3}
       propertyPath: _sprites.Array.data[0].rarityType
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3717036483057297988, guid: 7ac049b0b4e44bb408ba654472656eb7, type: 3}
       propertyPath: _sprites.Array.data[1].rarityType
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3717036483057297988, guid: 7ac049b0b4e44bb408ba654472656eb7, type: 3}
       propertyPath: _sprites.Array.data[2].rarityType
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3717036483057297988, guid: 7ac049b0b4e44bb408ba654472656eb7, type: 3}
       propertyPath: _sprites.Array.data[3].rarityType
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3717036483057297988, guid: 7ac049b0b4e44bb408ba654472656eb7, type: 3}
       propertyPath: _sprites.Array.data[4].rarityType

@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Collections;
+using TopologicalSorting;
 using UnityEngine;
 using VG;
 
@@ -19,47 +21,56 @@ public static class ItemList
 
     public static void ResortOrder()
     {
-        var itemSortedList = new List<Item>(PlacedItems.Count); 
+        DependencyGraph dependencyGraph = new DependencyGraph();
+        List<OrderedProcess> orders = new List<OrderedProcess>(PlacedItems.Count);
+        for (int i = 0; i < PlacedItems.Count; i++)
+            orders.Add(new OrderedProcess(dependencyGraph, i.ToString()));
 
         for (int i = 0; i < PlacedItems.Count; i++)
         {
-            var currentItem = PlacedItems[i];
-            Vector3Int itemFrontPosition = currentItem.Position + currentItem.Size;
+            var item = PlacedItems[i];
 
-            bool itemSorted = false;
-            for (int j = itemSortedList.Count - 1; j >= 0; j--)
+            for (int j = i + 1; j < PlacedItems.Count; j++)
             {
-                var otherItem = itemSortedList[j];
+                var otherItem = PlacedItems[j];
+                bool sortIsMatter = 
+                    item.ItemType == ItemType.Room || 
+                    otherItem.ItemType == ItemType.Room || 
+                    item.SpriteBounds.Intersects(otherItem.SpriteBounds);
 
-                bool currentItemIsBehind = 
-                    itemFrontPosition.x <= otherItem.Position.x ||
-                    itemFrontPosition.y <= otherItem.Position.y ||
-                    itemFrontPosition.z <= otherItem.Position.z;
-
-                if (!currentItemIsBehind)
+                if (sortIsMatter)
                 {
-                    Debug.Log($"{currentItem.name}: {itemFrontPosition} front {otherItem}: {otherItem.Position}");
+                    Vector3Int itemFrontPosition = item.Position + item.Size;
 
-                    if (j == itemSortedList.Count - 1)
-                        itemSortedList.Add(currentItem);
+                    bool currentItemIsBehind =
+                        itemFrontPosition.x <= otherItem.Position.x ||
+                        itemFrontPosition.y <= otherItem.Position.y ||
+                        itemFrontPosition.z <= otherItem.Position.z;
 
-                    else itemSortedList.Insert(j + 1, currentItem);
-
-                    itemSorted = true;
-                    break;
-                }   
+                    if (currentItemIsBehind) orders[i].Before(orders[j]);
+                    else orders[i].After(orders[j]);
+                }
             }
 
-            if (!itemSorted)
-            {
-                itemSortedList.Add(currentItem);
-                Debug.Log($"{currentItem.name} front");
-            }
         }
 
-        for (int i = 0; i < itemSortedList.Count; i++)
-            itemSortedList[i].SortingOrder = i;
-            
+        try
+        {
+            var sortedEnumerator = dependencyGraph.CalculateSort().GetEnumerator();
+
+            for (int order = 0; sortedEnumerator.MoveNext(); order++)
+            {
+                OrderedProcess orderedProcess = (OrderedProcess)sortedEnumerator.Current;
+                int index = int.Parse(orderedProcess.Name);
+
+                PlacedItems[index].SortingOrder = order;
+            }
+        }
+        catch { }
+        
+
+        
+
 
     }
 

@@ -2,11 +2,14 @@ using UnityEngine;
 
 public class ItemMergeHandler
 {
-    [SerializeField] private Item _item;
+    private Item _item;
+    private GameObject _flashPrefab;
 
-    public ItemMergeHandler(Item item)
+
+    public ItemMergeHandler(Item item, GameObject flashPrefab)
     {
         _item = item;
+        _flashPrefab = flashPrefab;
     }
 
 
@@ -20,6 +23,11 @@ public class ItemMergeHandler
             RarityType newRarity = (RarityType)((int)_item.RarityType + 1);
             _item.SetRarity(newRarity);
             _item.Highlighter.Stop(HighlightType.MergingSelect);
+
+            var canvasRect = _item.CanvasRect;
+            float flashScale = Mathf.Max(canvasRect.rect.width, canvasRect.rect.height);
+            Object.Instantiate(_flashPrefab, canvasRect.transform.position, Quaternion.identity)
+                .GetComponent<Flash_Tween>().Run(flashScale);
 
             ItemList.UpdateItems();
             return true;
@@ -82,7 +90,17 @@ public class ItemMergeHandler
 
 
     private bool MergingAvailable(Item item1, Item item2)
-        => item1.RarityType == item2.RarityType && item1.ItemType == item2.ItemType
-        && item1.RarityType != RarityType.Legendary;
+    {
+        if (item1.RarityType == item2.RarityType 
+            && item1.ItemType == item2.ItemType
+            && item1.RarityType != RarityType.Legendary)
+        {
+            RarityType nextRarityType = (RarityType)((int)item1.RarityType + 1);
+            return item1.RarityExists(nextRarityType);
+        }
+
+        return false;
+    }
+
 
 }
