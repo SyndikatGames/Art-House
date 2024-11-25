@@ -15,17 +15,24 @@ public class ItemMoveHandler
     }
 
 
-    public void OnClick()
+    public bool OnClick()
     {
-        if (_item.PlaceType != ItemPlaceType.Floor) return;
+        if (_item.PlaceType != ItemPlaceType.Floor) return false;
 
-        if (_item.CurrentSide == Side.Left) 
-            _item.SetSide(Side.Right);
 
-        else if (_item.CurrentSide == Side.Right) 
-            _item.SetSide(Side.Left);
+        if (_item.RotateAvailable)
+        {
+            if (_item.CurrentSide == Side.Left)
+                _item.SetSide(Side.Right);
 
-        ItemList.UpdateItems();
+            else if (_item.CurrentSide == Side.Right)
+                _item.SetSide(Side.Left);
+
+            ItemList.UpdateItems();
+            return true;
+        }
+
+        return false;
     }
 
     public bool OnBeginDrag()
@@ -38,7 +45,9 @@ public class ItemMoveHandler
             return false;
         }
 
-        _item.ParentItem?.ChildItems.Remove(_item);
+        if (_item.ParentItem != null)
+            _item.ParentItem?.ChildItems.Remove(_item);
+
         _item.BlockRaycast = false;
         ItemList.PlacedItems.Remove(_item);
         DraggableItem = _item;
@@ -66,9 +75,9 @@ public class ItemMoveHandler
         Vector2 worldPointerPosition
                 = Camera.main.ScreenToWorldPoint(eventData.position);
 
-        if (TryPlace(_item, worldPointerPosition, out Item parent, out var resultGridPosition))
+        if (TryPlace(_item, worldPointerPosition, out var placeGrid, out var resultGridPosition))
         {
-            _item.SetPlace(resultGridPosition, parent);
+            _item.SetPlace(resultGridPosition, placeGrid);
             ItemList.UpdateItems();
         }
             
@@ -79,22 +88,18 @@ public class ItemMoveHandler
 
 
     private bool TryPlace(Item item, Vector2 worldPosition, 
-        out Item parent, out Vector3Int resultGridPosition)
+        out PlaceGrid placeGrid, out Vector3Int resultGridPosition)
     {
         var availablePlaceGrids = new List<PlaceGrid>();
-        var availableParents = new List<Item>();
 
         resultGridPosition = default;
-        parent = null;
+        placeGrid = null;
 
         foreach (var placedItem in ItemList.PlacedItems)
         {
-            foreach (var placeGrid in placedItem.PlaceGrids)
-                if (placeGrid.TryPlaceItem(item, worldPosition, out _))
-                {
-                    availablePlaceGrids.Add(placeGrid);
-                    availableParents.Add(placedItem);
-                }
+            foreach (var itemPlaceGrid in placedItem.PlaceGrids)
+                if (itemPlaceGrid.TryPlaceItem(item, worldPosition, out _))
+                    availablePlaceGrids.Add(itemPlaceGrid);
                     
         }
 
@@ -105,22 +110,22 @@ public class ItemMoveHandler
         for (int i = 1; i < availablePlaceGrids.Count; i++)
         {
             PlaceGrid selectedPlaceGrid = availablePlaceGrids[selectedIndex];
-            var placeGrid = availablePlaceGrids[i];
+            var itemPlaceGrid = availablePlaceGrids[i];
 
             switch (selectedPlaceGrid.GridType)
             {
                 case GridType.Floor:
-                    if (selectedPlaceGrid.Position.z < placeGrid.Position.z)
+                    if (selectedPlaceGrid.Position.z < itemPlaceGrid.Position.z)
                         selectedIndex = i;
                     break;
 
                 case GridType.ToLeft:
-                    if (selectedPlaceGrid.Position.x < placeGrid.Position.x)
+                    if (selectedPlaceGrid.Position.x < itemPlaceGrid.Position.x)
                         selectedIndex = i;
                     break;
 
                 case GridType.ToRight:
-                    if (selectedPlaceGrid.Position.y < placeGrid.Position.y)
+                    if (selectedPlaceGrid.Position.y < itemPlaceGrid.Position.y)
                         selectedIndex = i;
                     break;
             }
@@ -129,7 +134,7 @@ public class ItemMoveHandler
         availablePlaceGrids[selectedIndex]
             .TryPlaceItem(item, worldPosition, out resultGridPosition);
 
-        parent = availableParents[selectedIndex];
+        placeGrid = availablePlaceGrids[selectedIndex];
 
         return true;
     }

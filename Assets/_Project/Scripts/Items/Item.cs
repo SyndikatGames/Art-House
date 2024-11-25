@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.U2D;
 using UnityEngine.UI;
 
 public enum ItemPlaceType { Floor, Wall }
@@ -36,10 +35,12 @@ public class Item : MonoBehaviour
     public List<PlaceGrid> PlaceGrids { get; private set; }
     public Bounds SpriteBounds => _sprite.bounds;
 
-    public Item ParentItem { get; private set; } 
+    public Item ParentItem => ParentGrid == null ? null : ParentGrid.Owner;
+
+    public PlaceGrid ParentGrid { get; private set; }
     public List<Item> ChildItems { get; private set; } = new List<Item>();
     public Side CurrentSide { get; private set; } = Side.Left;
-    public RarityType RarityType{ get; private set; }
+    public RarityType RarityType { get; private set; }
 
     private ItemHighlighter _highlighter;
     public ItemHighlighter Highlighter
@@ -72,10 +73,13 @@ public class Item : MonoBehaviour
         RarityType = rarityType;
     }
 
-    public void SetPlace(Vector3Int position, Item parent)
+    public void SetPlace(Vector3Int position, PlaceGrid placeGrid)
     {
-        parent?.ChildItems.Add(this);
-        ParentItem = parent != null && parent.ItemType == ItemType.Room ? null : parent;
+        if (placeGrid != null)
+        {
+            ParentGrid = placeGrid;
+            placeGrid.Owner.ChildItems.Add(this);
+        }
 
         Position = position;
         transform.position = IsometricGrid.GlobalIsometricToCartesian(position);
@@ -86,6 +90,30 @@ public class Item : MonoBehaviour
         onPlaced?.Invoke();
         Events.ItemPlaced();
     }
+
+    public PlaceGrid GetPlaceGrid(Vector3Int position, ItemPlaceType placeType, Side side)
+    {
+        // TODO: It's not universal method!
+
+        foreach (var placeGrid in PlaceGrids)
+        {
+            if (placeType == ItemPlaceType.Floor && placeGrid.GridType == GridType.Floor)
+                return placeGrid;
+
+            if (placeType == ItemPlaceType.Wall)
+            {
+                if (side == Side.Left && placeGrid.GridType == GridType.ToLeft)
+                    return placeGrid;
+
+                if (side == Side.Right && placeGrid.GridType == GridType.ToRight)
+                    return placeGrid;
+            }
+                
+        }
+
+        return null;
+    }
+
 
     public void Placing(Vector3Int position)
     {
@@ -119,6 +147,23 @@ public class Item : MonoBehaviour
         }
     }
 
+    public bool RotateAvailable
+    {
+        get
+        {
+            if (ChildItems.Count != 0) return false;
+            if (ItemList.PlacedItems.Contains(this) == false) return true;
+
+            Size = new Vector3Int(Size.y, Size.x, Size.z);
+            ItemList.PlacedItems.Remove(this);
+            bool available = ParentGrid.TryPlaceItem(this, transform.position, out _);
+            Size = new Vector3Int(Size.y, Size.x, Size.z);
+            ItemList.PlacedItems.Add(this);
+            return available;
+        }
+
+    }
+
 
     public int SortingOrder
     {
@@ -147,7 +192,7 @@ public class Item : MonoBehaviour
     {
         PlaceGrids = new List<PlaceGrid>(_placeGridDataList.Count);
         foreach (var placeGridData in _placeGridDataList)
-            PlaceGrids.Add(new PlaceGrid(placeGridData, Position));
+            PlaceGrids.Add(new PlaceGrid(this, placeGridData, Position));
     }
 
 

@@ -13,12 +13,17 @@ public class RoomBuilder : MonoBehaviour
 
     private void BuildRoom()
     {
-        _rootItem.SetPlace(Vector3Int.zero, parent: null);
+        print($"Build: {Saves.String[Key_Save.room_data(0)].Value}");
+        _rootItem.SetPlace(Vector3Int.zero, placeGrid: null);
 
         var roomItemsDataList = Saves.GetRoomItemAcrhitecture(roomIndex: 0);
 
         foreach (var itemData in roomItemsDataList)
-            InstantiateItem(itemData, parent: null);
+        {
+            Debug.Log($"Inst: {itemData.itemType} on Room");
+            InstantiateItem(itemData, parent: _rootItem);
+        }
+            
 
         ItemList.ResortOrder();
         ItemList.UpdateItems();
@@ -26,16 +31,22 @@ public class RoomBuilder : MonoBehaviour
 
     private void InstantiateItem(ItemData itemData, Item parent)
     {
+        print($"Instantiate: {itemData.itemType} on {parent.name}");
         var itemInstance = Instantiate(Prefabs.GetItem(itemData.itemType), 
             Vector3.zero, Quaternion.identity);
 
-        itemInstance.SetPlace(itemData.position, parent);
+        var placeGrid = parent.GetPlaceGrid(itemData.position, itemInstance.PlaceType, itemData.side);
+        itemInstance.SetPlace(itemData.position, placeGrid);
         itemInstance.SetSide(itemData.side);
         itemInstance.SetRarity(itemData.rarityType);
 
         if (itemData.childItems != null)
             foreach (var childData in itemData.childItems)
+            {
+                Debug.Log(itemData.childItems.Count);
                 InstantiateItem(childData, itemInstance);
+            }
+                
     }
 
 

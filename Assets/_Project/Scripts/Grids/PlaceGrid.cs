@@ -3,21 +3,25 @@ using UnityEngine;
 [System.Serializable]
 public class PlaceGrid : IsometricGrid
 {
-    public PlaceGrid(PlaceGridData data, Vector3Int position)
+    public Item Owner { get; private set; }
+
+
+    public PlaceGrid(Item owner, PlaceGridData data, Vector3Int position)
     {
         gridType = data.gridType;
         size = data.size;
         base.position = position + data.offset;
+        Owner = owner;
     }
 
 
-    public bool TryPlaceItem(Item item, Vector2 position, out Vector3Int resultGridPosition)
+    public bool TryPlaceItem(Item item, Vector2 worldPosition, out Vector3Int resultGridPosition)
     {
         resultGridPosition = default;
         if (CheckPlaceType(item) == false) return false;
 
-        CartesianToIsometric(position, out var localPosition, out var worldPosition);
-        resultGridPosition = base.position + worldPosition;
+        CartesianToIsometric(worldPosition, out var localPosition, out var gridPosition);
+        resultGridPosition = position + gridPosition;
 
         if (CheckInsideGrid(item.Size, localPosition) && 
             ItemList.CheckNoIntersetion(resultGridPosition, item.Size))

@@ -41,7 +41,10 @@ public class ItemDragging : MonoBehaviour
 
     private void OnClick(PointerEventData data)
     {
-        _moveHandler.OnClick();
+        if (_moveHandler.OnClick())
+            Sound.Play(Key_Sound.TakeItem);
+
+        else Sound.Play(Key_Sound.CanNotMoveItem);
     }
 
     private void OnEndDrag(PointerEventData data)

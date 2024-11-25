@@ -9,11 +9,12 @@ public static class ItemList
 {
     public static event Action onUpdated;
 
-    public static List<Item> PlacedItems { get; private set; } = new List<Item>();
+    public readonly static List<Item> PlacedItems = new List<Item>();
 
 
     public static void UpdateItems()
     {
+        Debug.Log(PlacedItems.Count);
         Saves.SetRoomItems(roomIndex: 0, PlacedItems);
         onUpdated?.Invoke();
     }
