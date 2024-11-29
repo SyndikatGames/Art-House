@@ -1259,7 +1259,7 @@ GameObject:
   - component: {fileID: 5606558641226408137}
   - component: {fileID: 6478601255079153833}
   - component: {fileID: 896168993182075295}
-  - component: {fileID: 2076124845312629348}
+  - component: {fileID: 8788837018752979129}
   m_Layer: 5
   m_Name: '[Accept]'
   m_TagString: Untagged
@@ -1369,7 +1369,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2076124845312629348
+--- !u!114 &8788837018752979129
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1378,7 +1378,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5864417500852549928}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2298f80ad6a72184f9afdbce2852e313, type: 3}
+  m_Script: {fileID: 11500000, guid: 62b5523c93a085240b56fa1137a89bb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _window: {fileID: 1774623656814688952}

@@ -85,7 +85,7 @@ public class ItemDragging : MonoBehaviour
         else
         {
             Sound.Play(Key_Sound.CanNotMoveItem);
-            _interactionHandler.DisableDragAction();
+            _interactionHandler.DisableDragging();
         }
         
     }
