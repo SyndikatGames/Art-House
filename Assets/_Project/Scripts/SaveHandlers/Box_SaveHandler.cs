@@ -34,7 +34,7 @@ namespace VG
         }
 
 
-        public static int GetBoxesAmount()
+        public static int GetNormalBoxesAmount()
         {
             int roomIndex = Int[Key_Save.current_room_index].Value;
             string[] data = String[Key_Save.boxes_data(roomIndex)].Value.Split('_');
@@ -44,6 +44,8 @@ namespace VG
 
             return result;
         }
+
+
 
     }
 }

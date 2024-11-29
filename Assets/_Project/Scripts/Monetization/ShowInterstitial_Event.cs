@@ -18,7 +18,8 @@ public class ShowInterstitial_Event : MonoBehaviour
 
     private void OnItemPlaced()
     {
-        Ads.Interstitial.Show(Key_Ad.interstitial);
+        if (Saves.Bool[Key_Save.tutorial_completed].Value)
+            Ads.Interstitial.Show(Key_Ad.interstitial);
     }
 
 

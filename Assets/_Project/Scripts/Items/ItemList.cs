@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Collections;
 using TopologicalSorting;
 using UnityEngine;
 using VG;
@@ -14,7 +13,6 @@ public static class ItemList
 
     public static void UpdateItems()
     {
-        Debug.Log(PlacedItems.Count);
         Saves.SetRoomItems(roomIndex: 0, PlacedItems);
         onUpdated?.Invoke();
     }

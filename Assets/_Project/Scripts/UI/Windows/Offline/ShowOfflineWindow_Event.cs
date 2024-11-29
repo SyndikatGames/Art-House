@@ -10,25 +10,16 @@ public class ShowOfflineWindow_Event : MonoBehaviour
     {
         int roomIndex = Saves.Int[Key_Save.current_room_index].Value;
 
-        if (Saves.Float[Key_Save.offline_time_seconds(roomIndex)].Value > minOfflineTime)
+        bool windowAvailable = 
+            Saves.Float[Key_Save.offline_time_seconds(roomIndex)].Value > minOfflineTime
+            && Saves.Bool[Key_Save.tutorial_completed].Value;
+
+
+        if (windowAvailable)
             Instantiate(Prefabs.OfflineWindow, UI.Canvas);
-
-        ReleaseOfflineTime();
     }
 
 
-    private void ReleaseOfflineTime()
-    {
-        int roomIndex = Saves.Int[Key_Save.current_room_index].Value;
-        float offlineSeconds = Saves.Float[Key_Save.offline_time_seconds(roomIndex)].Value;
-
-        float offlineBoxes = TotalRules.GetBoxesPerHour(roomIndex) / 3600f * offlineSeconds;
-        Saves.Float[Key_Save.random_boxes(roomIndex)].Value += offlineBoxes;
-
-        float offlineSoftMoney = TotalRules.HourGemIncome / 3600f * offlineSeconds;
-        Saves.Float[Key_Save.soft_money].Value += offlineSoftMoney;
-
-        Saves.Float[Key_Save.offline_time_seconds(roomIndex)].Value = 0f;
-    }
+    
 
 }

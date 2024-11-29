@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class CameraMobileControl : MonoBehaviour
 {
-    private Vector2 touchStart;
-    private float swipeSensitivity = 0.1f;
+    [SerializeField] private float swipeSensitivity = 1f;
+
+    private Vector3 touchStart;
     private Camera _camera;
 
     private void Start()
@@ -16,29 +17,26 @@ public class CameraMobileControl : MonoBehaviour
 
     private void Update()
     {
-        // Проверка наличия касания
-        if (Input.touchCount > 0)
+        if (Input.touchCount == 1)
         {
             Touch touch = Input.GetTouch(0);
 
             switch (touch.phase)
             {
                 case TouchPhase.Began:
-                    // Сохраняем начальную позицию касания
-                    touchStart = touch.position;
+                    touchStart = _camera.ScreenToWorldPoint(touch.position);
                     break;
 
                 case TouchPhase.Moved:
-                    // Подсчитываем текущее движение свайпа
-                    Vector3 swipeDelta = touch.position - touchStart;
+                    Vector3 touchPosition = _camera.ScreenToWorldPoint(touch.position);
+                    Vector3 swipeDelta = touchPosition - touchStart;
 
-                    // Двигаем камеру по оси X и Y в зависимости от движения свайпа
-                    transform.position += new Vector3(swipeDelta.x * swipeSensitivity, swipeDelta.y * swipeSensitivity, 0);
+                    transform.position -= new Vector3(swipeDelta.x, swipeDelta.y, 0) * swipeSensitivity;
 
-                    // Обновляем начальную позицию для следующего кадра
-                    touchStart = touch.position;
+                    touchStart = touchPosition;
                     break;
             }
+
 
             // Обработка масштабирования с помощью двух пальцев
             if (Input.touchCount == 2)

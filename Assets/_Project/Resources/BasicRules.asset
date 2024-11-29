@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64d566d535c13324aaa3860f4f61afa3, type: 3}
   m_Name: BasicRules
   m_EditorClassIdentifier: 
-  <OfflineHoursLimit>k__BackingField: 0.1
-  <BoxesPerHour>k__BackingField: 120
+  <OfflineHoursLimit>k__BackingField: 0
+  <BoxesPerHour>k__BackingField: 0
   <SellPrices>k__BackingField:
   - rarityType: 0
     price: 1
@@ -29,16 +29,16 @@ MonoBehaviour:
     price: 2000
   <BoxProbabilities>k__BackingField:
   - rarityType: 2
-    probabilityPercentage: 30
+    probabilityPercentage: 0
   - rarityType: 3
-    probabilityPercentage: 20
+    probabilityPercentage: 0
   - rarityType: 4
-    probabilityPercentage: 15
+    probabilityPercentage: 0
   <RarityPrestiges>k__BackingField:
   - rarityType: 0
     prestige: 10
   - rarityType: 1
-    prestige: 50
+    prestige: 100
   - rarityType: 2
     prestige: 300
   - rarityType: 3

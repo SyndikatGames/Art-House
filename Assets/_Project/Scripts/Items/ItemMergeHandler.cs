@@ -30,6 +30,7 @@ public class ItemMergeHandler
                 .GetComponent<Flash_Tween>().Run(flashScale);
 
             ItemList.UpdateItems();
+            Events.ItemsMerged();
             return true;
         }
 

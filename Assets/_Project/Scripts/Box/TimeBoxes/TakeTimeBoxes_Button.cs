@@ -16,6 +16,7 @@ public class TakeTimeBoxes_Button : ButtonHandler
         }
         Saves.Float[Key_Save.random_boxes(roomIndex)].Value -= fullBoxes;
 
+        Events.BoxesCollected();
     }
 
 

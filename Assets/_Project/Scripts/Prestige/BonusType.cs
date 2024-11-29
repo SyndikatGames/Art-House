@@ -19,25 +19,25 @@ public static class BonusDescription
         switch (bonusType)
         {
             case BonusType.IncreaseBoxesPerHour:
-                return $"{BonusType.IncreaseBoxesPerHour}: +{value}";
+                return $"Накопление коробок: {value} в час";
 
             case BonusType.IncreaseSellPricePercentage:
-                return $"{BonusType.IncreaseSellPricePercentage}: {value}";
+                return $"Стоимость продажи: +{value}%";
 
             case BonusType.HourGemIncome:
-                return $"{BonusType.HourGemIncome}: {value}";
+                return $"Алмазный доход: {value} в час";
 
             case BonusType.IncreaseOfflineHours:
-                return $"{BonusType.IncreaseOfflineHours}: {value}";
+                return $"Макс. время отсутствия: {value} часов";
 
             case BonusType.IncreaseProbabilityRareBox:
-                return $"{BonusType.IncreaseProbabilityRareBox}: {value}";
+                return $"Шанс редкой коробки: {value}%";
 
             case BonusType.IncreaseProbabilityEpicBox:
-                return $"{BonusType.IncreaseProbabilityEpicBox}: {value}";
+                return $"Шанс эпической коробки: {value}%";
 
             case BonusType.IncreaseProbabilityFantasticBox:
-                return $"{BonusType.IncreaseProbabilityFantasticBox}: {value}";
+                return $"Шанс фантастической коробки: {value}%";
         }
 
         throw new System.Exception($"No description for {bonusType}");

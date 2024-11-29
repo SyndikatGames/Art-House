@@ -13,22 +13,27 @@ public class BonusCollectOfflineRewards_Button : ButtonHandler
             if (result == Ads.Rewarded.Result.Success)
             {
                 Destroy(_offlineWindow.gameObject);
-
-                int roomIndex = Saves.Int[Key_Save.current_room_index].Value;
-
-                Saves.Float[Key_Save.random_boxes(roomIndex)].Value 
-                    += _offlineWindow.BoxesAccumulated;
-
-                Saves.Float[Key_Save.soft_money].Value 
-                    += _offlineWindow.SoftMoneyAccumulated;
-
-
+                ReleaseOfflineTime();
             }
 
         });
 
-
-
     }
-    
+
+
+    private void ReleaseOfflineTime()
+    {
+        int roomIndex = Saves.Int[Key_Save.current_room_index].Value;
+        float offlineSeconds = Saves.Float[Key_Save.offline_time_seconds(roomIndex)].Value;
+
+        float offlineBoxes = TotalRules.GetBoxesPerHour(roomIndex) / 3600f * offlineSeconds;
+        Saves.Float[Key_Save.random_boxes(roomIndex)].Value += offlineBoxes * 2;
+
+        float offlineSoftMoney = TotalRules.HourGemIncome / 3600f * offlineSeconds;
+        Saves.Float[Key_Save.soft_money].Value += offlineSoftMoney * 2;
+
+        Saves.Float[Key_Save.offline_time_seconds(roomIndex)].Value = 0f;
+    }
+
+
 }

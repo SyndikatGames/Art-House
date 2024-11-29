@@ -28,7 +28,7 @@ namespace VG
             else InitCompleted();
         }
 
-        public static AudioClip GetClip(string name) => cashedClips[name + ".wav"];
+        public static AudioClip GetClip(string name) => cashedClips[name + ".mp3"];
 
 
         public void LoadAllClips()
@@ -47,7 +47,7 @@ namespace VG
         {
             string url = Application.streamingAssetsPath + "/" + name;
 
-            UnityWebRequest request = UnityWebRequestMultimedia.GetAudioClip(url, AudioType.WAV);
+            UnityWebRequest request = UnityWebRequestMultimedia.GetAudioClip(url, AudioType.MPEG);
             request.SendWebRequest();
             yield return new WaitUntil(() => request.isDone);
 
@@ -71,7 +71,7 @@ namespace VG
 
         private void SearchFilesInsideDirectory(DirectoryInfo directory)
         {
-            FileInfo[] info = directory.GetFiles("*.wav");
+            FileInfo[] info = directory.GetFiles("*.mp3");
             foreach (var item in info) _cashedClipNames.Add(item.Name);
 
             foreach (var insideDirectory in directory.GetDirectories())

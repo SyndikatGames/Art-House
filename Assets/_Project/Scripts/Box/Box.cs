@@ -5,29 +5,40 @@ using VG;
 
 public class Box : MonoBehaviour
 {
+
+    public static bool OpeningBlocked { get; set; } = false;
+    public static bool OpeningAvailable { get; private set; } = true;
+
     public event Action onOpened;
 
     [SerializeField] private RarityType _rarityType;
 
-    private Item _itemInstance;
     private Vector2 _originPosition;
+    private Item _itemInstance;
 
     private const float itemMoveY = 0.5f;
     private const float showDuration = 0.5f;
 
-    private void Start()
-    {
-        _originPosition = transform.position;
-    }
-
     
-
+    
 
     public void Open()
     {
-        Item itemPrefab = GetRandomItemPrefab();
+        OpeningAvailable = false;
+
+        _originPosition = transform.position;
+
+        Item itemPrefab = null;
+
+        if (TutorialBoxOpening.TutorialNow)
+            itemPrefab = TutorialBoxOpening.GetTutorialItemPrefab();
+
+        else itemPrefab = GetRandomItemPrefab();
+
         _itemInstance = Instantiate(itemPrefab, _originPosition, Quaternion.identity);
         _itemInstance.SetRarity(_rarityType);
+
+        _itemInstance.SortingOrder = 10000;
 
         _itemInstance.transform.DOMoveY(_originPosition.y + itemMoveY, showDuration);
 
@@ -35,13 +46,33 @@ public class Box : MonoBehaviour
         _itemInstance.transform.DOScale(1f, showDuration);
 
         transform.DOMoveY(_originPosition.y - itemMoveY, showDuration);
-        transform.DOScale(0f, showDuration)
-            .onComplete += () => Destroy(gameObject);
+        transform.DOScale(0f, showDuration);
+
 
         _itemInstance.onPlaced += OnItemPlaced;
+        _itemInstance.onDestroyed += OnItemDestroyed;
 
         onOpened?.Invoke();
+        Events.BoxOpened(_itemInstance);
+    }
+
+    private void OnItemDestroyed()
+    {
         Saves.RemoveBoxes(_rarityType, 1);
+        Destroy(gameObject);
+        OpeningAvailable = true;
+        Events.NewItemDestroyed();
+    }
+
+
+    private void OnItemPlaced()
+    {
+        _itemInstance.onPlaced -= OnItemPlaced;
+        _itemInstance.onDestroyed -= OnItemDestroyed;
+        OpeningAvailable = true;
+        Saves.RemoveBoxes(_rarityType, 1);
+        Destroy(gameObject);
+        Events.NewItemPlaced();
     }
 
     private Item GetRandomItemPrefab()
@@ -59,19 +90,5 @@ public class Box : MonoBehaviour
     }
 
 
-    private void OnItemPlaced()
-    {
-        _itemInstance.onPlaced -= OnItemPlaced;
-        //Show();
-
-    }
-
-    /*
-    public void Show()
-    {
-        transform.DOMoveY(_originPosition.y, showDuration);
-        transform.DOScale(1f, showDuration);
-    }
-    */
 
 }

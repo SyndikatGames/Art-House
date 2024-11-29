@@ -7,6 +7,8 @@ public class ItemMoveHandler
     public static Item DraggableItem { get; private set; } = null;
 
     private Item _item;
+    private Vector2 _beforeWorldPosition;
+    private Vector3Int _beforePosition;
 
 
     public ItemMoveHandler(Item item)
@@ -29,6 +31,7 @@ public class ItemMoveHandler
                 _item.SetSide(Side.Left);
 
             ItemList.UpdateItems();
+            Events.ItemRotated();
             return true;
         }
 
@@ -51,6 +54,12 @@ public class ItemMoveHandler
         _item.BlockRaycast = false;
         ItemList.PlacedItems.Remove(_item);
         DraggableItem = _item;
+
+        if (_item.ParentItem != null) _beforePosition = _item.Position;
+        else _beforeWorldPosition = _item.transform.position;
+
+        _beforeWorldPosition = _item.transform.position;
+
         return true;
     }
 
@@ -79,6 +88,15 @@ public class ItemMoveHandler
         {
             _item.SetPlace(resultGridPosition, placeGrid);
             ItemList.UpdateItems();
+        }
+        else
+        {
+            if (_item.ParentItem != null)
+                _item.SetPlace(_beforePosition, _item.ParentGrid);
+
+            else _item.transform.position = _beforeWorldPosition;
+
+            _item.SetTransparent(false);
         }
             
 

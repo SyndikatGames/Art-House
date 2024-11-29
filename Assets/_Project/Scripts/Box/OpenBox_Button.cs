@@ -9,7 +9,7 @@ public class OpenBox_Button : ButtonHandler
     
     protected override void OnClick()
     {
-        _box.Open();
+        if (Box.OpeningAvailable && !Box.OpeningBlocked) _box.Open();
     }
     
 }

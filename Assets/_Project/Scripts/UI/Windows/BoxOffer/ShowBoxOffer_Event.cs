@@ -25,9 +25,10 @@ public class ShowBoxOffer_Event : MonoBehaviour
     {
         int roomIndex = Saves.Int[Key_Save.current_room_index].Value;
         float randomBoxes = Saves.Float[Key_Save.random_boxes(roomIndex)].Value;
-        int boxesAmount = Saves.GetBoxesAmount();
+        int boxesAmount = Saves.GetNormalBoxesAmount();
 
-        bool offerAvailable = Time.time - _lastShowTime > showCooldown;
+        bool offerAvailable = Time.time - _lastShowTime > showCooldown 
+            && Saves.Bool[Key_Save.tutorial_completed].Value;
 
         if (randomBoxes < 1f && boxesAmount == 0 && offerAvailable)
         {

@@ -8,7 +8,7 @@ public class Test : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
-            print(Saves.GetBoxesAmount());
+            print(Saves.GetNormalBoxesAmount());
         }
     }
 }

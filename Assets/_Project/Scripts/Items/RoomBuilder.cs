@@ -13,16 +13,12 @@ public class RoomBuilder : MonoBehaviour
 
     private void BuildRoom()
     {
-        print($"Build: {Saves.String[Key_Save.room_data(0)].Value}");
         _rootItem.SetPlace(Vector3Int.zero, placeGrid: null);
 
         var roomItemsDataList = Saves.GetRoomItemAcrhitecture(roomIndex: 0);
 
         foreach (var itemData in roomItemsDataList)
-        {
-            Debug.Log($"Inst: {itemData.itemType} on Room");
             InstantiateItem(itemData, parent: _rootItem);
-        }
             
 
         ItemList.ResortOrder();
@@ -31,7 +27,6 @@ public class RoomBuilder : MonoBehaviour
 
     private void InstantiateItem(ItemData itemData, Item parent)
     {
-        print($"Instantiate: {itemData.itemType} on {parent.name}");
         var itemInstance = Instantiate(Prefabs.GetItem(itemData.itemType), 
             Vector3.zero, Quaternion.identity);
 
@@ -42,10 +37,7 @@ public class RoomBuilder : MonoBehaviour
 
         if (itemData.childItems != null)
             foreach (var childData in itemData.childItems)
-            {
-                Debug.Log(itemData.childItems.Count);
                 InstantiateItem(childData, itemInstance);
-            }
                 
     }
 

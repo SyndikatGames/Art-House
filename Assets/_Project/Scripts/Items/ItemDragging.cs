@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using VG;
@@ -6,6 +7,8 @@ using VG;
 public class ItemDragging : MonoBehaviour
 {
     private static bool _itemMerged;
+
+    public event Action onBeginDragging;
 
 
     [SerializeField] private Item _item;
@@ -54,6 +57,7 @@ public class ItemDragging : MonoBehaviour
         {
             _moveHandler.OnEndDrag(data);
             Sound.Play(Key_Sound.PlaceItem);
+            Events.ItemPlaced();
         }
     }
 
@@ -75,6 +79,7 @@ public class ItemDragging : MonoBehaviour
         {
             Sound.Play(Key_Sound.TakeItem);
             _mergeHandler.OnBeginDrag();
+            onBeginDragging?.Invoke();
         }
 
         else

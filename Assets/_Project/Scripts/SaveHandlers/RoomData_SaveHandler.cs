@@ -124,7 +124,7 @@ namespace VG
             for (int i = 0; i < items.Count; i++)
             {
                 var item = items[i];
-                if (item.ParentItem != null)
+                if (item.ItemType != ItemType.Room && item.ParentItem.ItemType == ItemType.Room)
                     data += new ItemData(items[i]).ToDataString();
             }
 

@@ -8,6 +8,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 851278396030034812, guid: aa3878bc1b67da64d9131a5b18246a11, type: 3}
+      propertyPath: m_text
+      value: "\u041B\u0435\u0433\u0435\u043D\u0434\u0430"
+      objectReference: {fileID: 0}
+    - target: {fileID: 851278396030034812, guid: aa3878bc1b67da64d9131a5b18246a11, type: 3}
+      propertyPath: m_fontSize
+      value: 10.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 851278396030034812, guid: aa3878bc1b67da64d9131a5b18246a11, type: 3}
+      propertyPath: m_fontColor.a
+      value: 0.74509805
+      objectReference: {fileID: 0}
+    - target: {fileID: 851278396030034812, guid: aa3878bc1b67da64d9131a5b18246a11, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.22352941
+      objectReference: {fileID: 0}
+    - target: {fileID: 851278396030034812, guid: aa3878bc1b67da64d9131a5b18246a11, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.24313726
+      objectReference: {fileID: 0}
+    - target: {fileID: 851278396030034812, guid: aa3878bc1b67da64d9131a5b18246a11, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 3191422719
+      objectReference: {fileID: 0}
     - target: {fileID: 6161406234519724466, guid: aa3878bc1b67da64d9131a5b18246a11, type: 3}
       propertyPath: _rarityType
       value: 5

@@ -12,6 +12,9 @@ namespace VG
         public static string ads_enabled => "ads";
         public static string soft_money => "g";
 
+        public static string tutorial_step => "ts";
+        public static string tutorial_completed => "tc";
+
 
         public static string boxes_data(int roomIndex) => $"b{roomIndex}";
 

@@ -4466,13 +4466,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cashedClipNames:
-  - can_not_move_item.wav
-  - click.wav
-  - merge_items.wav
-  - music.wav
-  - place_item.wav
-  - sell_item.wav
-  - take_item.wav
+  - can_not_move_item.mp3
+  - click.mp3
+  - merge_items.mp3
+  - music.mp3
+  - place_item.mp3
+  - sell_item.mp3
+  - take_item.mp3
 --- !u!114 &3511429739643363053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5146,7 +5146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1233618fab305f4c9d4013e072fe7c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _showStatusList: 1
+  _showStatusList: 0
   _startup: {fileID: 3511429739643363053}
   _statusItemPrefab: {fileID: 6573806273844434594, guid: bdb530c2858ddfb44ad1cf354b9ede35, type: 3}
   _container: {fileID: 8256864574036046887}
@@ -5478,7 +5478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c87936e1ebf804da5dcb607ed191d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _autosaveTimeInterval: 30
+  _autosaveTimeInterval: 3
 --- !u!1 &7308271865578202505
 GameObject:
   m_ObjectHideFlags: 0

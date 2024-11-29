@@ -36,7 +36,11 @@ public class InteractionHandler : MonoBehaviour, IDragHandler,
     public void OnEndDrag(PointerEventData eventData)
     {
         if (_beginDragSuccess)
+        {
+            _dragging = false;
             onEndDrag?.Invoke(eventData);
+        }    
+            
     }
 
 

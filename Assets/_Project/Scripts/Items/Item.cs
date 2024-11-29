@@ -16,7 +16,7 @@ public class Item : MonoBehaviour
         public Sprite sprite;
     }
 
-
+    public event Action onDestroyed;
     public event Action onPlaced;
 
     [field: SerializeField] public ItemType ItemType { get; private set; }
@@ -32,6 +32,7 @@ public class Item : MonoBehaviour
     [SerializeField] private List<RaritySprite> _sprites;
 
     public Vector3Int Position { get; private set; }
+
     public List<PlaceGrid> PlaceGrids { get; private set; }
     public Bounds SpriteBounds => _sprite.bounds;
 
@@ -88,8 +89,9 @@ public class Item : MonoBehaviour
         ItemList.PlacedItems.Add(this);
 
         onPlaced?.Invoke();
-        Events.ItemPlaced();
     }
+
+
 
     public PlaceGrid GetPlaceGrid(Vector3Int position, ItemPlaceType placeType, Side side)
     {
@@ -196,6 +198,12 @@ public class Item : MonoBehaviour
     }
 
 
+    private void OnDestroy()
+    {
+        ParentItem?.ChildItems.Remove(this);
+        ItemList.PlacedItems.Remove(this);
+        onDestroyed?.Invoke();
+    }
 
     private void OnDrawGizmos()
     {
