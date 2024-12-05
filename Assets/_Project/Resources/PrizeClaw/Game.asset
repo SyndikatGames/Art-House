@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 722051209ea8da741b4ff61f2664e9dc, type: 3}
+  m_Name: Game
+  m_EditorClassIdentifier: 
+  <MovesAmount>k__BackingField: 3
+  _prizesAmount: 60
+  _prizeProbabilities:
+  - prizeType: 0
+    probabilityPercentage: 77
+  - prizeType: 1
+    probabilityPercentage: 15
+  - prizeType: 2
+    probabilityPercentage: 5
+  - prizeType: 3
+    probabilityPercentage: 3

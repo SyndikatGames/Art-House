@@ -22,7 +22,12 @@ public class OpenBoxAndPlaceItem_TutorialStep : TutorialStep
     public override void Run()
     {
         _promptText.gameObject.SetActive(true);
-        _promptText.text = "WASD - перемещение";
+
+        if (SystemInfo.deviceType == DeviceType.Desktop)
+            _promptText.text = Localization.GetString("tutorial_move_desctop");
+
+        else _promptText.text = Localization.GetString("tutorial_move_mobile");
+
 
         if (Saves.GetNormalBoxesAmount() == 0)
             Saves.AddBoxes(RarityType.Common, TutorialBoxOpening.boxesAmount);

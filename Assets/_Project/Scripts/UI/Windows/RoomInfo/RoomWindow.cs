@@ -16,7 +16,6 @@ public class RoomWindow : MonoBehaviour
     
     [SerializeField] private GameObject _infoSection;
     [SerializeField] private GameObject _newLevelSection;
-    [SerializeField] private TextMeshProUGUI _levelText;
 
     [SerializeField] private Sprite _emptyStarSprite;
     [SerializeField] private Sprite _starSprite;
@@ -54,8 +53,6 @@ public class RoomWindow : MonoBehaviour
             _starImages[i].sprite = mainStarSprite;
         for (int i = stars; i < 5; i++)
             _starImages[i].sprite = backStarSprite;
-
-        _levelText.text = $"Бонусы {level}-го уровня:";
 
 
         var bonuses = roomConfig.CurrentBonuses;

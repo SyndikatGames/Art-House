@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 851278396030034812, guid: aa3878bc1b67da64d9131a5b18246a11, type: 3}
       propertyPath: m_text
-      value: "\u0440\u0435\u0434\u043A\u0430\u044F"
+      value: <rare_box>
       objectReference: {fileID: 0}
     - target: {fileID: 851278396030034812, guid: aa3878bc1b67da64d9131a5b18246a11, type: 3}
       propertyPath: m_fontSize
-      value: 11.8
+      value: 7.3
       objectReference: {fileID: 0}
     - target: {fileID: 851278396030034812, guid: aa3878bc1b67da64d9131a5b18246a11, type: 3}
       propertyPath: m_fontColor.a
@@ -31,6 +31,10 @@ PrefabInstance:
     - target: {fileID: 851278396030034812, guid: aa3878bc1b67da64d9131a5b18246a11, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 3204439296
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660666565688919792, guid: aa3878bc1b67da64d9131a5b18246a11, type: 3}
+      propertyPath: _key
+      value: rare_box
       objectReference: {fileID: 0}
     - target: {fileID: 6161406234519724466, guid: aa3878bc1b67da64d9131a5b18246a11, type: 3}
       propertyPath: _rarityType

@@ -22,6 +22,9 @@ namespace VG
 
         public static string current_room_index => "cri";
 
+        public static string prize_claw_data => "pcd";
+
+
     }
 }
 

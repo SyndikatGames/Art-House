@@ -13,35 +13,241 @@ MonoBehaviour:
   m_Name: Strings
   m_EditorClassIdentifier: 
   _translations:
-  - key: level
-    ru: "\u0423\u0440\u043E\u0432\u0435\u043D\u044C"
-    en: Level
+  - key: box_offer_title
+    ru: "\u0417\u0430\u043A\u043E\u043D\u0447\u0438\u043B\u0438\u0441\u044C \u043A\u043E\u0440\u043E\u0431\u043A\u0438?"
+    en: Out of boxes?
+    tr: "Kutular\u0131n d\u0131\u015F\u0131nda m\u0131?\r"
+  - key: box_offer_subtitle
+    ru: "\u041F\u043E\u043B\u0443\u0447\u0438 \u0431\u043E\u043D\u0443\u0441!"
+    en: Get a bonus!
+    tr: "Bonus kazan\u0131n!\r"
+  - key: get_bonus
+    ru: "<sprite=1> \u041F\u043E\u043B\u0443\u0447\u0438\u0442\u044C"
+    en: <sprite=1> Get
+    tr: "<sprite=1> Elde etmek\r"
+  - key: offline_window_title
+    ru: "\u0421 \u0432\u043E\u0437\u0432\u0440\u0430\u0449\u0435\u043D\u0438\u0435\u043C!"
+    en: Welcome back!
+    tr: "Tekrar ho\u015Fgeldiniz!\r"
+  - key: offline_window_subtitle
+    ru: "\u0412\u0430\u0441 \u043D\u0435 \u0431\u044B\u043B\u043E:"
+    en: 'Offline time:'
+    tr: "Sen orada de\u011Fildin:\r"
+  - key: 
+    ru: 
+    en: 
     tr: "\r"
-  - key: next
-    ru: "\u0414\u0430\u043B\u0435\u0435"
-    en: Next
+  - key: offline_rewards
+    ru: "\u041D\u0430\u043A\u043E\u043F\u043B\u0435\u043D\u043D\u044B\u0435 \u043D\u0430\u0433\u0440\u0430\u0434\u044B:"
+    en: 'Rewards:'
+    tr: "Birikmi\u015F \xF6d\xFCller:\r"
+  - key: soft_money
+    ru: "\u0410\u043B\u043C\u0430\u0437\u044B"
+    en: Gems
+    tr: "Elmaslar\r"
+  - key: boxes
+    ru: "\u041A\u043E\u0440\u043E\u0431\u043A\u0438"
+    en: Boxes
+    tr: "Kutular\r"
+  - key: collect
+    ru: "\u0421\u043E\u0431\u0440\u0430\u0442\u044C"
+    en: Get
+    tr: "Toplamak\r"
+  - key: collect_x2
+    ru: "<sprite=1> \u0421\u043E\u0431\u0440\u0430\u0442\u044C \u04452"
+    en: <sprite=1> Get x2
+    tr: "<sprite=1> Toplamak \u04452\r"
+  - key: room_bonuses
+    ru: "\u0411\u043E\u043D\u0443\u0441\u044B {ROOM_LEVEL}-\u0433\u043E \u0443\u0440\u043E\u0432\u043D\u044F:"
+    en: 'Bonuses of {ROOM_LEVEL} level:'
+    tr: "Seviye {ROOM_LEVEL} bonuslar\u0131:\r"
+  - key: 
+    ru: 
+    en: 
     tr: "\r"
-  - key: restart
-    ru: "\u0417\u0430\u043D\u043E\u0432\u043E"
-    en: Restart
+  - key: seconds
+    ru: "\u0441\u0435\u043A\u0443\u043D\u0434"
+    en: seconds
+    tr: "saniye\r"
+  - key: per_hour
+    ru: "\u0432 \u0447\u0430\u0441"
+    en: per hour
+    tr: "saat ba\u015F\u0131na\r"
+  - key: hours
+    ru: "\u0447\u0430\u0441\u043E\u0432"
+    en: hours
+    tr: "saat\r"
+  - key: 
+    ru: 
+    en: 
     tr: "\r"
-  - key: ad_warning
-    ru: "\u0412\u043E\u0437\u043C\u043E\u0436\u0435\u043D \u043F\u043E\u043A\u0430\u0437
-      \u0440\u0435\u043A\u043B\u0430\u043C\u044B \u043C\u0435\u0436\u0434\u0443 \u0443\u0440\u043E\u0432\u043D\u044F\u043C\u0438"
-    en: It is possible to display ads between levels
+  - key: 
+    ru: 
+    en: 
     tr: "\r"
-  - key: skip
-    ru: "\u041F\u0440\u043E\u043F\u0443\u0441\u0442\u0438\u0442\u044C"
-    en: Skip
+  - key: box_accumulation
+    ru: "\u041D\u0430\u043A\u043E\u043F\u043B\u0435\u043D\u0438\u0435 \u043A\u043E\u0440\u043E\u0431\u043E\u043A"
+    en: Box accumulation
+    tr: "Kutu birikimi\r"
+  - key: sell_price
+    ru: "\u0421\u0442\u043E\u0438\u043C\u043E\u0441\u0442\u044C \u043F\u0440\u043E\u0434\u0430\u0436\u0438"
+    en: Item sell prices
+    tr: "Sat\u0131\u015F fiyat\u0131\r"
+  - key: soft_money_income
+    ru: "\u0410\u043B\u043C\u0430\u0437\u043D\u044B\u0439 \u0434\u043E\u0445\u043E\u0434"
+    en: Gem income
+    tr: "Elmas geliri\r"
+  - key: max_offline_time
+    ru: "\u041C\u0430\u043A\u0441. \u0432\u0440\u0435\u043C\u044F \u043E\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0438\u044F"
+    en: Max offline time
+    tr: "Maks. devams\u0131zl\u0131k s\xFCresi\r"
+  - key: rare_box_probability
+    ru: "\u0428\u0430\u043D\u0441 \u0440\u0435\u0434\u043A\u043E\u0439 \u043A\u043E\u0440\u043E\u0431\u043A\u0438"
+    en: Rare box chance
+    tr: "Nadir bir kutu \u015Fans\u0131\r"
+  - key: epic_box_probability
+    ru: "\u0428\u0430\u043D\u0441 \u044D\u043F\u0438\u0447\u0435\u0441\u043A\u043E\u0439
+      \u043A\u043E\u0440\u043E\u0431\u043A\u0438"
+    en: Epic box chance
+    tr: "Destans\u0131 Kutu \u015Eans\u0131\r"
+  - key: fantastic_box_probability
+    ru: "\u0428\u0430\u043D\u0441 \u0444\u0430\u043D\u0442\u0430\u0441\u0442\u0438\u0447\u0435\u0441\u043A\u043E\u0439
+      \u043A\u043E\u0440\u043E\u0431\u043A\u0438"
+    en: Fantastic box chance
+    tr: "Fantastik Kutu \u015Eans\u0131\r"
+  - key: 
+    ru: 
+    en: 
     tr: "\r"
-  - key: no_ads_header
-    ru: "\u0417\u0430\u0441\u0442\u0440\u0435\u043B\u0438 \u0440\u0435\u043A\u043B\u0430\u043C\u0443!"
-    en: Shoot the ADS!
+  - key: new_level
+    ru: "\u041D\u043E\u0432\u044B\u0439 \u0443\u0440\u043E\u0432\u0435\u043D\u044C!"
+    en: New level!
+    tr: "Yeni seviye!\r"
+  - key: ok
+    ru: "\u041E\u041A"
+    en: "\u041E\u041A"
+    tr: "TAMAM\r"
+  - key: room_name_1
+    ru: "\u041A\u043E\u043C\u043D\u0430\u0442\u0430 \u21161"
+    en: "Room \u21161"
+    tr: "1 No'lu Oda\r"
+  - key: 
+    ru: 
+    en: 
     tr: "\r"
-  - key: no_ads_description
-    ru: "\u041F\u043E\u043B\u0443\u0447\u0438 \u043A\u043E\u0432\u0431\u043E\u0439\u0441\u043A\u043E\u0433\u043E
-      \u043D\u0430\u0433\u0433\u0435\u0442\u0441\u0430 \u0438 \u0438\u0433\u0440\u0430\u0439
-      \u0431\u0435\u0437 \u0440\u0435\u043A\u043B\u0430\u043C\u044B \u043C\u0435\u0436\u0434\u0443
-      \u0443\u0440\u043E\u0432\u043D\u044F\u043C\u0438!"
-    en: Get cowboy nugget skin and play without ads between levels!
-    tr: 
+  - key: shabby_box
+    ru: "\u0421\u0442\u0430\u0440\u0430\u044F"
+    en: Shabby
+    tr: "Eskimi\u015F\r"
+  - key: common_box
+    ru: "\u041E\u0431\u044B\u0447\u043D\u0430\u044F"
+    en: Common
+    tr: "D\xFCzenli\r"
+  - key: rare_box
+    ru: "\u0420\u0435\u0434\u043A\u0430\u044F"
+    en: Rare
+    tr: "Nadir\r"
+  - key: epic_box
+    ru: "\u042D\u043F\u0438\u0447\u043D\u0430\u044F"
+    en: Epic
+    tr: "Destans\u0131\r"
+  - key: fantastic_box
+    ru: "\u0424\u0430\u043D\u0442\u0430\u0441\u0442\u0438\u043A\u0430"
+    en: Fantastic
+    tr: "Fantezi\r"
+  - key: legendary_box
+    ru: "\u041B\u0435\u0433\u0435\u043D\u0434\u0430"
+    en: Legend
+    tr: "Efsane\r"
+  - key: 
+    ru: 
+    en: 
+    tr: "\r"
+  - key: shop_title
+    ru: "\u041C\u0430\u0433\u0430\u0437\u0438\u043D"
+    en: Store
+    tr: "Ma\u011Faza\r"
+  - key: rare_box_product
+    ru: "\u0420\u0435\u0434\u043A\u0430\u044F"
+    en: Rare box
+    tr: "Nadir\r"
+  - key: epic_box_product
+    ru: "\u042D\u043F\u0438\u0447\u0435\u0441\u043A\u0430\u044F"
+    en: Epic box
+    tr: "Destans\u0131\r"
+  - key: no_ads_product
+    ru: "\u041E\u0442\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u0435\n\u0440\u0435\u043A\u043B\u0430\u043C\u044B"
+    en: Disable Ads
+    tr: "Devre d\u0131\u015F\u0131\nb\u0131rakmak reklam\r"
+  - key: epic_pack_product
+    ru: "\u042D\u043F\u0438\u0447\u0435\u0441\u043A\u0438\u0439 \u043D\u0430\u0431\u043E\u0440"
+    en: Epic pack
+    tr: "Destans\u0131 Paket\r"
+  - key: fantastic_box_product
+    ru: "\u0424\u0430\u043D\u0442\u0430\u0441\u0442\u0438\u0447\u0435\u0441\u043A\u0430\u044F"
+    en: Fantastic box
+    tr: "Fantastik\r"
+  - key: legendary_box_product
+    ru: "\u041B\u0435\u0433\u0435\u043D\u0434\u0430\u0440\u043D\u0430\u044F"
+    en: Legendary box
+    tr: "Efsanevi\r"
+  - key: 
+    ru: 
+    en: 
+    tr: "\r"
+  - key: tutorial_move_desctop
+    ru: "WASD - \u043F\u0435\u0440\u0435\u043C\u0435\u0449\u0435\u043D\u0438\u0435"
+    en: Use WASD to move
+    tr: "WASD - ta\u015F\u0131\r"
+  - key: tutorial_click_to_open_box
+    ru: "\u041D\u0430\u0436\u043C\u0438, \u0447\u0442\u043E\u0431\u044B\n\u043E\u0442\u043A\u0440\u044B\u0442\u044C
+      \u043A\u043E\u0440\u043E\u0431\u043A\u0443"
+    en: Click to open box
+    tr: "I\xE7in t\u0131klay\u0131n\nkutuyu a\xE7\r"
+  - key: tutorial_move_mobile
+    ru: "\u041F\u0440\u043E\u0432\u0435\u0434\u0438 \u043F\u0430\u043B\u044C\u0446\u0435\u043C
+      \u043F\u043E \u044D\u043A\u0440\u0430\u043D\u0443, \u0447\u0442\u043E\u0431\u044B
+      \u043F\u0435\u0440\u0435\u043C\u0435\u0441\u0442\u0438\u0442\u044C\u0441\u044F"
+    en: Swipe your finger across the screen to move
+    tr: "Ta\u015F\u0131mak i\xE7in kayd\u0131r\u0131n\r"
+  - key: tutorial_move_item_to_room
+    ru: "\u041F\u0435\u0440\u0435\u043C\u0435\u0441\u0442\u0438 \u043F\u0440\u0435\u0434\u043C\u0435\u0442\n\u0432
+      \u043A\u043E\u043C\u043D\u0430\u0442\u0443"
+    en: 'Move the object
+
+      into the room'
+    tr: "\xD6\u011Feyi ta\u015F\u0131\nodaya\r"
+  - key: tutorial_rotate_item
+    ru: "\u041D\u0430\u0436\u043C\u0438 \u043D\u0430 \u043F\u0440\u0435\u0434\u043C\u0435\u0442,\n\u0447\u0442\u043E\u0431\u044B
+      \u043F\u043E\u0432\u0435\u0440\u043D\u0443\u0442\u044C \u0435\u0433\u043E"
+    en: 'Click on an item
+
+      to rotate it'
+    tr: "\xD6\u011Feye t\u0131klay\u0131n\n\xE7evirmek i\xE7in\r"
+  - key: tutorial_open_all_boxes
+    ru: "\u041E\u0442\u043A\u0440\u043E\u0439 \u0432\u0441\u0435 \u043A\u043E\u0440\u043E\u0431\u043A\u0438
+      \u0438 \u0443\u043B\u0443\u0447\u0448\u0438 \u043A\u043E\u043C\u043D\u0430\u0442\u0443!"
+    en: Open all the boxes and upgrade the room!
+    tr: "T\xFCm kutular\u0131 a\xE7\u0131n ve oday\u0131 iyile\u015Ftirin!\r"
+  - key: tutorial_merge_same_items
+    ru: "\u041E\u0431\u044A\u0435\u0434\u0438\u043D\u0438 \u043E\u0434\u0438\u043D\u0430\u043A\u043E\u0432\u044B\u0435
+      \u043F\u0440\u0435\u0434\u043C\u0435\u0442\u044B!"
+    en: Combine identical objects!
+    tr: "Ayn\u0131 e\u015Fyalar\u0131 birle\u015Ftirin!\r"
+  - key: tutorial_open_random_boxes
+    ru: "\u041E\u0442\u043A\u0440\u043E\u0439 \u0437\u0430\u043F\u0430\u0441\n\u043A\u043E\u0440\u043E\u0431\u043E\u043A"
+    en: 'Open the stock
+
+      of boxes'
+    tr: "A\xE7\u0131k stok\nkutular\r"
+  - key: tutorial_open_new_boxes
+    ru: "\u041E\u0442\u043A\u0440\u043E\u0439 \u0432\u0441\u0435 \u043D\u043E\u0432\u044B\u0435
+      \u043A\u043E\u0440\u043E\u0431\u043A\u0438!"
+    en: Open all the new boxes!
+    tr: "T\xFCm yeni kutular\u0131 a\xE7\u0131n!\r"
+  - key: tutorial_buy_boxes
+    ru: "\u041F\u043E\u043A\u0443\u043F\u0430\u0439 \u043D\u043E\u0432\u044B\u0435\n\u043A\u043E\u0440\u043E\u0431\u043A\u0438"
+    en: 'Buy new
+
+      boxes'
+    tr: "Yenilerini sat\u0131n al\nkutular"

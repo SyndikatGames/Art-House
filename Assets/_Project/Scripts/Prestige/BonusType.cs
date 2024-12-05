@@ -1,3 +1,5 @@
+using VG;
+
 
 public enum BonusType
 {
@@ -19,25 +21,28 @@ public static class BonusDescription
         switch (bonusType)
         {
             case BonusType.IncreaseBoxesPerHour:
-                return $"Накопление коробок: {value} в час";
+                return $"{Localization.GetString("box_accumulation")}: " +
+                    $"{value} {Localization.GetString("per_hour")}";
 
             case BonusType.IncreaseSellPricePercentage:
-                return $"Стоимость продажи: +{value}%";
+                return $"{Localization.GetString("sell_price")}: +{value}%";
 
             case BonusType.HourGemIncome:
-                return $"Алмазный доход: {value} в час";
+                return $"{Localization.GetString("soft_money_income")}: " +
+                    $"{value} {Localization.GetString("per_hour")}";
 
             case BonusType.IncreaseOfflineHours:
-                return $"Макс. время отсутствия: {value} часов";
+                return $"{Localization.GetString("max_offline_time")}: " +
+                    $"{value} {Localization.GetString("hours")}";
 
             case BonusType.IncreaseProbabilityRareBox:
-                return $"Шанс редкой коробки: {value}%";
+                return $"{Localization.GetString("rare_box_probability")}: {value}%";
 
             case BonusType.IncreaseProbabilityEpicBox:
-                return $"Шанс эпической коробки: {value}%";
+                return $"{Localization.GetString("epic_box_probability")}: {value}%";
 
             case BonusType.IncreaseProbabilityFantasticBox:
-                return $"Шанс фантастической коробки: {value}%";
+                return $"{Localization.GetString("fantastic_box_probability")}: {value}%";
         }
 
         throw new System.Exception($"No description for {bonusType}");

@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using VG;
 
 public class OpenAllBoxes_TutorialStep : TutorialStep
 {
@@ -15,7 +16,7 @@ public class OpenAllBoxes_TutorialStep : TutorialStep
     public override void Run()
     {
         _promptText.gameObject.SetActive(true);
-        _promptText.text = "Открой все коробки и улучши комнату!";
+        _promptText.text = Localization.GetString("tutorial_open_all_boxes");
 
         Events.onNewItemPlaced += OnNewItemPlaced;
     }

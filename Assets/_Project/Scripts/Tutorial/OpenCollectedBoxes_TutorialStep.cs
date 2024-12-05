@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using VG;
 
 public class OpenCollectedBoxes_TutorialStep : TutorialStep
 {
@@ -16,7 +17,7 @@ public class OpenCollectedBoxes_TutorialStep : TutorialStep
     public override void Run()
     {
         _prompText.gameObject.SetActive(true);
-        _prompText.text = "Открой новые коробки!";
+        _prompText.text = Localization.GetString("tutorial_open_new_boxes");
         Events.onNewItemPlaced += OnNewItemPlaced;
         Events.onNewItemDestroyed += OnNewItemDestroyed;
     }

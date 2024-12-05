@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using VG;
 
 public class MergeItems_TutorialStep : TutorialStep
 {
@@ -24,7 +25,7 @@ public class MergeItems_TutorialStep : TutorialStep
     public override void Run()
     {
         _promptText.gameObject.SetActive(true);
-        _promptText.text = "Открой все коробки и улучши комнату!";
+        _promptText.text = Localization.GetString("tutorial_open_all_boxes");
         Events.onBoxOpened += OnBoxOpened;
     }
 
@@ -33,7 +34,7 @@ public class MergeItems_TutorialStep : TutorialStep
         Events.onBoxOpened -= OnBoxOpened;
 
         var secondItem = FindSameItem(item);
-        _promptText.text = "Объедини одинаковые предметы!";
+        _promptText.text = Localization.GetString("tutorial_merge_same_items");
 
         _cursorTween.gameObject.SetActive(true);
         _cursorTween.Run(item.transform.position, secondItem.transform.position);

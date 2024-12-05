@@ -3894,10 +3894,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e47176fd648b92b4e9ce31d45b6644ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _requestDataBeforeStart: 0
+  _requestDataBeforeStart: 1
   _tables:
   - _key: localization_main
-    _webId: 1rhgqTfbEu7VChnK1HTlhM5VSY7Hf2r8WdMrJlAVU3Y8
+    _webId: 1YJOrSvm4LxN0LXgAzvvVF1RQ-LUns4yN6hbI4onmkNY
     _gid: 194265088
   _loadables:
   - {fileID: 11400000, guid: 59251e4e0228aa44eb90cba41ce8bef3, type: 2}
@@ -4719,7 +4719,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e801097c5017f946838de3e984dc145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _selectedLanguage: 0
+  _selectedLanguage: 1
 --- !u!4 &4111255799130548877
 Transform:
   m_ObjectHideFlags: 0
@@ -5111,7 +5111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e0bf0cfb93f49543991f653025f898c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _debugLogs: 1
+  _debugLogs: 0
   _services:
   - {fileID: 8090846151886812608}
   - {fileID: 2258312118686129026}
@@ -5648,7 +5648,7 @@ MonoBehaviour:
   _spriteData: {fileID: 11400000, guid: 0585e749e0ba5c84786f04d170284230, type: 2}
   _tokenData: {fileID: 11400000, guid: 9f4d207b8a55f3744b927ed34c823d63, type: 2}
   _defaultLanguage: 1
-  _supportedLanguages: 0000000001000000
+  _supportedLanguages: 000000000100000002000000
 --- !u!1 &8023636602842379769
 GameObject:
   m_ObjectHideFlags: 0

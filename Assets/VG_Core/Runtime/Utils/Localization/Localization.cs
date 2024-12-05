@@ -76,7 +76,7 @@ namespace VG
                         localizedString = localizedString.Replace(tokenDefinition, token.Value);
                 }
 
-            return localizedString;
+            return localizedString.Replace("\r", "");
         }
 
         public static Sprite GetSprite(string key) 

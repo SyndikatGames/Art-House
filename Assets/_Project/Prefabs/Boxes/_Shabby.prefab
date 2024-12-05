@@ -196,6 +196,7 @@ GameObject:
   - component: {fileID: 6767425067476819251}
   - component: {fileID: 2848611446101320504}
   - component: {fileID: 851278396030034812}
+  - component: {fileID: 5660666565688919792}
   m_Layer: 0
   m_Name: <Name>
   m_TagString: Untagged
@@ -250,7 +251,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u043C\u0443\u0441\u043E\u0440"
+  m_text: <shabby_box>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: aea7dbf935b3ccd498085c02f377de53, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: d78d2d6fa528c954494ea0c47534793d, type: 2}
@@ -277,11 +278,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12
+  m_fontSize: 6.05
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 6
+  m_fontSizeMin: 4
   m_fontSizeMax: 12
   m_fontStyle: 16
   m_HorizontalAlignment: 2
@@ -319,3 +320,17 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &5660666565688919792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8453456552722709872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77af3c43e77026648aeeb16d29050be1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _key: shabby_box
+  _useToken: 0

@@ -32,7 +32,8 @@ public class OfflineWindow : MonoBehaviour
         int roomIndex = Saves.Int[Key_Save.current_room_index].Value;
 
         float offlineSeconds = Saves.Float[Key_Save.offline_time_seconds(roomIndex)].Value;
-        _offlineTime.text = $"Вас не было: {(int)offlineSeconds} секунд";
+        _offlineTime.text = $"{Localization.GetString("offline_window_subtitle")} " +
+            $"{(int)offlineSeconds} {Localization.GetString("seconds")}";
 
         float offlineBoxes = TotalRules.GetBoxesPerHour(roomIndex) / 3600f * offlineSeconds;
         float boxesLeftPart = Saves.Float[Key_Save.random_boxes(roomIndex)].Value % 1f;

@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 197e843d0bae8c842bf7eb49ce7741fd, type: 3}
   m_Name: Tokens
   m_EditorClassIdentifier: 
-  _tokenKeys: []
+  _tokenKeys:
+  - ROOM_LEVEL
