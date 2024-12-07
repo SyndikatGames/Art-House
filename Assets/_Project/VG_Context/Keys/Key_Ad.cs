@@ -7,6 +7,8 @@ namespace VG
         public static string interstitial => nameof(interstitial);
         public static string offline_bonus => nameof(offline_bonus);
         public static string box_offer => nameof(box_offer);
+        public static string prize_claw_continue => nameof(prize_claw_continue);
+
     }
 }
 

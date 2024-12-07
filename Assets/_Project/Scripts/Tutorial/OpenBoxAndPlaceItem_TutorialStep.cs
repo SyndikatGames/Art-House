@@ -23,7 +23,7 @@ public class OpenBoxAndPlaceItem_TutorialStep : TutorialStep
     {
         _promptText.gameObject.SetActive(true);
 
-        if (SystemInfo.deviceType == DeviceType.Desktop)
+        if (DeviceInfo.DeviceType == VG.DeviceType.Desktop)
             _promptText.text = Localization.GetString("tutorial_move_desctop");
 
         else _promptText.text = Localization.GetString("tutorial_move_mobile");

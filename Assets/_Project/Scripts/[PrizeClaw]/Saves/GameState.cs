@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 using VG;
 
 
@@ -34,6 +35,7 @@ namespace PrizeClaw
         {
             _currentState = null;
             Saves.String[Key_Save.prize_claw_data].Value = string.Empty;
+            onChanged?.Invoke();
         }
 
         public void SpendMove()
@@ -42,12 +44,18 @@ namespace PrizeClaw
             Save();
         }
 
+        public void AddMoves(int moves)
+        {
+            Moves += moves;
+            Save();
+        }
+
         public void AddReward(PrizeType prizeType, int amount)
         {
-            if (SpawnedPrizes.ContainsKey(prizeType)) 
-                SpawnedPrizes[prizeType] += amount;
+            if (Rewards.ContainsKey(prizeType))
+                Rewards[prizeType] += amount;
 
-            else SpawnedPrizes.Add(prizeType, amount);
+            else Rewards.Add(prizeType, amount);
 
             Save();
         }
@@ -112,13 +120,16 @@ namespace PrizeClaw
             {
                 data += $"{(int)prize.Key}_{prize.Value}";
                 if (i != SpawnedPrizes.Count - 1) data += ",";
+                i++;
             }
             data += ";";
 
+            i = 0;
             foreach (var reward in Rewards)
             {
                 data += $"{(int)reward.Key}_{reward.Value}";
-                if (i != SpawnedPrizes.Count - 1) data += ",";
+                if (i != Rewards.Count - 1) data += ",";
+                i++;
             }
 
             Saves.String[Key_Save.prize_claw_data].Value = data;

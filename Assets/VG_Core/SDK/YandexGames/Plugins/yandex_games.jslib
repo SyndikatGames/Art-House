@@ -341,6 +341,10 @@ mergeInto(LibraryManager.library, {
 
   },
 
+  _GetDeviceType: function() {
+    unity.SendMessage('YandexGames', 'HTML_OnDeviceTypeReceived', sdk.deviceInfo.type);
+  },
+
 
 
 

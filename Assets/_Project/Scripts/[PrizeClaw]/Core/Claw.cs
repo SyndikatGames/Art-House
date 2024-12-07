@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
@@ -6,6 +7,9 @@ namespace PrizeClaw
 {
     public class Claw : MonoBehaviour
     {
+        public event Action onReady;
+
+
         private enum State { Ready, PullDown, PullUp, Grabbed, Released }
 
 
@@ -40,7 +44,7 @@ namespace PrizeClaw
         private const float rotateDuration = 2f;
         private const float grabDuration = 0.5f;
         private const float pullUpDuration = 2f;
-        private const float returnDuration = 0.3f;
+        private const float returnDuration = 1f;
 
 
 
@@ -48,6 +52,7 @@ namespace PrizeClaw
         {
             _clawStartLocalPosition = ClawTransform.localPosition;
             RunSwingTween();
+            onReady?.Invoke();
         }
 
         private void RunSwingTween()
@@ -90,7 +95,10 @@ namespace PrizeClaw
 
         private void PullDown()
         {
+            if (GameState.Current.Moves == 0) return;
+
             _state = State.PullDown;
+            GameState.Current.SpendMove();
 
             _swingTween.Kill();
 
@@ -116,6 +124,8 @@ namespace PrizeClaw
             {
                 if (_colliders.Exists((coll) => coll == collider) == false)
                 {
+                    if (collider.attachedRigidbody == null) continue;
+
                     collider.enabled = false;
                     collider.attachedRigidbody.isKinematic = true;
                     collider.attachedRigidbody.velocity = Vector3.zero;
@@ -185,6 +195,7 @@ namespace PrizeClaw
                 {
                     _state = State.Ready;
                     RunSwingTween();
+                    onReady?.Invoke();
                 });
 
         }

@@ -24,7 +24,6 @@ namespace PrizeClaw
             foreach (Transform child in transform)
                 Destroy(child.gameObject);
 
-
             foreach (var reward in rewards)
             {
                 Instantiate(prizesConfig.GetRewardIconPrefab(reward.Key), transform)
