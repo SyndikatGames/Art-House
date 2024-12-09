@@ -19,6 +19,7 @@ namespace VG
             new ItemInt(Key_Save.current_room_index, 0);
 
             new ItemString(Key_Save.prize_claw_data, string.Empty);
+            new ItemFloat(Key_Save.prize_claw_tickets, 5f);
 
 
             for (int i = 0; i < roomsAmount; i++)

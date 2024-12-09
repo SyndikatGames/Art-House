@@ -19,6 +19,8 @@ namespace VG
                     Mathf.Min(newValue, offlineSecondsLimit);
             }
 
+            HandleTickets(seconds);
+
         }
 
         public static void HandleOnlineTime(float seconds)
@@ -28,9 +30,20 @@ namespace VG
                 float boxesPerSecond = TotalRules.GetBoxesPerHour(roomIndex) / 3600f;
                 Saves.Float[Key_Save.random_boxes(0)].Value += boxesPerSecond * seconds;
             }
-            
+
+            HandleTickets(seconds);
+
+
         }
 
+
+        private static void HandleTickets(float seconds)
+        {
+            float ticketsPerSecond = TotalRules.TicketsPerHour / 3600f;
+            float maxTickets = 5f;
+            float newValue = Saves.Float[Key_Save.prize_claw_tickets].Value + ticketsPerSecond * seconds;
+            Saves.Float[Key_Save.prize_claw_tickets].Value = Mathf.Min(newValue, maxTickets);
+        }
 
 
 

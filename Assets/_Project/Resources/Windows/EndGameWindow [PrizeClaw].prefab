@@ -1015,7 +1015,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4949637214946006301, guid: d5fd64fdcd1a5904db2cc29b0c018816, type: 3}
       propertyPath: m_Name
-      value: EndGameWindow
+      value: EndGameWindow [PrizeClaw]
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

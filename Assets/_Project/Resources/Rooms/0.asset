@@ -21,7 +21,7 @@ MonoBehaviour:
     - type: 3
       value: 50
     - type: 1
-      value: 6
+      value: 3
     - type: 10
       value: 10
   - bonusList:

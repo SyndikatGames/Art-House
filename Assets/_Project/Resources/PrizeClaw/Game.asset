@@ -16,10 +16,10 @@ MonoBehaviour:
   _prizesAmount: 60
   _prizeProbabilities:
   - prizeType: 0
-    probabilityPercentage: 77
+    probabilityPercentage: 80
   - prizeType: 1
-    probabilityPercentage: 15
+    probabilityPercentage: 16
   - prizeType: 2
-    probabilityPercentage: 5
-  - prizeType: 3
     probabilityPercentage: 3
+  - prizeType: 3
+    probabilityPercentage: 1

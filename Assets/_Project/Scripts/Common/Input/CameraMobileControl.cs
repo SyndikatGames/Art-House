@@ -5,10 +5,10 @@ public class CameraMobileControl : MonoBehaviour
     [SerializeField] private float _scaleSensitivity = 1f;
     [SerializeField] private Vector2 _minMaxOrthographicSize;
 
-
     private Vector2 _touchStartPosition;
     private float _startTouchesDistance;
     private Camera _camera;
+
 
     private void Start()
     {
@@ -40,6 +40,8 @@ public class CameraMobileControl : MonoBehaviour
 
             case TouchPhase.Moved:
                 Vector2 currentPosition = _camera.ScreenToWorldPoint(touch.position);
+
+                print($"Moved: start: {_touchStartPosition}, current {currentPosition}");
                 Vector2 positionDifference = currentPosition - _touchStartPosition;
 
                 transform.position -= (Vector3)positionDifference;
@@ -68,7 +70,24 @@ public class CameraMobileControl : MonoBehaviour
             _camera.orthographicSize = Mathf.Clamp(_camera.orthographicSize - distanceDifference * _scaleSensitivity,
                 _minMaxOrthographicSize.x, _minMaxOrthographicSize.y);
         }
+
+        else if (touch1.phase == TouchPhase.Ended)
+        {
+            _touchStartPosition = touch2Position;
+            print($"Ended: {_touchStartPosition}");
+        }
+
+        else if (touch2.phase == TouchPhase.Ended)
+        {
+            _touchStartPosition = touch1Position;
+            print($"Ended: {_touchStartPosition}");
+        }
+            
     }
+
+
+
+
 
 
 

@@ -1786,7 +1786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 281f365850d517c42a0bb55b983f76b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _deviceType: 1
+  _deviceType: 0
 --- !u!114 &1052609027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4546,6 +4546,7 @@ MonoBehaviour:
   - merge_items.mp3
   - music.mp3
   - place_item.mp3
+  - prize_claw_music.mp3
   - sell_item.mp3
   - take_item.mp3
 --- !u!114 &3511429739643363053
@@ -5187,7 +5188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e0bf0cfb93f49543991f653025f898c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _debugLogs: 0
+  _debugLogs: 1
   _services:
   - {fileID: 8090846151886812608}
   - {fileID: 2258312118686129026}

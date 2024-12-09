@@ -1,6 +1,6 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
+using VG;
 
 
 namespace PrizeClaw
@@ -21,10 +21,15 @@ namespace PrizeClaw
 
         private void Start()
         {
-            _moveLeftMobileButton.onClick.AddListener(OnLeftMobileButtonClicked);
-            _moveRightMobileButton.onClick.AddListener(OnRightMobileButtonClicked);
-            _clawInteractMobileButton.onClick.AddListener(OnClawInteractMobileButtonClicked);
+            _mobileControlPanel.SetActive(DeviceInfo.DeviceType == VG.DeviceType.Mobile);
+            _desctopControlPanel.SetActive(DeviceInfo.DeviceType == VG.DeviceType.Desktop);
 
+            if (DeviceInfo.DeviceType == VG.DeviceType.Mobile)
+            {
+                _moveLeftMobileButton.onClick.AddListener(OnLeftMobileButtonClicked);
+                _moveRightMobileButton.onClick.AddListener(OnRightMobileButtonClicked);
+                _clawInteractMobileButton.onClick.AddListener(OnClawInteractMobileButtonClicked);
+            }
         }
 
         private void OnClawInteractMobileButtonClicked() => _manipulator.Interact();
@@ -35,16 +40,18 @@ namespace PrizeClaw
 
         private void Update()
         {
-            if (!Enabled) return;
+            if (Enabled) HandleDesctopInput();
+        }
 
+        private void HandleDesctopInput()
+        {
             float horizontalAxis = Input.GetAxis("Horizontal");
             if (horizontalAxis != 0f) _manipulator.Move(horizontalAxis);
 
-            if (Input.GetKeyDown(KeyCode.KeypadEnter))
+            if (Input.GetKeyDown(KeyCode.Return))
                 _manipulator.Interact();
-
-
         }
+
 
 
     }

@@ -1,7 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 
-public class Flash_Tween : MonoBehaviour
+public class ScaleFlash_Tween : MonoBehaviour
 {
     private const float duration = 0.5f;
 

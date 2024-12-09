@@ -27,7 +27,7 @@ public class ItemMergeHandler
             var canvasRect = _item.CanvasRect;
             float flashScale = Mathf.Max(canvasRect.rect.width, canvasRect.rect.height);
             Object.Instantiate(_flashPrefab, canvasRect.transform.position, Quaternion.identity)
-                .GetComponent<Flash_Tween>().Run(flashScale);
+                .GetComponent<ScaleFlash_Tween>().Run(flashScale);
 
             ItemList.UpdateItems();
             Events.ItemsMerged();

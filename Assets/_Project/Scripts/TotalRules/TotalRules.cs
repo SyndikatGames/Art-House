@@ -18,6 +18,8 @@ public static class TotalRules
         => Configs.BasicRules.RarityPrestiges
         .Find((prestige) => prestige.rarityType == rarityType).prestige;
 
+    public static float TicketsPerHour => 1f;
+
 
     public static float GetOfflineHoursLimit(int roomIndex)
     {

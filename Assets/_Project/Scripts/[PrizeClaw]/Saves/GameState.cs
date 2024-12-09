@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 using VG;
 
 
@@ -22,6 +21,8 @@ namespace PrizeClaw
                         _currentState = CreateNewGameState();
 
                     else _currentState = ParseCurrentGameState();
+
+                    _currentState.Save();
                 }
                 return _currentState;
             }
@@ -35,7 +36,6 @@ namespace PrizeClaw
         {
             _currentState = null;
             Saves.String[Key_Save.prize_claw_data].Value = string.Empty;
-            onChanged?.Invoke();
         }
 
         public void SpendMove()
@@ -96,14 +96,19 @@ namespace PrizeClaw
                 gameState.SpawnedPrizes.Add(prizeType, amount);
             }
 
-            string[] splitRewardData = splitData[2].Split(',');
             gameState.Rewards = new Dictionary<PrizeType, int>();
-            foreach (var rewardData in splitRewardData)
-            {
-                var prizeType = (PrizeType)int.Parse(rewardData.Split('_')[0]);
-                var amount = int.Parse(rewardData.Split('_')[1]);
 
-                gameState.Rewards.Add(prizeType, amount);
+            if (splitData[2] != string.Empty)
+            {
+                string[] splitRewardData = splitData[2].Split(',');
+
+                foreach (var rewardData in splitRewardData)
+                {
+                    var prizeType = (PrizeType)int.Parse(rewardData.Split('_')[0]);
+                    var amount = int.Parse(rewardData.Split('_')[1]);
+
+                    gameState.Rewards.Add(prizeType, amount);
+                }
             }
 
             return gameState;

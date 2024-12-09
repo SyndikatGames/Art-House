@@ -13,28 +13,16 @@ public class TimeBoxes_Info : Info
 
     private int _roomIndex = 0;
 
-    protected override void OnEnable()
-    {
-        SubscribeForTimeBoxes();
-        base.OnEnable();
-    }
-
     protected override void Subscribe()
     {
-        Saves.Int[Key_Save.current_room_index].onChanged += SubscribeForTimeBoxes;
+        Saves.Float[Key_Save.random_boxes(_roomIndex)].onChanged += UpdateValue;
     }
 
     protected override void Unsubscribe()
     {
-        Saves.Int[Key_Save.current_room_index].onChanged -= SubscribeForTimeBoxes;
+        Saves.Float[Key_Save.random_boxes(_roomIndex)].onChanged -= UpdateValue;
     }
 
-    private void SubscribeForTimeBoxes()
-    {
-        Saves.Float[Key_Save.random_boxes(_roomIndex)].onChanged -= UpdateValue;
-        _roomIndex =  Saves.Int[Key_Save.current_room_index].Value;
-        Saves.Float[Key_Save.random_boxes(_roomIndex)].onChanged += UpdateValue;
-    }
 
     
     
