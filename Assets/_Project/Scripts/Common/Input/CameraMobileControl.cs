@@ -1,9 +1,12 @@
 using UnityEngine;
+using VG;
 
 public class CameraMobileControl : MonoBehaviour
 {
     [SerializeField] private float _scaleSensitivity = 1f;
     [SerializeField] private Vector2 _minMaxOrthographicSize;
+    [SerializeField] private HoldingButton _upScaleButton;
+    [SerializeField] private HoldingButton _downScaleButton;
 
     private Vector2 _touchStartPosition;
     private float _startTouchesDistance;
@@ -13,7 +16,31 @@ public class CameraMobileControl : MonoBehaviour
     private void Start()
     {
         _camera = Camera.main;
+        Input.multiTouchEnabled = false;
+
+        _upScaleButton.onHolding += OnUpScaleButtonHolding;
+        _downScaleButton.onHolding += OnDownScaleButtonHolding;
+
+        if (DeviceInfo.DeviceType == VG.DeviceType.Desktop)
+        {
+            _upScaleButton.gameObject.SetActive(false);
+            _downScaleButton.gameObject.SetActive(false);
+        }
+
     }
+
+    private void OnDownScaleButtonHolding()
+    {
+        _camera.orthographicSize = Mathf.Clamp(_camera.orthographicSize + _scaleSensitivity * Time.deltaTime,
+            _minMaxOrthographicSize.x, _minMaxOrthographicSize.y);
+    }
+
+    private void OnUpScaleButtonHolding()
+    {
+        _camera.orthographicSize = Mathf.Clamp(_camera.orthographicSize - _scaleSensitivity * Time.deltaTime,
+            _minMaxOrthographicSize.x, _minMaxOrthographicSize.y);
+    }
+
 
 
     private void Update()
@@ -22,10 +49,6 @@ public class CameraMobileControl : MonoBehaviour
 
         if (Input.touchCount == 1)
             HandleMoving();
-
-        else if (Input.touchCount == 2)
-            HandleScaling();
-
     }
 
     private void HandleMoving()
@@ -49,44 +72,6 @@ public class CameraMobileControl : MonoBehaviour
 
         }
     }
-
-    private void HandleScaling()
-    {
-        Touch touch1 = Input.GetTouch(0);
-        Touch touch2 = Input.GetTouch(1);
-
-        Vector2 touch1Position = _camera.ScreenToViewportPoint(touch1.position);
-        Vector2 touch2Position = _camera.ScreenToViewportPoint(touch2.position);
-        float currentTouchesDistance = Vector2.Distance(touch1Position, touch2Position);
-
-        if (touch1.phase == TouchPhase.Began || touch2.phase == TouchPhase.Began)
-        {
-            _startTouchesDistance = currentTouchesDistance;
-        }
-        else if (touch1.phase == TouchPhase.Moved || touch2.phase == TouchPhase.Moved)
-        {
-            float distanceDifference = currentTouchesDistance - _startTouchesDistance;
-            print($"Start: {_startTouchesDistance}, current: {currentTouchesDistance}");
-            _camera.orthographicSize = Mathf.Clamp(_camera.orthographicSize - distanceDifference * _scaleSensitivity,
-                _minMaxOrthographicSize.x, _minMaxOrthographicSize.y);
-        }
-
-        else if (touch1.phase == TouchPhase.Ended)
-        {
-            _touchStartPosition = touch2Position;
-            print($"Ended: {_touchStartPosition}");
-        }
-
-        else if (touch2.phase == TouchPhase.Ended)
-        {
-            _touchStartPosition = touch1Position;
-            print($"Ended: {_touchStartPosition}");
-        }
-            
-    }
-
-
-
 
 
 

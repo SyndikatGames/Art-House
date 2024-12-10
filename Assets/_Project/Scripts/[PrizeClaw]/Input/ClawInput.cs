@@ -14,8 +14,8 @@ namespace PrizeClaw
         [SerializeField] private GameObject _mobileControlPanel;
         [SerializeField] private GameObject _desctopControlPanel;
 
-        [SerializeField] private Button _moveLeftMobileButton;
-        [SerializeField] private Button _moveRightMobileButton;
+        [SerializeField] private HoldingButton _moveLeftMobileButton;
+        [SerializeField] private HoldingButton _moveRightMobileButton;
         [SerializeField] private Button _clawInteractMobileButton;
 
 
@@ -26,17 +26,18 @@ namespace PrizeClaw
 
             if (DeviceInfo.DeviceType == VG.DeviceType.Mobile)
             {
-                _moveLeftMobileButton.onClick.AddListener(OnLeftMobileButtonClicked);
-                _moveRightMobileButton.onClick.AddListener(OnRightMobileButtonClicked);
+                _moveLeftMobileButton.onHolding += OnLeftMobileButtonHolding;
+                _moveRightMobileButton.onHolding += OnRightMobileButtonHolding;
                 _clawInteractMobileButton.onClick.AddListener(OnClawInteractMobileButtonClicked);
             }
         }
 
         private void OnClawInteractMobileButtonClicked() => _manipulator.Interact();
 
-        private void OnRightMobileButtonClicked() => _manipulator.Move(+1);
+        private void OnRightMobileButtonHolding() => _manipulator.Move(+1);
 
-        private void OnLeftMobileButtonClicked() => _manipulator.Move(-1);
+        private void OnLeftMobileButtonHolding() => _manipulator.Move(-1);
+
 
         private void Update()
         {
