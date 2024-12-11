@@ -11,6 +11,7 @@ public class CameraMobileControl : MonoBehaviour
     private Vector2 _touchStartPosition;
     private float _startTouchesDistance;
     private Camera _camera;
+    private bool _movingEnabled = true;
 
 
     private void Start()
@@ -18,6 +19,7 @@ public class CameraMobileControl : MonoBehaviour
         _camera = Camera.main;
         Input.multiTouchEnabled = false;
 
+        _upScaleButton.onBeginHolding += OnMobileButtonBeginHolding;
         _upScaleButton.onHolding += OnUpScaleButtonHolding;
         _downScaleButton.onHolding += OnDownScaleButtonHolding;
 
@@ -27,6 +29,11 @@ public class CameraMobileControl : MonoBehaviour
             _downScaleButton.gameObject.SetActive(false);
         }
 
+    }
+
+    private void OnMobileButtonBeginHolding()
+    {
+        throw new System.NotImplementedException();
     }
 
     private void OnDownScaleButtonHolding()
@@ -47,7 +54,7 @@ public class CameraMobileControl : MonoBehaviour
     {
         if (ItemMoveHandler.DraggableItem != null) return;
 
-        if (Input.touchCount == 1)
+        if (Input.touchCount == 1 && _movingEnabled)
             HandleMoving();
     }
 
