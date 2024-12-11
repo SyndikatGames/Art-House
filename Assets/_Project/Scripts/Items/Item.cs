@@ -29,7 +29,7 @@ public class Item : MonoBehaviour
     [field: SerializeField] public Vector3Int Size { get; private set; }
     [SerializeField] private List<PlaceGridData> _placeGridDataList = new List<PlaceGridData>();
 
-    [SerializeField] private List<RaritySprite> _sprites;
+    [SerializeField] private List<RaritySprite> _sprites; public RarityType OriginRarity => _sprites[0].rarityType;
 
     public Vector3Int Position { get; private set; }
 
@@ -70,8 +70,13 @@ public class Item : MonoBehaviour
 
     public void SetRarity(RarityType rarityType)
     {
-        _sprite.sprite = _sprites.Find((sprite) => sprite.rarityType == rarityType).sprite;
-        RarityType = rarityType;
+        var raritySprite = _sprites.Find((sprite) => sprite.rarityType == rarityType);
+
+        if (raritySprite.sprite == null)
+            raritySprite = _sprites[0];
+
+        _sprite.sprite = raritySprite.sprite;
+        RarityType = raritySprite.rarityType;
     }
 
     public void SetPlace(Vector3Int position, PlaceGrid placeGrid)
@@ -245,11 +250,19 @@ public class Item : MonoBehaviour
 
 public static partial class Prefabs
 {
-    private static Item[] _allItems;
-    public static Item[] GetAllItems()
+    private static Dictionary<RarityType, List<Item>> _allItems;
+    public static Dictionary<RarityType, List<Item>> GetAllRaritySortedItems()
     {
         if (_allItems == null)
-            _allItems = Resources.LoadAll<Item>("Items");
+        {
+            _allItems = new Dictionary<RarityType, List<Item>>();
+            foreach (var rarityType in EnumData.GetRarityTypes())
+                _allItems.Add(rarityType, new List<Item>());
+
+            var allItems = Resources.LoadAll<Item>("Items");
+            foreach (var item in allItems)
+                _allItems[item.OriginRarity].Add(item);
+        }
 
         return _allItems;
     }

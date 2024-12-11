@@ -114,7 +114,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: cb13c19e4b4445f49b3eafd971425da0, type: 3}
     - target: {fileID: 3717036483057297988, guid: 7ac049b0b4e44bb408ba654472656eb7, type: 3}
       propertyPath: _sprites.Array.data[0].rarityType
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3717036483057297988, guid: 7ac049b0b4e44bb408ba654472656eb7, type: 3}
       propertyPath: _sprites.Array.data[1].rarityType

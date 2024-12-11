@@ -1,5 +1,4 @@
 using UnityEngine;
-using VG;
 
 public class Test : MonoBehaviour
 {
@@ -8,7 +7,13 @@ public class Test : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
-            print(Saves.GetNormalBoxesAmount());
+            foreach (var rarityItemList in Prefabs.GetAllRaritySortedItems())
+            {
+                print($"{rarityItemList.Key}: {rarityItemList.Value.Count}");
+            }
+
+
+
         }
     }
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c99d5995b3c3f2246886d57bd77babbc, type: 3}
   m_Name: 0
   m_EditorClassIdentifier: 
-  _prestigeRequires: e8030000d00700008813000010270000f0490200400d0300e0930400d0dd0600c027090050f80c0080969800
+  _prestigeRequires: e8030000d00700008813000010270000a861000050c30000905f0100f0490200400d03003057050040420f00
   _levelBonuses:
   - bonusList: []
   - bonusList:

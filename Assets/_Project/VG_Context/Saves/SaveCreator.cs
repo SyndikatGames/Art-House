@@ -14,12 +14,16 @@ namespace VG
 
             new ItemBool(Key_Save.tutorial_completed, false);
             new ItemInt(Key_Save.tutorial_step, 0);
+            new ItemBool(Key_Save.style_tutorial_completed, false);
+            new ItemString(Key_Save.styles_is_new_data(0), "0111111111");
 
             new ItemFloat(Key_Save.soft_money, 500);
             new ItemInt(Key_Save.current_room_index, 0);
 
             new ItemString(Key_Save.prize_claw_data, string.Empty);
             new ItemFloat(Key_Save.prize_claw_tickets, 5f);
+
+            new ItemInt(Key_Save.current_style_index(0), 0);
 
 
             for (int i = 0; i < roomsAmount; i++)

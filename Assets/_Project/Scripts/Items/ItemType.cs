@@ -33,5 +33,14 @@ public enum ItemType
     DoubleWindow = 30,
     RectCoffeeTable = 31,
     SmallRoundTable = 32,
+    Book = 33,
+    MiniLamp = 34,
+    Bear = 35,
+    RoyalSofa = 36,
+    Sofa = 37,
+    RoundLamp = 38,
+    WomenShoes = 39,
+    BigPicture = 40,
+    BigVase = 41,
 
 }

@@ -3,7 +3,6 @@ using System;
 
 public enum RarityType
 {
-    Shabby = 0, 
     Common = 1, 
     Rare = 2,
     Epic = 3,

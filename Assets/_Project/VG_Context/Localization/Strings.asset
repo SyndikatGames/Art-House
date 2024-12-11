@@ -257,50 +257,67 @@ MonoBehaviour:
     tr: "\r"
   - key: PC_end_game_window_title
     ru: "\u0417\u0430\u043A\u043E\u043D\u0447\u0438\u043B\u0438\u0441\u044C \u0445\u043E\u0434\u044B!"
-    en: 
-    tr: "\r"
+    en: Out of moves!
+    tr: "Hareketler bitti!\r"
   - key: PC_end_game_more_moves
     ru: "<sprite=1> \u0415\u0449\u0435 3 \u0445\u043E\u0434\u0430"
-    en: 
-    tr: "\r"
+    en: <sprite=1> +3 moves
+    tr: "<sprite=1> 3 \u200B\u200Bhamle daha\r"
   - key: PC_end_game_rewards
     ru: "\u041D\u0430\u0433\u0440\u0430\u0434\u044B:"
-    en: 
-    tr: "\r"
+    en: 'Rewards:'
+    tr: "\xD6d\xFCller:\r"
   - key: 
     ru: 
     en: 
     tr: "\r"
   - key: PC_pre_game_window_title
     ru: "\u0421\u044B\u0433\u0440\u0430\u0439 \u0432 \u0425\u0432\u0430\u0442\u0430\u0439\u043A\u0443!"
-    en: 
-    tr: "\r"
+    en: Play to Grab It!
+    tr: "Grab'\u0131 oynay\u0131n!\r"
   - key: play
     ru: "\u0418\u0433\u0440\u0430\u0442\u044C"
-    en: 
-    tr: "\r"
+    en: Play
+    tr: "Oynamak\r"
   - key: continue
     ru: "\u041F\u0440\u043E\u0434\u043E\u043B\u0436\u0438\u0442\u044C"
-    en: 
-    tr: "\r"
+    en: Continue
+    tr: "Devam etmek\r"
   - key: get_bonus_prize_claw_tickets
-    ru: "+1 \u0436\u0435\u0442\u043E\u043D"
-    en: 
-    tr: "\r"
+    ru: "<sprite=1> +1 \u0436\u0435\u0442\u043E\u043D"
+    en: <sprite=1> +1 token
+    tr: "<sprite=1> +1 belirteci\r"
   - key: next_ticket_time_text
     ru: "+1 \u0436\u0435\u0442\u043E\u043D \u0447\u0435\u0440\u0435\u0437:"
-    en: 
-    tr: "\r"
+    en: '+1 token in:'
+    tr: "1 jetonu:\r"
   - key: prize_claw_available
     ru: "\u0412\u044B\u0438\u0433\u0440\u044B\u0432\u0430\u0439\n\u043A\u043E\u0440\u043E\u0431\u043A\u0438!"
-    en: 
-    tr: "\r"
+    en: Win boxes!
+    tr: "Kazan\xE7 kutular!\r"
   - key: prize_claw_continue
     ru: "\u041F\u0440\u043E\u0434\u043E\u043B\u0436\u0438 \u0438\u0433\u0440\u0443!"
-    en: 
-    tr: "\r"
+    en: Continue the game!
+    tr: "Oyuna devam edin!\r"
   - key: PC_desctop_prompt
     ru: "A-D - \u041F\u0435\u0440\u0435\u043C\u0435\u0449\u0435\u043D\u0438\u0435,
       Enter - \u0417\u0430\u0445\u0432\u0430\u0442"
+    en: A-D - Move, Enter - Grab
+    tr: "A-D - Ta\u015F\u0131, Enter - Yakala\r"
+  - key: 
+    ru: 
+    en: 
+    tr: "\r"
+  - key: styles_title
+    ru: "\u0421\u0442\u0438\u043B\u044C \u043A\u043E\u043C\u043D\u0430\u0442\u044B"
+    en: 
+    tr: "\r"
+  - key: level
+    ru: "\u0423\u0440\u043E\u0432\u0435\u043D\u044C"
+    en: 
+    tr: "\r"
+  - key: tutorial_open_styles
+    ru: "\u0414\u043E\u0441\u0442\u0443\u043F\u0435\u043D\n\u043D\u043E\u0432\u044B\u0439
+      \u0441\u0442\u0438\u043B\u044C!"
     en: 
     tr: 

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,7 @@ namespace VG
     [RequireComponent(typeof(Button))]
     public abstract class ButtonHandler : MonoBehaviour
     {
+        public event Action onCompleted;
         private Button _button;
 
 
@@ -23,9 +25,14 @@ namespace VG
         protected virtual void Start()
         {
             _button = GetComponent<Button>();
-            _button.onClick.AddListener(OnClick);
+            _button.onClick.AddListener(OnButtonClicked);
         }
 
+        private void OnButtonClicked()
+        {
+            OnClick();
+            onCompleted?.Invoke();
+        }
 
         protected abstract void OnClick();
 

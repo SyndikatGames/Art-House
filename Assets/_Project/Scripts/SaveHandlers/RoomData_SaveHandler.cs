@@ -34,8 +34,14 @@ public struct ItemData
         string childData = data.Substring(openIndex + 1, closeIndex - openIndex - 1);
 
         string[] mainSplitData = mainData.Split('_');
+
         itemType = (ItemType)int.Parse(mainSplitData[0]);
-        rarityType = (RarityType)int.Parse(mainSplitData[1]);
+
+        // === Adaptation after remove Shabby box ===
+        if (int.Parse(mainSplitData[1]) == 0) rarityType = RarityType.Common; 
+        else rarityType = (RarityType)int.Parse(mainSplitData[1]);
+        // ==========================================
+
         position = new Vector3Int(
             x: int.Parse(mainSplitData[2]),
             y: int.Parse(mainSplitData[3]),

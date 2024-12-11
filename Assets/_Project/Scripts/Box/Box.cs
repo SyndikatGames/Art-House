@@ -79,13 +79,10 @@ public class Box : MonoBehaviour
     {
         while (true)
         {
-            var allItemConfigs = Prefabs.GetAllItems();
-            int randomIndex = UnityEngine.Random.Range(0, allItemConfigs.Length);
+            var allRarityItems = Prefabs.GetAllRaritySortedItems()[_rarityType];
+            int randomIndex = UnityEngine.Random.Range(0, allRarityItems.Count);
 
-            var item = allItemConfigs[randomIndex];
-
-            if (item.RarityExists(_rarityType))
-                return item;
+            return allRarityItems[randomIndex];
         }
     }
 
