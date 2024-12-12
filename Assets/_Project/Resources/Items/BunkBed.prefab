@@ -79,7 +79,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: {fileID: 3717036483057297988}
   _interactionHandler: {fileID: 736278533155413540}
-  _flashPrefab: {fileID: 8012424541882844212, guid: 9f81c58120d77524eb8e7925e19b34db, type: 3}
 --- !u!1 &1658087054476825806
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,7 +297,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

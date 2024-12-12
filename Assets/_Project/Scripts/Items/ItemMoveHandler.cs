@@ -43,7 +43,7 @@ public class ItemMoveHandler
         if (_item.ChildItems.Count != 0)
         {
             foreach (var item in _item.ChildItems)
-                item.Highlighter.Highlight(HighlightType.Overlap);
+                item.Effects.CannotMoveHighlight();
 
             return false;
         }
@@ -69,13 +69,13 @@ public class ItemMoveHandler
 
         if (TryPlace(_item, worldPointerPosition, out _, out var resultGridPosition))
         {
-            _item.SetTransparent(false);
+            _item.Effects.DragingHiglight();
             _item.Placing(resultGridPosition);
         }
         else
         {
             _item.transform.position = worldPointerPosition;
-            _item.SetTransparent(true);
+            _item.Effects.SetTransparent();
         }
     }
 
@@ -95,10 +95,9 @@ public class ItemMoveHandler
                 _item.SetPlace(_beforePosition, _item.ParentGrid);
 
             else _item.transform.position = _beforeWorldPosition;
-
-            _item.SetTransparent(false);
         }
-            
+
+        _item.Effects.DisableCurrentEffect();
 
         DraggableItem = null;
         _item.BlockRaycast = true;

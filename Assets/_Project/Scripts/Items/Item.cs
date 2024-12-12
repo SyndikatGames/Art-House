@@ -43,13 +43,13 @@ public class Item : MonoBehaviour
     public Side CurrentSide { get; private set; } = Side.Left;
     public RarityType RarityType { get; private set; }
 
-    private ItemHighlighter _highlighter;
-    public ItemHighlighter Highlighter
+    private ItemEffects _effects;
+    public ItemEffects Effects
     {
         get
         {
-            _highlighter ??= new ItemHighlighter(_sprite, this);
-            return _highlighter;
+            _effects ??= new ItemEffects(_sprite, this);
+            return _effects;
         }
     }
 
@@ -185,14 +185,6 @@ public class Item : MonoBehaviour
             _sprite.sortingOrder = value;
             _clickCanvas.sortingOrder = value;
         }
-    }
-
-    public void SetTransparent(bool value)
-    {
-        var color = _sprite.color;
-        color.a = value ? 0.5f : 1f;
-        _sprite.color = color;
-        _sprite.sortingLayerName = value ? "Front" : "Item";
     }
 
     private void UpdatePlaceGrids()

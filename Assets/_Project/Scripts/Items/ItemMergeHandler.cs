@@ -3,13 +3,11 @@ using UnityEngine;
 public class ItemMergeHandler
 {
     private Item _item;
-    private GameObject _flashPrefab;
 
 
-    public ItemMergeHandler(Item item, GameObject flashPrefab)
+    public ItemMergeHandler(Item item)
     {
         _item = item;
-        _flashPrefab = flashPrefab;
     }
 
 
@@ -22,12 +20,7 @@ public class ItemMergeHandler
 
             RarityType newRarity = (RarityType)((int)_item.RarityType + 1);
             _item.SetRarity(newRarity);
-            _item.Highlighter.Stop(HighlightType.MergingSelect);
-
-            var canvasRect = _item.CanvasRect;
-            float flashScale = Mathf.Max(canvasRect.rect.width, canvasRect.rect.height);
-            Object.Instantiate(_flashPrefab, canvasRect.transform.position, Quaternion.identity)
-                .GetComponent<ScaleFlash_Tween>().Run(flashScale);
+            _item.Effects.MergingFlash();
 
             ItemList.UpdateItems();
             Events.ItemsMerged();
@@ -44,7 +37,7 @@ public class ItemMergeHandler
 
         if (MergingAvailable(ItemMoveHandler.DraggableItem, _item))
         {
-            _item.Highlighter.Stop(HighlightType.MergingSelect);
+            _item.Effects.TargetItemMergingHighlight();
             SetMergingHiglight(true);
         }
 
@@ -58,7 +51,7 @@ public class ItemMergeHandler
         if (MergingAvailable(ItemMoveHandler.DraggableItem, _item))
         {
             SetMergingHiglight(false);
-            _item.Highlighter.Highlight(HighlightType.MergingSelect);
+            _item.Effects.TargetItemMergingHighlight();
         }
     }
 
@@ -82,8 +75,8 @@ public class ItemMergeHandler
         {
             if (MergingAvailable(item, _item))
             {
-                if (value) item.Highlighter.Highlight(HighlightType.MergingAvailable);
-                else item.Highlighter.Stop(HighlightType.MergingAvailable);
+                if (value) item.Effects.MergingAvailableHighlight();
+                else item.Effects.DisableCurrentEffect();
             }
                 
         }

@@ -13,7 +13,6 @@ public class ItemDragging : MonoBehaviour
 
     [SerializeField] private Item _item;
     [SerializeField] private InteractionHandler _interactionHandler;
-    [SerializeField] private GameObject _flashPrefab;
 
     private ItemMoveHandler _moveHandler;
     private ItemMergeHandler _mergeHandler;
@@ -21,7 +20,7 @@ public class ItemDragging : MonoBehaviour
     private void Awake()
     {
         _moveHandler = new ItemMoveHandler(_item);
-        _mergeHandler = new ItemMergeHandler(_item, _flashPrefab);
+        _mergeHandler = new ItemMergeHandler(_item);
 
         _interactionHandler.onBeginDrag += OnBeginDrag;
         _interactionHandler.onDrag += OnDrag;
