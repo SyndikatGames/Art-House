@@ -3855,7 +3855,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e8dadca5f44cf747875905d52097e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _useInBuild: 0
+  _useInBuild: 1
   _rewardPanel: {fileID: 542607541}
   _acceptRewardButton: {fileID: 2102970117}
   _notRewardedButton: {fileID: 782376091}
@@ -3949,7 +3949,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df40ceba064fd7f40a875eb59984f17f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _useInBuild: 0
+  _useInBuild: 1
 --- !u!4 &1509848901761845657
 Transform:
   m_ObjectHideFlags: 0
@@ -4151,7 +4151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd0cc19efe39ee7438e4c6032b075350, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _useInBuild: 0
+  _useInBuild: 1
 --- !u!1 &2186359623144661381
 GameObject:
   m_ObjectHideFlags: 0
@@ -5089,7 +5089,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1233618fab305f4c9d4013e072fe7c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _showStatusList: 0
+  _showStatusList: 1
   _startup: {fileID: 3511429739643363053}
   _statusItemPrefab: {fileID: 6573806273844434594, guid: bdb530c2858ddfb44ad1cf354b9ede35, type: 3}
   _container: {fileID: 8256864574036046887}
@@ -5146,7 +5146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2d30a9a56a735d409a8716e13331835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _useInBuild: 0
+  _useInBuild: 1
   _purchasePanel: {fileID: 7669604502304819975}
   _acceptButton: {fileID: 724711098}
   _rejectButton: {fileID: 3316683299610709595}
@@ -5476,7 +5476,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &7493252050249330694
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ namespace VG
     public abstract class DeviceInfoService : Service
     {
 
-        public abstract DeviceType GetDeviceType();
+        public abstract ControlType GetDeviceType();
 
     }
 }

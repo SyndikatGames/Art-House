@@ -1,10 +1,9 @@
 using System;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using VG;
 
 
-public class ItemDragging : MonoBehaviour
+public class ItemInteraction : MonoBehaviour
 {
     private static bool _itemMerged;
 
@@ -12,36 +11,34 @@ public class ItemDragging : MonoBehaviour
 
 
     [SerializeField] private Item _item;
-    [SerializeField] private InteractionHandler _interactionHandler;
+    [SerializeField] private GameObject _interactableObject;
 
     private ItemMoveHandler _moveHandler;
     private ItemMergeHandler _mergeHandler;
+
+    private Vector2 _pointerWorldPosition;
+    private ItemInteractionHandler _interactionHandler;
 
     private void Awake()
     {
         _moveHandler = new ItemMoveHandler(_item);
         _mergeHandler = new ItemMergeHandler(_item);
 
-        _interactionHandler.onBeginDrag += OnBeginDrag;
-        _interactionHandler.onDrag += OnDrag;
-        _interactionHandler.onDrop += OnDrop;
-        _interactionHandler.onEndDrag += OnEndDrag;
-        _interactionHandler.onClick += OnClick;
-        _interactionHandler.onPointerEnter += OnPointerEnter;
-        _interactionHandler.onPointerExit += OnPointerExit;
+        _interactionHandler = ItemInteractionHandler.GetHandler(_interactableObject);
+        _interactionHandler.Initialize(this);
     }
 
-    private void OnPointerExit(PointerEventData data)
+    public void PointerExit()
     {
         _mergeHandler.OnPointerExit();
     }
 
-    private void OnPointerEnter(PointerEventData data)
+    public void PointerEnter()
     {
         _mergeHandler.OnPointerEnter();
     }
 
-    private void OnClick(PointerEventData data)
+    public void Click()
     {
         if (_moveHandler.OnClick())
             Sound.Play(Key_Sound.TakeItem);
@@ -49,30 +46,31 @@ public class ItemDragging : MonoBehaviour
         else Sound.Play(Key_Sound.CanNotMoveItem);
     }
 
-    private void OnEndDrag(PointerEventData data)
+    public void EndDrag()
     {
         _mergeHandler.OnEndDrag();
         if (!_itemMerged)
         {
-            _moveHandler.OnEndDrag(data);
+            _moveHandler.OnEndDrag(_pointerWorldPosition);
             Sound.Play(Key_Sound.PlaceItem);
             Events.ItemPlaced();
         }
     }
 
-    private void OnDrop(PointerEventData data)
+    public void Drop()
     {
         _itemMerged = _mergeHandler.OnDrop();
         if (_itemMerged) Sound.Play(Key_Sound.MergeItems);
     }
 
-    private void OnDrag(PointerEventData data)
+    public void Drag(Vector2 pointerWorldPosition)
     {
         _itemMerged = false;
-        _moveHandler.OnDrag(data);
+        _pointerWorldPosition = pointerWorldPosition;
+        _moveHandler.OnDrag(pointerWorldPosition);
     }
 
-    private void OnBeginDrag()
+    public void BeginDrag()
     {
         if (_moveHandler.OnBeginDrag())
         {
@@ -84,7 +82,7 @@ public class ItemDragging : MonoBehaviour
         else
         {
             Sound.Play(Key_Sound.CanNotMoveItem);
-            _interactionHandler.DisableDragAction();
+            _interactionHandler.DisableDragging();
         }
         
     }

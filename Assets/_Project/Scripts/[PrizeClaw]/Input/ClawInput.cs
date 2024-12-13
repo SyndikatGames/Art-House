@@ -21,10 +21,10 @@ namespace PrizeClaw
 
         private void Start()
         {
-            _mobileControlPanel.SetActive(DeviceInfo.DeviceType == VG.DeviceType.Mobile);
-            _desctopControlPanel.SetActive(DeviceInfo.DeviceType == VG.DeviceType.Desktop);
+            _mobileControlPanel.SetActive(DeviceInfo.ControlType == ControlType.Mobile);
+            _desctopControlPanel.SetActive(DeviceInfo.ControlType == ControlType.Desktop);
 
-            if (DeviceInfo.DeviceType == VG.DeviceType.Mobile)
+            if (DeviceInfo.ControlType == ControlType.Mobile)
             {
                 _moveLeftMobileButton.onHolding += OnLeftMobileButtonHolding;
                 _moveRightMobileButton.onHolding += OnRightMobileButtonHolding;

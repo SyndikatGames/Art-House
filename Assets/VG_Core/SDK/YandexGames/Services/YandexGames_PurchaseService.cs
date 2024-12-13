@@ -52,6 +52,8 @@ namespace VG
                 _purchasedProductIds = purchasedProductIds;
                 foreach (var purchasedProductKey in _purchasedProductIds)
                 {
+                    if (purchasedProductKey == string.Empty) continue;
+
                     PurchasesHandler.HandlePurchase(purchasedProductKey);
                     if (_productCatalog.GetProduct(purchasedProductKey).consumable)
                         YG_Purchases.Consume(purchasedProductKey);

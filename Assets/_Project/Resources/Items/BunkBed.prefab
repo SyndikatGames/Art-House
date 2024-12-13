@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1026697625298815826}
   - component: {fileID: 3717036483057297988}
-  - component: {fileID: 401984403207302871}
+  - component: {fileID: 401725460778949795}
   m_Layer: 0
   m_Name: BunkBed
   m_TagString: Untagged
@@ -65,7 +65,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: d87037d227d8d8d49bae1bed71927dd3, type: 3}
   - rarityType: 4
     sprite: {fileID: 21300000, guid: d22a8ef87ffa64c4db636ce1171157ab, type: 3}
---- !u!114 &401984403207302871
+--- !u!114 &401725460778949795
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -74,11 +74,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1325785960547255914}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2f49c5d1c40e5d4893d4ee8b2089830, type: 3}
+  m_Script: {fileID: 11500000, guid: da170005b170c2d4b8fc4c16d318416b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _item: {fileID: 3717036483057297988}
-  _interactionHandler: {fileID: 736278533155413540}
+  _interactableObject: {fileID: 1658087054476825806}
 --- !u!1 &1658087054476825806
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,7 +90,6 @@ GameObject:
   - component: {fileID: 7837190433284544464}
   - component: {fileID: 515921099728566798}
   - component: {fileID: 5737467379143239514}
-  - component: {fileID: 736278533155413540}
   m_Layer: 0
   m_Name: Handler
   m_TagString: Untagged
@@ -155,18 +154,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &736278533155413540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1658087054476825806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a363e3e9a25e184fbcf9dab5cfffac9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5327137729734326766
 GameObject:
   m_ObjectHideFlags: 0

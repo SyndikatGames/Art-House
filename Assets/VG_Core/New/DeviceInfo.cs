@@ -3,7 +3,7 @@ using VG.Internal;
 
 namespace VG
 {
-    public enum DeviceType { Desktop, Mobile }
+    public enum ControlType { Desktop, Mobile }
 
     public class DeviceInfo : Manager
     {
@@ -19,7 +19,7 @@ namespace VG
         }
 
 
-        public static DeviceType DeviceType => service.GetDeviceType();
+        public static ControlType ControlType => service.GetDeviceType();
 
 
     }

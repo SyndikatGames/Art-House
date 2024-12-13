@@ -7,7 +7,7 @@ public class MergeItems_TutorialStep : TutorialStep
     [SerializeField] private TextMeshProUGUI _promptText;
     [SerializeField] private CursorMove_Tween _cursorTween;
 
-    private ItemDragging _itemDragging;
+    private ItemInteraction _itemDragging;
 
 
     public override void RestoreContext()
@@ -39,7 +39,7 @@ public class MergeItems_TutorialStep : TutorialStep
         _cursorTween.gameObject.SetActive(true);
         _cursorTween.Run(item.transform.position, secondItem.transform.position);
 
-        _itemDragging = item.GetComponent<ItemDragging>();
+        _itemDragging = item.GetComponent<ItemInteraction>();
         _itemDragging.onBeginDragging += OnBeginDragging;
 
         Events.onItemsMerged += OnItemsMerged;

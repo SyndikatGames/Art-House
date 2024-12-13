@@ -15,8 +15,8 @@ public class InteractionHandler : MonoBehaviour, IDragHandler,
     public event Action<PointerEventData> onPointerExit;
     public event Action<PointerEventData> onDrop;
 
-    private bool IsMobileControl => DeviceInfo.DeviceType == VG.DeviceType.Mobile;
-    private bool IsDesctopControl => DeviceInfo.DeviceType == VG.DeviceType.Desktop;
+    private bool IsMobileControl => DeviceInfo.ControlType == VG.ControlType.Mobile;
+    private bool IsDesctopControl => DeviceInfo.ControlType == VG.ControlType.Desktop;
 
     private bool _dragging = false;
     private bool _beginDragSuccess;

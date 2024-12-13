@@ -7,7 +7,7 @@ namespace VG
         public override bool supported => 
             Environment.platform == Environment.Platform.WebGL && !Environment.editor;
 
-        public override DeviceType GetDeviceType() => YG_Sdk.GetDeviceType();
+        public override ControlType GetDeviceType() => YG_Sdk.GetDeviceType();
 
         public override void Initialize() => InitCompleted();
 

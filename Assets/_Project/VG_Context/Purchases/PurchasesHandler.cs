@@ -19,7 +19,6 @@ namespace VG
 
         public static void HandlePurchase(string productKey)
         {
-
             switch (productKey)
             {
                 case Key_Product.no_ads:

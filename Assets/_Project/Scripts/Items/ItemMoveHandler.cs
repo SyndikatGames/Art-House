@@ -64,10 +64,8 @@ public class ItemMoveHandler
         return true;
     }
 
-    public void OnDrag(PointerEventData eventData)
+    public void OnDrag(Vector2 worldPointerPosition)
     {
-        Vector2 worldPointerPosition = Camera.main.ScreenToWorldPoint(eventData.position);
-
         if (TryPlace(_item, worldPointerPosition, out _, out var resultGridPosition))
         {
             _item.Effects.DraggingHiglight();
@@ -80,11 +78,8 @@ public class ItemMoveHandler
         }
     }
 
-    public void OnEndDrag(PointerEventData eventData)
+    public void OnEndDrag(Vector2 worldPointerPosition)
     {
-        Vector2 worldPointerPosition
-                = Camera.main.ScreenToWorldPoint(eventData.position);
-
         if (TryPlace(_item, worldPointerPosition, out var placeGrid, out var resultGridPosition))
         {
             _item.SetPlace(resultGridPosition, placeGrid);

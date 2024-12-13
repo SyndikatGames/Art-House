@@ -35,13 +35,13 @@ namespace VG.YandexGames
         private void HTML_OnLanguageReceived(string language) => _receivedLanguage = language;
 
 
-        private static DeviceType _receivedDeviceType;
+        private static ControlType _receivedDeviceType;
         private void HTML_OnDeviceTypeReceived(string deviceType)
         {
-            if (deviceType == "desktop") _receivedDeviceType = DeviceType.Desktop;
-            else _receivedDeviceType = DeviceType.Mobile;
+            if (deviceType == "desktop") _receivedDeviceType = ControlType.Desktop;
+            else _receivedDeviceType = ControlType.Mobile;
         }
-        public static DeviceType GetDeviceType()
+        public static ControlType GetDeviceType()
         {
 #if UNITY_WEBGL
             _GetDeviceType();

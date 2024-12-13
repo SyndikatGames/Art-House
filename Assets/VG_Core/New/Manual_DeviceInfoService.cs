@@ -4,11 +4,11 @@ namespace VG
 {
     public class Manual_DeviceInfoService : DeviceInfoService
     {
-        [SerializeField] private DeviceType _deviceType;
+        [SerializeField] private ControlType _deviceType;
 
         public override bool supported => true;
 
-        public override DeviceType GetDeviceType() => _deviceType;
+        public override ControlType GetDeviceType() => _deviceType;
 
         public override void Initialize() => InitCompleted();
     }
