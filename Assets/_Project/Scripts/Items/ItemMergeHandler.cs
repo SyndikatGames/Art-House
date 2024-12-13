@@ -13,7 +13,6 @@ public class ItemMergeHandler
 
     public bool OnDrop()
     {
-        Debug.Log(ItemMoveHandler.DraggableItem);
         if (ItemMoveHandler.DraggableItem != null && MergingAvailable(ItemMoveHandler.DraggableItem, _item))
         {
             ItemList.PlacedItems.Remove(ItemMoveHandler.DraggableItem);

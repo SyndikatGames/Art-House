@@ -40,6 +40,8 @@ public class InteractionHandler : MonoBehaviour, IDragHandler,
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        print(eventData.pointerId);
+        
         if (IsDesctopControl)
         {
             _beginDragSuccess = true;

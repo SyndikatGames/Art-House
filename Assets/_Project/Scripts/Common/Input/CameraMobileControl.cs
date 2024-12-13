@@ -73,7 +73,6 @@ public class CameraMobileControl : MonoBehaviour
             case TouchPhase.Moved:
                 Vector2 currentPosition = _camera.ScreenToWorldPoint(touch.position);
 
-                print($"Moved: start: {_touchStartPosition}, current {currentPosition}");
                 Vector2 positionDifference = currentPosition - _touchStartPosition;
 
                 transform.position -= (Vector3)positionDifference;
