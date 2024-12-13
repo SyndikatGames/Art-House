@@ -3,6 +3,8 @@ using VG;
 
 public class CameraMobileControl : MonoBehaviour
 {
+    public static bool MovingNow { get; private set; } = false;
+
     [SerializeField] private float _scaleSensitivity = 1f;
     [SerializeField] private Vector2 _minMaxOrthographicSize;
     [SerializeField] private HoldingButton _upScaleButton;

@@ -59,6 +59,7 @@ public class ItemMoveHandler
         else _beforeWorldPosition = _item.transform.position;
 
         _beforeWorldPosition = _item.transform.position;
+        _item.Effects.DraggingHiglight();
 
         return true;
     }
@@ -69,7 +70,7 @@ public class ItemMoveHandler
 
         if (TryPlace(_item, worldPointerPosition, out _, out var resultGridPosition))
         {
-            _item.Effects.DragingHiglight();
+            _item.Effects.DraggingHiglight();
             _item.Placing(resultGridPosition);
         }
         else

@@ -28,7 +28,7 @@ public class ItemEffects
         _targetItemMergingMaterial = Resources.Load<Material>("Materials/TargetItemMerging");
     }
 
-    public void DragingHiglight()
+    public void DraggingHiglight()
     {
         DisableCurrentEffect();
         _spriteRenderer.material = _placeOutlineMaterial;

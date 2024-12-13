@@ -72,7 +72,7 @@ public class ItemDragging : MonoBehaviour
         _moveHandler.OnDrag(data);
     }
 
-    private void OnBeginDrag(PointerEventData data)
+    private void OnBeginDrag()
     {
         if (_moveHandler.OnBeginDrag())
         {

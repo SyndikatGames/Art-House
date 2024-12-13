@@ -13,6 +13,7 @@ public class ItemMergeHandler
 
     public bool OnDrop()
     {
+        Debug.Log(ItemMoveHandler.DraggableItem);
         if (ItemMoveHandler.DraggableItem != null && MergingAvailable(ItemMoveHandler.DraggableItem, _item))
         {
             ItemList.PlacedItems.Remove(ItemMoveHandler.DraggableItem);
@@ -38,7 +39,7 @@ public class ItemMergeHandler
         if (MergingAvailable(ItemMoveHandler.DraggableItem, _item))
         {
             _item.Effects.TargetItemMergingHighlight();
-            SetMergingHiglight(true);
+            SetMergingHiglightForEveryItem(true);
         }
 
 
@@ -50,26 +51,26 @@ public class ItemMergeHandler
 
         if (MergingAvailable(ItemMoveHandler.DraggableItem, _item))
         {
-            SetMergingHiglight(false);
+            SetMergingHiglightForEveryItem(false);
             _item.Effects.TargetItemMergingHighlight();
         }
     }
 
     public void OnEndDrag()
     {
-        SetMergingHiglight(false);
+        SetMergingHiglightForEveryItem(false);
     }
 
     public void OnBeginDrag()
     {
         if (_item.ChildItems.Count > 0) return;
-        SetMergingHiglight(true);
+        SetMergingHiglightForEveryItem(true);
     }
 
 
 
 
-    private void SetMergingHiglight(bool value)
+    private void SetMergingHiglightForEveryItem(bool value)
     {
         foreach (var item in ItemList.PlacedItems)
         {
@@ -85,6 +86,8 @@ public class ItemMergeHandler
 
     private bool MergingAvailable(Item item1, Item item2)
     {
+        if (item1 == item2) return false;
+
         if (item1.RarityType == item2.RarityType 
             && item1.ItemType == item2.ItemType
             && item1.RarityType != RarityType.Legendary)
