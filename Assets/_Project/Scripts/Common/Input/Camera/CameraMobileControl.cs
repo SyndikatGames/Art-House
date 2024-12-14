@@ -13,7 +13,7 @@ public class CameraMobileControl : MonoBehaviour
     private Vector2 _touchStartPosition;
     private Camera _camera;
 
-    private const float speedMoveThresholdCoefficient = 0.5f;
+    private const float speedMoveThresholdCoefficient = 1f;
 
     public float SpeedMoveThreshold => _camera.orthographicSize * speedMoveThresholdCoefficient;
 
@@ -74,13 +74,18 @@ public class CameraMobileControl : MonoBehaviour
         {
             var freeTouch = Input.GetTouch(0);
 
-            Vector2 previousPosition = _camera.ScreenToWorldPoint(freeTouch.position - freeTouch.deltaPosition);
-            Vector2 currentPosition = _camera.ScreenToWorldPoint(freeTouch.position);
+            if (freeTouch.phase == TouchPhase.Moved)
+            {
+                Vector2 previousPosition = _camera.ScreenToWorldPoint(freeTouch.position - freeTouch.deltaPosition);
+                Vector2 currentPosition = _camera.ScreenToWorldPoint(freeTouch.position);
+                ScreenLogger.Log($"Prev: {previousPosition}, Curr: {currentPosition}");
 
-            float changeSpeed = Vector2.Distance(previousPosition, currentPosition) / freeTouch.deltaTime;
-            bool touchForCamera = changeSpeed > SpeedMoveThreshold;
+                float changeSpeed = Vector2.Distance(previousPosition, currentPosition) / freeTouch.deltaTime;
+                bool touchForCamera = changeSpeed > SpeedMoveThreshold;
 
-            if (touchForCamera) MobileControl.CurrentState = MobileControl.State.CameraMoving;
+                ScreenLogger.Log($"Compare: {changeSpeed} {SpeedMoveThreshold}");
+                if (touchForCamera) MobileControl.CurrentState = MobileControl.State.CameraMoving;
+            }
         }
         
 
@@ -111,7 +116,11 @@ public class CameraMobileControl : MonoBehaviour
 
                 Vector2 positionDifference = currentPosition - previousPosition;
 
-                transform.position -= (Vector3)positionDifference * _moveSensitivity;
+                if (Environment.platform == Environment.Platform.WebGL)
+                    transform.position += (Vector3)positionDifference * _moveSensitivity;
+
+                else transform.position -= (Vector3)positionDifference * _moveSensitivity;
+
                 break;
 
         }

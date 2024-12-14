@@ -1,4 +1,5 @@
 using UnityEngine;
+using VG;
 
 public class Test : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class Test : MonoBehaviour
         {
             foreach (var rarityItemList in Prefabs.GetAllRaritySortedItems())
             {
-                print($"{rarityItemList.Key}: {rarityItemList.Value.Count}");
+                ScreenLogger.Log($"{rarityItemList.Key}: {rarityItemList.Value.Count}");
             }
 
 

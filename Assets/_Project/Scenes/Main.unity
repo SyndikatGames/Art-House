@@ -3163,7 +3163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a9939cd000205c468f62822ebb198e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSensitivity: 0.7
+  _moveSensitivity: 0.9
   _scaleSensitivity: 2
   _minMaxOrthographicSize: {x: 1, y: 4}
   _upScaleButton: {fileID: 141817656}
