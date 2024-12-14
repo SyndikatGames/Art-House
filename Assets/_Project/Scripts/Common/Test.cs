@@ -10,7 +10,6 @@ public class Test : MonoBehaviour
         {
             foreach (var rarityItemList in Prefabs.GetAllRaritySortedItems())
             {
-                ScreenLogger.Log($"{rarityItemList.Key}: {rarityItemList.Value.Count}");
             }
 
 

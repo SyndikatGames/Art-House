@@ -13,10 +13,6 @@ public class MobileItemInteraction : ItemInteractionHandler,
     private float _holdingDuration;
     private const float beginDragHoldingThreshold = 0.25f;
 
-    private bool _hasOneClick = false;
-    private float _timeSinceOneClick = 0f;
-    private const float doubleClickThreshold = 0.5f;
-
     public override void DisableDragging() => _beginDragSuccess = false;
 
 
@@ -44,16 +40,8 @@ public class MobileItemInteraction : ItemInteractionHandler,
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (_hasOneClick)
-        {
-            if (_timeSinceOneClick < doubleClickThreshold)
-            {
-                itemInteraction.Click();
-                _timeSinceOneClick = 0;
-                _hasOneClick = false;
-            }
-        }
-        else _hasOneClick = true;
+        if (MobileControl.CurrentState == MobileControl.State.Free)
+            itemInteraction.Click();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -98,16 +86,6 @@ public class MobileItemInteraction : ItemInteractionHandler,
                 _beginDragSuccess = true;
                 itemInteraction.BeginDrag();
                 MobileControl.CurrentState = MobileControl.State.ItemMoving;
-            }
-        }
-
-        if (_hasOneClick)
-        {
-            _timeSinceOneClick += Time.deltaTime;
-            if (_timeSinceOneClick > doubleClickThreshold)
-            {
-                _hasOneClick = false;
-                _timeSinceOneClick = 0f;
             }
         }
 

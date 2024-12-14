@@ -78,12 +78,10 @@ public class CameraMobileControl : MonoBehaviour
             {
                 Vector2 previousPosition = _camera.ScreenToWorldPoint(freeTouch.position - freeTouch.deltaPosition);
                 Vector2 currentPosition = _camera.ScreenToWorldPoint(freeTouch.position);
-                ScreenLogger.Log($"Prev: {previousPosition}, Curr: {currentPosition}");
 
                 float changeSpeed = Vector2.Distance(previousPosition, currentPosition) / freeTouch.deltaTime;
                 bool touchForCamera = changeSpeed > SpeedMoveThreshold;
 
-                ScreenLogger.Log($"Compare: {changeSpeed} {SpeedMoveThreshold}");
                 if (touchForCamera) MobileControl.CurrentState = MobileControl.State.CameraMoving;
             }
         }
