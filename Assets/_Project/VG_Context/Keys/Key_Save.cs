@@ -8,6 +8,8 @@ namespace VG
 
         public static string offline_time_seconds(int roomIndex) => $"off{roomIndex}";
         public static string random_boxes(int roomIndex) => $"tb{roomIndex}";
+        
+
 
         public static string ads_enabled => "ads";
         public static string soft_money => "g";
@@ -20,6 +22,7 @@ namespace VG
 
         public static string boxes_data(int roomIndex) => $"b{roomIndex}";
         public static string room_data(int index) => $"r{index}";
+        public static string room_size_data(int roomIndex) => $"rs{roomIndex}";
         public static string current_style_index(int roomIndex) => $"s{roomIndex}";
 
         public static string current_room_index => "cri";

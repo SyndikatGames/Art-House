@@ -10848,6 +10848,7 @@ GameObject:
   - component: {fileID: 1991170289}
   - component: {fileID: 1991170291}
   - component: {fileID: 1991170292}
+  - component: {fileID: 1991170293}
   - component: {fileID: 1991170290}
   m_Layer: 0
   m_Name: Room
@@ -10913,6 +10914,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rootItem: {fileID: 1991170290}
+  _roomExpansion: {fileID: 1991170293}
 --- !u!114 &1991170292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10926,7 +10928,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tilemap: {fileID: 559249256}
-  _roomSize: {x: 7, y: 7}
+--- !u!114 &1991170293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991170288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e502a11b7f649d3409c9c80f5393e295, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _room: {fileID: 1991170290}
 --- !u!1 &1997950315
 GameObject:
   m_ObjectHideFlags: 0

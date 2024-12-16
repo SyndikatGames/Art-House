@@ -12,11 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c380835282fff541899049a98a3768d, type: 3}
   m_Name: StartValues
   m_EditorClassIdentifier: 
-  money: 0
-  gems: 3
-  autoplays: 3
-  speedModeTime: 0
-  promotionsData:
-  - {fileID: 11400000, guid: a4f4034d480c0fc4a81838f608a33828, type: 2}
-  - {fileID: 11400000, guid: dbdc1141600e8b14dbcb5aaf8b4bd64a, type: 2}
-  - {fileID: 11400000, guid: 16de5a5aa7b0a5d4582e02f8c1f2d36f, type: 2}
+  <RoomSize>k__BackingField: {x: 7, y: 7}

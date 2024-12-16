@@ -8,9 +8,8 @@ public class Test : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
-            foreach (var rarityItemList in Prefabs.GetAllRaritySortedItems())
-            {
-            }
+            var size = Saves.RoomSize;
+            Saves.SetRoomSize(new Vector2Int(size.x + 1, size.y + 1));
 
 
 

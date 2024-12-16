@@ -31,6 +31,7 @@ namespace VG
                 new ItemFloat(Key_Save.random_boxes(i), 10);
                 new ItemString(Key_Save.boxes_data(i), "0_0_0_0_0_0");
                 new ItemString(Key_Save.room_data(i), string.Empty);
+                new ItemString(Key_Save.room_size_data(i), $"{startValues.RoomSize.x}_{startValues.RoomSize.y}");
                 new ItemFloat(Key_Save.offline_time_seconds(i), 0f);
             }
 

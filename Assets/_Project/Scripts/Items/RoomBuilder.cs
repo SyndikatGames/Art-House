@@ -4,6 +4,7 @@ using VG;
 public class RoomBuilder : MonoBehaviour
 {
     [SerializeField] private Item _rootItem;
+    [SerializeField] private RoomExpansion _roomExpansion;
 
 
     private void Awake()
@@ -11,19 +12,22 @@ public class RoomBuilder : MonoBehaviour
         if (Saves.Initialized) BuildRoom();
     }
 
+
     private void BuildRoom()
     {
         _rootItem.SetPlace(Vector3Int.zero, placeGrid: null);
+        _roomExpansion.UpdateRoomSize();
 
         var roomItemsDataList = Saves.GetRoomItemAcrhitecture(roomIndex: 0);
 
         foreach (var itemData in roomItemsDataList)
             InstantiateItem(itemData, parent: _rootItem);
             
-
         ItemList.ResortOrder();
-        ItemList.UpdateItems();
+        //ItemList.UpdateItems();
     }
+
+
 
     private void InstantiateItem(ItemData itemData, Item parent)
     {

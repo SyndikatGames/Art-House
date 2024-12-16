@@ -1,10 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using VG;
-
-
-
-
 
 
 [CreateAssetMenu(menuName = "Project/Room", fileName = "Room")]
@@ -23,7 +20,6 @@ public class RoomConfig : ScriptableObject
         public List<BonusValue> bonusList;
     }
 
-
     [SerializeField] private List<int> _prestigeRequires;
     [SerializeField] private List<LevelRoomBonuses> _levelBonuses;
 
@@ -31,15 +27,6 @@ public class RoomConfig : ScriptableObject
 
     public int GetCurrentPrestigeRequire() => _prestigeRequires[CurrentLevel];
 
-    public Dictionary<BonusType, float> GetNewLevelBonuses(int level)
-    {
-        var result = new Dictionary<BonusType, float>();
-        for (int i = 0; i < _levelBonuses[level].bonusList.Count; i++)
-            result.Add(_levelBonuses[level].bonusList[i].type, 
-                _levelBonuses[level].bonusList[i].value);
-
-        return result;
-    }
 
     public Dictionary<BonusType, float> CurrentBonuses
     {

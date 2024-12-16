@@ -96,7 +96,11 @@ public class Item : MonoBehaviour
         onPlaced?.Invoke();
     }
 
-
+    public void SetPlaceGridData(List<PlaceGridData> dataList)
+    {
+        _placeGridDataList = dataList;
+        UpdatePlaceGrids();
+    }
 
     public PlaceGrid GetPlaceGrid(Vector3Int position, ItemPlaceType placeType, Side side)
     {
