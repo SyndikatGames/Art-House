@@ -88,7 +88,11 @@ public class ItemEffects
         new ScaleFlashTween(instObject, flashScale);
     }
 
-
+    public void SetInvisible()
+    {
+        DisableCurrentEffect();
+        _spriteRenderer.color = Color.clear;
+    }
 
     public void DisableCurrentEffect()
     {

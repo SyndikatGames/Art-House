@@ -23,10 +23,8 @@ public class MobileItemInteraction : ItemInteractionHandler,
 
     public void OnDrag(PointerEventData eventData)
     {
-        Vector2 pointerWorldPosition = Camera.ScreenToWorldPoint(eventData.position);
-
         if (_beginDragSuccess)
-            itemInteraction.Drag(pointerWorldPosition);
+            itemInteraction.Drag(eventData.position);
     }
 
     public void OnEndDrag(PointerEventData eventData)

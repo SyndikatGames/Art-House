@@ -20,6 +20,7 @@ namespace VG
         public static string styles_is_new_data(int roomIndex) => $"sind{roomIndex}";
 
 
+        public static string cards_data(int roomIndex) => $"i{roomIndex}";
         public static string boxes_data(int roomIndex) => $"b{roomIndex}";
         public static string room_data(int index) => $"r{index}";
         public static string room_size_data(int roomIndex) => $"rs{roomIndex}";

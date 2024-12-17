@@ -61,10 +61,7 @@ public class SellArea : MonoBehaviour
 
         Vector2 sellPosition = item.transform.position;
 
-        ItemList.PlacedItems.Remove(item);
-        ItemList.UpdateItems();
-
-        Destroy(item.gameObject);
+        item.Destroy();
         Instantiate(_sellParticlePrefab, sellPosition, Quaternion.identity)
             .SetSellPrice(sellPrice);
 

@@ -18,10 +18,8 @@ public class DesktopItemInteraction : ItemInteractionHandler,
 
     public void OnDrag(PointerEventData eventData)
     {
-        Vector2 pointerWorldPosition = Camera.ScreenToWorldPoint(eventData.position);
-
         if (_dragging) 
-            itemInteraction.Drag(pointerWorldPosition);
+            itemInteraction.Drag(eventData.position);
     }
 
     public void OnEndDrag(PointerEventData eventData)

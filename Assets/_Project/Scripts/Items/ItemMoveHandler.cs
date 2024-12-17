@@ -1,13 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
+using VG;
 
 public class ItemMoveHandler
 {
     public static Item DraggableItem { get; private set; } = null;
 
     private Item _item;
-    private Vector2 _beforeWorldPosition;
     private Vector3Int _beforePosition;
 
 
@@ -56,9 +55,7 @@ public class ItemMoveHandler
         DraggableItem = _item;
 
         if (_item.ParentItem != null) _beforePosition = _item.Position;
-        else _beforeWorldPosition = _item.transform.position;
 
-        _beforeWorldPosition = _item.transform.position;
         _item.Effects.DraggingHiglight();
 
         return true;
@@ -90,7 +87,17 @@ public class ItemMoveHandler
             if (_item.ParentItem != null)
                 _item.SetPlace(_beforePosition, _item.ParentGrid);
 
-            else _item.transform.position = _beforeWorldPosition;
+            else
+            {
+                Saves.AddCard(new CardData
+                {
+                    itemType = _item.ItemType,
+                    rarityType = _item.RarityType,
+                    amount = 1,
+                });
+                _item.Destroy();
+            } 
+                
         }
 
         _item.Effects.DisableCurrentEffect();

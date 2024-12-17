@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using VG;
 
@@ -9,7 +10,12 @@ public class Test : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.T))
         {
             var size = Saves.RoomSize;
-            Saves.SetRoomSize(new Vector2Int(size.x + 1, size.y + 1));
+            Saves.AddCard(new CardData()
+            {
+                rarityType = RarityType.Rare,
+                amount = 2,
+                itemType = ItemType.AlarmClock,
+            });
 
 
 

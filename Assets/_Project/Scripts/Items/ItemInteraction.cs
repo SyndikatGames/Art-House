@@ -15,14 +15,20 @@ public class ItemInteraction : MonoBehaviour
 
     private ItemMoveHandler _moveHandler;
     private ItemMergeHandler _mergeHandler;
+    private CardMoveHandler _cardMoveHandler;
 
     private Vector2 _pointerWorldPosition;
     private ItemInteractionHandler _interactionHandler;
+
+
+    private Camera _camera;
+    private Camera Camera { get { if (_camera == null) _camera = Camera.main; return _camera; } }
 
     private void Awake()
     {
         _moveHandler = new ItemMoveHandler(_item);
         _mergeHandler = new ItemMergeHandler(_item);
+        _cardMoveHandler = new CardMoveHandler(_item);
 
         _interactionHandler = ItemInteractionHandler.GetHandler(_interactableObject);
         _interactionHandler.Initialize(this);
@@ -49,6 +55,13 @@ public class ItemInteraction : MonoBehaviour
     public void EndDrag()
     {
         _mergeHandler.OnEndDrag();
+
+        if (_cardMoveHandler.Release() == CardState.InsideCatalog)
+        {
+            Sound.Play(Key_Sound.PlaceItem);
+            return;
+        }
+
         if (!_itemMerged)
         {
             _moveHandler.OnEndDrag(_pointerWorldPosition);
@@ -63,11 +76,17 @@ public class ItemInteraction : MonoBehaviour
         if (_itemMerged) Sound.Play(Key_Sound.MergeItems);
     }
 
-    public void Drag(Vector2 pointerWorldPosition)
+    public void Drag(Vector2 pointerScreenPosition)
     {
-        _itemMerged = false;
-        _pointerWorldPosition = pointerWorldPosition;
-        _moveHandler.OnDrag(pointerWorldPosition);
+        if (_cardMoveHandler.Move(pointerScreenPosition) == CardState.World)
+        {
+            Vector2 worldPosition = Camera.ScreenToWorldPoint(pointerScreenPosition);
+
+            _itemMerged = false;
+            _pointerWorldPosition = worldPosition;
+            _moveHandler.OnDrag(worldPosition);
+        }
+
     }
 
     public void BeginDrag()

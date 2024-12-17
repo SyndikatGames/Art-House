@@ -79,6 +79,10 @@ public class Item : MonoBehaviour
         RarityType = raritySprite.rarityType;
     }
 
+    public Sprite GetSprite(RarityType rarityType) 
+        => _sprites.Find((sprite) => sprite.rarityType == rarityType).sprite;
+
+
     public void SetPlace(Vector3Int position, PlaceGrid placeGrid)
     {
         if (placeGrid != null)
@@ -196,6 +200,13 @@ public class Item : MonoBehaviour
         PlaceGrids = new List<PlaceGrid>(_placeGridDataList.Count);
         foreach (var placeGridData in _placeGridDataList)
             PlaceGrids.Add(new PlaceGrid(this, placeGridData, Position));
+    }
+
+    public void Destroy()
+    {
+        ItemList.PlacedItems.Remove(this);
+        ItemList.UpdateItems();
+        Destroy(gameObject);
     }
 
 

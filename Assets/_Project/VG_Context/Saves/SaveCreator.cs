@@ -33,6 +33,7 @@ namespace VG
                 new ItemString(Key_Save.room_data(i), string.Empty);
                 new ItemString(Key_Save.room_size_data(i), $"{startValues.RoomSize.x}_{startValues.RoomSize.y}");
                 new ItemFloat(Key_Save.offline_time_seconds(i), 0f);
+                new ItemString(Key_Save.cards_data(i), string.Empty);
             }
 
         }

@@ -84,8 +84,8 @@ Material:
     - _Stencil: 0
     - _StencilComp: 8
     - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
+    - _StencilReadMask: 1
+    - _StencilWriteMask: 0
     - _TextureHeight: 512
     - _TextureWidth: 512
     - _UnderlayDilate: 0
@@ -120,9 +120,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: Main
   m_EditorClassIdentifier: 
-  hashCode: 802383682
+  hashCode: 2664555
   material: {fileID: -7216278356357123725}
-  materialHashCode: 660492578
+  materialHashCode: 2064092395
   m_Version: 1.1.0
   m_SourceFontFileGUID: a7366426fb56ab145bdce4dd57d9ad48
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: a7366426fb56ab145bdce4dd57d9ad48, type: 3}
