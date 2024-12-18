@@ -1,69 +1,42 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using VG;
 
-public class SellArea : MonoBehaviour
+public class SellArea : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IDropHandler
 {
-    [SerializeField] private InteractionHandler _interactionHandler;
-    [SerializeField] private SellParticle _sellParticlePrefab;
-    [SerializeField] private Color _noHighlightColor;
-    [SerializeField] private Color _highlightColor;
-    [SerializeField] private List<SpriteRenderer> _highligthableSprites;
+    //[SerializeField] private SellParticle _sellParticlePrefab;
 
 
-    private void OnEnable()
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        _interactionHandler.onPointerEnter += OnPointerEnter;
-        _interactionHandler.onPointerExit += OnPointerExit;
-        _interactionHandler.onDrop += OnDrop;
-    }
-
-    
-
-    private void OnDisable()
-    {
-        _interactionHandler.onPointerEnter -= OnPointerEnter;
-        _interactionHandler.onPointerExit -= OnPointerExit;
-        _interactionHandler.onDrop -= OnDrop;
-    }
-
-    private void OnPointerEnter(PointerEventData eventData)
-    {
-        if (ItemMoveHandler.DraggableItem == null) return;
-
-        foreach (var spriteRenderer in _highligthableSprites)
-            spriteRenderer.color = _highlightColor;
+        print("Enter");
 
     }
 
-    private void OnPointerExit(PointerEventData eventData)
+    public void OnPointerExit(PointerEventData eventData)
     {
-        foreach (var spriteRenderer in _highligthableSprites)
-            spriteRenderer.color = _noHighlightColor;
+        print("Exit");
     }
 
-    private void OnDrop(PointerEventData eventData)
+    public void OnDrop(PointerEventData eventData)
     {
+        print("drop");
+
         if (ItemMoveHandler.DraggableItem != null)
-            SellItem();
-
-        foreach (var spriteRenderer in _highligthableSprites)
-            spriteRenderer.color = _noHighlightColor;
+            SellItem(ItemMoveHandler.DraggableItem, eventData.position);
     }
 
 
-    private void SellItem()
+    private void SellItem(Item item, Vector2 screenPosition)
     {
-        var item = ItemMoveHandler.DraggableItem;
         float sellPrice = TotalRules.GetItemSellPrice(item.RarityType);
 
-        Vector2 sellPosition = item.transform.position;
+        item.GetComponent<ItemInteraction>().CardMoveHandler.IsSold = true;
 
-        item.Destroy();
-        Instantiate(_sellParticlePrefab, sellPosition, Quaternion.identity)
-            .SetSellPrice(sellPrice);
+        //var sellParticle = Instantiate(_sellParticlePrefab, UI.Canvas);
+        //sellParticle.GetComponent<RectTransform>().position = screenPosition;
+        //sellParticle.SetSellPrice(sellPrice);
 
         Saves.Float[Key_Save.soft_money].Value += sellPrice;
         Sound.Play(Key_Sound.SellItem);

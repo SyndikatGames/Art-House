@@ -28,6 +28,7 @@ public class CardCatalog : Info
 
     protected override void UpdateValue()
     {
+        _grid.enabled = true;
         var cardList = Saves.GetCards();
 
         foreach (Transform child in _grid.transform)

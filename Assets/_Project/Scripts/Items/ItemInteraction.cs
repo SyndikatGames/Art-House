@@ -15,7 +15,7 @@ public class ItemInteraction : MonoBehaviour
 
     private ItemMoveHandler _moveHandler;
     private ItemMergeHandler _mergeHandler;
-    private CardMoveHandler _cardMoveHandler;
+    public CardMoveHandler CardMoveHandler { get; private set; }
 
     private Vector2 _pointerWorldPosition;
     private ItemInteractionHandler _interactionHandler;
@@ -28,7 +28,7 @@ public class ItemInteraction : MonoBehaviour
     {
         _moveHandler = new ItemMoveHandler(_item);
         _mergeHandler = new ItemMergeHandler(_item);
-        _cardMoveHandler = new CardMoveHandler(_item);
+        CardMoveHandler = new CardMoveHandler(_item);
 
         _interactionHandler = ItemInteractionHandler.GetHandler(_interactableObject);
         _interactionHandler.Initialize(this);
@@ -56,7 +56,7 @@ public class ItemInteraction : MonoBehaviour
     {
         _mergeHandler.OnEndDrag();
 
-        if (_cardMoveHandler.Release() == CardState.InsideCatalog)
+        if (CardMoveHandler.Release() == CardState.InsideCatalog)
         {
             Sound.Play(Key_Sound.PlaceItem);
             return;
@@ -78,7 +78,7 @@ public class ItemInteraction : MonoBehaviour
 
     public void Drag(Vector2 pointerScreenPosition)
     {
-        if (_cardMoveHandler.Move(pointerScreenPosition) == CardState.World)
+        if (CardMoveHandler.Move(pointerScreenPosition) == CardState.World)
         {
             Vector2 worldPosition = Camera.ScreenToWorldPoint(pointerScreenPosition);
 

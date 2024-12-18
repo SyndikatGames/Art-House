@@ -16,10 +16,11 @@ public class ItemCard : MonoBehaviour
 
     [SerializeField] private Image _icon;
     [SerializeField] private Image _panel;
+    [SerializeField] private Image _interactionImage;
     [SerializeField] private TextMeshProUGUI _amountText;
     [SerializeField] private List<RarityPanelSprite> _panelSprites;
 
-
+    public void DisableRaycast() => _interactionImage.raycastTarget = false;
 
     public void SetData(CardData cardData)
     {

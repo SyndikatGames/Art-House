@@ -6,8 +6,6 @@ public enum CardState { InsideCatalog, World }
 
 public class CardMoveHandler
 {
-
-
     private Item _item;
     private ItemCard _card;
 
@@ -17,6 +15,8 @@ public class CardMoveHandler
 
 
     private const float convertToItemThresholdViewportY = 0.12f;
+
+    public bool IsSold { get; set; } = false;
 
 
     public CardMoveHandler(Item item)
@@ -37,6 +37,8 @@ public class CardMoveHandler
             amount = 1,
         });
         _cardRect.gameObject.SetActive(false);
+        _card.DisableRaycast();
+        Debug.Log("disable");
     }
 
     public CardState Move(Vector2 screenPosition)

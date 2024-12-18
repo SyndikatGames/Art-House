@@ -53,6 +53,13 @@ public class Item : MonoBehaviour
         }
     }
 
+    public CardData ConvertToCardData() => new CardData
+    {
+        amount = 1,
+        itemType = ItemType,
+        rarityType = RarityType,
+    };
+
     public bool BlockRaycast
     {
         get => _clickCanvas.GetComponent<GraphicRaycaster>().enabled;
