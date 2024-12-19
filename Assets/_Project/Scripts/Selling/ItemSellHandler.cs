@@ -1,28 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using VG;
 
 public class ItemSellHandler
 {
-    
-    public void ShowSellArea()
-    {
+    private Item _item;
 
-    }
-    public void HideSellArea()
-    {
 
+    public ItemSellHandler(Item item)
+    {
+        _item = item;
     }
 
-    public bool IsInsideSellArea(Vector2 screenPosition)
+
+    public void ShowSellArea() => SellArea.SetActive(true);
+    public void HideSellArea() => SellArea.SetActive(false);
+
+    public bool TrySellItem(Vector2 screenPosition)
     {
+        if (SellArea.PointerInsideArea == false) return false;
 
-        return false;
-    }
+        float sellPrice = TotalRules.GetItemSellPrice(_item.RarityType);
+        _item.Destroy();
 
-    public void SellItem(Item item)
-    {
+        var sellParticlePrefab = Resources.Load<SellParticle>("Prefabs/SellParticle");
 
+        var sellParticle = Object.Instantiate(sellParticlePrefab, UI.Canvas);
+        sellParticle.GetComponent<RectTransform>().position = screenPosition;
+        sellParticle.SetSellPrice(sellPrice);
+        sellParticle.RunAnimation();
+
+        Saves.RemoveCard(_item.ConvertToCardData());
+        Saves.Float[Key_Save.soft_money].Value += sellPrice;
+        return true;
     }
 
 

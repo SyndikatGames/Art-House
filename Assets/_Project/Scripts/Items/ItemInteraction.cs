@@ -13,11 +13,13 @@ public class ItemInteraction : MonoBehaviour
     [SerializeField] private Item _item;
     [SerializeField] private GameObject _interactableObject;
 
+    private ItemSellHandler _sellHandler;
     private ItemMoveHandler _moveHandler;
     private ItemMergeHandler _mergeHandler;
-    public CardMoveHandler CardMoveHandler { get; private set; }
+    private ItemCardHandler _cardHandler;
 
     private Vector2 _pointerWorldPosition;
+    private Vector2 _pointerScreenPosition;
     private ItemInteractionHandler _interactionHandler;
 
 
@@ -28,7 +30,8 @@ public class ItemInteraction : MonoBehaviour
     {
         _moveHandler = new ItemMoveHandler(_item);
         _mergeHandler = new ItemMergeHandler(_item);
-        CardMoveHandler = new CardMoveHandler(_item);
+        _cardHandler = new ItemCardHandler(_item);
+        _sellHandler = new ItemSellHandler(_item);
 
         _interactionHandler = ItemInteractionHandler.GetHandler(_interactableObject);
         _interactionHandler.Initialize(this);
@@ -56,18 +59,24 @@ public class ItemInteraction : MonoBehaviour
     {
         _mergeHandler.OnEndDrag();
 
-        if (CardMoveHandler.Release() == CardState.InsideCatalog)
+        if (_cardHandler.Release() == CardState.InsideCatalog)
         {
-            Sound.Play(Key_Sound.PlaceItem);
-            return;
+            if (_sellHandler.TrySellItem(_pointerScreenPosition))
+                Sound.Play(Key_Sound.SellItem);
+
+            else Sound.Play(Key_Sound.PlaceItem);
+        }
+        else
+        {
+            if (!_itemMerged)
+            {
+                _moveHandler.OnEndDrag(_pointerWorldPosition);
+                Sound.Play(Key_Sound.PlaceItem);
+                Events.ItemPlaced();
+            }
         }
 
-        if (!_itemMerged)
-        {
-            _moveHandler.OnEndDrag(_pointerWorldPosition);
-            Sound.Play(Key_Sound.PlaceItem);
-            Events.ItemPlaced();
-        }
+        _sellHandler.HideSellArea();
     }
 
     public void Drop()
@@ -78,7 +87,9 @@ public class ItemInteraction : MonoBehaviour
 
     public void Drag(Vector2 pointerScreenPosition)
     {
-        if (CardMoveHandler.Move(pointerScreenPosition) == CardState.World)
+        _pointerScreenPosition = pointerScreenPosition;
+
+        if (_cardHandler.Move(pointerScreenPosition) == CardState.World)
         {
             Vector2 worldPosition = Camera.ScreenToWorldPoint(pointerScreenPosition);
 
@@ -91,6 +102,8 @@ public class ItemInteraction : MonoBehaviour
 
     public void BeginDrag()
     {
+        _sellHandler.ShowSellArea();
+
         if (_moveHandler.OnBeginDrag())
         {
             Sound.Play(Key_Sound.TakeItem);
