@@ -8,9 +8,9 @@ namespace VG
     public partial class Saves
     {
 
-        public static List<CardData> GetCards()
+        public static List<CardModel> GetCards()
         {
-            var result = new List<CardData>();
+            var result = new List<CardModel>();
             if (String[Key_Save.cards_data(0)].Value == string.Empty) 
                 return result;
 
@@ -20,7 +20,7 @@ namespace VG
             foreach (var cardData in splitData)
             {
                 var splitCardData = cardData.Split('_');
-                result.Add(new CardData
+                result.Add(new CardModel
                 {
                     itemType = (ItemType)int.Parse(splitCardData[0]),
                     rarityType = (RarityType)int.Parse(splitCardData[1]),
@@ -31,7 +31,7 @@ namespace VG
             return result;
         }
 
-        public static void RemoveCard(CardData cardData)
+        public static void RemoveCard(CardModel cardData)
         {
             var cardDataList = GetCards();
 
@@ -51,7 +51,7 @@ namespace VG
             SetCards(cardDataList);
         }
 
-        public static void AddCard(CardData cardData)
+        public static void AddCard(CardModel cardData)
         {
             var cardDataList = GetCards();
 
@@ -77,7 +77,7 @@ namespace VG
         public static void UpdateCards() 
             => String[Key_Save.cards_data(0)].Value = String[Key_Save.cards_data(0)].Value;
 
-        private static void SetCards(List<CardData> cardDataList)
+        private static void SetCards(List<CardModel> cardDataList)
         {
             string resultData = string.Empty;
 

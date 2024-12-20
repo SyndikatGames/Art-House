@@ -27,7 +27,7 @@ public class ItemCardHandler
         _card = Object.Instantiate(Prefabs.ItemCard, UI.Canvas);
         _cardRect = _card.GetComponent<RectTransform>();
 
-        _card.SetData(new CardData
+        _card.SetData(new CardModel
         {
             itemType = _item.ItemType,
             rarityType = _item.RarityType,
@@ -68,7 +68,7 @@ public class ItemCardHandler
 
         CardCatalog.Grid.enabled = true;
 
-        var cardData = new CardData
+        var cardData = new CardModel
         {
             rarityType = _item.RarityType,
             itemType = _item.ItemType,

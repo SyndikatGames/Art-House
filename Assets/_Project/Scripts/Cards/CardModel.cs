@@ -1,5 +1,5 @@
 
-public struct CardData
+public struct CardModel
 {
     public ItemType itemType;
     public RarityType rarityType;

@@ -89,7 +89,7 @@ public class ItemMoveHandler
 
             else
             {
-                Saves.AddCard(new CardData
+                Saves.AddCard(new CardModel
                 {
                     itemType = _item.ItemType,
                     rarityType = _item.RarityType,

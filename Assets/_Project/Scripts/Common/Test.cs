@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using VG;
 
 public class Test : MonoBehaviour
 {
@@ -9,13 +8,29 @@ public class Test : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
-            var size = Saves.RoomSize;
-            Saves.AddCard(new CardData()
+            BoxOpeningModel boxOpeningModel = new BoxOpeningModel
             {
-                rarityType = RarityType.Rare,
-                amount = 2,
-                itemType = ItemType.AlarmClock,
-            });
+                boxRarityType = RarityType.Rare,
+                generatedCards = new List<CardModel>
+                {
+                    new CardModel
+                    {
+                        itemType = ItemType.Apple,
+                        rarityType = RarityType.Rare,
+                        amount = 1,
+                    },
+                    new CardModel
+                    {
+                        itemType = ItemType.Door,
+                        rarityType = RarityType.Rare,
+                        amount = 1,
+                    }
+
+                }
+            };
+
+            Instantiate(Prefabs.BoxOpeningWindow, UI.Canvas)
+                .Display(boxOpeningModel);
 
 
 

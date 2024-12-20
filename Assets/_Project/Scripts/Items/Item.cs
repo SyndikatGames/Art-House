@@ -53,7 +53,7 @@ public class Item : MonoBehaviour
         }
     }
 
-    public CardData ConvertToCardData() => new CardData
+    public CardModel ConvertToCardData() => new CardModel
     {
         amount = 1,
         itemType = ItemType,
