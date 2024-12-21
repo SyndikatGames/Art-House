@@ -21,7 +21,7 @@ public struct CardStyle
     public static float GetCardScaleForBoxOpening(Sprite itemSprite)
     {
         float maxSide = Mathf.Max(itemSprite.rect.width, itemSprite.rect.height);
-        if (maxSide < 150f) return 0.5f;
+        if (maxSide < 150f) return 0.6f;
         else if (maxSide < 250f) return 0.7f;
         else if (maxSide < 350f) return 0.85f;
         return 1f;

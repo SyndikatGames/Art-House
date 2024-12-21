@@ -53,7 +53,7 @@ public class Item : MonoBehaviour
         }
     }
 
-    public CardModel ConvertToCardData() => new CardModel
+    public CardModel GetCardModel() => new CardModel
     {
         amount = 1,
         itemType = ItemType,
@@ -86,8 +86,14 @@ public class Item : MonoBehaviour
         RarityType = raritySprite.rarityType;
     }
 
-    public Sprite GetSprite(RarityType rarityType) 
-        => _sprites.Find((sprite) => sprite.rarityType == rarityType).sprite;
+    public Sprite GetSprite(RarityType rarityType)
+    {
+        var sprite = _sprites.Find((sprite) => sprite.rarityType == rarityType).sprite;
+        if (sprite == null)
+            throw new Exception($"[{nameof(Item)}] Wrong sprite rarity type! {ItemType}, {rarityType}");
+
+        return sprite;
+    }
 
 
     public void SetPlace(Vector3Int position, PlaceGrid placeGrid)
