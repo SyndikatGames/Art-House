@@ -14,23 +14,31 @@ public class UnboxingConfig : ScriptableObject
 
 
     [System.Serializable]
-    private struct BoxRarityProbabilities
+    private struct BoxInfo
     { 
         public BoxType boxType;
+        public Sprite boxSprite;
+        public Sprite openedBoxSprite;
         public List<RarityProbability> probabilities;
     }
 
     [field: SerializeField] public UnboxingView UnboxingWindowPrefab { get; private set; }
 
-    [SerializeField] private List<BoxRarityProbabilities> _boxRarityProbabilities;
+    [SerializeField] private List<BoxInfo> _boxInfoList;
 
+
+    public Sprite GetBoxSprite(BoxType boxType) 
+        => _boxInfoList.Find(item => item.boxType == boxType).boxSprite;
+
+    public Sprite GetOpenedBoxSprite(BoxType boxType)
+        => _boxInfoList.Find(item => item.boxType == boxType).openedBoxSprite;
 
     public Dictionary<RarityType, float> GetRarityProbabilites(BoxType boxType)
     {
         float checkSum = 0f;
 
         var result = new Dictionary<RarityType, float>();
-        var boxProbabilities = _boxRarityProbabilities.Find(item =>  item.boxType == boxType);
+        var boxProbabilities = _boxInfoList.Find(item =>  item.boxType == boxType);
 
         foreach (var probability in boxProbabilities.probabilities)
         {

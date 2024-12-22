@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using VG;
 
-public class CardCatalog : Info
+public class CardCatalog : ReactiveView
 {
     public static GridLayoutGroup Grid { get; private set; }
 
@@ -18,15 +18,15 @@ public class CardCatalog : Info
 
     protected override void Subscribe()
     {
-        Saves.String[Key_Save.cards_data(0)].onChanged += UpdateValue;
+        Saves.String[Key_Save.cards_data(0)].onChanged += Display;
     }
 
-    protected override void Unsubscribe()
+    protected override void Dispose()
     {
-        Saves.String[Key_Save.cards_data(0)].onChanged -= UpdateValue;
+        Saves.String[Key_Save.cards_data(0)].onChanged -= Display;
     }
 
-    protected override void UpdateValue()
+    protected override void Display()
     {
         _grid.enabled = true;
         var cardList = Saves.GetCards();

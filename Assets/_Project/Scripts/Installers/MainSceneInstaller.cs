@@ -3,16 +3,21 @@ using Zenject;
 
 public class MainSceneInstaller : MonoInstaller
 {
-    [SerializeField] private UnboxingConfig _boxesConfig;
+    [SerializeField] private DesignConfig _designConfig;
+    [SerializeField] private UnboxingConfig _unboxingConfig;
+    [SerializeField] private ShopConfig _shopConfig;
 
 
     public override void InstallBindings()
     {
 
-        UnboxingController unboxingController = new UnboxingController(_boxesConfig);
+        UnboxingController unboxingController = new UnboxingController(_unboxingConfig);
         Container.Bind<UnboxingController>().FromInstance(unboxingController).AsSingle();
 
-        Debug.Log("Bind");
+        ShopController shopController = new ShopController(_shopConfig, _unboxingConfig, _designConfig);
+        Container.Bind<ShopController>().FromInstance(shopController).AsSingle();
+
+
     }
 
 }

@@ -4,22 +4,22 @@ using VG;
 
 namespace PrizeClaw
 {
-    public class PlayPrompt : Info
+    public class PlayPrompt : ReactiveView
     {
         [SerializeField] private TextMeshProUGUI _promptText;
 
 
         protected override void Subscribe()
         {
-            Saves.Float[Key_Save.prize_claw_tickets].onChanged += UpdateValue;
+            Saves.Float[Key_Save.prize_claw_tickets].onChanged += Display;
         }
 
-        protected override void Unsubscribe()
+        protected override void Dispose()
         {
-            Saves.Float[Key_Save.prize_claw_tickets].onChanged -= UpdateValue;
+            Saves.Float[Key_Save.prize_claw_tickets].onChanged -= Display;
         }
 
-        protected override void UpdateValue()
+        protected override void Display()
         {
             bool gameWasStarted = Saves.String[Key_Save.prize_claw_data].Value != string.Empty;
 

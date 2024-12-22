@@ -32,10 +32,10 @@ public class UnboxedCardView : MonoBehaviour
         _descriptionRect.localPosition = Vector3.zero;
         _descriptionRect.gameObject.SetActive(false);
 
-        var cardStyle = Configs.CardStyles.GetStyle(cardModel.rarityType);
+        var cardStyle = Configs.CardStyles.GetRarityStyle(cardModel.rarityType);
 
         _itemIcon.sprite = Prefabs.GetItem(cardModel.itemType).GetSprite(cardModel.rarityType);
-        _itemIcon.transform.localScale = Vector3.one * CardStyle.GetCardScaleForBoxOpening(_itemIcon.sprite);
+        _itemIcon.transform.localScale = Vector3.one * RarityStyle.GetCardScaleForBoxOpening(_itemIcon.sprite);
         _panelImage.sprite = cardStyle.panelSprite;
 
         int prestigePoints = TotalRules.GetItemPrestige(cardModel.rarityType);

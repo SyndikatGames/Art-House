@@ -1,24 +1,24 @@
 using UnityEngine;
 using VG;
 
-public class AvailableNewStyleMark : Info
+public class AvailableNewStyleMark : ReactiveView
 {
     [SerializeField] private GameObject _mark;
 
 
     protected override void Subscribe()
     {
-        Events.onNewLevelReached += UpdateValue;
-        Saves.String[Key_Save.styles_is_new_data(0)].onChanged += UpdateValue;
+        Events.onNewLevelReached += Display;
+        Saves.String[Key_Save.styles_is_new_data(0)].onChanged += Display;
     }
 
-    protected override void Unsubscribe()
+    protected override void Dispose()
     {
-        Events.onNewLevelReached -= UpdateValue;
-        Saves.String[Key_Save.styles_is_new_data(0)].onChanged -= UpdateValue;
+        Events.onNewLevelReached -= Display;
+        Saves.String[Key_Save.styles_is_new_data(0)].onChanged -= Display;
     }
 
-    protected override void UpdateValue()
+    protected override void Display()
     {
         int roomLevel = Configs.GetRoom(0).CurrentLevel;
 

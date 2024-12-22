@@ -29,9 +29,6 @@ public class OpenBoxAndPlaceItem_TutorialStep : TutorialStep
         else _promptText.text = Localization.GetString("tutorial_move_mobile");
 
 
-        if (Saves.GetNormalBoxesAmount() == 0)
-            Saves.AddBoxes(RarityType.Common, TutorialBoxOpening.boxesAmount);
-
         _openBoxPrompt.SetActive(true);
 
         Events.onBoxOpened += OnBoxOpened;

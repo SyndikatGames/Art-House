@@ -25,16 +25,12 @@ namespace VG
                     Saves.Bool[Key_Save.ads_enabled].Value = false;
                     break;
 
-                case Key_Product.epic_pack:
-                    Saves.AddBoxes(RarityType.Epic, 5);
+                case Key_Product.epic_box:
+                    Saves.AddBoxes(BoxType.Epic, 1);
                     break;
 
                 case Key_Product.fantastic_box:
-                    Saves.AddBoxes(RarityType.Fantastic, 1);
-                    break;
-
-                case Key_Product.legendary_box:
-                    Saves.AddBoxes(RarityType.Legendary, 1);
+                    Saves.AddBoxes(BoxType.Fantastic, 1);
                     break;
 
                 default: throw new System.Exception("Wrong product: " + productKey.ToString());

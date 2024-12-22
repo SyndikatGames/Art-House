@@ -5,27 +5,31 @@ using UnityEngine;
 namespace VG
 {
     [RequireComponent(typeof(TextMeshProUGUI))]
-    public class LocalizedString : Info
+    public class LocalizedString : ReactiveView
     {
         [SerializeField] private string _key;
         [SerializeField] private bool _useToken;
 
+        private TextMeshProUGUI _text;
+
         protected override void Subscribe()
         {
-            Localization.onChangeLanguage += UpdateValue;
-            if (_useToken) Localization.onUpdateToken += UpdateValue;
+            Localization.onChangeLanguage += Display;
+            if (_useToken) Localization.onUpdateToken += Display;
         }
 
-        protected override void Unsubscribe()
+        protected override void Dispose()
         {
-            Localization.onChangeLanguage -= UpdateValue;
-            if (_useToken) Localization.onUpdateToken -= UpdateValue;
+            Localization.onChangeLanguage -= Display;
+            if (_useToken) Localization.onUpdateToken -= Display;
         }
 
-        protected override void UpdateValue()
+        protected override void Display()
         {
             if (_key == string.Empty) return;
-            text.text = Localization.GetString(_key, _useToken);
+
+            _text ??= GetComponent<TextMeshProUGUI>();
+            _text.text = Localization.GetString(_key, _useToken);
         }
         
 
@@ -34,7 +38,7 @@ namespace VG
         {
             _key = key;
             _useToken = useToken;
-            UpdateValue();
+            Display();
         }
 
 

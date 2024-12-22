@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using VG;
 
-public class TutorialUnlocker : Info
+public class TutorialUnlocker : ReactiveView
 {
     [System.Serializable]
     private struct UnlockStep
@@ -16,15 +16,15 @@ public class TutorialUnlocker : Info
 
     protected override void Subscribe()
     {
-        Saves.Int[Key_Save.tutorial_step].onChanged += UpdateValue;
+        Saves.Int[Key_Save.tutorial_step].onChanged += Display;
     }
 
-    protected override void Unsubscribe()
+    protected override void Dispose()
     {
-        Saves.Int[Key_Save.tutorial_step].onChanged -= UpdateValue;
+        Saves.Int[Key_Save.tutorial_step].onChanged -= Display;
     }
 
-    protected override void UpdateValue()
+    protected override void Display()
     {
         int currentStep = Saves.Int[Key_Save.tutorial_step].Value;
 

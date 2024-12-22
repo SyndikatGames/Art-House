@@ -24,7 +24,7 @@ public class UnboxingController
 
         _unboxingModel = GenerateUnboxingModel(boxType, cardsAmount);
         _unboxingView = DiContainer.Create(_unboxingConfig.UnboxingWindowPrefab, UI.Canvas);
-        _unboxingView.StartUnboxing(_unboxingModel);
+        _unboxingView.StartUnboxing(_unboxingConfig, _unboxingModel);
 
     }
 
@@ -35,7 +35,7 @@ public class UnboxingController
         if (_currentCardIndex < _cardsAmount)
         {
             var cardModel = _unboxingModel.generatedCards[_currentCardIndex];
-            _unboxingView.OpenNewCard(_unboxingModel, _currentCardIndex);
+            _unboxingView.OpenNewCard(_unboxingConfig, _unboxingModel, _currentCardIndex);
             Saves.AddCard(cardModel);
 
             _currentCardIndex++;

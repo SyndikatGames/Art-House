@@ -3,7 +3,7 @@ using UnityEngine;
 using VG;
 
 
-public class StylesWindow : Info
+public class StylesWindow : ReactiveView
 {
     public static string Name => "Styles(Clone)";
 
@@ -12,17 +12,17 @@ public class StylesWindow : Info
 
     protected override void Subscribe()
     {
-        Saves.Int[Key_Save.current_style_index(0)].onChanged += UpdateValue;
-        Saves.String[Key_Save.styles_is_new_data(0)].onChanged += UpdateValue;
+        Saves.Int[Key_Save.current_style_index(0)].onChanged += Display;
+        Saves.String[Key_Save.styles_is_new_data(0)].onChanged += Display;
     }
 
-    protected override void Unsubscribe()
+    protected override void Dispose()
     {
-        Saves.Int[Key_Save.current_style_index(0)].onChanged -= UpdateValue;
-        Saves.String[Key_Save.styles_is_new_data(0)].onChanged -= UpdateValue;
+        Saves.Int[Key_Save.current_style_index(0)].onChanged -= Display;
+        Saves.String[Key_Save.styles_is_new_data(0)].onChanged -= Display;
     }
 
-    protected override void UpdateValue()
+    protected override void Display()
     {
         for (int i = 0; i < _styleVariants.Count; i++)
             _styleVariants[i].UpdateStyleIndex(i);

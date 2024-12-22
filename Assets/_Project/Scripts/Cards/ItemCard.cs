@@ -22,14 +22,14 @@ public class ItemCard : MonoBehaviour
 
     public void SetData(CardModel cardData)
     {
-        var cardStyle = Configs.CardStyles.GetStyle(cardData.rarityType);
+        var cardStyle = Configs.CardStyles.GetRarityStyle(cardData.rarityType);
         Data = cardData;
 
         _amountText.gameObject.SetActive(cardData.amount > 1);
         _amountText.text = cardData.amount.ToString();
 
         _icon.sprite = Prefabs.GetItem(cardData.itemType).GetSprite(cardData.rarityType);
-        _icon.transform.localScale = Vector3.one * CardStyle.GetCardScaleForBottomPanel(_icon.sprite);
+        _icon.transform.localScale = Vector3.one * RarityStyle.GetCardScaleForBottomPanel(_icon.sprite);
         _panel.sprite = cardStyle.panelSprite;
     }
 

@@ -30,7 +30,7 @@ public class ItemSellHandler
         sellParticle.RunAnimation();
 
         Saves.RemoveCard(_item.GetCardModel());
-        Saves.Float[Key_Save.soft_money].Value += sellPrice;
+        Saves.Float[Key_Save.money].Value += sellPrice;
         return true;
     }
 

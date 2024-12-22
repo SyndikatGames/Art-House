@@ -6,14 +6,6 @@ using UnityEngine.UI;
 
 public class UnboxingView : MonoBehaviour
 {
-    [System.Serializable]
-    private struct BoxSpriteData
-    {
-        public BoxType boxType;
-        public Sprite boxSprite;
-        public Sprite openedBoxSprite;
-    }
-
     [Header("Opening Cards:")]
     [SerializeField] private GameObject _skipButton;
     [SerializeField] private RectTransform _spawnCardPoint;
@@ -32,13 +24,11 @@ public class UnboxingView : MonoBehaviour
 
     [Header("Resources:")]
     [SerializeField] private UnboxedCardView _unboxedCardViewPrefab;
-    [SerializeField] private List<BoxSpriteData> _boxSprites;
 
     public bool Interactable { get; private set; } = true;
 
     private UnboxedCardView _unboxedCardView;
     private RectTransform _unboxedCardRect;
-    private BoxSpriteData _boxSpriteData;
     private bool _boxOpened;
 
     private const int showOpenAllButtonIfBoxesMore = 4;
@@ -51,13 +41,12 @@ public class UnboxingView : MonoBehaviour
     private const int maxUnboxedCards = 10;
     private const float showTotalCardsDuration = 1f;
 
-    public void StartUnboxing(UnboxingModel unboxingModel)
+    public void StartUnboxing(UnboxingConfig unboxingConfig, UnboxingModel unboxingModel)
     {
         _skipButton.SetActive(unboxingModel.generatedCards.Count > showOpenAllButtonIfBoxesMore);
         _shineRect.gameObject.SetActive(false);
 
-        _boxSpriteData = _boxSprites.Find(boxSprite => boxSprite.boxType == unboxingModel.boxType);
-        _boxImage.sprite = _boxSpriteData.boxSprite;
+        _boxImage.sprite = unboxingConfig.GetBoxSprite(unboxingModel.boxType);
 
         _counterText.text = unboxingModel.generatedCards.Count.ToString();
 
@@ -71,12 +60,12 @@ public class UnboxingView : MonoBehaviour
         _boxOpened = false;
     }
 
-    public void OpenNewCard(UnboxingModel unboxingModel, int cardIndex)
+    public void OpenNewCard(UnboxingConfig unboxingConfig, UnboxingModel unboxingModel, int cardIndex)
     {
         if (!_boxOpened)
         {
             _prompt.SetActive(false);
-            _boxImage.sprite = _boxSpriteData.openedBoxSprite;
+            _boxImage.sprite = unboxingConfig.GetOpenedBoxSprite(unboxingModel.boxType);
 
             _boxRect.localScale = Vector3.one;
 

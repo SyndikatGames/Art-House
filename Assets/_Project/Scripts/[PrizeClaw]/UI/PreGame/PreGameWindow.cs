@@ -7,7 +7,7 @@ using VG;
 
 namespace PrizeClaw
 {
-    public class PreGameWindow : Info
+    public class PreGameWindow : ReactiveView
     {
         [SerializeField] private Color _fadeTicketColor;
         [SerializeField] private List<Image> _ticketImages;
@@ -25,15 +25,15 @@ namespace PrizeClaw
 
         protected override void Subscribe()
         {
-            Saves.Float[Key_Save.prize_claw_tickets].onChanged += UpdateValue;
+            Saves.Float[Key_Save.prize_claw_tickets].onChanged += Display;
         }
 
-        protected override void Unsubscribe()
+        protected override void Dispose()
         {
-            Saves.Float[Key_Save.prize_claw_tickets].onChanged -= UpdateValue;
+            Saves.Float[Key_Save.prize_claw_tickets].onChanged -= Display;
         }
 
-        protected override void UpdateValue()
+        protected override void Display()
         {
             UpdateTickets();
             UpdateButtons();

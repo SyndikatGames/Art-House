@@ -1,9 +1,11 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using VG;
 
-public class PrestigeScore_Info : Info
+public class PrestigeScore_Info : ReactiveView
 {
+    [SerializeField] private TextMeshProUGUI _text;
     [SerializeField] private Image _fillImage;
 
     private const int roomIndex = 0;
@@ -11,21 +13,21 @@ public class PrestigeScore_Info : Info
 
     protected override void Subscribe()
     {
-        ItemList.onUpdated += UpdateValue;
+        ItemList.onUpdated += Display;
     }
 
-    protected override void Unsubscribe()
+    protected override void Dispose()
     {
-        ItemList.onUpdated -= UpdateValue;
+        ItemList.onUpdated -= Display;
     }
 
-    protected override void UpdateValue()
+    protected override void Display()
     {
         var roomConfig = Configs.GetRoom(roomIndex);
         int prestige = roomConfig.GetCurrentPrestige();
         int require = roomConfig.GetCurrentPrestigeRequire();
 
-        text.text = $"{prestige}/{require}";
+        _text.text = $"{prestige}/{require}";
         _fillImage.fillAmount = (float)prestige / require;
     }
 

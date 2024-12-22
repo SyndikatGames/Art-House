@@ -10,12 +10,10 @@ public class RotateItem_TutorialStep : TutorialStep
     {
         _prompt.SetActive(false);
         Events.onItemRotated -= OnItemRotated;
-        Box.OpeningBlocked = false;
     }
 
     public override void Run()
     {
-        Box.OpeningBlocked = true;
         var placedItem = ItemList.PlacedItems.Find((item) => item.ItemType != ItemType.Room);
 
         _prompt.transform.position = placedItem.transform.position;

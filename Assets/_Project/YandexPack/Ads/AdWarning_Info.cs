@@ -1,21 +1,21 @@
 using UnityEngine;
 using VG;
 
-public class AdWarning_Info : Info
+public class AdWarning_Info : ReactiveView
 {
     [SerializeField] private GameObject _warning;
 
     protected override void Subscribe()
     {
-        Saves.Bool[Key_Save.ads_enabled].onChanged += UpdateValue;
+        Saves.Bool[Key_Save.ads_enabled].onChanged += Display;
     }
 
-    protected override void Unsubscribe()
+    protected override void Dispose()
     {
-        Saves.Bool[Key_Save.ads_enabled].onChanged -= UpdateValue;
+        Saves.Bool[Key_Save.ads_enabled].onChanged -= Display;
     }
 
-    protected override void UpdateValue()
+    protected override void Display()
     {
         bool showWarning = Saves.Bool[Key_Save.ads_enabled].Value && !Hack.release;
         _warning.SetActive(showWarning);

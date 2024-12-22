@@ -2,23 +2,23 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using VG;
 
-public class RoomDrawer : Info
+public class RoomDrawer : ReactiveView
 {
     [SerializeField] private Tilemap _tilemap;
 
     protected override void Subscribe()
     {
-        Saves.Int[Key_Save.current_style_index(0)].onChanged += UpdateValue;
-        Saves.String[Key_Save.room_size_data(0)].onChanged += UpdateValue;
+        Saves.Int[Key_Save.current_style_index(0)].onChanged += Display;
+        Saves.String[Key_Save.room_size_data(0)].onChanged += Display;
     }
 
-    protected override void Unsubscribe()
+    protected override void Dispose()
     {
-        Saves.Int[Key_Save.current_style_index(0)].onChanged -= UpdateValue;
-        Saves.String[Key_Save.room_size_data(0)].onChanged -= UpdateValue;
+        Saves.Int[Key_Save.current_style_index(0)].onChanged -= Display;
+        Saves.String[Key_Save.room_size_data(0)].onChanged -= Display;
     }
 
-    protected override void UpdateValue()
+    protected override void Display()
     {
         int styleIndex = Saves.Int[Key_Save.current_style_index(0)].Value;
         var styleData = Configs.GetStyles(0).GetStyle(styleIndex);

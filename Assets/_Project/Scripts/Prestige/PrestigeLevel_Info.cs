@@ -1,23 +1,28 @@
 using VG;
+using UnityEngine;
+using TMPro;
 
-public class PrestigeLevel_Info : Info
+public class PrestigeLevel_Info : ReactiveView
 {
+    [SerializeField] private TextMeshProUGUI _text;
+
+
     private const int roomIndex = 0;
 
 
     protected override void Subscribe()
     {
-        Saves.String[Key_Save.room_data(roomIndex)].onChanged += UpdateValue;
+        Saves.String[Key_Save.room_data(roomIndex)].onChanged += Display;
     }
     
-    protected override void Unsubscribe()
+    protected override void Dispose()
     {
-        Saves.String[Key_Save.room_data(roomIndex)].onChanged -= UpdateValue;
+        Saves.String[Key_Save.room_data(roomIndex)].onChanged -= Display;
     }
     
-    protected override void UpdateValue()
+    protected override void Display()
     {
-        text.text = Configs.GetRoom(roomIndex).CurrentLevel.ToString();
+        _text.text = Configs.GetRoom(roomIndex).CurrentLevel.ToString();
     }
     
 }

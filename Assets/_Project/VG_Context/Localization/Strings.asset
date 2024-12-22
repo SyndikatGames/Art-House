@@ -135,10 +135,10 @@ MonoBehaviour:
     ru: 
     en: 
     tr: "\r"
-  - key: shabby_box
-    ru: "\u0421\u0442\u0430\u0440\u0430\u044F"
-    en: Shabby
-    tr: "Eskimi\u015F\r"
+  - key: 
+    ru: 
+    en: 
+    tr: "\r"
   - key: common_box
     ru: "\u041E\u0431\u044B\u0447\u043D\u0430\u044F"
     en: Common
@@ -155,10 +155,10 @@ MonoBehaviour:
     ru: "\u0424\u0430\u043D\u0442\u0430\u0441\u0442\u0438\u043A\u0430"
     en: Fantastic
     tr: "Fantezi\r"
-  - key: legendary_box
-    ru: "\u041B\u0435\u0433\u0435\u043D\u0434\u0430"
-    en: Legend
-    tr: "Efsane\r"
+  - key: 
+    ru: 
+    en: 
+    tr: "\r"
   - key: 
     ru: 
     en: 
@@ -322,6 +322,16 @@ MonoBehaviour:
     en: 'New style
 
       available!'
-    tr: 'Mevcut
-
-      yeni stil!'
+    tr: "Mevcut\nyeni stil!\r"
+  - key: 
+    ru: 
+    en: 
+    tr: "\r"
+  - key: sell_all_items
+    ru: "\u041F\u0440\u043E\u0434\u0430\u0442\u044C \n\u0432\u0441\u0435 \u043A\u0430\u0440\u0442\u044B"
+    en: 
+    tr: "\r"
+  - key: sell
+    ru: "\u041F\u0440\u043E\u0434\u0430\u0442\u044C"
+    en: 
+    tr: 

@@ -17,7 +17,7 @@ namespace VG
             new ItemBool(Key_Save.style_tutorial_completed, false);
             new ItemString(Key_Save.styles_is_new_data(0), "0111111111");
 
-            new ItemFloat(Key_Save.soft_money, 500);
+            new ItemFloat(Key_Save.money, 500);
             new ItemInt(Key_Save.current_room_index, 0);
 
             new ItemString(Key_Save.prize_claw_data, string.Empty);

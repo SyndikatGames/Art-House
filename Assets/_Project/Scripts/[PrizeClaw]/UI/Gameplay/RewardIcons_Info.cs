@@ -3,20 +3,20 @@ using VG;
 
 namespace PrizeClaw
 {
-    public class RewardIcons_Info : Info
+    public class RewardIcons_Info : ReactiveView
     {
 
         protected override void Subscribe()
         {
-            GameState.onChanged += UpdateValue;
+            GameState.onChanged += Display;
         }
 
-        protected override void Unsubscribe()
+        protected override void Dispose()
         {
-            GameState.onChanged -= UpdateValue;
+            GameState.onChanged -= Display;
         }
 
-        protected override void UpdateValue()
+        protected override void Display()
         {
             var prizesConfig = Configs.Prizes;
             var rewards = GameState.Current.Rewards;

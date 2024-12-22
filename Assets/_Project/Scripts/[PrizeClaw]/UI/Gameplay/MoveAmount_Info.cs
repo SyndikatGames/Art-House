@@ -1,25 +1,27 @@
+using TMPro;
+using UnityEngine;
 using VG;
 
 
 namespace PrizeClaw
 {
-    public class MoveAmount_Info : Info
+    public class MoveAmount_Info : ReactiveView
     {
-
+        [SerializeField] private TextMeshProUGUI _text;
 
         protected override void Subscribe()
         {
-            GameState.onChanged += UpdateValue;
+            GameState.onChanged += Display;
         }
 
-        protected override void Unsubscribe()
+        protected override void Dispose()
         {
-            GameState.onChanged -= UpdateValue;
+            GameState.onChanged -= Display;
         }
 
-        protected override void UpdateValue()
+        protected override void Display()
         {
-            text.text = GameState.Current.Moves.ToString();
+            _text.text = GameState.Current.Moves.ToString();
         }
 
     }

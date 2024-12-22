@@ -15,8 +15,6 @@ MonoBehaviour:
   <OfflineHoursLimit>k__BackingField: 0
   <BoxesPerHour>k__BackingField: 0
   <SellPrices>k__BackingField:
-  - rarityType: 0
-    price: 1
   - rarityType: 1
     price: 5
   - rarityType: 2
@@ -35,8 +33,6 @@ MonoBehaviour:
   - rarityType: 4
     probabilityPercentage: 0
   <RarityPrestiges>k__BackingField:
-  - rarityType: 0
-    prestige: 10
   - rarityType: 1
     prestige: 100
   - rarityType: 2
