@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace VG
 {
-    [CreateAssetMenu(menuName = "VG/StartSaveValues")]
-    public class StartSaveValues : LoadableFromTable
+    [CreateAssetMenu(menuName = "VG/Start Values")]
+    public class StartValuesConfig : LoadableFromTable
     {
         [field: SerializeField] public Vector2Int RoomSize { get; private set; }
 

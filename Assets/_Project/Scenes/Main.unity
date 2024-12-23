@@ -4022,7 +4022,7 @@ GameObject:
   - component: {fileID: 697799165}
   - component: {fileID: 697799164}
   m_Layer: 0
-  m_Name: Zenject
+  m_Name: SceneContext
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

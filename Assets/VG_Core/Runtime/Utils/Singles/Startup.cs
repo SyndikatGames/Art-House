@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using VG2;
+using Zenject;
 
 
 namespace VG
@@ -10,7 +12,11 @@ namespace VG
     public class Startup : MonoBehaviour
     {
         public static event Action onLoaded;
-        public static bool loaded { get; private set; }
+
+
+        public static bool Loaded { get; private set; }
+
+        
 
         [SerializeField] private List<Initializable> _initializables;
         public List<Initializable> initializables => _initializables;
@@ -43,8 +49,10 @@ namespace VG
 
             if (allInitialized)
             {
+                new ProjectInstaller().InstallBindings();
+
                 SceneManager.LoadScene(1);
-                loaded = true;
+                Loaded = true;
                 onLoaded?.Invoke();
             }
         }

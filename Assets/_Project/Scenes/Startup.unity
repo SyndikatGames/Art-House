@@ -5207,11 +5207,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e0bf0cfb93f49543991f653025f898c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _debugLogs: 0
+  _debugLogs: 1
   _services:
   - {fileID: 8090846151886812608}
   - {fileID: 2258312118686129026}
-  _startValues: {fileID: 11400000, guid: 432a430c41ddfbb4ca1c76a1ee37bdb2, type: 2}
+  _startValues: {fileID: 11400000, guid: a2f45fc337881094898add3a0873742f, type: 2}
 --- !u!1 &5709981982299163401
 GameObject:
   m_ObjectHideFlags: 0

@@ -36,7 +36,7 @@ namespace VG
         protected override void OnInitialized()
         {
             instance = this;
-            Saves.Commit();
+            //Saves.Commit();
             Log(Core.Message.Initialized(managerName));
         }
 

@@ -1,4 +1,6 @@
 using UnityEngine;
+using VG;
+using VG2;
 using Zenject;
 
 public class MainSceneInstaller : MonoInstaller
@@ -10,7 +12,6 @@ public class MainSceneInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
-
         UnboxingController unboxingController = new UnboxingController(_unboxingConfig);
         Container.Bind<UnboxingController>().FromInstance(unboxingController).AsSingle();
 

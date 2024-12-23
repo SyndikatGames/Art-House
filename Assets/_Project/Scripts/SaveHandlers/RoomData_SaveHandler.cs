@@ -2,117 +2,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public struct ItemData
-{
-    public ItemType itemType;
-    public RarityType rarityType;
-    public Vector3Int position;
-    public Side side;
-    public List<ItemData> childItems;
-
-    public ItemData(Item item)
-    {
-        itemType = item.ItemType;
-        rarityType = item.RarityType;
-        position = item.Position;
-        side = item.CurrentSide;
-
-        if (item.ChildItems.Count > 0)
-        {
-            childItems = new List<ItemData>();
-            for (int i = 0; i < item.ChildItems.Count; i++)
-                childItems.Add(new ItemData(item.ChildItems[i]));
-        }
-        else childItems = null;
-    }
-
-    public ItemData(string data)
-    {
-        FindBracketPair(data, out int openIndex, out int closeIndex);
-
-        string mainData = data.Substring(0, openIndex);
-        string childData = data.Substring(openIndex + 1, closeIndex - openIndex - 1);
-
-        string[] mainSplitData = mainData.Split('_');
-
-        itemType = (ItemType)int.Parse(mainSplitData[0]);
-
-        // === Adaptation after remove Shabby box ===
-        if (int.Parse(mainSplitData[1]) == 0) rarityType = RarityType.Common; 
-        else rarityType = (RarityType)int.Parse(mainSplitData[1]);
-        // ==========================================
-
-        position = new Vector3Int(
-            x: int.Parse(mainSplitData[2]),
-            y: int.Parse(mainSplitData[3]),
-            z: int.Parse(mainSplitData[4]));
-
-        side = (Side)int.Parse(mainSplitData[5]);
-
-        if (childData.Length > 0)
-        {
-            childItems = new List<ItemData>();
-            var splitChildData = SplitByItemData(childData);
-
-            for (int i = 0; i < splitChildData.Count; i++)
-                childItems.Add(new ItemData(splitChildData[i]));
-        }
-        else childItems = null;
-    }
-
-    private static void FindBracketPair(string data, out int openIndex, out int closeIndex)
-    {
-        openIndex = data.IndexOf('(');
-        closeIndex = 0;
-
-        for (int i = openIndex + 1, depth = 1; i < data.Length; i++)
-        {
-            if (data[i] == '(') depth++;
-            if (data[i] == ')') depth--;
-
-            if (depth == 0)
-            {
-                closeIndex = i;
-                return;
-            }
-        }
-    }
-
-    public static List<string> SplitByItemData(string data)
-    {
-        List<string> result = new List<string>();
-        var noHandledData = new string(data);
-
-        while (noHandledData.Length > 0)
-        {
-            FindBracketPair(noHandledData, out int openIndex, out int closeIndex);
-            string itemData = noHandledData.Substring(0, closeIndex + 1);
-            result.Add(itemData);
-
-            noHandledData = noHandledData.Substring
-                (closeIndex + 1, noHandledData.Length - itemData.Length);
-        }
-        
-        return result;
-    }
-
-
-
-    public string ToDataString()
-    {
-        string data = $"{(int)itemType}_{(int)rarityType}_" +
-            $"{position.x}_{position.y}_{position.z}_{(int)side}(";
-
-        if (childItems != null)
-            foreach (ItemData childItem in childItems)
-                data += childItem.ToDataString();
-
-        data += ')';
-        return data;
-    }
-
-}
-
 
 namespace VG
 {
@@ -120,8 +9,8 @@ namespace VG
     {
         public const int roomsAmount = 1;
 
-        private static List<List<ItemData>> _itemArchitectures;
-        private static List<List<ItemData>> _itemsLists;
+        private static List<List<PlacedItemModel>> _itemArchitectures;
+        private static List<List<PlacedItemModel>> _itemsLists;
 
         public static void SetRoomItems(int roomIndex, List<Item> items)
         {
@@ -131,7 +20,7 @@ namespace VG
             {
                 var item = items[i];
                 if (item.ItemType != ItemType.Room && item.ParentItem.ItemType == ItemType.Room)
-                    data += new ItemData(items[i]).ToDataString();
+                    data += new PlacedItemModel(items[i]).ToDataString();
             }
 
             GenerateItems(roomIndex, data);
@@ -142,8 +31,8 @@ namespace VG
         {
             if (_itemArchitectures == null)
             {
-                _itemArchitectures = new List<List<ItemData>>(roomsAmount);
-                _itemsLists = new List<List<ItemData>>(roomsAmount);
+                _itemArchitectures = new List<List<PlacedItemModel>>(roomsAmount);
+                _itemsLists = new List<List<PlacedItemModel>>(roomsAmount);
                 for (int i = 0; i < roomsAmount; i++)
                 {
                     _itemArchitectures.Add(null);
@@ -151,22 +40,22 @@ namespace VG
                 }
             }
 
-            var itemArchitecture = _itemArchitectures[roomIndex] = new List<ItemData>();
+            var itemArchitecture = _itemArchitectures[roomIndex] = new List<PlacedItemModel>();
             if (data != string.Empty)
             {
-                var splitData = ItemData.SplitByItemData(data);
+                var splitData = PlacedItemModel.SplitByItemData(data);
 
                 for (int i = 0; i < splitData.Count; i++)
-                    itemArchitecture.Add(new ItemData(splitData[i]));
+                    itemArchitecture.Add(new PlacedItemModel(splitData[i]));
             }
 
-            var itemList = _itemsLists[roomIndex] = new List<ItemData>();
+            var itemList = _itemsLists[roomIndex] = new List<PlacedItemModel>();
             AddItemsToList(itemList, itemArchitecture);
         }
 
-        private static void AddItemsToList(List<ItemData> listForAdd, List<ItemData> items)
+        private static void AddItemsToList(List<PlacedItemModel> listForAdd, List<PlacedItemModel> items)
         {
-            foreach (ItemData item in items)
+            foreach (PlacedItemModel item in items)
             {
                 listForAdd.Add(item);
 
@@ -175,7 +64,7 @@ namespace VG
             }
         }
 
-        public static List<ItemData> GetRoomItemAcrhitecture(int roomIndex)
+        public static List<PlacedItemModel> GetRoomItemAcrhitecture(int roomIndex)
         {
             if (_itemArchitectures == null || _itemArchitectures[roomIndex] == null)
             {
@@ -186,7 +75,7 @@ namespace VG
             return _itemArchitectures[roomIndex];
         }
 
-        public static List<ItemData> GetItems(int roomIndex)
+        public static List<PlacedItemModel> GetItems(int roomIndex)
         {
             if (_itemsLists == null || _itemsLists[roomIndex] == null)
             {

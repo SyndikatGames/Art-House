@@ -7,7 +7,7 @@ namespace VG
     public static class SaveCreator
     {
 
-        public static void Create(StartSaveValues startValues)
+        public static void Create(StartValuesConfig startValues)
         {
             new ItemString(Key_Save.last_enter_time, DateTime.Now.ToString());
             new ItemBool(Key_Save.ads_enabled, true);
@@ -35,6 +35,9 @@ namespace VG
                 new ItemFloat(Key_Save.offline_time_seconds(i), 0f);
                 new ItemString(Key_Save.cards_data(i), string.Empty);
             }
+
+            new ItemString("data", string.Empty);
+
 
         }
 

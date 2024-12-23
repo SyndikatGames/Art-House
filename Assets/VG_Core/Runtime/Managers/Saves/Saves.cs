@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using VG.Internal;
 using UnityEngine;
+using VG2;
 
 namespace VG
 {
@@ -13,7 +14,7 @@ namespace VG
 
         #region Internal
 
-        private static class Data
+        public static class Data
         {
             private const string dictionarySeparator = "\n";
             private const string valuesSeparator = " | ";
@@ -221,7 +222,7 @@ namespace VG
 
         #endregion
 
-        [SerializeField] private StartSaveValues _startValues;
+        [SerializeField] private StartValuesConfig _startValues;
 
 
         public delegate void OnCommited(bool success);
@@ -253,11 +254,23 @@ namespace VG
         }
 
 
+        private static GameState _gameState;
+
+        public static GameState InitializeGameState()
+        {
+            Debug.Log("Init");
+            var dataDictionary = GameStateEncoder.Decode(service.GetData());
+            _gameState = GameStateParcer.Parse(instance._startValues, dataDictionary);
+            return _gameState;
+        }
 
 
         public static void Commit(OnCommited onCommited = null)
         {
-            service.Commit(Data.Get(), (success) =>
+            var gameStateData = GameStateParcer.ToDataString(_gameState);
+            var encodedData = GameStateEncoder.Encode(gameStateData);
+
+            service.Commit(encodedData, (success) =>
             {
                 onCommited?.Invoke(success);
                 Saves.onCommited?.Invoke(success);

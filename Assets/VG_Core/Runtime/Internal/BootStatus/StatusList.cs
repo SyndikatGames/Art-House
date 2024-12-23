@@ -33,7 +33,7 @@ namespace VG.Internal
 
         private void Update()
         {
-            if (Startup.loaded)
+            if (Startup.Loaded)
             {
                 enabled = false;
                 _container.gameObject.SetActive(false);

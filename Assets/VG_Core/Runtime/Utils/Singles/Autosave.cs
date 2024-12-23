@@ -15,7 +15,7 @@ namespace VG
 
         private void Update()
         {
-            if (!Startup.loaded) return;
+            if (!Startup.Loaded) return;
 
 
             _timeToAutosave -= Time.unscaledDeltaTime;
@@ -30,21 +30,21 @@ namespace VG
 
         private void OnApplicationFocus(bool focus)
         {
-            if (!Startup.loaded) return;
+            if (!Startup.Loaded) return;
 
             if (!focus) Saves.Commit();
         }
 
         private void OnApplicationPause(bool pause)
         {
-            if (!Startup.loaded) return;
+            if (!Startup.Loaded) return;
 
             if (pause) Saves.Commit();
         }
 
         private void OnApplicationQuit()
         {
-            if (!Startup.loaded) return;
+            if (!Startup.Loaded) return;
 
             Saves.Commit();
         }
