@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using VG;
+using VG2;
+using R3;
 
 public class RoomDrawer : ReactiveView
 {
@@ -8,19 +9,13 @@ public class RoomDrawer : ReactiveView
 
     protected override void Subscribe()
     {
-        Saves.Int[Key_Save.current_style_index(0)].onChanged += Display;
-        Saves.String[Key_Save.room_size_data(0)].onChanged += Display;
+        disposables.Add(GameState.CurrentRoom.currentStyleIndex.Subscribe(_ => Display()));
     }
 
-    protected override void Dispose()
-    {
-        Saves.Int[Key_Save.current_style_index(0)].onChanged -= Display;
-        Saves.String[Key_Save.room_size_data(0)].onChanged -= Display;
-    }
 
     protected override void Display()
     {
-        int styleIndex = Saves.Int[Key_Save.current_style_index(0)].Value;
+        int styleIndex = GameState.CurrentRoom.currentStyleIndex.Value;
         var styleData = Configs.GetStyles(0).GetStyle(styleIndex);
 
         Tile floorTile = (Tile)ScriptableObject.CreateInstance(typeof(Tile));
@@ -35,7 +30,7 @@ public class RoomDrawer : ReactiveView
         toLeftWallTile.sprite = styleData.toLeftWallSprite;
         toLeftWallTile.color = Color.white;
 
-        Vector2Int size = Saves.RoomSize;
+        Vector2Int size = GameState.CurrentRoom.size.Value;
 
         for (int x = 1; x <= size.x; x++)
             _tilemap.SetTile(new Vector3Int(-x, 0), toRightWallTile);

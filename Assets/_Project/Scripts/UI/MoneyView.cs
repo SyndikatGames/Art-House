@@ -1,6 +1,7 @@
-using VG;
-using UnityEngine;
+using R3;
 using TMPro;
+using UnityEngine;
+using VG2;
 
 public class MoneyView : ReactiveView
 {
@@ -8,17 +9,12 @@ public class MoneyView : ReactiveView
 
     protected override void Subscribe()
     {
-        Saves.Float[Key_Save.money].onChanged += Display;
+        disposables.Add(GameState.money.Subscribe(_ => Display()));
     }
-    
-    protected override void Dispose()
-    {
-        Saves.Float[Key_Save.money].onChanged -= Display;
-    }
-    
+
     protected override void Display()
     {
-        _text.text = Saves.Float[Key_Save.money].Value.ToShortNumber();
+        _text.text = GameState.money.Value.ToShortNumber();
     }
     
 }

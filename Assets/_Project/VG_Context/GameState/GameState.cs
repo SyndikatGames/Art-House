@@ -4,27 +4,34 @@ using R3;
 
 namespace VG2
 {
-    public class GameState
+    public static class GameState
     {
         public const int roomsAmount = 1;
         public const int stylesAmount = 10;
 
 
 
-        public ReactiveProperty<bool> adsEnabled;
-        public DateTime lastOnlineTime;
+        public static ReactiveProperty<bool> adsEnabled;
+        public static DateTime lastOnlineTime;
 
-        public bool tutorialCompleted;
-        public bool styleTutorialCompleted;
-        public int tutorialStep;
+        public static bool tutorialCompleted;
+        public static bool styleTutorialCompleted;
+        public static ReactiveProperty<int> tutorialStep;
 
-        public ReactiveProperty<float> money;
-        public ReactiveProperty<int> currentRoomIndex;
+        public static ReactiveProperty<float> money;
+        public static ReactiveProperty<int> currentRoomIndex;
 
-        public List<RoomState> roomStates;
+        public static List<RoomState> roomStates;
 
-        public ReactiveProperty<float> prizeClawTickets;
-        public PrizeClawState prizeClawState;
+        public static ReactiveProperty<float> prizeClawTickets;
+        public static PrizeClawState prizeClaw;
+
+
+
+
+        public static RoomState CurrentRoom => roomStates[currentRoomIndex.Value];
+
+
 
     }
 }

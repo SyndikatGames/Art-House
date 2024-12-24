@@ -1,5 +1,5 @@
 using UnityEngine;
-using VG;
+using VG2;
 
 public class ShowBoxOffer_Event : MonoBehaviour
 {
@@ -23,6 +23,7 @@ public class ShowBoxOffer_Event : MonoBehaviour
 
     private void OnItemPlaced()
     {
+        /*
         int roomIndex = Saves.Int[Key_Save.current_room_index].Value;
         float randomBoxes = Saves.Float[Key_Save.random_boxes(roomIndex)].Value;
         int boxesAmount = Saves.GetNormalBoxesAmount();
@@ -35,7 +36,7 @@ public class ShowBoxOffer_Event : MonoBehaviour
             _lastShowTime = Time.time;
             Instantiate(Prefabs.BoxOffer, UI.Canvas.transform);
         }
-
+        */
 
     }
 

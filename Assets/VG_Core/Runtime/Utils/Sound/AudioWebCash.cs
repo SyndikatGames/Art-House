@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 using NaughtyAttributes;
 
 
-namespace VG
+namespace VG2
 {
     public class AudioWebCash : Initializable
     {

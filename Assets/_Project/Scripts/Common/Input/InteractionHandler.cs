@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using VG;
+using VG2;
 
 public class InteractionHandler : MonoBehaviour, IDragHandler, 
     IBeginDragHandler, IEndDragHandler, IPointerClickHandler, 
@@ -15,8 +15,8 @@ public class InteractionHandler : MonoBehaviour, IDragHandler,
     public event Action<PointerEventData> onPointerExit;
     public event Action<PointerEventData> onDrop;
 
-    private bool IsMobileControl => DeviceInfo.ControlType == VG.ControlType.Mobile;
-    private bool IsDesctopControl => DeviceInfo.ControlType == VG.ControlType.Desktop;
+    private bool IsMobileControl => DeviceInfo.ControlType == VG2.ControlType.Mobile;
+    private bool IsDesctopControl => DeviceInfo.ControlType == VG2.ControlType.Desktop;
 
     private bool _dragging = false;
     private bool _beginDragSuccess;

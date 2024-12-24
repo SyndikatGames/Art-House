@@ -1,5 +1,5 @@
 using UnityEngine;
-using VG;
+using VG2;
 
 public class ShowReview_Event : MonoBehaviour
 {
@@ -17,8 +17,10 @@ public class ShowReview_Event : MonoBehaviour
 
     private void OnNewLevelReached()
     {
+        /*
         if (Configs.GetRoom(0).CurrentLevel >= _level)
             Review.Request();
+        */
     }
 
     

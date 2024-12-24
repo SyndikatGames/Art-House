@@ -1,4 +1,4 @@
-using VG;
+using VG2;
 using Zenject;
 
 public class OpenShopButton : ButtonHandler

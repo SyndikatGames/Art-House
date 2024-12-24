@@ -1,12 +1,12 @@
-using System;
+using System.Collections;
 using System.Collections.Generic;
 using R3;
 
 namespace VG2
 {
-    public class ReactiveList<T>
+    public class ReactiveList<T> : IEnumerable<T>
     {
-        public readonly Subject<Unit> onChanged;
+        public readonly Subject<Unit> onChanged = new Subject<Unit>();
         private List<T> _list;
 
 
@@ -48,6 +48,9 @@ namespace VG2
             onChanged?.OnNext(Unit.Default);
         }
 
+        public IEnumerator<T> GetEnumerator() => ((IEnumerable<T>)_list).GetEnumerator();
+
+        IEnumerator IEnumerable.GetEnumerator() => ((IEnumerable)_list).GetEnumerator();
 
     }
 }

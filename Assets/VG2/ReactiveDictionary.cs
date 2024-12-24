@@ -1,11 +1,11 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using R3;
-using UnityEngine;
 
 namespace VG2
 {
-    public class ReactiveDictionary<TKey, TValue> : MonoBehaviour
+    public class ReactiveDictionary<TKey, TValue> : IEnumerable<KeyValuePair<TKey, TValue>>
     {
         public readonly Subject<Unit> onChanged;
         private Dictionary<TKey, TValue> _dictionary;
@@ -50,6 +50,13 @@ namespace VG2
             _dictionary.Clear();
             onChanged?.OnNext(Unit.Default);
         }
+
+        public IEnumerator<KeyValuePair<TKey, TValue>> GetEnumerator() 
+            => ((IEnumerable<KeyValuePair<TKey, TValue>>)_dictionary).GetEnumerator();
+
+
+        IEnumerator IEnumerable.GetEnumerator() 
+            => ((IEnumerable)_dictionary).GetEnumerator();
 
     }
 }

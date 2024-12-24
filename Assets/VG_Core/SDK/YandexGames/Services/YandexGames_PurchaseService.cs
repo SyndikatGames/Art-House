@@ -1,11 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using VG.YandexGames;
+using VG2.YandexGames;
 using UnityEngine;
 
 
-namespace VG
+namespace VG2
 {
     public class YandexGames_PurchaseService : PurchaseService
     {

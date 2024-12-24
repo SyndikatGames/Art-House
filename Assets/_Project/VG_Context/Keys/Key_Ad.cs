@@ -1,6 +1,6 @@
 
 
-namespace VG
+namespace VG2
 {
     public static class Key_Ad
     {

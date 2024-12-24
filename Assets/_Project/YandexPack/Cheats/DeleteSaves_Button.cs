@@ -1,5 +1,5 @@
 using UnityEngine;
-using VG;
+using VG2;
 
 public class DeleteSaves_Button : ButtonHandler
 {

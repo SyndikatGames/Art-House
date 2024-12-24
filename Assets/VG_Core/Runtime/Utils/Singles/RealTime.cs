@@ -1,11 +1,14 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using VG2;
+using Zenject;
 
-namespace VG
+namespace VG2
 {
     public class RealTime : Initializable
     {
+
         public override void Initialize()
         {
             StartCoroutine(Init());
@@ -13,8 +16,7 @@ namespace VG
 
         IEnumerator Init()
         {
-            yield return new WaitUntil(() 
-                => Saves.Initialized && TotalRules.Initialized);
+            yield return new WaitUntil(() => Saves.Initialized);
 
             HandleOfflineTime();
             Repeater.handlers[Key_Repeat.one_second].onUpdate += OnOneSecondPassed;
@@ -24,16 +26,14 @@ namespace VG
         private void OnOneSecondPassed()
         {
             TimeHandler.HandleOnlineTime(1f);
-            Saves.String[Key_Save.last_enter_time].Value = DateTime.Now.ToString();
+            GameState.lastOnlineTime = DateTime.Now;
         }
 
 
         private void HandleOfflineTime()
         {
-            float passedSeconds = (float)(DateTime.Now - DateTime.Parse
-                (Saves.String[Key_Save.last_enter_time].Value)).TotalSeconds;
-
-            Saves.String[Key_Save.last_enter_time].Value = DateTime.Now.ToString();
+            float passedSeconds = (float)(DateTime.Now - GameState.lastOnlineTime).TotalSeconds;
+            GameState.lastOnlineTime = DateTime.Now;
             
             TimeHandler.HandleOfflineTime(passedSeconds);
         }

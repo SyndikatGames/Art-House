@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-namespace VG.Internal
+namespace VG2.Internal
 {
     public static class Core
     {

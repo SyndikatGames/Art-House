@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace VG.Internal
+namespace VG2.Internal
 {
     public class InitializingColor_BootStatus : MonoBehaviour
     {

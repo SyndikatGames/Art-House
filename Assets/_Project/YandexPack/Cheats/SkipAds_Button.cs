@@ -1,5 +1,5 @@
-using VG;
 using UnityEngine;
+using VG2;
 
 public class SkipAds_Button : ButtonHandler
 {
@@ -10,7 +10,7 @@ public class SkipAds_Button : ButtonHandler
         click--;
         if (click == 0)
         {
-            Saves.Bool[Key_Save.ads_enabled].Value = false;
+            GameState.adsEnabled.Value = false;
             button.image.color = Color.green;
         }
 

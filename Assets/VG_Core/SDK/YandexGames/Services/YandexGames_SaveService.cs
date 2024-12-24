@@ -1,9 +1,9 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using VG.YandexGames;
+using VG2.YandexGames;
 
-namespace VG
+namespace VG2
 {
     public class YandexGames_SaveService : SaveService
     {

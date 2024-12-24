@@ -1,5 +1,5 @@
 using UnityEngine;
-using VG;
+using VG2;
 
 public class ShowOfflineWindow_Event : MonoBehaviour
 {
@@ -8,8 +8,9 @@ public class ShowOfflineWindow_Event : MonoBehaviour
 
     private void Start()
     {
-        int roomIndex = Saves.Int[Key_Save.current_room_index].Value;
+        int roomIndex = GameState.currentRoomIndex.Value;
 
+        /*
         bool windowAvailable = 
             Saves.Float[Key_Save.offline_time_seconds(roomIndex)].Value > minOfflineTime
             && Saves.Bool[Key_Save.tutorial_completed].Value;
@@ -17,6 +18,7 @@ public class ShowOfflineWindow_Event : MonoBehaviour
 
         if (windowAvailable)
             Instantiate(Prefabs.OfflineWindow, UI.Canvas);
+        */
     }
 
 

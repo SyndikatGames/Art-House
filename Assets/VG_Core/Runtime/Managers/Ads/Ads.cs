@@ -1,27 +1,27 @@
 using System;
-using System.Collections;
 using UnityEngine;
-using VG.Internal;
+using VG2.Internal;
 
 
-namespace VG
+namespace VG2
 {
     public class Ads : Manager
     {
-        private static Ads instance; 
+        private static Ads _instance;
 
-        public static bool skipAds 
+
+        public static bool SkipAds 
         { 
-            get => PlayerPrefs.GetInt(nameof(skipAds), 0) == 1;
+            get => PlayerPrefs.GetInt(nameof(SkipAds), 0) == 1;
             set
             {
-                PlayerPrefs.SetInt(nameof(skipAds), Convert.ToInt32(value));
-                Saves.Bool[Key_Save.ads_enabled].Value = !value;
-                Saves.Commit();
+                PlayerPrefs.SetInt(nameof(SkipAds), Convert.ToInt32(value));
+                GameState.adsEnabled.Value = !value;
+                Saves.Save();
             }
         }
 
-        private static AdService service => instance.supportedService as AdService;
+        private static AdService service => _instance.supportedService as AdService;
         protected override string managerName => "VG Ads";
 
 
@@ -29,24 +29,15 @@ namespace VG
 
         private float _currentInterstitialCooldown = 0f;
 
-        private static float interstitialCooldown => instance._interstitialCooldown;
+        private static float interstitialCooldown => _instance._interstitialCooldown;
 
 
         protected override void OnInitialized()
         {
-            instance = this;
+            _instance = this;
             _currentInterstitialCooldown = interstitialCooldown;
             Log(Core.Message.Initialized(managerName));
-                
-            StartCoroutine(SubscribeForEnableAds());
         }
-
-        private IEnumerator SubscribeForEnableAds()
-        {
-            yield return new WaitUntil(() => Saves.Initialized);
-            Saves.Bool[Key_Save.ads_enabled].onChanged += OnAdsEnabledChanged;
-        }
-
 
 
         public static class Rewarded
@@ -59,14 +50,14 @@ namespace VG
 
             public static void Show(string key_ad = "none", bool resetCooldown = false, Action<Result> onShown = null)
             {
-                if (skipAds)
+                if (SkipAds)
                 {
                     onShown?.Invoke(Result.Success);
                     return;
                 }
 
 
-                instance.Log("Request rewarded ad. Ad key: " + key_ad);
+                _instance.Log("Request rewarded ad. Ad key: " + key_ad);
 
                 service.ShowRewarded(key_ad, (result) =>
                 {
@@ -75,12 +66,12 @@ namespace VG
 
                     if (result == Result.Success)
                     {
-                        instance.Log("On rewarded. Ad key: " + key_ad);
+                        _instance.Log("On rewarded. Ad key: " + key_ad);
 
                         if (resetCooldown)
-                            instance._currentInterstitialCooldown = interstitialCooldown;
+                            _instance._currentInterstitialCooldown = interstitialCooldown;
                     }
-                    else instance.Log("On not rewarded. Ad key: " + key_ad);
+                    else _instance.Log("On not rewarded. Ad key: " + key_ad);
                 });
             }
         }
@@ -94,22 +85,22 @@ namespace VG
             public delegate void OnShown(string key_ad, Result result);
             public static event OnShown onShown;
 
-            public static bool now => instance._currentInterstitialCooldown < 0f;
+            public static bool now => _instance._currentInterstitialCooldown < 0f;
 
             public static void Show(string key_ad = "none", bool ignoreCooldown = false, Action<Result> onShown = null)
             {
-                if (skipAds)
+                if (SkipAds)
                 {
                     onShown?.Invoke(Result.Success);
                     return;
                 }
 
 
-                instance.Log("Request interstitial ad. Ad key: " + key_ad);
+                _instance.Log("Request interstitial ad. Ad key: " + key_ad);
 
-                if (Saves.Bool[Key_Save.ads_enabled].Value == false)
+                if (GameState.adsEnabled.Value == false)
                 {
-                    instance.Log("No Ads purchased. Interstitial rejected. Ad key: " + key_ad);
+                    _instance.Log("No Ads purchased. Interstitial rejected. Ad key: " + key_ad);
                     onShown?.Invoke(Result.NoAds);
                     Interstitial.onShown?.Invoke(key_ad, Result.NoAds);
                     return;
@@ -117,7 +108,7 @@ namespace VG
 
                 if (!now && !ignoreCooldown)
                 {
-                    instance.Log("Cooldown is not finished. Ad key: " + key_ad);
+                    _instance.Log("Cooldown is not finished. Ad key: " + key_ad);
                     onShown?.Invoke(Result.Cooldown);
                     Interstitial.onShown?.Invoke(key_ad, Result.Cooldown);
                     return;
@@ -132,33 +123,15 @@ namespace VG
 
                     if (success)
                     {
-                        instance.Log("On interstitial shown. Ad key: " + key_ad);
-                        instance._currentInterstitialCooldown = interstitialCooldown;
+                        _instance.Log("On interstitial shown. Ad key: " + key_ad);
+                        _instance._currentInterstitialCooldown = interstitialCooldown;
                     }
-                    else instance.Log("On interstitial failed. Ad key: " + key_ad);
+                    else _instance.Log("On interstitial failed. Ad key: " + key_ad);
                 });
                 return;
             }
 
 
-        }
-
-        public static class Banner
-        {
-            public static void Set(bool show)
-            {
-                if (Saves.Bool[Key_Save.ads_enabled].Value && show)
-                    service.SetBanner(true);
-
-                else service.SetBanner(false);
-            }
-
-        }
-
-        private void OnAdsEnabledChanged()
-        {
-            if (Saves.Bool[Key_Save.ads_enabled].Value == false) 
-                Banner.Set(false);
         }
 
 

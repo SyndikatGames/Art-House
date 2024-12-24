@@ -1,7 +1,8 @@
 using R3;
+using UnityEngine;
 using VG2;
 
-public struct RoomState
+public class RoomState
 {
     public ReactiveList<int> newStyleIndices;
 
@@ -14,5 +15,7 @@ public struct RoomState
     public ReactiveList<PlacedItemModel> placedItemsHierarchy;
 
     public ReactiveList<CardModel> cards;
+
+    public ReactiveProperty<Vector2Int> size;
 
 }

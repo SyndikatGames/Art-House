@@ -1,11 +1,10 @@
-
-
-namespace VG
+namespace VG2
 {
     public static class PurchasesHandler
     {
         public static bool ProductPurchased(string productKey)
         {
+            /*
             switch (productKey)
             {
                 case Key_Product.no_ads:
@@ -13,12 +12,15 @@ namespace VG
                     
                 default: throw new System.Exception("Wrong product: " + productKey.ToString());
             }
+            */
+            return false;
         }
 
 
 
         public static void HandlePurchase(string productKey)
         {
+            /*
             switch (productKey)
             {
                 case Key_Product.no_ads:
@@ -35,6 +37,7 @@ namespace VG
 
                 default: throw new System.Exception("Wrong product: " + productKey.ToString());
             }
+            */
             
         }
 

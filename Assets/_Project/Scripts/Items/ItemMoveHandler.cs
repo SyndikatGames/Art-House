@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-using VG;
+using VG2;
 
 public class ItemMoveHandler
 {
@@ -89,7 +89,7 @@ public class ItemMoveHandler
 
             else
             {
-                Saves.AddCard(new CardModel
+                CardCalculator.AddCard(new CardModel
                 {
                     itemType = _item.ItemType,
                     rarityType = _item.RarityType,

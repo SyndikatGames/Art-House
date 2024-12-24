@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-using VG;
+using VG2;
 
 public class Events : MonoBehaviour
 {
@@ -25,14 +25,17 @@ public class Events : MonoBehaviour
 
     private void Awake()
     {
+        /*
         int roomIndex = Saves.Int[Key_Save.current_room_index].Value;
 
         Saves.String[Key_Save.room_data(roomIndex)].onChanged += OnRoomDataChanged;
         _previousRoomLevel = Configs.GetRoom(roomIndex).CurrentLevel;
+        */
     }
 
     private void OnRoomDataChanged()
     {
+        /*
         int roomIndex = Saves.Int[Key_Save.current_room_index].Value;
         int currentLevel = Configs.GetRoom(roomIndex).CurrentLevel;
         if (_previousRoomLevel < currentLevel)
@@ -40,7 +43,7 @@ public class Events : MonoBehaviour
             onNewLevelReached?.Invoke();
             _previousRoomLevel = currentLevel;
         }
-            
+            */
 
 
     }

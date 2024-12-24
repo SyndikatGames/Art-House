@@ -1,8 +1,9 @@
 using UnityEngine;
 using UnityEngine.Events;
+using R3;
 
 
-namespace VG
+namespace VG2
 {
     public class LocalizedSprite : ReactiveView
     {
@@ -11,13 +12,9 @@ namespace VG
 
         protected override void Subscribe()
         {
-            Localization.onChangeLanguage += Display;
+            disposables.Add(Localization.onLanguageChanged.Subscribe(_ => Display()));
         }
 
-        protected override void Dispose()
-        {
-            Localization.onChangeLanguage -= Display;
-        }
 
         protected override void Display() => _onUpdate?.Invoke(Localization.GetSprite(_key));
     }

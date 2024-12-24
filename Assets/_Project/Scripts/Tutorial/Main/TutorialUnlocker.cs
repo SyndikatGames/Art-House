@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using R3;
 using UnityEngine;
-using VG;
+using VG2;
+using Zenject;
 
 public class TutorialUnlocker : ReactiveView
 {
@@ -13,20 +15,15 @@ public class TutorialUnlocker : ReactiveView
 
     [SerializeField] private List<UnlockStep> _unlocks;
 
-
     protected override void Subscribe()
     {
-        Saves.Int[Key_Save.tutorial_step].onChanged += Display;
+        disposables.Add(GameState.tutorialStep.Subscribe(_ => Display()));
     }
 
-    protected override void Dispose()
-    {
-        Saves.Int[Key_Save.tutorial_step].onChanged -= Display;
-    }
 
     protected override void Display()
     {
-        int currentStep = Saves.Int[Key_Save.tutorial_step].Value;
+        int currentStep = GameState.tutorialStep.Value;
 
         foreach (var unlockStep in _unlocks)
             unlockStep.unlockable.SetActive(currentStep >= unlockStep.step);

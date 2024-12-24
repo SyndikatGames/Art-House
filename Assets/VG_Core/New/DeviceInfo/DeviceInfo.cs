@@ -1,7 +1,7 @@
-using VG.Internal;
+using VG2.Internal;
 
 
-namespace VG
+namespace VG2
 {
     public enum ControlType { Desktop, Mobile }
 

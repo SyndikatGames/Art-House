@@ -1,10 +1,10 @@
 using System;
 using System.Collections;
-using VG.YandexGames;
-using static VG.Ads.Rewarded;
+using VG2.YandexGames;
+using static VG2.Ads.Rewarded;
 
 
-namespace VG
+namespace VG2
 {
     public class YandexGames_AdService : AdService
     {

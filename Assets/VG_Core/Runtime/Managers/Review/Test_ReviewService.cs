@@ -1,9 +1,9 @@
 using System;
 using UnityEngine;
-using VG.Internal;
+using VG2.Internal;
 
 
-namespace VG
+namespace VG2
 {
     public class Test_ReviewService : ReviewService
     {

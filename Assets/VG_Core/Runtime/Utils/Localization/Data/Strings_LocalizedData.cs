@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace VG
+namespace VG2
 {
     [CreateAssetMenu(menuName = "VG/Localization/Strings", fileName = "Strings")]
     public class Strings_LocalizedData : LocalizedData<String_Translation> 

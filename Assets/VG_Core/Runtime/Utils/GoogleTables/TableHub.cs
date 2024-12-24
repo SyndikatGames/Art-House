@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace VG
+namespace VG2
 {
     [CreateAssetMenu(menuName = "VG/TableHub", fileName = "TableHub")]
     public class TableHub : LoadableFromTable

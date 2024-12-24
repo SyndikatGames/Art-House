@@ -38,7 +38,7 @@ public class UnboxedCardView : MonoBehaviour
         _itemIcon.transform.localScale = Vector3.one * RarityStyle.GetCardScaleForBoxOpening(_itemIcon.sprite);
         _panelImage.sprite = cardStyle.panelSprite;
 
-        int prestigePoints = TotalRules.GetItemPrestige(cardModel.rarityType);
+        int prestigePoints = PrestigeCalculator.GetItemPrestige(cardModel.rarityType);
 
         string rarityColor = ColorUtility.ToHtmlStringRGB(cardStyle.textColor);
         _descriptionText.text = $"{_cardModel.itemType}\n" +

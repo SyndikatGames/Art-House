@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace VG
+namespace VG2
 {
     public class ScreenStatus : MonoBehaviour
     {

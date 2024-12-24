@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 #endif
 
 
-namespace VG.YandexGames
+namespace VG2.YandexGames
 {
     public class YG_Analytics : MonoBehaviour
     {

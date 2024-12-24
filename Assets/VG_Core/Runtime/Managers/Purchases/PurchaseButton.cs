@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-namespace VG
+namespace VG2
 {
     
     public class PurchaseButton : ButtonHandler

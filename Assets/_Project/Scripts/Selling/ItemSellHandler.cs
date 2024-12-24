@@ -1,5 +1,5 @@
 using UnityEngine;
-using VG;
+using VG2;
 
 public class ItemSellHandler
 {
@@ -19,7 +19,7 @@ public class ItemSellHandler
     {
         if (SellArea.PointerInsideArea == false) return false;
 
-        float sellPrice = TotalRules.GetItemSellPrice(_item.RarityType);
+        float sellPrice = PriceCalculator.GetItemSellPrice(_item.RarityType);
         _item.Destroy();
 
         var sellParticlePrefab = Resources.Load<SellParticle>("Prefabs/SellParticle");
@@ -29,8 +29,8 @@ public class ItemSellHandler
         sellParticle.SetSellPrice(sellPrice);
         sellParticle.RunAnimation();
 
-        Saves.RemoveCard(_item.GetCardModel());
-        Saves.Float[Key_Save.money].Value += sellPrice;
+        CardCalculator.RemoveCard(_item.GetCardModel());
+        GameState.money.Value += sellPrice;
         return true;
     }
 

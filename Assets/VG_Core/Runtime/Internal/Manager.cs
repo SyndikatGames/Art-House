@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace VG.Internal
+namespace VG2.Internal
 {
     public abstract class Manager : Initializable
     {

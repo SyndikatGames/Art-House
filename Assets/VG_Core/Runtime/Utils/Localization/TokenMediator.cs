@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace VG
+namespace VG2
 {
     public class TokenMediator : Initializable
     {

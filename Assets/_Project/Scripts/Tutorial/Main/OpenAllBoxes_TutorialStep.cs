@@ -1,6 +1,6 @@
 using TMPro;
 using UnityEngine;
-using VG;
+using VG2;
 
 public class OpenAllBoxes_TutorialStep : TutorialStep
 {

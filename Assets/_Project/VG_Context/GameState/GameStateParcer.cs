@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using R3;
-using VG;
+using VG2;
 
 namespace VG2
 {
@@ -21,29 +21,27 @@ namespace VG2
         private const string moneyKey = "money";
 
 
-        public static GameState Parse(StartValuesConfig startValuesConfig, Dictionary<string, string> data)
+        public static void Parse(StartValuesConfig startValuesConfig, Dictionary<string, string> data)
         {
-            var gameState = new GameState();
-
-            gameState.lastOnlineTime = data.ContainsKey(lastOnlineTimeKey) ?
+            GameState.lastOnlineTime = data.ContainsKey(lastOnlineTimeKey) ?
                 DateTime.Parse(data[lastOnlineTimeKey]) : DateTime.Now;
 
-            gameState.adsEnabled = new ReactiveProperty<bool>
+            GameState.adsEnabled = new ReactiveProperty<bool>
                 (data.ContainsKey(adsEnabledKey) ? bool.Parse(data[adsEnabledKey]) : true);
 
-            gameState.money = new ReactiveProperty<float>
+            GameState.money = new ReactiveProperty<float>
                 (data.ContainsKey(moneyKey) ? float.Parse(data[moneyKey]) : 0);
 
-            gameState.tutorialCompleted = data.ContainsKey(tutorialCompletedKey) ?
+            GameState.tutorialCompleted = data.ContainsKey(tutorialCompletedKey) ?
                 bool.Parse(data[tutorialCompletedKey]) : false;
 
-            gameState.styleTutorialCompleted = data.ContainsKey(styleTutorialCompletedKey) ?
+            GameState.styleTutorialCompleted = data.ContainsKey(styleTutorialCompletedKey) ?
                 bool.Parse(data[styleTutorialCompletedKey]) : false;
 
-            gameState.tutorialStep = data.ContainsKey(tutorialStepKey) ?
-                int.Parse(data[tutorialStepKey]) : 0;
+            GameState.tutorialStep = new ReactiveProperty<int> 
+                (data.ContainsKey(tutorialStepKey) ? int.Parse(data[tutorialStepKey]) : 0);
 
-            gameState.currentRoomIndex = new ReactiveProperty<int>
+            GameState.currentRoomIndex = new ReactiveProperty<int>
                 (data.ContainsKey(currentRoomIndexKey) ? int.Parse(data[currentRoomIndexKey]) : 0);
 
             // Room states
@@ -83,35 +81,25 @@ namespace VG2
 
 
             }
-
-
-
-
-
-
-
-
-
-            return gameState;
         }
 
 
-        public static Dictionary<string, string> ToDataString(GameState gameState)
+        public static Dictionary<string, string> ToDataString()
         {
             var data = new Dictionary<string, string>();
 
-            data.Add(lastOnlineTimeKey, gameState.lastOnlineTime.ToString());
-            data.Add(adsEnabledKey, gameState.adsEnabled.ToString());
-            data.Add(moneyKey, gameState.money.ToString());
-            data.Add(tutorialCompletedKey, gameState.tutorialCompleted.ToString());
-            data.Add(styleTutorialCompletedKey, gameState.styleTutorialCompleted.ToString());
-            data.Add(tutorialStepKey, gameState.tutorialStep.ToString());
-            data.Add(currentRoomIndexKey, gameState.currentRoomIndex.ToString());
+            data.Add(lastOnlineTimeKey, GameState.lastOnlineTime.ToString());
+            data.Add(adsEnabledKey, GameState.adsEnabled.ToString());
+            data.Add(moneyKey, GameState.money.ToString());
+            data.Add(tutorialCompletedKey, GameState.tutorialCompleted.ToString());
+            data.Add(styleTutorialCompletedKey, GameState.styleTutorialCompleted.ToString());
+            data.Add(tutorialStepKey, GameState.tutorialStep.ToString());
+            data.Add(currentRoomIndexKey, GameState.currentRoomIndex.ToString());
 
             // Room states
             for (int roomIndex = 0; roomIndex < GameState.roomsAmount; roomIndex++)
             {
-                var roomState = gameState.roomStates[roomIndex];
+                var roomState = GameState.roomStates[roomIndex];
 
                 data.Add(CurrentStyleIndexKey(roomIndex), roomState.currentStyleIndex.ToString());
 

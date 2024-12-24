@@ -1,4 +1,4 @@
-using VG;
+using VG2;
 
 
 public class OpenRoomInfo_Button : ButtonHandler

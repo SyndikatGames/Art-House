@@ -1,9 +1,9 @@
 using System.Collections;
 using UnityEngine;
-using VG.Internal;
+using VG2.Internal;
 
 
-namespace VG
+namespace VG2
 {
     public class Purchases : Manager
     {
@@ -63,7 +63,7 @@ namespace VG
                 {
                     instance.Log("On purchased: " + productKey);
                     PurchasesHandler.HandlePurchase(productKey);
-                    Saves.Commit();
+                    Saves.Save();
                 }
                 else instance.Log("On not purchased: " + productKey);
 

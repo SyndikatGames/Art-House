@@ -1,6 +1,6 @@
 using TMPro;
 using UnityEngine;
-using VG;
+using VG2;
 
 public class OpenBoxAndPlaceItem_TutorialStep : TutorialStep
 {
@@ -23,7 +23,7 @@ public class OpenBoxAndPlaceItem_TutorialStep : TutorialStep
     {
         _promptText.gameObject.SetActive(true);
 
-        if (DeviceInfo.ControlType == VG.ControlType.Desktop)
+        if (DeviceInfo.ControlType == VG2.ControlType.Desktop)
             _promptText.text = Localization.GetString("tutorial_move_desctop");
 
         else _promptText.text = Localization.GetString("tutorial_move_mobile");

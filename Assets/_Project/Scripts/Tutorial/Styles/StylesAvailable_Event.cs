@@ -1,5 +1,5 @@
 using UnityEngine;
-using VG;
+using VG2;
 
 public class StylesAvailable_Event : MonoBehaviour
 {
@@ -22,10 +22,10 @@ public class StylesAvailable_Event : MonoBehaviour
 
     private void TriggerEvent()
     {
-        bool stylesAvailable = Configs.GetRoom(0).CurrentLevel >= _fromLevel;
+        bool stylesAvailable = PrestigeCalculator.GetCurrentRoomLevel() >= _fromLevel;
         _styleButton.SetActive(stylesAvailable);
 
-        if (stylesAvailable && Saves.Bool[Key_Save.style_tutorial_completed].Value == false)
+        if (stylesAvailable && GameState.styleTutorialCompleted == false)
             _tutorial.Run();
     }
 

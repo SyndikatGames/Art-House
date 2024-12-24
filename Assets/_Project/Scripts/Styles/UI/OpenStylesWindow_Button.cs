@@ -1,4 +1,4 @@
-using VG;
+using VG2;
 
 
 public class OpenStylesWindow_Button : ButtonHandler

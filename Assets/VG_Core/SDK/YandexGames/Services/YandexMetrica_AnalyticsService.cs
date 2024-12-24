@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
-using VG;
-using VG.YandexGames;
+using VG2;
+using VG2.YandexGames;
 
 public class YandexMetrica_AnalyticsService : AnalyticsService
 {

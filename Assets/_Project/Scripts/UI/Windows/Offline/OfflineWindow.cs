@@ -1,6 +1,6 @@
 using TMPro;
 using UnityEngine;
-using VG;
+using VG2;
 
 
 public class OfflineWindow : MonoBehaviour
@@ -29,6 +29,7 @@ public class OfflineWindow : MonoBehaviour
 
     private void UpdateValues()
     {
+        /*
         int roomIndex = Saves.Int[Key_Save.current_room_index].Value;
 
         float offlineSeconds = Saves.Float[Key_Save.offline_time_seconds(roomIndex)].Value;
@@ -46,7 +47,7 @@ public class OfflineWindow : MonoBehaviour
         _softMoneyReward.SetActive(SoftMoneyAccumulated >= 1f);
         _softMoneyAmountText.text = ((int)SoftMoneyAccumulated).ToString();
 
-
+        */
     }
 
     

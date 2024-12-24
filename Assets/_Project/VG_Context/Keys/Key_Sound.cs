@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace VG
+namespace VG2
 {
     public static class Key_Sound
     {

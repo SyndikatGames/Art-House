@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using VG.Internal;
+using VG2.Internal;
 
 
-namespace VG
+namespace VG2
 {
     public class Leaderboards : Manager
     {

@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
-using VG;
+using VG2;
+using Zenject;
 
 
 public class ItemInteraction : MonoBehaviour

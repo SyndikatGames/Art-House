@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace VG
+namespace VG2
 {
     public class Autosave : MonoBehaviour
     {
@@ -23,7 +23,7 @@ namespace VG
             if (_timeToAutosave < 0f)
             {
                 _timeToAutosave = _autosaveTimeInterval;
-                Saves.Commit();
+                Saves.Save();
             }
         }
 
@@ -32,21 +32,21 @@ namespace VG
         {
             if (!Startup.Loaded) return;
 
-            if (!focus) Saves.Commit();
+            if (!focus) Saves.Save();
         }
 
         private void OnApplicationPause(bool pause)
         {
             if (!Startup.Loaded) return;
 
-            if (pause) Saves.Commit();
+            if (pause) Saves.Save();
         }
 
         private void OnApplicationQuit()
         {
             if (!Startup.Loaded) return;
 
-            Saves.Commit();
+            Saves.Save();
         }
 
 

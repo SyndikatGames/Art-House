@@ -1,5 +1,5 @@
 using UnityEngine;
-using VG;
+using VG2;
 
 public enum CardState { InsideCatalog, World }
 
@@ -51,7 +51,7 @@ public class ItemCardHandler
         if (insideCatalog)
         {
             _item.Effects.SetInvisible();
-            CardCatalog.Grid.enabled = false;
+            CardInventoryView.Grid.enabled = false;
         }
 
         return insideCatalog ? CardState.InsideCatalog : CardState.World;
@@ -64,9 +64,9 @@ public class ItemCardHandler
 
         if (insideCatalog) _item.Destroy();
 
-        _card.transform.SetParent(CardCatalog.Grid.transform);
+        _card.transform.SetParent(CardInventoryView.Grid.transform);
 
-        CardCatalog.Grid.enabled = true;
+        CardInventoryView.Grid.enabled = true;
 
         var cardData = new CardModel
         {
@@ -76,12 +76,12 @@ public class ItemCardHandler
         };
 
         if (!insideCatalog && CardMoving.MovingItemFromCard)
-            Saves.RemoveCard(cardData);
+            CardCalculator.RemoveCard(cardData);
 
         else if (insideCatalog && !CardMoving.MovingItemFromCard)
-            Saves.AddCard(cardData);
+            CardCalculator.AddCard(cardData);
 
-        else Saves.UpdateCards();
+        //else Saves.UpdateCards();
 
         return insideCatalog ? CardState.InsideCatalog : CardState.World;
     }

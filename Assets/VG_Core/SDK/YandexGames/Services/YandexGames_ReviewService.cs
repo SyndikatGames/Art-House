@@ -1,9 +1,9 @@
-using VG.YandexGames;
+using VG2.YandexGames;
 using System;
 
 
 
-namespace VG
+namespace VG2
 {
     public class YandexGames_ReviewService : ReviewService
     {

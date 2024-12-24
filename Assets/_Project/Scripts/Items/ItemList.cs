@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using TopologicalSorting;
 using UnityEngine;
-using VG;
+using VG2;
 
 public static class ItemList
 {
@@ -13,7 +13,7 @@ public static class ItemList
 
     public static void UpdateItems()
     {
-        Saves.SetRoomItems(roomIndex: 0, PlacedItems);
+        //Saves.SetRoomItems(roomIndex: 0, PlacedItems);
         onUpdated?.Invoke();
     }
 

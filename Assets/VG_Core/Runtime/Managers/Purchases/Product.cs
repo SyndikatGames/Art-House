@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace VG
+namespace VG2
 {
     [System.Serializable]
     public class Product

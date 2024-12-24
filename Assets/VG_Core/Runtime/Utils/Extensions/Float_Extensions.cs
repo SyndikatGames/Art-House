@@ -1,5 +1,5 @@
 
-namespace VG
+namespace VG2
 {
     public static class Float_Extensions
     {

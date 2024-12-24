@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-namespace VG
+namespace VG2
 {
     public enum Language { RU, EN, TR }
 

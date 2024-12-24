@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 
-namespace VG
+namespace VG2
 {
 
 

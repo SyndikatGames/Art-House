@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-using VG;
+using VG2;
 
 public class RoomExpansion : MonoBehaviour
 {
@@ -12,18 +12,18 @@ public class RoomExpansion : MonoBehaviour
 
     private void OnEnable()
     {
-        Saves.String[Key_Save.room_size_data(0)].onChanged += UpdateRoomSize;
+        //Saves.String[Key_Save.room_size_data(0)].onChanged += UpdateRoomSize;
     }
 
     private void OnDisable()
     {
-        Saves.String[Key_Save.room_size_data(0)].onChanged -= UpdateRoomSize;
+        //Saves.String[Key_Save.room_size_data(0)].onChanged -= UpdateRoomSize;
     }
 
 
     public void UpdateRoomSize()
     {
-        var size = Saves.RoomSize;
+        var size = GameState.CurrentRoom.size.Value;
         var placeGridDataList = new List<PlaceGridData>();
 
         placeGridDataList.Add(new PlaceGridData

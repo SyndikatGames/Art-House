@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-namespace VG
+namespace VG2
 {
     public static class Table_Extensions
     {

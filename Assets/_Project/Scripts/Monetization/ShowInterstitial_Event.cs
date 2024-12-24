@@ -1,26 +1,26 @@
-using UnityEngine;
-using VG;
+using VG2;
 
-public class ShowInterstitial_Event : MonoBehaviour
+public class ShowInterstitial_Event : ReactiveView
 {
 
-
-    private void OnEnable()
+    protected override void Subscribe()
     {
-        Events.onItemPlaced += OnItemPlaced;
+        throw new System.NotImplementedException();
     }
 
-    private void OnDisable()
+    protected override void Display()
     {
-        Events.onItemPlaced -= OnItemPlaced;
+        throw new System.NotImplementedException();
     }
 
 
     private void OnItemPlaced()
     {
+        /*
         if (Saves.Bool[Key_Save.tutorial_completed].Value)
             Ads.Interstitial.Show(Key_Ad.interstitial);
+        */
     }
 
-
+    
 }

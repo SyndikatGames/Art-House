@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using VG;
+using VG2;
 using Zenject;
 
 
@@ -22,11 +22,6 @@ public class BoxWindowView : ReactiveView
     [SerializeField] private TextMeshProUGUI _singleOpenButtonText;
 
     //public BoxProductModel Model { get; private set; }
-
-    protected override void Dispose()
-    {
-        //JsonUtility.FromJson()
-    }
 
     protected override void Subscribe()
     {

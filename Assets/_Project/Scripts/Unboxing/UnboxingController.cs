@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-using VG;
+using VG2;
 
 public class UnboxingController
 {
@@ -36,7 +36,7 @@ public class UnboxingController
         {
             var cardModel = _unboxingModel.generatedCards[_currentCardIndex];
             _unboxingView.OpenNewCard(_unboxingConfig, _unboxingModel, _currentCardIndex);
-            Saves.AddCard(cardModel);
+            GameState.CurrentRoom.cards.Add(cardModel);
 
             _currentCardIndex++;
         }

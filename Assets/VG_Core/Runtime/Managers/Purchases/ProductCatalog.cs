@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
-using VG.Internal;
+using VG2.Internal;
 
 
-namespace VG
+namespace VG2
 {
     [CreateAssetMenu(menuName = "VG/Product Catalog", fileName = "Product Catalog")]
     public class ProductCatalog : ScriptableObject

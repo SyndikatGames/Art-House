@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 
-namespace VG
+namespace VG2
 {
     public abstract class Initializable : MonoBehaviour
     {

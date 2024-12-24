@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
-using VG.Internal;
+using VG2.Internal;
 
-namespace VG
+namespace VG2
 {
     public enum Column 
     { 

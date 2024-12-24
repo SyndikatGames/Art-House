@@ -2,7 +2,7 @@ using UnityEngine;
 using NaughtyAttributes;
 using System.Collections.Generic;
 
-namespace VG
+namespace VG2
 {
 
     public class ProductOrigin : ProductId

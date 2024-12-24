@@ -1,6 +1,6 @@
 
 
-namespace VG.Internal
+namespace VG2.Internal
 {
     public abstract class Service : Initializable
     {

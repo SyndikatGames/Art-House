@@ -1,20 +1,19 @@
 using System.Collections.Generic;
 using UnityEngine;
-using VG;
+using VG2;
+using Zenject;
 
 public class Tutorial : MonoBehaviour
 {
     [SerializeField] private int _finishStep;
     [SerializeField] private List<TutorialStep> _steps;
-    
-
 
 
     private void Start()
     {
-        if (Saves.Bool[Key_Save.tutorial_completed].Value) return;
+        if (GameState.tutorialCompleted) return;
 
-        int currentStepIndex = Saves.Int[Key_Save.tutorial_step].Value;
+        int currentStepIndex = GameState.tutorialStep.Value;
         RunStep(currentStepIndex);
     }
 
@@ -28,9 +27,9 @@ public class Tutorial : MonoBehaviour
             int finishedStep = stepIndex;
 
             if (finishedStep >= _finishStep)
-                Saves.Bool[Key_Save.tutorial_completed].Value = true;
+                GameState.tutorialCompleted = true;
 
-            Saves.Int[Key_Save.tutorial_step].Value++;
+            GameState.tutorialStep.Value++;
 
             if (finishedStep < _steps.Count - 1)
                 RunStep(finishedStep + 1);

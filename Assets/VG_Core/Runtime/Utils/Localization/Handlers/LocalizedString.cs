@@ -1,8 +1,9 @@
 using TMPro;
 using UnityEngine;
+using R3;
 
 
-namespace VG
+namespace VG2
 {
     [RequireComponent(typeof(TextMeshProUGUI))]
     public class LocalizedString : ReactiveView
@@ -14,14 +15,9 @@ namespace VG
 
         protected override void Subscribe()
         {
-            Localization.onChangeLanguage += Display;
-            if (_useToken) Localization.onUpdateToken += Display;
-        }
-
-        protected override void Dispose()
-        {
-            Localization.onChangeLanguage -= Display;
-            if (_useToken) Localization.onUpdateToken -= Display;
+            disposables.Add(Localization.onLanguageChanged.Subscribe(_ => Display()));
+            if (_useToken)
+                disposables.Add(Localization.onTokenChanged.Subscribe(_ => Display()));
         }
 
         protected override void Display()

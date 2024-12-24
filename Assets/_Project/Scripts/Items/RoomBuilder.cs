@@ -1,5 +1,5 @@
 using UnityEngine;
-using VG;
+using VG2;
 
 public class RoomBuilder : MonoBehaviour
 {
@@ -18,7 +18,7 @@ public class RoomBuilder : MonoBehaviour
         _rootItem.SetPlace(Vector3Int.zero, placeGrid: null);
         _roomExpansion.UpdateRoomSize();
 
-        var roomItemsDataList = Saves.GetRoomItemAcrhitecture(roomIndex: 0);
+        var roomItemsDataList = GameState.CurrentRoom.placedItemsHierarchy;
 
         foreach (var itemData in roomItemsDataList)
             InstantiateItem(itemData, parent: _rootItem);

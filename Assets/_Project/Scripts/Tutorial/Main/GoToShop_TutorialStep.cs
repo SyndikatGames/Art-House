@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-using VG;
+using VG2;
 
 public class GoToShop_TutorialStep : TutorialStep
 {

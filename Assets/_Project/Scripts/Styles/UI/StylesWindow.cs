@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
-using VG;
-
+using VG2;
+using R3;
+using Zenject;
 
 public class StylesWindow : ReactiveView
 {
@@ -9,18 +10,12 @@ public class StylesWindow : ReactiveView
 
     [SerializeField] private List<StyleVariant> _styleVariants;
 
-
     protected override void Subscribe()
     {
-        Saves.Int[Key_Save.current_style_index(0)].onChanged += Display;
-        Saves.String[Key_Save.styles_is_new_data(0)].onChanged += Display;
+        disposables.Add(GameState.CurrentRoom.currentStyleIndex.Subscribe(_ => Display()));
+        disposables.Add(GameState.CurrentRoom.newStyleIndices.onChanged.Subscribe(_ => Display()));
     }
 
-    protected override void Dispose()
-    {
-        Saves.Int[Key_Save.current_style_index(0)].onChanged -= Display;
-        Saves.String[Key_Save.styles_is_new_data(0)].onChanged -= Display;
-    }
 
     protected override void Display()
     {

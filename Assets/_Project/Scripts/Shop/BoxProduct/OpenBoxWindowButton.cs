@@ -1,5 +1,5 @@
 using UnityEngine;
-using VG;
+using VG2;
 using Zenject;
 
 

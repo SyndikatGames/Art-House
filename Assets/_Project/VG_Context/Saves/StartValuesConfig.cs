@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace VG
+namespace VG2
 {
     [CreateAssetMenu(menuName = "VG/Start Values")]
     public class StartValuesConfig : LoadableFromTable

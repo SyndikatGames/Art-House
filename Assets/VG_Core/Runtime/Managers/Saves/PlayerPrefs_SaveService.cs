@@ -2,7 +2,7 @@ using UnityEngine;
 using NaughtyAttributes;
 using System;
 
-namespace VG
+namespace VG2
 {
     public class PlayerPrefs_SaveService : SaveService
     {

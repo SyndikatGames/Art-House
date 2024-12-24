@@ -7,7 +7,7 @@ using VG2;
 using Zenject;
 
 
-namespace VG
+namespace VG2
 {
     public class Startup : MonoBehaviour
     {

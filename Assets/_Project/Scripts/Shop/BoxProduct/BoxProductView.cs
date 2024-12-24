@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using VG;
+using VG2;
 
 public class BoxProductView : MonoBehaviour
 {
@@ -20,7 +20,7 @@ public class BoxProductView : MonoBehaviour
     {
         BoxType = boxType;
 
-        int currentBoxes = Saves.GetBoxes(boxType);
+        int currentBoxes = GameState.CurrentRoom.boxesAmount.Get(boxType);
         bool paidBox = currentBoxes == 0;
 
         _counter.SetActive(!paidBox);

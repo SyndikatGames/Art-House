@@ -2,14 +2,14 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using VG;
+using VG2;
 
 public class RoomWindow : MonoBehaviour
 {
     [System.Serializable]
     private struct BonusText
     {
-        public BonusType bonusType;
+        //public BonusType bonusType;
         public TextMeshProUGUI text;
     }
 
@@ -41,7 +41,8 @@ public class RoomWindow : MonoBehaviour
 
     private void UpdateValues()
     {
-        int roomIndex = Saves.Int[Key_Save.current_room_index].Value;
+        /*
+        //int roomIndex = Saves.Int[Key_Save.current_room_index].Value;
         var roomConfig = Configs.GetRoom(roomIndex);
 
         int level = roomConfig.CurrentLevel;
@@ -62,11 +63,11 @@ public class RoomWindow : MonoBehaviour
             {
                 var bonusValue = bonuses[bonusText.bonusType];
                 bonusText.text.gameObject.SetActive(true);
-                bonusText.text.text = BonusDescription.Get(bonusText.bonusType, bonusValue);
+                //bonusText.text.text = BonusDescription.Get(bonusText.bonusType, bonusValue);
             }
             else bonusText.text.gameObject.SetActive(false);
         }
-
+        */
     }
 
 

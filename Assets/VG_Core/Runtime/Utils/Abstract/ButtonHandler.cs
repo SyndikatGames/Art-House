@@ -3,14 +3,13 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-namespace VG
+namespace VG2
 {
     [RequireComponent(typeof(Button))]
     public abstract class ButtonHandler : MonoBehaviour
     {
         public event Action onCompleted;
         private Button _button;
-
 
         public Button button 
         { 

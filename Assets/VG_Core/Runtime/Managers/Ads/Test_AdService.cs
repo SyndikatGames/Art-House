@@ -1,10 +1,10 @@
 using System;
-using VG.Internal;
+using VG2.Internal;
 using UnityEngine;
 using UnityEngine.UI;
-using static VG.Ads.Rewarded;
+using static VG2.Ads.Rewarded;
 
-namespace VG
+namespace VG2
 {
     
 

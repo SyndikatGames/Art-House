@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-using VG;
+using VG2;
 
 [CreateAssetMenu(menuName = "Project/Shop", fileName = "Shop")]
 public class ShopConfig : ScriptableObject

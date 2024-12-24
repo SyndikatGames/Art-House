@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-using VG;
+using VG2;
 
 public class StyleWindowTutorialModification : MonoBehaviour
 {
@@ -17,7 +17,7 @@ public class StyleWindowTutorialModification : MonoBehaviour
     {
         _tutorialButton.onClick.RemoveListener(OnTutorialButtonClicked);
         _tutorialPrompt.SetActive(false);
-        Saves.Bool[Key_Save.style_tutorial_completed].Value = true;
+        GameState.styleTutorialCompleted = true;
     }
 
 

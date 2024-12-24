@@ -1,5 +1,5 @@
 using UnityEngine;
-using VG;
+using VG2;
 
 
 public class AcceptBoxOffer_Button : ButtonHandler
@@ -13,8 +13,6 @@ public class AcceptBoxOffer_Button : ButtonHandler
         {
             if (result == Ads.Rewarded.Result.Success)
             {
-                int roomIndex = Saves.Int[Key_Save.current_room_index].Value;
-                Saves.Float[Key_Save.random_boxes(roomIndex)].Value += 5f;
                 Destroy(_window);
             }
 

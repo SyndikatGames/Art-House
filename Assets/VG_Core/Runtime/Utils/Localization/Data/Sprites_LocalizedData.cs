@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace VG
+namespace VG2
 {
     [CreateAssetMenu(menuName = "VG/Localization/Sprites", fileName = "Sprites")]
     public class Sprites_LocalizedData : LocalizedData<Sprite_Translation>

@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-using VG;
+using VG2;
 using Zenject;
 
 namespace VG2
@@ -11,8 +11,7 @@ namespace VG2
 
         public override void InstallBindings()
         {
-            var gameState = Saves.InitializeGameState();
-            StaticContext.Container.Bind<GameState>().FromInstance(gameState).AsSingle();
+            
 
         }
 

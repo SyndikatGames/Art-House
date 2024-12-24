@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Audio;
 
-namespace VG
+namespace VG2
 {
 
     public class Sound : Initializable

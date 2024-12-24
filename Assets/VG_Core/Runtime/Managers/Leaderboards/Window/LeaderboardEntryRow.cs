@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-namespace VG
+namespace VG2
 {
     public class LeaderboardEntryRow : MonoBehaviour
     {

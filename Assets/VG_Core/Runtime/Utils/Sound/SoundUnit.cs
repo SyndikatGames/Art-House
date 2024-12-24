@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using NaughtyAttributes;
 
 
-namespace VG
+namespace VG2
 {
     [CreateAssetMenu(menuName = "VG/" + nameof(SoundUnit), fileName = nameof(SoundUnit))]
     public class SoundUnit : ScriptableObject

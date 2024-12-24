@@ -1,7 +1,8 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using VG;
+using VG2;
+
 
 public class StyleVariant : MonoBehaviour
 {
@@ -28,8 +29,8 @@ public class StyleVariant : MonoBehaviour
         _index = index;
 
         var styleData = Configs.GetStyles(0).GetStyle(index);
-        bool styleAvailable = Configs.GetRoom(0).CurrentLevel >= index;
-        bool styleSelected = Saves.Int[Key_Save.current_style_index(0)].Value == index;
+        bool styleAvailable = PrestigeCalculator.GetCurrentRoomLevel() >= index;
+        bool styleSelected = GameState.CurrentRoom.currentStyleIndex.Value == index;
 
         SetPreviewSprites(styleData);
         SetPreviewColor(styleAvailable, styleSelected);
@@ -79,14 +80,18 @@ public class StyleVariant : MonoBehaviour
             _selectedMark.SetActive(false);
         }
 
-        _newMark.SetActive(Saves.StyleIsNew(_index) && styleAvailable);
+        //_newMark.SetActive(Saves.StyleIsNew(_index) && styleAvailable);
     }
 
 
     private void OnSelectButtonPressed()
     {
+        /*
+        _gameState.RoomState.currentStyleIndex.Value = _index;
+
         Saves.Int[Key_Save.current_style_index(0)].Value = _index;
         Saves.SetStyleNew(_index, false);
+        */
     }
 
 

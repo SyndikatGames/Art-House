@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 
 
 
-namespace VG.YandexGames
+namespace VG2.YandexGames
 {
     public class YG_Ads : MonoBehaviour
     {

@@ -2,7 +2,7 @@ using System.Runtime.InteropServices;
 using UnityEngine;
 
 
-namespace VG.YandexGames
+namespace VG2.YandexGames
 {
     public class YG_GameReady : MonoBehaviour
     {
