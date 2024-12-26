@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d38b583ec3f5474ea874bff575cf03f, type: 3}
+  m_Name: Cards
+  m_EditorClassIdentifier: 
+  <InventoryCardPrefab>k__BackingField: {fileID: 5092386860519549923, guid: 0596d56f7ca21a94183617fb1c346674, type: 3}
+  <UnboxedCardPrefab>k__BackingField: {fileID: 6916479079761411234, guid: 2588b25e573f2b94db44081228f788cb, type: 3}
+  _rarityStyles:
+  - rarityType: 1
+    backgroundSprite: {fileID: 21300000, guid: 82570c4b8dca7094da5070b31c119a4f, type: 3}
+    textColor: {r: 1, g: 0.91372555, b: 0.5882353, a: 1}
+  - rarityType: 2
+    backgroundSprite: {fileID: 21300000, guid: ac3fbe087493c664588ed374c6bc3914, type: 3}
+    textColor: {r: 0, g: 0.8862746, b: 1, a: 1}
+  - rarityType: 3
+    backgroundSprite: {fileID: 21300000, guid: f1f817ebdf3b4384885f8b10e9719a2a, type: 3}
+    textColor: {r: 0.8588236, g: 0.11764707, b: 1, a: 1}
+  - rarityType: 4
+    backgroundSprite: {fileID: 21300000, guid: b4c15ee1bda12ae4a8ef2132655abebd, type: 3}
+    textColor: {r: 0, g: 1, b: 0.015686275, a: 1}
+  - rarityType: 5
+    backgroundSprite: {fileID: 21300000, guid: 6ed7a18c033794246af6a6c8b07454d7, type: 3}
+    textColor: {r: 1, g: 0.34901962, b: 0, a: 1}

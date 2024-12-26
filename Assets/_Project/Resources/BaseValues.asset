@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 843664d79485c1942a0647691abdc2b9, type: 3}
+  m_Name: BaseValues
+  m_EditorClassIdentifier: 
+  _roomLevelPrestigePointsRequires:
+  - 1000
+  - 5000
+  - 15000
+  - 35000
+  _rarityPrestigePoints:
+  - rarityType: 1
+    prestigePoints: 100
+  - rarityType: 2
+    prestigePoints: 300
+  - rarityType: 3
+    prestigePoints: 1500
+  - rarityType: 4
+    prestigePoints: 5000
+  - rarityType: 5
+    prestigePoints: 25000
+  _itemSellPrices:
+  - rarityType: 1
+    price: 15
+  - rarityType: 2
+    price: 150
+  - rarityType: 3
+    price: 400
+  - rarityType: 4
+    price: 1500
+  - rarityType: 5
+    price: 5000
+  _boxPrices:
+  - boxType: 1
+    price: 100
+  - boxType: 2
+    price: 500
+  - boxType: 3
+    price: 3000

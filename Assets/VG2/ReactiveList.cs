@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using R3;
@@ -19,6 +20,11 @@ namespace VG2
 
 
         public int Count => _list.Count;
+
+        public T Find(Predicate<T> predicate) => _list.Find(predicate);
+
+        public bool Exists(Predicate<T> predicate) => _list.Exists(predicate);
+
 
         public void Add(T item)
         {
@@ -51,6 +57,13 @@ namespace VG2
         public IEnumerator<T> GetEnumerator() => ((IEnumerable<T>)_list).GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator() => ((IEnumerable)_list).GetEnumerator();
+
+
+        public void ReplaceList(List<T> list)
+        {
+            _list = list;
+            onChanged?.OnNext(Unit.Default);
+        }
 
     }
 }

@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dc79e29ef3a8f84aa767de40fd584e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boxWindowView: {fileID: 7162517271293277357}
+  _boxWindow: {fileID: 7162517271293277357}
   _buttonType: 1
 --- !u!1 &1025526211870584440
 GameObject:
@@ -513,7 +513,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: -21.6
+  m_lineSpacing: -20
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -811,7 +811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dc79e29ef3a8f84aa767de40fd584e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boxWindowView: {fileID: 7162517271293277357}
+  _boxWindow: {fileID: 7162517271293277357}
   _buttonType: 0
 --- !u!1 &8975932129284664187
 GameObject:
@@ -918,7 +918,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: -20
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -1237,6 +1237,8 @@ MonoBehaviour:
   _boxNameText: {fileID: 2186485749880211403}
   _probabilitiesText: {fileID: 6255366916413562367}
   _boxIcon: {fileID: 3519471036469994303}
-  _groupOpenButton: {fileID: 202834698016323970}
+  _groupOpenButton: {fileID: 151147440932471181}
   _groupOpenButtonText: {fileID: 6438510888475539727}
   _singleOpenButtonText: {fileID: 7137583281530093473}
+  _originMaxTextSize: 56
+  _priceMaxTextSize: 38

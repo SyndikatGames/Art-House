@@ -7,7 +7,6 @@ namespace VG2
     public static class GameState
     {
         public const int roomsAmount = 1;
-        public const int stylesAmount = 10;
 
 
 

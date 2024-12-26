@@ -22,10 +22,8 @@ namespace VG2
         {
             _instance = this;
 
-            var dataDictionary = GameStateEncoder.Decode(service.GetData());
+            var dataDictionary = GameStateEncoder.Decode(service.GetData(), _instance._debugLogs);
             GameStateParcer.Parse(_instance._startValues, dataDictionary);
-
-            Log(Core.Message.Initialized(managerName) + " Data: \n" + dataDictionary);
 
             Initialized = true;
         }

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using VG2;
 using Zenject;
 
@@ -12,7 +11,12 @@ public class Test : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.T))
         {
             GameState.money.Value++;
-            SceneManager.LoadScene(1);
+            CardCalculator.AddCard(new CardModel
+            {
+                amount = 2,
+                itemType = ItemType.AlarmClock,
+                rarityType = RarityType.Rare,
+            });
         }
     }
 }

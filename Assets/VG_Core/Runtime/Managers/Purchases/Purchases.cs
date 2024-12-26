@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using VG2.Internal;
@@ -50,7 +51,7 @@ namespace VG2
 
 
 
-        public static void Purchase(string productKey)
+        public static void Purchase(string productKey, Action<bool> onSuccess = null)
         {
             if (instance._productCatalog.ProductExists(productKey) == false)
                 Core.Error.ProductDoesNotExists(instance.managerName, productKey);
@@ -67,6 +68,7 @@ namespace VG2
                 }
                 else instance.Log("On not purchased: " + productKey);
 
+                onSuccess?.Invoke(success);
                 onPurchased?.Invoke(productKey, success);
             });
         }

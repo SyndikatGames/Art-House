@@ -6,7 +6,7 @@ namespace VG2.Internal
 {
     public abstract class Manager : Initializable
     {
-        [SerializeField] private bool _debugLogs;
+        [SerializeField] protected bool _debugLogs;
         [SerializeField] private List<Service> _services;
 
         protected Service supportedService { get; set; }

@@ -5,12 +5,12 @@ public class ShowInterstitial_Event : ReactiveView
 
     protected override void Subscribe()
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 
     protected override void Display()
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 
 

@@ -3744,50 +3744,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2102970115}
   m_CullTransparentMesh: 1
---- !u!1 &2141815008
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2141815010}
-  - component: {fileID: 2141815009}
-  m_Layer: 0
-  m_Name: TotalRules
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2141815009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2141815008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f75e7e9f8360c6f4c8ff2e3a848b9c1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &2141815010
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2141815008}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8849852857358865
 GameObject:
   m_ObjectHideFlags: 0
@@ -4033,7 +3989,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e47176fd648b92b4e9ce31d45b6644ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _requestDataBeforeStart: 1
+  _requestDataBeforeStart: 0
   _tables:
   - _key: localization_main
     _webId: 1YJOrSvm4LxN0LXgAzvvVF1RQ-LUns4yN6hbI4onmkNY
@@ -4641,7 +4597,6 @@ MonoBehaviour:
   - {fileID: 3436962224519074186}
   - {fileID: 670562207}
   - {fileID: 2009846548}
-  - {fileID: 2141815009}
   - {fileID: 1052609028}
 --- !u!4 &3802694984208973666
 Transform:
@@ -5252,7 +5207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e0bf0cfb93f49543991f653025f898c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _debugLogs: 1
+  _debugLogs: 0
   _services:
   - {fileID: 8090846151886812608}
   - {fileID: 2258312118686129026}
@@ -5948,4 +5903,3 @@ SceneRoots:
   - {fileID: 2035624013}
   - {fileID: 499254820}
   - {fileID: 909529204}
-  - {fileID: 2141815010}

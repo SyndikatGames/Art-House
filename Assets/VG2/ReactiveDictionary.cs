@@ -1,17 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using R3;
 
 namespace VG2
 {
     public class ReactiveDictionary<TKey, TValue> : IEnumerable<KeyValuePair<TKey, TValue>>
     {
-        public readonly Subject<Unit> onChanged;
+        public readonly Subject<Unit> onChanged = new Subject<Unit>();
         private Dictionary<TKey, TValue> _dictionary;
-
-        public KeyValuePair<TKey, TValue>[] ToArray() => _dictionary.ToArray();
-
 
         public ReactiveDictionary() => _dictionary = new Dictionary<TKey, TValue>();
 
@@ -38,6 +34,8 @@ namespace VG2
         }
 
         public TValue Get(TKey key) => _dictionary[key];
+
+        public bool ContainsKey(TKey key) => _dictionary.ContainsKey(key);
 
         public void Set(TKey key, TValue value)
         {

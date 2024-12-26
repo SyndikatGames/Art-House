@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.IO.Compression;
 using System.IO;
+using System.IO.Compression;
 using System.Text;
 using UnityEngine;
 
@@ -11,15 +11,21 @@ namespace VG2
     public static class GameStateEncoder
     {
         public const char cellSeparator = '|';
-        public const char keyValuePairSeparator = ':';
+        public const char keyValuePairSeparator = ';';
 
 
-        public static Dictionary<string, string> Decode(string compressedData)
+        public static Dictionary<string, string> Decode(string compressedData, bool useLogs)
         {
             if (compressedData == string.Empty) 
                 return new Dictionary<string, string>();
 
             string originData = Decompress(compressedData);
+
+            if (useLogs) Debug.Log($"[{nameof(GameStateEncoder)}] {originData}");
+
+            if (originData == string.Empty) 
+                return new Dictionary<string, string>();
+
             return ToDataDictionary(originData);
         }
 
@@ -53,8 +59,8 @@ namespace VG2
             int i = 0;
             foreach (var keyValue in dataDictionary)
             {
-                result += $"{keyValue.Key}:{keyValue.Value}";
-                if (i != dataDictionary.Count - 1) result += keyValuePairSeparator;
+                result += $"{keyValue.Key}{keyValuePairSeparator}{keyValue.Value}";
+                if (i != dataDictionary.Count - 1) result += cellSeparator;
                 i++;
             }
 
@@ -62,7 +68,7 @@ namespace VG2
         }
 
 
-        public static string Compress(string uncompressedString)
+        private static string Compress(string uncompressedString)
         {
             byte[] compressedBytes;
 
@@ -82,24 +88,29 @@ namespace VG2
             return Convert.ToBase64String(compressedBytes);
         }
 
-        public static string Decompress(string compressedString)
+        private static string Decompress(string compressedString)
         {
-            byte[] decompressedBytes;
-
-            Debug.Log(compressedString);
-            var compressedStream = new MemoryStream(Convert.FromBase64String(compressedString));
-
-            using (var decompressorStream = new DeflateStream(compressedStream, CompressionMode.Decompress))
+            try
             {
-                using (var decompressedStream = new MemoryStream())
+                byte[] decompressedBytes;
+
+                var compressedStream = new MemoryStream(Convert.FromBase64String(compressedString));
+                using (var decompressorStream = new DeflateStream(compressedStream, CompressionMode.Decompress))
                 {
-                    decompressorStream.CopyTo(decompressedStream);
+                    using (var decompressedStream = new MemoryStream())
+                    {
+                        decompressorStream.CopyTo(decompressedStream);
 
-                    decompressedBytes = decompressedStream.ToArray();
+                        decompressedBytes = decompressedStream.ToArray();
+                    }
                 }
-            }
 
-            return Encoding.UTF8.GetString(decompressedBytes);
+                return Encoding.UTF8.GetString(decompressedBytes);
+            }
+            catch 
+            {
+                return string.Empty;
+            }
         }
 
 

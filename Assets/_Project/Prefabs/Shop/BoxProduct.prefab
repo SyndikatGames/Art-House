@@ -148,7 +148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 158329272486202597, guid: dc8d87609c17d4b4d8cdac7153fdf740, type: 3}
       propertyPath: m_fontSize
-      value: 41.85
+      value: 29.85
       objectReference: {fileID: 0}
     - target: {fileID: 158329272486202597, guid: dc8d87609c17d4b4d8cdac7153fdf740, type: 3}
       propertyPath: m_fontColor.b
@@ -176,7 +176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 439614231991539274, guid: dc8d87609c17d4b4d8cdac7153fdf740, type: 3}
       propertyPath: m_fontSize
-      value: 60
+      value: 43.4
       objectReference: {fileID: 0}
     - target: {fileID: 2503390604503459676, guid: dc8d87609c17d4b4d8cdac7153fdf740, type: 3}
       propertyPath: m_Color.b
@@ -192,11 +192,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2767822850571615629, guid: dc8d87609c17d4b4d8cdac7153fdf740, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 270
+      value: 240
       objectReference: {fileID: 0}
     - target: {fileID: 2767822850571615629, guid: dc8d87609c17d4b4d8cdac7153fdf740, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 270
+      value: 240
       objectReference: {fileID: 0}
     - target: {fileID: 2994881663026617960, guid: dc8d87609c17d4b4d8cdac7153fdf740, type: 3}
       propertyPath: m_Sprite
@@ -359,10 +359,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3dce22e9763962449d7206d897fae3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _purchaseText: {fileID: 1509182429703962398}
+  _boxType: 0
+  _buttonText: {fileID: 1509182429703962398}
   _buttonImage: {fileID: 5789860150962084188}
   _amountText: {fileID: 8402332183347956534}
-  _counter: {fileID: 4933772408452781405}
   _freeButtonSprite: {fileID: 21300000, guid: 93913c7ae01ddc3458cee567968d0b8c, type: 3}
   _paidButtonSprite: {fileID: 21300000, guid: 0b2a30a49cf6bdc4ca8199da157d85e4, type: 3}
 --- !u!1 &3322132036143215928 stripped

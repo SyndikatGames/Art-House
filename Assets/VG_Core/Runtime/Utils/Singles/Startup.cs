@@ -49,8 +49,6 @@ namespace VG2
 
             if (allInitialized)
             {
-                new ProjectInstaller().InstallBindings();
-
                 SceneManager.LoadScene(1);
                 Loaded = true;
                 onLoaded?.Invoke();
