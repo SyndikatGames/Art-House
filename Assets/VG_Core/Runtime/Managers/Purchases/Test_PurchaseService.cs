@@ -19,14 +19,14 @@ namespace VG2
         public override bool supported => _useInBuild || Environment.editor;
 
 
-        public override string GetPriceString(string productKey) => productKey.ToString();
+        public override string GetPriceString(ProductKey productKey) => productKey.ToString();
         public override void Initialize() => InitCompleted();
 
 
-        public override void Purchase(string productKey, Action<bool> onSuccess)
+        public override void Purchase(ProductKey productKey, Action<bool> onSuccess)
         {
             _purchasePanel.SetActive(true);
-            _idText.text = productKey;
+            _idText.text = productKey.ToString();
 
             _acceptButton.onClick.RemoveAllListeners();
             _acceptButton.onClick.AddListener(() =>

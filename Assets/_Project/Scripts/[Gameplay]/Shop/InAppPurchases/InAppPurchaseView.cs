@@ -1,18 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using VG2;
 
 public class InAppPurchaseView : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [field: SerializeField] public ProductKey ProductKey { get; private set; }
+
+    [SerializeField] private TextMeshProUGUI _priceText;
+
+
+
+    private void OnEnable()
     {
-        
+        _priceText.text = Purchases.GetPriceString(ProductKey);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

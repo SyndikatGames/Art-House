@@ -19,6 +19,11 @@ namespace VG2
         private static CashedResource<UnboxingConfig> _unboxingCash = new CashedResource<UnboxingConfig>("Unboxing");
         public static UnboxingConfig Unboxing => _unboxingCash.Value;
 
+
+        private static CashedResource<RoomStylesConfig> _stylesCash = new CashedResource<RoomStylesConfig>("Styles");
+        public static RoomStylesConfig RoomStyles => _stylesCash.Value;
+
+
     }
 
 }

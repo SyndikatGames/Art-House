@@ -8,16 +8,13 @@ namespace VG2
 {
     public class Purchases : Manager
     {
-        public delegate void OnPurchased(string productKey, bool success);
+        public delegate void OnPurchased(ProductKey productKey, bool success);
         public static event OnPurchased onPurchased;
 
         private static Purchases instance;
 
         private static PurchaseService service => instance.supportedService as PurchaseService;
         protected override string managerName => "VG IAP";
-
-
-        [SerializeField] private ProductCatalog _productCatalog;
 
         public override void Initialize()
         {
@@ -41,21 +38,13 @@ namespace VG2
             Log(Core.Message.Initialized(managerName));
         }
 
-        public static string GetPriceString(string productKey)
+        public static string GetPriceString(ProductKey productKey) => service.GetPriceString(productKey);
+
+
+
+
+        public static void Purchase(ProductKey productKey, Action<bool> onSuccess = null)
         {
-            if (instance._productCatalog.ProductExists(productKey) == false)
-                Core.Error.ProductDoesNotExists(instance.managerName, productKey);
-
-            return service.GetPriceString(productKey);
-        }
-
-
-
-        public static void Purchase(string productKey, Action<bool> onSuccess = null)
-        {
-            if (instance._productCatalog.ProductExists(productKey) == false)
-                Core.Error.ProductDoesNotExists(instance.managerName, productKey);
-
             instance.Log("Product purchase processing: " + productKey);
 
             service.Purchase(productKey, (success) =>

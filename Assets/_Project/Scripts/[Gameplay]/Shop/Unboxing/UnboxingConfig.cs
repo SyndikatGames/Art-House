@@ -19,6 +19,7 @@ public class UnboxingConfig : ScriptableObject
         public BoxType boxType;
         public Sprite boxSprite;
         public Sprite openedBoxSprite;
+        public Color textColor;
         public List<RarityProbability> probabilities;
     }
 
@@ -26,6 +27,9 @@ public class UnboxingConfig : ScriptableObject
 
     [SerializeField] private List<BoxInfo> _boxInfoList;
 
+
+    public Color GetBoxTextColor(BoxType boxType) 
+        => _boxInfoList.Find(item => item.boxType == boxType).textColor;
 
     public Sprite GetBoxSprite(BoxType boxType) 
         => _boxInfoList.Find(item => item.boxType == boxType).boxSprite;

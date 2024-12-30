@@ -66,6 +66,13 @@ namespace VG2
 
         public static string GetString(string key, bool useToken = false)
         {
+            if (instance._stringData.translations.ContainsKey(key) == false)
+            {
+                Debug.LogWarning($"[Localization] Translation key \"{key}\" does not exists!");
+                return key;
+            }
+
+
             string localizedString = instance._stringData.translations[key].Get(currentLanguage);
 
             if (useToken)

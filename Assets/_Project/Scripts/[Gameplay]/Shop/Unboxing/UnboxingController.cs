@@ -18,7 +18,7 @@ public class UnboxingController
         _currentCardIndex = 0;
 
         _unboxingModel = GenerateUnboxingModel(boxType, cardsAmount);
-        _unboxingView = DiContainer.Create(ConfigHub.Unboxing.UnboxingWindowPrefab, UI.Canvas);
+        _unboxingView = SceneContainer.InstantiatePrefabFromComponent(ConfigHub.Unboxing.UnboxingWindowPrefab, UI.Canvas);
         _unboxingView.StartUnboxing(_unboxingModel);
 
     }

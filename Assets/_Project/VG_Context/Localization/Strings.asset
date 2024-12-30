@@ -139,22 +139,22 @@ MonoBehaviour:
     ru: 
     en: 
     tr: "\r"
-  - key: common_box
-    ru: "\u041E\u0431\u044B\u0447\u043D\u0430\u044F"
-    en: Common
-    tr: "D\xFCzenli\r"
-  - key: rare_box
-    ru: "\u0420\u0435\u0434\u043A\u0430\u044F"
-    en: Rare
-    tr: "Nadir\r"
-  - key: epic_box
-    ru: "\u042D\u043F\u0438\u0447\u043D\u0430\u044F"
-    en: Epic
-    tr: "Destans\u0131\r"
-  - key: fantastic_box
-    ru: "\u0424\u0430\u043D\u0442\u0430\u0441\u0442\u0438\u043A\u0430"
-    en: Fantastic
-    tr: "Fantezi\r"
+  - key: 
+    ru: 
+    en: 
+    tr: "\r"
+  - key: 
+    ru: 
+    en: 
+    tr: "\r"
+  - key: 
+    ru: 
+    en: 
+    tr: "\r"
+  - key: 
+    ru: 
+    en: 
+    tr: "\r"
   - key: 
     ru: 
     en: 
@@ -336,6 +336,90 @@ MonoBehaviour:
     en: 
     tr: "\r"
   - key: open
-    ru: "\u041E\u0442\u043A\u0440\u044B\u0442\u044C"
+    ru: "\u041E\u0422\u041A\u0420\u042B\u0422\u042C"
+    en: 
+    tr: "\r"
+  - key: small_box_pack_product
+    ru: "\u0421\u0442\u0430\u0440\u0442\u043E\u0432\u044B\u0439\n\u043D\u0430\u0431\u043E\u0440"
+    en: 
+    tr: "\r"
+  - key: big_box_pack_product
+    ru: "\u041F\u0440\u0435\u043C\u0438\u0443\u043C\n\u043D\u0430\u0431\u043E\u0440"
+    en: 
+    tr: "\r"
+  - key: 
+    ru: 
+    en: 
+    tr: "\r"
+  - key: Boxes in Window
+    ru: 
+    en: 
+    tr: "\r"
+  - key: box_window_Common
+    ru: "\u041E\u0431\u044B\u0447\u043D\u0430\u044F \u043A\u043E\u0440\u043E\u0431\u043A\u0430"
+    en: 
+    tr: "\r"
+  - key: box_window_Rare
+    ru: "\u041F\u0440\u0435\u043C\u0438\u0443\u043C \u043A\u043E\u0440\u043E\u0431\u043A\u0430"
+    en: 
+    tr: "\r"
+  - key: box_window_Epic
+    ru: "\u0423\u043D\u0438\u043A\u0430\u043B\u044C\u043D\u0430\u044F \u043A\u043E\u0440\u043E\u0431\u043A\u0430"
+    en: 
+    tr: "\r"
+  - key: box_window_Fantastic
+    ru: "\u041B\u0435\u0433\u0435\u043D\u0434\u0430\u0440\u043D\u0430\u044F \u043A\u043E\u0440\u043E\u0431\u043A\u0430"
+    en: 
+    tr: "\r"
+  - key: Boxes in Shop
+    ru: 
+    en: 
+    tr: "\r"
+  - key: common_box
+    ru: "\u041E\u0431\u044B\u0447\u043D\u0430\u044F"
+    en: Common
+    tr: "D\xFCzenli\r"
+  - key: rare_box
+    ru: "\u041F\u0440\u0435\u043C\u0438\u0443\u043C"
+    en: Rare
+    tr: "Nadir\r"
+  - key: epic_box
+    ru: "\u0423\u043D\u0438\u043A\u0430\u043B\u044C\u043D\u0430\u044F"
+    en: Epic
+    tr: "Destans\u0131\r"
+  - key: fantastic_box
+    ru: "\u041B\u0435\u0433\u0435\u043D\u0434\u0430\u0440\u043D\u0430\u044F"
+    en: Fantastic
+    tr: "Fantezi\r"
+  - key: Item Rarity
+    ru: 
+    en: 
+    tr: "\r"
+  - key: item_Common
+    ru: "\u041E\u0431\u044B\u0447\u043D\u044B\u0439"
+    en: 
+    tr: "\r"
+  - key: item_Rare
+    ru: "\u0420\u0435\u0434\u043A\u0438\u0439"
+    en: 
+    tr: "\r"
+  - key: item_Epic
+    ru: "\u042D\u043F\u0438\u0447\u0435\u0441\u043A\u0438\u0439"
+    en: 
+    tr: "\r"
+  - key: item_Fantastic
+    ru: "\u0424\u0430\u043D\u0442\u0430\u0441\u0442\u0438\u0447\u0435\u0441\u043A\u0438\u0439"
+    en: 
+    tr: "\r"
+  - key: item_Legendary
+    ru: "\u041B\u0435\u0433\u0435\u043D\u0434\u0430\u0440\u043D\u044B\u0439"
+    en: 
+    tr: "\r"
+  - key: 
+    ru: 
+    en: 
+    tr: "\r"
+  - key: item_probabilities
+    ru: "\u0428\u0430\u043D\u0441\u044B \u043F\u0440\u0435\u0434\u043C\u0435\u0442\u043E\u0432:"
     en: 
     tr: 

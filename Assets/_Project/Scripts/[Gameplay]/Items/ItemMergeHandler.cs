@@ -1,13 +1,16 @@
+using R3;
 using UnityEngine;
 
 public class ItemMergeHandler
 {
     private Item _item;
+    private EventController _eventController;
 
 
-    public ItemMergeHandler(Item item)
+    public ItemMergeHandler(Item item, EventController eventController)
     {
         _item = item;
+        _eventController = eventController;
     }
 
 
@@ -23,7 +26,7 @@ public class ItemMergeHandler
             _item.Effects.MergingFlash();
 
             ItemPlacing.UpdateItems();
-            Events.ItemsMerged();
+            _eventController.OnItemsMerged.OnNext(Unit.Default);
             return true;
         }
 

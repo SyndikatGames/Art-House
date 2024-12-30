@@ -16,10 +16,6 @@ public class BoxWindowView : MonoBehaviour
     [SerializeField] private float _originMaxTextSize;
     [SerializeField] private float _priceMaxTextSize;
 
-    [Header("Resources")]
-    [SerializeField] private Image _paidButtonSprite;
-    [SerializeField] private Image _freeButtonSprite;
-
     public BoxType BoxType { get; private set; }
 
 
@@ -28,15 +24,17 @@ public class BoxWindowView : MonoBehaviour
         BoxType = boxType;
 
         _boxIcon.sprite = ConfigHub.Unboxing.GetBoxSprite(boxType);
-        _boxNameText.text = boxType.ToString();
+        _boxNameText.text = Localization.GetString($"box_window_{boxType}");
 
-        string probabilitiesText = "Шансы:\n\n";
+        string probabilitiesText = $"{Localization.GetString("item_probabilities")}\n\n";
         foreach (var rarityProbability in ConfigHub.Unboxing.GetRarityProbabilites(boxType))
         {
             var probabilityColorHtml = ColorUtility.ToHtmlStringRGB
                 (ConfigHub.Cards.GetRarityStyle(rarityProbability.Key).textColor);
 
-            probabilitiesText += $"<color=#{probabilityColorHtml}>{rarityProbability.Key}: " +
+            string itemRarityName = Localization.GetString($"item_{rarityProbability.Key}");
+
+            probabilitiesText += $"<color=#{probabilityColorHtml}>{itemRarityName}: " +
                 $"{rarityProbability.Value.ToString("#.##")}%\n";
         }
 

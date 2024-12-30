@@ -17,7 +17,6 @@ namespace VG2
 
         protected abstract void Subscribe();
 
-        protected abstract void OnEvent();
     }
 }
 

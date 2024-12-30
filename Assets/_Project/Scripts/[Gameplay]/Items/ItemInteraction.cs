@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using VG2;
+using Zenject;
 
 
 public class ItemInteraction : MonoBehaviour
@@ -12,6 +13,8 @@ public class ItemInteraction : MonoBehaviour
 
     [SerializeField] private Item _item;
     [SerializeField] private GameObject _interactableObject;
+
+    [Inject] private EventController _eventController;
 
     private ItemSellHandler _sellHandler;
     private ItemMoveHandler _moveHandler;
@@ -26,10 +29,11 @@ public class ItemInteraction : MonoBehaviour
     private Camera _camera;
     private Camera Camera { get { if (_camera == null) _camera = Camera.main; return _camera; } }
 
-    private void Awake()
+    [Inject]
+    private void Construct()
     {
-        _moveHandler = new ItemMoveHandler(_item);
-        _mergeHandler = new ItemMergeHandler(_item);
+        _moveHandler = new ItemMoveHandler(_item, _eventController);
+        _mergeHandler = new ItemMergeHandler(_item, _eventController);
         _cardHandler = new ItemCardHandler(_item);
         _sellHandler = new ItemSellHandler(_item);
 
@@ -72,7 +76,7 @@ public class ItemInteraction : MonoBehaviour
             {
                 _moveHandler.OnEndDrag(_pointerWorldPosition);
                 Sound.Play(Key_Sound.PlaceItem);
-                Events.ItemPlaced();
+                _eventController.OnItemPlaced.OnNext(_item);
             }
         }
 

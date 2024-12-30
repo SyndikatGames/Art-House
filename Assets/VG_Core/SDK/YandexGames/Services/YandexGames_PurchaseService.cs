@@ -9,8 +9,6 @@ namespace VG2
 {
     public class YandexGames_PurchaseService : PurchaseService
     {
-        [SerializeField] private ProductCatalog _productCatalog;
-
         private List<string> _purchasedProductIds;
         private Dictionary<string, string> _productPrices;
 
@@ -20,12 +18,12 @@ namespace VG2
             Environment.platform == Environment.Platform.WebGL && !Environment.editor;
 
 
-        public override string GetPriceString(string productKey)
+        public override string GetPriceString(ProductKey productKey)
         {
-            if (!_productPrices.ContainsKey(productKey))
+            if (!_productPrices.ContainsKey(productKey.ToString()))
                 return string.Empty;
 
-           return _productPrices[productKey];
+           return _productPrices[productKey.ToString()];
         }
 
 
@@ -54,8 +52,9 @@ namespace VG2
                 {
                     if (purchasedProductKey == string.Empty) continue;
 
-                    PurchasesHandler.HandlePurchase(purchasedProductKey);
-                    if (_productCatalog.GetProduct(purchasedProductKey).consumable)
+                    ProductKey productKey = (ProductKey)Enum.Parse(typeof(ProductKey), purchasedProductKey);
+                    PurchasesHandler.HandlePurchase(productKey);
+                    if (Products.Infos.Find(item => item.productKey == productKey).isConsumable)
                         YG_Purchases.Consume(purchasedProductKey);
                 }
             });
@@ -69,13 +68,13 @@ namespace VG2
             InitCompleted();
         }
 
-        public override void Purchase(string productKey, Action<bool> onSuccess)
+        public override void Purchase(ProductKey productKey, Action<bool> onSuccess)
         {
             onSuccess += (success) =>
             {
-                if (success) YG_Purchases.Consume(productKey);
+                if (success) YG_Purchases.Consume(productKey.ToString());
             };
-            YG_Purchases.Purchase(productKey, onSuccess);
+            YG_Purchases.Purchase(productKey.ToString(), onSuccess);
         }
 
 

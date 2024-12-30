@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using VG2;
 
 public class CardMoving : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -15,7 +16,7 @@ public class CardMoving : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        var itemInstance = Instantiate(Prefabs.GetItem(_itemCard.Data.itemType));
+        var itemInstance = SceneContainer.InstantiatePrefabFromComponent(Prefabs.GetItem(_itemCard.Data.itemType));
         itemInstance.SetRarity(_itemCard.Data.rarityType);
         _itemInteraction = itemInstance.GetComponent<ItemInteraction>();
         _itemInteraction.BeginDrag();

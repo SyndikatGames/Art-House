@@ -5182,7 +5182,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24d9636769b309b4a94a4bbdabed2f3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _productCatalog: {fileID: 11400000, guid: 54e7817ae1787bc4b970f4b411ab8f04, type: 2}
 --- !u!114 &5586838909343281452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5320,7 +5319,6 @@ MonoBehaviour:
   _services:
   - {fileID: 5586674214463914613}
   - {fileID: 5901857363285967689}
-  _productCatalog: {fileID: 11400000, guid: 54e7817ae1787bc4b970f4b411ab8f04, type: 2}
 --- !u!224 &6053861099877601943
 RectTransform:
   m_ObjectHideFlags: 0

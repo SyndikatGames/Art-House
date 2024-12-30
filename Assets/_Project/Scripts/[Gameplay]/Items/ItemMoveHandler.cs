@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using VG2;
 
 public class ItemMoveHandler
 {
@@ -8,11 +7,13 @@ public class ItemMoveHandler
 
     private Item _item;
     private Vector3Int _beforePosition;
+    private EventController _eventController;
 
 
-    public ItemMoveHandler(Item item)
+    public ItemMoveHandler(Item item, EventController eventController)
     {
         _item = item;
+        _eventController = eventController;
     }
 
 
@@ -30,7 +31,7 @@ public class ItemMoveHandler
                 _item.SetSide(Side.Left);
 
             ItemPlacing.UpdateItems();
-            Events.ItemRotated();
+            _eventController.OnItemRotated.OnNext(_item);
             return true;
         }
 

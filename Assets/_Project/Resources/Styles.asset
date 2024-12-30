@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67fc8af5cd4aacd44b19a84c244f66f4, type: 3}
+  m_Name: Styles
+  m_EditorClassIdentifier: 
+  <RoomStylesScreenPrefab>k__BackingField: {fileID: 793237059358650812, guid: 91b1ed6188d32cd499b5a1167a4188ea, type: 3}
+  _styles:
+  - toRightWallSprite: {fileID: 21300000, guid: 6b60cab7dd113fe4f8bcd80b1989b4c6, type: 3}
+    toLeftWallSprite: {fileID: 21300000, guid: cbe0a3281b101f341aebbb041b24881c, type: 3}
+    floorSprite: {fileID: 21300000, guid: d03f5cb5a0008094583b18fceddca6fe, type: 3}
+  - toRightWallSprite: {fileID: 21300000, guid: 260d2e13ea4d21246b2a0e66546f9df5, type: 3}
+    toLeftWallSprite: {fileID: 21300000, guid: a2d1f2199329a504cab3c99914680b50, type: 3}
+    floorSprite: {fileID: 21300000, guid: 0168b86b76eef3747aa28695cd9b1465, type: 3}
+  - toRightWallSprite: {fileID: 21300000, guid: b81bb6bf21066724999329490f848d78, type: 3}
+    toLeftWallSprite: {fileID: 21300000, guid: ca065a1a9a1219043aadecdfdd75ef16, type: 3}
+    floorSprite: {fileID: 21300000, guid: 3c0408d9c882bf0468ac4e99118981f6, type: 3}
+  - toRightWallSprite: {fileID: 21300000, guid: 76ed356c5fb9eb1438021403513d1ed5, type: 3}
+    toLeftWallSprite: {fileID: 21300000, guid: c0016578c2815144caa853e93451a321, type: 3}
+    floorSprite: {fileID: 21300000, guid: 85eb6dea8f1c8c8498cb5775378f21bf, type: 3}
+  - toRightWallSprite: {fileID: 21300000, guid: 04274e3c388f56843b51210e7f4555ef, type: 3}
+    toLeftWallSprite: {fileID: 21300000, guid: d8be63f133fe8f04c89a0b2f5a21667d, type: 3}
+    floorSprite: {fileID: 21300000, guid: 8179715f13a684849b11cbd163b6fa9b, type: 3}
+  - toRightWallSprite: {fileID: 21300000, guid: fcf45d78dbec2454b8cc7f4820bcecc2, type: 3}
+    toLeftWallSprite: {fileID: 21300000, guid: f7e928f11f1b0cd468c40067e933ed07, type: 3}
+    floorSprite: {fileID: 21300000, guid: ec75625b597cea94284b1170e8cb5095, type: 3}
+  - toRightWallSprite: {fileID: 21300000, guid: 9990182a408c09242a439b5ef9480fdd, type: 3}
+    toLeftWallSprite: {fileID: 21300000, guid: e5df2c63537bfe746bc9cb4b6b89a0dd, type: 3}
+    floorSprite: {fileID: 21300000, guid: 9b21c291803c2dd40bfe42300e3e8371, type: 3}
+  - toRightWallSprite: {fileID: 21300000, guid: 1c44fa0023d9a634fb621ff363652288, type: 3}
+    toLeftWallSprite: {fileID: 21300000, guid: c1506b6cef111eb4bbf7fcd5a54b8cc8, type: 3}
+    floorSprite: {fileID: 21300000, guid: cbd5fbf7ac8efd84eae529b0d8762815, type: 3}
+  - toRightWallSprite: {fileID: 21300000, guid: b1cf1147c3fd98e43b04f597e66cc760, type: 3}
+    toLeftWallSprite: {fileID: 21300000, guid: 0ecb59a2bef806e479a89df9cf9145e5, type: 3}
+    floorSprite: {fileID: 21300000, guid: ae8ad8e57eefb084b95fcdd472d834c8, type: 3}
+  - toRightWallSprite: {fileID: 21300000, guid: fe9858372b5a6834092c278c3adc7f6f, type: 3}
+    toLeftWallSprite: {fileID: 21300000, guid: 0cff85e5814d8514ea69ff238c837800, type: 3}
+    floorSprite: {fileID: 21300000, guid: 0dcfb1c6947e24449b9dc9b5029424c6, type: 3}

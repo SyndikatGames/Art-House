@@ -14,17 +14,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ShopPrefab>k__BackingField: {fileID: 6767076409568843144, guid: f517340600dc9f34da07ffd0c8ec8ae1, type: 3}
   <BoxWindowPrefab>k__BackingField: {fileID: 7162517271293277357, guid: 8ab3392d7c17df44fbf6241271469633, type: 3}
+  <SellCardsWindowPrefab>k__BackingField: {fileID: -4389611352302154764, guid: 3c7f4ce275d14d843ae89edcfdfc2e02, type: 3}
   <BoxesInGroup>k__BackingField: 10
-  _boxPurchasings:
-  - boxType: 1
-    isInAppPurchase: 0
-    inAppProductKey: 
-  - boxType: 2
-    isInAppPurchase: 0
-    inAppProductKey: 
-  - boxType: 3
-    isInAppPurchase: 0
-    inAppProductKey: 
-  - boxType: 4
-    isInAppPurchase: 1
-    inAppProductKey: fantastic_box
+  _boxPackProducts:
+  - productKey: 3
+    boxes:
+    - boxType: 1
+      amount: 15
+    - boxType: 2
+      amount: 10
+  - productKey: 4
+    boxes:
+    - boxType: 1
+      amount: 25
+    - boxType: 2
+      amount: 15
+    - boxType: 3
+      amount: 5
+  _inAppPurchaseWindows:
+  - productKey: 2
+    prefab: {fileID: 8096893574094151250, guid: 388571e5cfd4df54d9af0dc64de3b60c, type: 3}
+  - productKey: 3
+    prefab: {fileID: 8096893574094151250, guid: eeed44cdcb8b569418049e61acd2747c, type: 3}
+  - productKey: 4
+    prefab: {fileID: 8096893574094151250, guid: f15b2f518094c0547a1450fe935886d7, type: 3}

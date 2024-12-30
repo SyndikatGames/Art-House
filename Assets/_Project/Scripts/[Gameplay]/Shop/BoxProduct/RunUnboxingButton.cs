@@ -27,14 +27,11 @@ public class RunUnboxingButton : ButtonHandler
         {
             int purchasableBoxesAmount = _buttonType == ButtonType.Single ? 1 : ConfigHub.Shop.BoxesInGroup;
 
-            _shopController.RunBoxPurchasing(_boxWindow.BoxType, purchasableBoxesAmount, success =>
+            if (_shopController.TryPurchaseBox(_boxWindow.BoxType, purchasableBoxesAmount))
             {
-                if (success)
-                {
-                    _unboxingController.RunUnboxing(_boxWindow.BoxType, purchasableBoxesAmount);
-                    Destroy(_boxWindow.gameObject);
-                }
-            });
+                _unboxingController.RunUnboxing(_boxWindow.BoxType, purchasableBoxesAmount);
+                Destroy(_boxWindow.gameObject);
+            }
         }
 
     }
