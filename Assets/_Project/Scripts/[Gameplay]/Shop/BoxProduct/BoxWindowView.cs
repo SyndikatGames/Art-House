@@ -10,11 +10,14 @@ public class BoxWindowView : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _probabilitiesText;
     [SerializeField] private Image _boxIcon;
 
+    [field: SerializeField] public RectTransform OpenButtonRect { get; private set; }
     [SerializeField] private GameObject _groupOpenButton;
     [SerializeField] private TextMeshProUGUI _groupOpenButtonText;
     [SerializeField] private TextMeshProUGUI _singleOpenButtonText;
     [SerializeField] private float _originMaxTextSize;
     [SerializeField] private float _priceMaxTextSize;
+
+
 
     public BoxType BoxType { get; private set; }
 

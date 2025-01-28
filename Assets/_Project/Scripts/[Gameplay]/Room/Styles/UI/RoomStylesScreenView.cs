@@ -8,6 +8,10 @@ public class RoomStylesScreenView : ReactiveView
 
     [SerializeField] private List<RoomStyleVariantView> _styleVariants;
 
+    public List<RoomStyleVariantView> StyleVariants => _styleVariants;
+
+
+
     protected override void Subscribe()
     {
         disposables.Add(GameState.CurrentRoom.currentStyleIndex.Subscribe(_ => Display()));

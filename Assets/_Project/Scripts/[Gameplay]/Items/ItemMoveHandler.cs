@@ -59,6 +59,8 @@ public class ItemMoveHandler
 
         _item.Effects.DraggingHiglight();
 
+        _eventController.OnItemTaken.OnNext(_item);
+
         return true;
     }
 
@@ -105,6 +107,8 @@ public class ItemMoveHandler
 
         DraggableItem = null;
         _item.BlockRaycast = true;
+
+        _eventController.OnItemPlaced.OnNext(_item);
     }
 
 

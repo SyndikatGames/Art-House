@@ -4,6 +4,14 @@ using VG2;
 
 public class RoomStyleController : IDisposable
 {
+    public Observable<int> OnStyleIndexChanged => _onStyleIndexChanged;
+    private Subject<int> _onStyleIndexChanged = new();
+
+
+    public Observable<RoomStylesScreenView> OnRoomStylesScreenOpened => _onRoomStylesScreenOpened;
+    private Subject<RoomStylesScreenView> _onRoomStylesScreenOpened = new();
+
+
 
     private CompositeDisposable _disposables = new CompositeDisposable();
 
@@ -23,14 +31,16 @@ public class RoomStyleController : IDisposable
 
     public void OpenRoomStylesWindow()
     {
-        SceneContainer.InstantiatePrefabFromComponent(ConfigHub.RoomStyles.RoomStylesScreenPrefab, UI.Canvas);
-        
+        var screen = SceneContainer.InstantiatePrefabFromComponent(ConfigHub.Room.RoomStylesScreenPrefab, UI.Canvas);
+        _onRoomStylesScreenOpened.OnNext(screen);
     }
 
     public void SetRoomStyle(int roomStyleIndex)
     {
         GameState.CurrentRoom.currentStyleIndex.Value = roomStyleIndex;
         GameState.CurrentRoom.newStyleIndices.Remove(roomStyleIndex);
+
+        _onStyleIndexChanged.OnNext(roomStyleIndex);
     }
 
 

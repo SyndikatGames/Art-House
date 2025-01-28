@@ -9,6 +9,7 @@ public class UnboxingController
     private int _currentCardIndex;
     private UnboxingModel _unboxingModel;
     private bool _totalCardsShown = false;
+    private bool _useNotStandartUnboxingModel = false;
 
 
     public void RunUnboxing(BoxType boxType, int cardsAmount)
@@ -17,10 +18,13 @@ public class UnboxingController
         _cardsAmount = cardsAmount;
         _currentCardIndex = 0;
 
-        _unboxingModel = GenerateUnboxingModel(boxType, cardsAmount);
+        if (!_useNotStandartUnboxingModel)
+            _unboxingModel = GenerateUnboxingModel(boxType, cardsAmount);
+
         _unboxingView = SceneContainer.InstantiatePrefabFromComponent(ConfigHub.Unboxing.UnboxingWindowPrefab, UI.Canvas);
         _unboxingView.StartUnboxing(_unboxingModel);
 
+        _useNotStandartUnboxingModel = false;
     }
 
     public void Interact()
@@ -55,6 +59,13 @@ public class UnboxingController
 
         _unboxingView.ShowTotalCards(_unboxingModel);
         _totalCardsShown = true;
+    }
+
+
+    public void SetNextUnboxingModel(UnboxingModel unboxingModel)
+    {
+        _useNotStandartUnboxingModel = true;
+        _unboxingModel = unboxingModel;
     }
 
 

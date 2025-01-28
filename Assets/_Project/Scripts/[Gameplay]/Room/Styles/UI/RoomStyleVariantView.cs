@@ -26,7 +26,7 @@ public class RoomStyleVariantView : MonoBehaviour
     {
         Index = index;
 
-        var styleData = ConfigHub.RoomStyles.GetStyle(index);
+        var styleData = ConfigHub.Room.GetStyle(index);
         bool styleAvailable = PrestigeCalculator.GetCurrentRoomLevel() > index;
         bool styleSelected = GameState.CurrentRoom.currentStyleIndex.Value == index;
 

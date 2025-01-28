@@ -1237,6 +1237,7 @@ MonoBehaviour:
   _boxNameText: {fileID: 2186485749880211403}
   _probabilitiesText: {fileID: 6255366916413562367}
   _boxIcon: {fileID: 3519471036469994303}
+  <OpenButtonRect>k__BackingField: {fileID: 8695502745407076910}
   _groupOpenButton: {fileID: 151147440932471181}
   _groupOpenButtonText: {fileID: 6438510888475539727}
   _singleOpenButtonText: {fileID: 7137583281530093473}

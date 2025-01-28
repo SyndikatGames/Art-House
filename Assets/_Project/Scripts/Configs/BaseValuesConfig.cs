@@ -25,11 +25,16 @@ public class BaseValuesConfig : ScriptableObject
         public float prestigePoints;
     }
 
-
+    [field: SerializeField] public float MaxOfflineHours { get; private set; }
     [SerializeField] private List<float> _roomLevelPrestigePointsRequires;
+    [SerializeField] private List<float> _roomExpansionPrices;
     [SerializeField] private List<RarityPrestigePoints> _rarityPrestigePoints;
     [SerializeField] private List<RarityPrice> _itemSellPrices;
     [SerializeField] private List<BoxPrice> _boxPrices;
+
+
+    public float GetRoomExpansionPrice(int expansionLevel) 
+        => _roomExpansionPrices[expansionLevel - 1];
 
 
     public float GetRoomLevelPrestigePointsRequire(int roomLevel)

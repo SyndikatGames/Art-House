@@ -3989,7 +3989,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e47176fd648b92b4e9ce31d45b6644ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _requestDataBeforeStart: 0
+  _requestDataBeforeStart: 1
   _tables:
   - _key: localization_main
     _webId: 1YJOrSvm4LxN0LXgAzvvVF1RQ-LUns4yN6hbI4onmkNY

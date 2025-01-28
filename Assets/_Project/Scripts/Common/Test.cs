@@ -1,22 +1,21 @@
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using VG2;
-using Zenject;
 
 public class Test : MonoBehaviour
 {
-    [Inject] private UnboxingController _unboxingController;
+    [SerializeField] private Sprite _sprite;
+    [SerializeField] private TextMeshProUGUI _toText;
+    [SerializeField] private int _amount;
+
+    
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
-            GameState.money.Value++;
-            CardCalculator.AddCard(new CardModel
-            {
-                amount = 2,
-                itemType = ItemType.AlarmClock,
-                rarityType = RarityType.Rare,
-            });
+
+
         }
     }
 }

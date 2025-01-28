@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 722051209ea8da741b4ff61f2664e9dc, type: 3}
+  m_Name: PrizeClaw
+  m_EditorClassIdentifier: 
+  <LaunchGameWindow>k__BackingField: {fileID: 4812415340936723087, guid: ad26e63f7f4b39c42a45567e6e10addf, type: 3}
+  <MoneyInsideReward>k__BackingField: 10
+  <TicketsPerHour>k__BackingField: 1
+  <MovesAmount>k__BackingField: 3
+  <PrizesAmount>k__BackingField: 50
+  _prizeProbabilities:
+  - prizeType: 0
+    probabilityPercentage: 80
+    sprite: {fileID: 21300000, guid: a5686e0bd85e2514c9526f7d102a9f09, type: 3}
+  - prizeType: 1
+    probabilityPercentage: 16
+    sprite: {fileID: 21300000, guid: 7ebfa9b8959d73d41b0f8c7c8ede6d0a, type: 3}
+  - prizeType: 2
+    probabilityPercentage: 2
+    sprite: {fileID: 21300000, guid: 53ea7b0f166718e4c99e0503c7c8747f, type: 3}
+  - prizeType: 3
+    probabilityPercentage: 0.2
+    sprite: {fileID: 21300000, guid: e32a7a7cbaea5dd469437ce7041cbe18, type: 3}
+  _prizePrefabs:
+  - {fileID: 4441300917460221773, guid: 80997ad31f47fb446909a938c501bcfe, type: 3}
+  - {fileID: 4441300917460221773, guid: 0959b727243b3e34c9adcd6ddd6e637a, type: 3}
+  - {fileID: 7290444104816967654, guid: 4241802ca1162e749b5b4972243296b8, type: 3}
+  - {fileID: 4441300917460221773, guid: 3d42de54940df4b4e820109ab5737e7e, type: 3}
+  _rewardIcons:
+  - {fileID: 5972292549628805609, guid: 9c8decd15df7f7843b357e189f80e08e, type: 3}
+  - {fileID: 5972292549628805609, guid: d20761613d63c5747b6e9bbe3b175921, type: 3}
+  - {fileID: 5972292549628805609, guid: d953eea4a3ced344da3f8218f10ffeec, type: 3}
+  - {fileID: 5972292549628805609, guid: a9cfe2c78f23d8d49a3a7d46f90d7355, type: 3}

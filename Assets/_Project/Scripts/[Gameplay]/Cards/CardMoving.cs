@@ -1,6 +1,8 @@
+using R3;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using VG2;
+using Zenject;
 
 public class CardMoving : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -9,6 +11,8 @@ public class CardMoving : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
     [SerializeField] private InventoryCard _itemCard;
     [SerializeField] private GameObject _cardPanel;
+
+    [Inject] private EventController _eventController;
 
     private ItemInteraction _itemInteraction;
     private const float convertToItemThresholdViewportY = 0.12f;
@@ -32,6 +36,7 @@ public class CardMoving : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         }
 
         MovingItemFromCard = true;
+        _eventController.OnCardTaken.OnNext(Unit.Default);
     }
 
     public void OnDrag(PointerEventData eventData) => _itemInteraction.Drag(eventData.position);
@@ -40,6 +45,7 @@ public class CardMoving : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     {
         _itemInteraction.EndDrag();
         MovingItemFromCard = false;
+        _eventController.OnCardReleased.OnNext(Unit.Default);
     }
 
 

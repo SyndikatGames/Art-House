@@ -940,9 +940,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4949637214946006301, guid: d5fd64fdcd1a5904db2cc29b0c018816, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5166806518691870045}
-    - targetCorrespondingSourceObject: {fileID: 4949637214946006301, guid: d5fd64fdcd1a5904db2cc29b0c018816, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6127423416260843355}
   m_SourcePrefab: {fileID: 100100000, guid: d5fd64fdcd1a5904db2cc29b0c018816, type: 3}
 --- !u!224 &5679641013839755189 stripped
 RectTransform:
@@ -971,15 +968,3 @@ MonoBehaviour:
   _boxIcon: {fileID: 3519471036469994303}
   _purchaseButton: {fileID: 2120119888599021019}
   _purchasePrice: {fileID: 90864616674896352}
---- !u!114 &6127423416260843355
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8096893574094151250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a97d3c55e5f25494ca78eb14a9d46eee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

@@ -7,6 +7,7 @@ namespace VG2
         
         public static void HandleOfflineTime(float seconds)
         {
+            
             /*
             for (int roomIndex = 0; roomIndex < Saves.roomsAmount; roomIndex++)
             {
@@ -22,9 +23,10 @@ namespace VG2
                     Mathf.Min(newValue, offlineSecondsLimit);
                 
             }
+            */
 
             HandleTickets(seconds);
-            */
+            
         }
 
         public static void HandleOnlineTime(float seconds)
@@ -44,10 +46,10 @@ namespace VG2
 
         private static void HandleTickets(float seconds)
         {
-            //float ticketsPerSecond = TotalRules.TicketsPerHour / 3600f;
-            //float maxTickets = 5f;
-            //float newValue = Saves.Float[Key_Save.prize_claw_tickets].Value + ticketsPerSecond * seconds;
-            //Saves.Float[Key_Save.prize_claw_tickets].Value = Mathf.Min(newValue, maxTickets);
+            float ticketsPerSecond = ConfigHub.PrizeClaw.TicketsPerHour / 3600f;
+            float maxTickets = 5f;
+            float newValue = GameState.tickets.Value + ticketsPerSecond * seconds;
+            GameState.tickets.Value = Mathf.Min(newValue, maxTickets);
         }
 
 

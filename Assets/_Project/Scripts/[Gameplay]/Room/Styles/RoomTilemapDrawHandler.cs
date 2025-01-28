@@ -16,7 +16,7 @@ public class RoomTilemapDrawHandler
     public void Draw()
     {
         int styleIndex = GameState.CurrentRoom.currentStyleIndex.Value;
-        var styleData = ConfigHub.RoomStyles.GetStyle(styleIndex);
+        var styleData = ConfigHub.Room.GetStyle(styleIndex);
 
         Tile floorTile = (Tile)ScriptableObject.CreateInstance(typeof(Tile));
         floorTile.sprite = styleData.floorSprite;
@@ -30,7 +30,7 @@ public class RoomTilemapDrawHandler
         toLeftWallTile.sprite = styleData.toLeftWallSprite;
         toLeftWallTile.color = Color.white;
 
-        Vector2Int size = GameState.CurrentRoom.size.Value;
+        Vector2Int size = ConfigHub.Room.GetRoomSize(GameState.CurrentRoom.expansionLevel.Value);
 
         for (int x = 1; x <= size.x; x++)
             _tilemap.SetTile(new Vector3Int(-x, 0), toRightWallTile);

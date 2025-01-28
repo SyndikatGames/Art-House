@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using PrizeClaw;
 using R3;
 
 namespace VG2
@@ -12,17 +13,18 @@ namespace VG2
 
         public static ReactiveProperty<bool> adsEnabled;
         public static DateTime lastOnlineTime;
+        public static DateTime lastIncomeTime;
 
         public static bool tutorialCompleted;
         public static bool styleTutorialCompleted;
-        public static ReactiveProperty<int> tutorialStep;
+        public static ReactiveProperty<int> tutorialStepIndex;
 
-        public static ReactiveProperty<float> money;
+        public static MemoryReactiveProperty<float> money;
         public static ReactiveProperty<int> currentRoomIndex;
 
         public static List<RoomState> roomStates;
 
-        public static ReactiveProperty<float> prizeClawTickets;
+        public static ReactiveProperty<float> tickets;
         public static PrizeClawState prizeClaw;
 
 

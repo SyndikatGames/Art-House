@@ -76,7 +76,6 @@ public class ItemInteraction : MonoBehaviour
             {
                 _moveHandler.OnEndDrag(_pointerWorldPosition);
                 Sound.Play(Key_Sound.PlaceItem);
-                _eventController.OnItemPlaced.OnNext(_item);
             }
         }
 

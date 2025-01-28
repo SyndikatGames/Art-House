@@ -1,8 +1,13 @@
+using R3;
 using UnityEngine;
 using VG2;
 
 public class ShopController
 {
+    public Observable<ShopView> OnShopOpened => _onShopOpened; private Subject<ShopView> _onShopOpened = new();
+    public Observable<BoxWindowView> OnBoxWindowOpened => _onBoxWindowOpened; private Subject<BoxWindowView> _onBoxWindowOpened = new();
+
+
     private SellCardsWindowView _sellCardsWindow;
     private BoxWindowView _boxWindow;
     private GameObject _inAppPurchaseWindow;
@@ -27,13 +32,15 @@ public class ShopController
 
     public void OpenShop()
     {
-        SceneContainer.InstantiatePrefabFromComponent(ConfigHub.Shop.ShopPrefab, UI.Canvas);
+        var shop = SceneContainer.InstantiatePrefabFromComponent(ConfigHub.Shop.ShopPrefab, UI.Canvas);
+        _onShopOpened.OnNext(shop);
     }
 
     public void OpenBoxWindow(BoxType boxType)
     {
         _boxWindow = SceneContainer.InstantiatePrefabFromComponent(ConfigHub.Shop.BoxWindowPrefab, UI.Canvas);
         _boxWindow.Display(boxType);
+        _onBoxWindowOpened.OnNext(_boxWindow);
     }
 
     public void OpenInAppPurchaseWindow(ProductKey productKey)
@@ -51,14 +58,12 @@ public class ShopController
         else _inAppPurchaseWindow.GetComponent<InAppPurchaseBoxPackWindowView>()
                 .Display(productKey);
 
-
-        _inAppPurchaseWindow.GetComponent<GameObjectEvents>().onDestroy += 
-            () => Purchases.onPurchased -= OnProductPurchased;
+        _inAppPurchaseWindow.AttachOnDestroyListener(() => Purchases.onPurchased -= OnProductPurchased);
     }
 
     private void OnProductPurchased(ProductKey productKey, bool success)
     {
-        UnityEngine.Object.Destroy(_inAppPurchaseWindow);
+        Object.Destroy(_inAppPurchaseWindow);
     }
 
 
