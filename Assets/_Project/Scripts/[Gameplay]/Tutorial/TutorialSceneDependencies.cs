@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TutorialSceneDependencies : MonoBehaviour
 {
@@ -22,5 +24,17 @@ public class TutorialSceneDependencies : MonoBehaviour
     [field: SerializeField] public RectTransform ExpandRoomButtonRect { get; private set; }
     [field: SerializeField] public EndTutorialWindowView EndTutorialWindowPrefab { get; private set; }
     [field: SerializeField] public RectTransform StylesButtonRect { get; private set; }
+    [field: SerializeField] public List<PlaceGridData> TutorialRoomPlaceGridDataList { get; private set; }
+    [field: SerializeField] public Item Room { get; private set; }
+    [field: SerializeField] public GameObject RoomPlacePromptPrefab { get; private set; }
+    [field: SerializeField] public RectTransform MobileControlRect { get; private set; }
+    [field: SerializeField] public Image TakeTaskRewardImage { get; private set; }
+    [field: SerializeField] public Image ShopButtonImage { get; private set; }
+
+
+
+    public Vector2 InventoryTopCenterPosition => InventoryRect.position + Vector3.up * 140f;
+
+
 
 }

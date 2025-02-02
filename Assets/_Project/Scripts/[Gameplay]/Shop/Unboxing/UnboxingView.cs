@@ -32,7 +32,7 @@ public class UnboxingView : MonoBehaviour
     private RectTransform _unboxedCardRect;
     private bool _boxOpened;
 
-    private const int showOpenAllButtonIfBoxesMore = 4;
+    private const int SHOW_SKIP_OPEN_IF_BOXES_MORE_THAN = 5;
     private const float shineMaxScale = 1.8f;
     private const float showBoxDuration = 1f;
     private const float showNewCardDuration = 0.8f;
@@ -44,7 +44,7 @@ public class UnboxingView : MonoBehaviour
 
     public void StartUnboxing(UnboxingModel unboxingModel)
     {
-        _skipButton.SetActive(unboxingModel.generatedCards.Count > showOpenAllButtonIfBoxesMore);
+        _skipButton.SetActive(unboxingModel.generatedCards.Count > SHOW_SKIP_OPEN_IF_BOXES_MORE_THAN);
         _shineRect.gameObject.SetActive(false);
 
         _boxImage.sprite = ConfigHub.Unboxing.GetBoxSprite(unboxingModel.boxType);
@@ -165,7 +165,9 @@ public class UnboxingView : MonoBehaviour
         }
 
         _moreCardsText.gameObject.SetActive(nonShowedCard > 0);
-        _moreCardsText.text = nonShowedCard.ToString();
+        _moreCardsText.text = $"+{nonShowedCard} {Localization.GetString("non_showed_cards")}";
+
+
 
 
     }

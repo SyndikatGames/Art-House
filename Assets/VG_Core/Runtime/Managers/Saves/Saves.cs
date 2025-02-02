@@ -12,6 +12,8 @@ namespace VG2
 
         private static Saves _instance;
 
+        private static bool _savesDeleted = false;
+
 
         [SerializeField] private StartValuesConfig _startValues;
 
@@ -30,6 +32,8 @@ namespace VG2
 
         public static void Save()
         {
+            if (_savesDeleted) return;
+
             var gameStateData = GameStateParcer.ToDataString();
             var encodedData = GameStateEncoder.Encode(gameStateData);
 
@@ -42,11 +46,14 @@ namespace VG2
 
         public static void Delete()
         {
+            _instance.Log("Delete.");
             service.Commit(string.Empty, (success) => 
             {
                 if (success) 
                     _instance.Log("Saves deleted.");
             });
+
+            _savesDeleted = true;
             onDeleted?.Invoke();
         }
         

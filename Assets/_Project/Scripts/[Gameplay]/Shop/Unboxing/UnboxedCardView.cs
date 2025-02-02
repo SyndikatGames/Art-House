@@ -42,9 +42,9 @@ public class UnboxedCardView : MonoBehaviour
         float prestigePoints = ConfigHub.BaseValues.GetItemPrestigePoints(cardModel.rarityType);
 
         string rarityColor = ColorUtility.ToHtmlStringRGB(cardStyle.textColor);
-        _descriptionText.text = $"{_cardModel.itemType}\n" +
-            $"<size=46><color=#{rarityColor}>{_cardModel.rarityType}</color>\n\n" +
-            $"<color=yellow>+{prestigePoints.ToShortNumber()}</color>";
+        _descriptionText.text = $"{Localization.GetString(_cardModel.itemType.ToString())}\n" +
+            $"<size=46><color=#{rarityColor}>{Localization.GetString(_cardModel.rarityType.ToString())}</color>\n\n" +
+            $"<color=yellow>+{prestigePoints.ToShortNumber()} {Localization.GetString("of_prestige_points")}</color>";
 
         _amountText.gameObject.SetActive(cardModel.amount > 1);
         _amountText.text = cardModel.amount.ToString();

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using R3;
@@ -9,6 +10,7 @@ public class OpenBoxesTutorialStep : TutorialStep
     private ShopController _shopController;
     private UnboxingController _unboxingController;
     private GameObject _prompt;
+    private ShopView _shop;
 
     public static List<ItemType> BoxItems { get; private set; } = new List<ItemType>
     {
@@ -30,15 +32,28 @@ public class OpenBoxesTutorialStep : TutorialStep
     }
 
 
+    public override void RestoreContext()
+    {
+        base.RestoreContext();
+        if (_shop != null) Object.Destroy(_shop.gameObject);
+        RaycastBlock.Disable();
+    }
+
+
     public override void Run()
     {
         Disposables.Add(_shopController.OnShopOpened.Subscribe(shop => OnShopOpened(shop)));
 
         TaskController.SetTask(1);
 
+        BoxCalculator.SetBoxAmount(BoxType.Common, 5);
+        GameState.CurrentRoom.cards.Clear();
+
         var prompt = Object.Instantiate(Dependencies.LeftArrowPromptPrefab, Dependencies.ShopRect);
-        prompt.text = "Открой магазин!";
+        prompt.text = Localization.GetString("open_shop_tutorial");
         _prompt = prompt.gameObject;
+
+        RaycastBlock.Concentrate(Dependencies.ShopButtonImage);
 
     }
 
@@ -52,15 +67,22 @@ public class OpenBoxesTutorialStep : TutorialStep
         _prompt = Object.Instantiate(Dependencies.CicleScaleCursorPrefab, shop.CommonBoxButtonRect);
         _prompt.transform.SetParent(UI.Canvas);
 
+        _shop = shop;
 
-
+        RaycastBlock.Concentrate(shop.CommonBoxButtonImage);
     }
 
     private async void OnBoxWindowOpened(BoxWindowView boxWindow)
     {
-        Disposables.Add(GameState.CurrentRoom.boxesAmount.onChanged.Subscribe(_ => OnBoxesAmountChanged()));
+        Disposables.Add(GameState.CurrentRoom.boxesAmount.OnChanged.Subscribe(_ => OnBoxesAmountChanged()));
 
-        await Task.Delay(100);
+        
+    }
+
+    private IEnumerator OnBoxWindowOpenedCoroutine(BoxWindowView boxWindow)
+    {
+        yield return null;
+
         Object.Destroy(_prompt);
         _prompt = Object.Instantiate(Dependencies.CicleScaleCursorPrefab, boxWindow.OpenButtonRect);
 
@@ -80,7 +102,12 @@ public class OpenBoxesTutorialStep : TutorialStep
             boxType = BoxType.Common,
             generatedCards = generatedCards,
         });
+
+        RaycastBlock.Concentrate(boxWindow.OpenButtonImage);
     }
+    
+
+
 
     private void OnBoxesAmountChanged()
     {

@@ -1,4 +1,5 @@
 using R3;
+using VG2;
 
 public class TakeTaskRewardTutorialStep : TutorialStep
 {
@@ -10,6 +11,11 @@ public class TakeTaskRewardTutorialStep : TutorialStep
         _taskIndex = taskIndex;
     }
 
+    public override void RestoreContext()
+    {
+        base.RestoreContext();
+        RaycastBlock.Disable();
+    }
 
 
     public override void Run()
@@ -17,7 +23,7 @@ public class TakeTaskRewardTutorialStep : TutorialStep
         Disposables.Add(TaskController.OnTaskFinished.Subscribe(_ => OnTaskFinished()));
 
         TaskController.SetTask(_taskIndex);
-
+        RaycastBlock.Concentrate(Dependencies.TakeTaskRewardImage);
     }
 
     private void OnTaskFinished()

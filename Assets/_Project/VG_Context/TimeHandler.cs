@@ -47,7 +47,7 @@ namespace VG2
         private static void HandleTickets(float seconds)
         {
             float ticketsPerSecond = ConfigHub.PrizeClaw.TicketsPerHour / 3600f;
-            float maxTickets = 5f;
+            float maxTickets = 3f;
             float newValue = GameState.tickets.Value + ticketsPerSecond * seconds;
             GameState.tickets.Value = Mathf.Min(newValue, maxTickets);
         }

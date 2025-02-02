@@ -1,5 +1,6 @@
 using UnityEngine;
 using R3;
+using VG2;
 
 public class ExpandRoomTutorialStep : TutorialStep
 {
@@ -27,7 +28,7 @@ public class ExpandRoomTutorialStep : TutorialStep
         TaskController.SetTask(4);
 
         var prompt = Object.Instantiate(Dependencies.LeftArrowPromptPrefab, Dependencies.ExpandRoomButtonRect);
-        prompt.text = "Расширяй\nкомнату!";
+        prompt.text = Localization.GetString("expand_room_tutorial");
         _prompt = prompt.gameObject;
     }
 

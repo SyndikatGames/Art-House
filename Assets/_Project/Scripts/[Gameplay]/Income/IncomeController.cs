@@ -56,7 +56,7 @@ public class IncomeController : ITickable, IOfflineTimeHandler, IInitializable
 
     private void ShowStartIncomeWindow()
     {
-        if (!_startWindowWasShown && GameState.tutorialCompleted)
+        if (!_startWindowWasShown && TutorialController.ShowOfflineIncomeEnabled)
         {
             _incomeWindow = SceneContainer.InstantiatePrefabFromComponent(ConfigHub.Income.IncomeWindow, UI.Canvas);
             _startWindowWasShown = true;

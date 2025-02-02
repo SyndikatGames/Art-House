@@ -1,5 +1,6 @@
 using R3;
 using UnityEngine;
+using VG2;
 
 public class HoldAndMoveItemTutorialStep : TutorialStep
 {
@@ -41,6 +42,7 @@ public class HoldAndMoveItemTutorialStep : TutorialStep
 
         if (_cursor != null) Object.Destroy(_cursor);
         if (_prompt != null) Object.Destroy(_prompt);
+        RaycastBlock.Disable();
     }
 
 
@@ -59,7 +61,7 @@ public class HoldAndMoveItemTutorialStep : TutorialStep
 
         Vector2 from = MainCamera.Camera.WorldToScreenPoint(placedItem.transform.position);
         promptText.transform.position = from;
-        promptText.text = "Зажми предмет и перемести его";
+        promptText.text = Localization.GetString("hold_and_move_item");
 
         Vector2 to = from + Vector2.right * 400f;
 
@@ -68,6 +70,7 @@ public class HoldAndMoveItemTutorialStep : TutorialStep
         _cursor = cursorTween.gameObject;
         _prompt = promptText.gameObject;
 
+        RaycastBlock.Concentrate(placedItem.ClickImage);
     }
 
 

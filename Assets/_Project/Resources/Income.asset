@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <IncomeWindow>k__BackingField: {fileID: 6097054828570585062, guid: da68c4905b9236b4b82325be1fcf5503, type: 3}
   <PutIncomeEverySeconds>k__BackingField: 20
-  _startIncomePerHour: 1000
-  _increaseIncomePerHourEveryRoomLevel: 500
+  _startIncomePerHour: 0
+  _increaseIncomePerHourEveryRoomLevel: 1000

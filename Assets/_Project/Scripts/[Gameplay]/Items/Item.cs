@@ -22,12 +22,15 @@ public class Item : MonoBehaviour
     [field: SerializeField] public ItemType ItemType { get; private set; }
     [SerializeField] private SpriteRenderer _sprite;
     [SerializeField] private Canvas _clickCanvas; 
-    public RectTransform CanvasRect => _clickCanvas.GetComponent<RectTransform>();
+    public RectTransform CanvasRect => _clickCanvas.transform as RectTransform;
+    public Image ClickImage => _clickCanvas.GetComponentInChildren<Image>();
     
 
     [field: SerializeField] public ItemPlaceType PlaceType { get; private set; }
     [field: SerializeField] public Vector3Int Size { get; private set; }
-    [SerializeField] private List<PlaceGridData> _placeGridDataList = new List<PlaceGridData>();
+
+    public List<PlaceGridData> PlaceGridDataList => _placeGridDataList;
+    [SerializeField] private List<PlaceGridData> _placeGridDataList; 
 
     [SerializeField] private List<RaritySprite> _sprites; public RarityType OriginRarity => _sprites[0].rarityType;
 

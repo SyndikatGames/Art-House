@@ -5,11 +5,11 @@ using UnityEngine;
 public class TextFlashingTween : MonoBehaviour
 {
     [SerializeField] private Vector2 _minMaxAlpha;
+    [SerializeField] private float _cicleDuration;
 
     private TextMeshProUGUI _text;
     private Tween _currentTween;
 
-    private const float duration = 1.6f;
 
     private void OnEnable()
     {
@@ -18,8 +18,8 @@ public class TextFlashingTween : MonoBehaviour
         _text.color = new Color(_text.color.r, _text.color.g, _text.color.b, _minMaxAlpha.x);
 
         _currentTween = DOTween.Sequence()
-            .Append(_text.DOFade(_minMaxAlpha.y, duration / 2f).SetEase(Ease.Flash))
-            .Append(_text.DOFade(_minMaxAlpha.x, duration / 2f).SetEase(Ease.Flash))
+            .Append(_text.DOFade(_minMaxAlpha.y, _cicleDuration / 2f).SetEase(Ease.Flash))
+            .Append(_text.DOFade(_minMaxAlpha.x, _cicleDuration / 2f).SetEase(Ease.Flash))
             .SetLoops(-1);
 
 

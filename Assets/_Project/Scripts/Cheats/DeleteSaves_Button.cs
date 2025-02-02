@@ -9,7 +9,7 @@ public class DeleteSaves_Button : ButtonHandler
     protected override void OnClick()
     {
         click--;
-        if (click == 0)
+        if (click <= 0)
         {
             PlayerPrefs.DeleteAll();
             Saves.Delete();

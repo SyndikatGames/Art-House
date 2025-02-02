@@ -34,30 +34,32 @@ public class MergeItemsTutorialStep : TutorialStep
         if (_cursor != null) Object.Destroy(_cursor);
 
         var card = Dependencies.CardInventory.GetAnyCardByList(OpenBoxesTutorialStep.BoxItems);
-        Vector2 from = card.transform.position;
-        Vector2 to = MainCamera.Camera.WorldToScreenPoint
-            (ItemPlacing.PlacedItems.Find(item => item.ItemType == card.Data.itemType).transform.position);
 
-        var cursorTween = Object.Instantiate(Dependencies.PressMoveCursorPrefab, UI.Canvas);
-        cursorTween.Run(from, to);
-        _cursor = cursorTween.gameObject;
+        if (card != null)
+        {
+            Vector2 from = card.transform.position;
+            Vector2 to = MainCamera.Camera.WorldToScreenPoint
+                (ItemPlacing.PlacedItems.Find(item => item.ItemType == card.Data.itemType).transform.position);
+
+            var cursorTween = Object.Instantiate(Dependencies.PressMoveCursorPrefab, UI.Canvas);
+            cursorTween.Run(from, to, onCompleted: RunCursorAnimation);
+            _cursor = cursorTween.gameObject;
+        }
     }
 
 
     private void OnCardReleased()
     {
-        _cursor.SetActive(true);
+        if (_cursor != null) _cursor.SetActive(true);
     }
 
     private void OnCardTaken()
     {
-        _cursor.SetActive(false);
+        if (_cursor != null) _cursor.SetActive(false);
     }
 
     private async void OnItemsMerged()
     {
-        
-
         int mergedItems = 0;
         foreach (var item in ItemPlacing.PlacedItems)
             if (item.RarityType == RarityType.Rare) mergedItems++;

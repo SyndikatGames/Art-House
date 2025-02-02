@@ -12,7 +12,13 @@ public class SellArea : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     private readonly Color highlightPanelColor = new Color(0f, 0.6f, 0f, 0.7f);
     private readonly Color originPanelColor = new Color(0f, 0.5f, 0f, 0.5f);
 
-    public static void SetActive(bool value) => _instance._panel.SetActive(value);
+    public static void SetActive(bool value)
+    {
+        if (TutorialController.SellAreaEnabled)
+            _instance._panel.SetActive(value);
+
+        else _instance._panel.SetActive(false);
+    }
     public static bool PointerInsideArea { get; private set; } = false;
 
 

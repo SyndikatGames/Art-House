@@ -15,9 +15,16 @@ MonoBehaviour:
   <MaxOfflineHours>k__BackingField: 4
   _roomLevelPrestigePointsRequires:
   - 1000
-  - 5000
+  - 3500
+  - 8000
   - 15000
-  - 35000
+  - 25000
+  - 50000
+  - 100000
+  - 200000
+  - 250000
+  - 500000
+  - 1000000
   _roomExpansionPrices:
   - 1000
   - 10000

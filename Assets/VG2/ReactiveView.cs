@@ -1,11 +1,12 @@
-using R3;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace VG2
 {
     public abstract class ReactiveView : MonoBehaviour
     {
-        protected readonly CompositeDisposable disposables = new CompositeDisposable();
+        protected readonly List<IDisposable> disposables = new();
 
 
         protected virtual void OnEnable()
@@ -14,7 +15,11 @@ namespace VG2
             Display();
         }
 
-        private void OnDisable() => disposables.Dispose();
+        private void OnDisable()
+        {
+            foreach (var disposable in disposables) 
+                disposable.Dispose();
+        }
 
 
         protected abstract void Subscribe();

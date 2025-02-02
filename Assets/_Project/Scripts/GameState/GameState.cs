@@ -9,14 +9,10 @@ namespace VG2
     {
         public const int roomsAmount = 1;
 
-
-
         public static ReactiveProperty<bool> adsEnabled;
         public static DateTime lastOnlineTime;
         public static DateTime lastIncomeTime;
 
-        public static bool tutorialCompleted;
-        public static bool styleTutorialCompleted;
         public static ReactiveProperty<int> tutorialStepIndex;
 
         public static MemoryReactiveProperty<float> money;

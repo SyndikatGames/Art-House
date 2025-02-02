@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using R3;
 using VG2;
 
@@ -29,9 +30,11 @@ public class RoomStyleController : IDisposable
     }
 
 
-    public void OpenRoomStylesWindow()
+    public async void OpenRoomStylesWindow()
     {
         var screen = SceneContainer.InstantiatePrefabFromComponent(ConfigHub.Room.RoomStylesScreenPrefab, UI.Canvas);
+
+        await Task.Delay(100);
         _onRoomStylesScreenOpened.OnNext(screen);
     }
 

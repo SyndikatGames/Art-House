@@ -53,6 +53,8 @@ public class CameraMobileControl : MonoBehaviour
 
     private void ChangeCameraScale(float value)
     {
+        if (!TutorialController.CameraControlEnabled) return;
+
         _camera.orthographicSize = Mathf.Clamp
             (_camera.orthographicSize + value * _scaleSensitivity * Time.deltaTime,
             _minMaxOrthographicSize.x, _minMaxOrthographicSize.y);
@@ -61,6 +63,8 @@ public class CameraMobileControl : MonoBehaviour
 
     private void Update()
     {
+        if (!TutorialController.CameraControlEnabled) return;
+
         if (Input.touchCount > 0)
             UpdateMobileControlState();
 
@@ -86,7 +90,6 @@ public class CameraMobileControl : MonoBehaviour
             }
         }
         
-
         if (MobileControl.CurrentState == MobileControl.State.CameraMoving)
         {
             var touch = Input.GetTouch(0);

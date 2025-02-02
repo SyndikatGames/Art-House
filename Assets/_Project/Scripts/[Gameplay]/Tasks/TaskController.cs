@@ -73,6 +73,8 @@ public class TaskController : ITickable
             case 1: SetTaskProgress(OpenBoxesProgress); break;
             case 2: SetTaskProgress(MergeItemsProgress); break;
             case 3: SetTaskProgress(PlayPrizeClawProgress); break;
+            case 4: SetTaskProgress(ExpandRoomProgress); break;
+            case 5: SetTaskProgress(Reach3LevelProgress); break;
         }
     }
 
@@ -96,6 +98,21 @@ public class TaskController : ITickable
 
     private int PlayPrizeClawProgress => 
         GameState.tutorialStepIndex.Value > TutorialController.PRIZE_CLAW_TUTORIAL_STEP_INDEX ? 100 : 0;
+
+    private int ExpandRoomProgress => GameState.CurrentRoom.expansionLevel.Value >= 2 ? 100 : 0;
+
+    private int Reach3LevelProgress
+    {
+        get
+        {
+            if (PrestigeCalculator.GetCurrentRoomLevel() >= 3) return 100;
+            else
+            {
+                return (int)(PrestigeCalculator.GetCurrentRoomPrestigePoints() / 
+                    PrestigeCalculator.GetCurrentRoomPrestigeRequire() * 100);
+            }
+        }
+    }
 
 
 }

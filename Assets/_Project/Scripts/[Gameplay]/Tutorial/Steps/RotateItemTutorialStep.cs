@@ -1,14 +1,12 @@
 using R3;
-using TMPro;
 using UnityEngine;
+using VG2;
 
 public class RotateItemTutorialStep : TutorialStep
 {
     private EventController _eventController;
     private GameObject _cursor;
     private GameObject _prompt;
-    private GameObject _canNotRotatePrompt;
-    private TextMeshProUGUI _canNotRotatePromptPrefab;
 
 
     public RotateItemTutorialStep(EventController eventController)
@@ -22,14 +20,12 @@ public class RotateItemTutorialStep : TutorialStep
         base.RestoreContext();
         if (_cursor != null) Object.Destroy(_cursor);
         if (_prompt != null) Object.Destroy(_prompt);
-        if (_canNotRotatePrompt != null) Object.Destroy(_canNotRotatePrompt);
+        RaycastBlock.Disable();
     }
 
 
     public override void Run()
     {
-        _canNotRotatePromptPrefab = Dependencies.RedPromptPrefab;
-
         Disposables.Add(_eventController.OnItemRotated.Subscribe(_ => OnItemRotated()));
         Disposables.Add(_eventController.OnItemPlaced.Subscribe(item => OnItemPlaced(item)));
         Disposables.Add(_eventController.OnItemTaken.Subscribe(_ => OnItemTaken()));
@@ -44,33 +40,22 @@ public class RotateItemTutorialStep : TutorialStep
         _cursor = cursorTween.gameObject;
 
         var prompt = Object.Instantiate(Dependencies.LeftPromptPrefab, UI.Canvas);
-        prompt.text = "Кликни на предмет,\nчтобы повернуть его.";
+        prompt.text = Localization.GetString("click_to_rotate_item");
         _prompt = prompt.gameObject;
         _prompt.transform.position = itemScreenPosition;
 
-        
-
-        if (!placedItem.RotateAvailable)
-            ShowCanNotRotatePrompt(itemScreenPosition);
-
-        
+        RaycastBlock.Concentrate(placedItem.ClickImage);
     }
 
     private void OnItemTaken()
     {
         _cursor.SetActive(false);
         _prompt.SetActive(false);
-
-        if (_canNotRotatePrompt != null)
-            _canNotRotatePrompt.SetActive(false);
     }
 
     private void OnItemPlaced(Item item)
     {
         Vector2 itemScreenPosition = MainCamera.Camera.WorldToScreenPoint(item.transform.position);
-
-        if (!item.RotateAvailable)
-            ShowCanNotRotatePrompt(itemScreenPosition);
 
         _cursor.SetActive(true);
         _cursor.transform.position = itemScreenPosition;
@@ -80,19 +65,5 @@ public class RotateItemTutorialStep : TutorialStep
     }
 
     private void OnItemRotated() => StepCompleted();
-
-
-    private void ShowCanNotRotatePrompt(Vector2 position)
-    {
-        if (_canNotRotatePrompt == null)
-        {
-            var instance = Object.Instantiate(_canNotRotatePromptPrefab, UI.Canvas);
-            instance.text = "Не хватает места.\nПеремести предмет подальше от края комнаты";
-            _canNotRotatePrompt = instance.gameObject;
-        }
-
-        _canNotRotatePrompt.SetActive(true);
-        _canNotRotatePrompt.transform.position = position;
-    }
 
 }

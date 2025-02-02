@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6161317547889985247}
   - component: {fileID: 2848890741900109960}
   - component: {fileID: 8982558428119826424}
+  - component: {fileID: 9047510189935181214}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -75,6 +76,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &9047510189935181214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8356250164991551761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da898b995cf72aa498125033ddd7a5f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _minMaxAlpha: {x: 0.5, y: 1}
+  _cicleDuration: 1
 --- !u!1 &8838708390309108899
 GameObject:
   m_ObjectHideFlags: 0
@@ -86,6 +101,7 @@ GameObject:
   - component: {fileID: 7652240672471801054}
   - component: {fileID: 2004450502076464193}
   - component: {fileID: 7572220769140331515}
+  - component: {fileID: 4066421877827638302}
   m_Layer: 5
   m_Name: LeftArrowPrompt
   m_TagString: Untagged
@@ -211,3 +227,17 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4066421877827638302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8838708390309108899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18f793161d1601640b05fb5c6084a114, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _minMaxAlpha: {x: 0.5, y: 1}
+  _cicleDuration: 1

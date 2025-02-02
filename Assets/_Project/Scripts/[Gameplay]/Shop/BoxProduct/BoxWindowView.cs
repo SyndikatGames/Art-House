@@ -17,7 +17,11 @@ public class BoxWindowView : MonoBehaviour
     [SerializeField] private float _originMaxTextSize;
     [SerializeField] private float _priceMaxTextSize;
 
+    private string BuyText => Localization.GetString("buy");
+    private string OpenText => Localization.GetString("open");
 
+
+    public Image OpenButtonImage => OpenButtonRect.GetComponent<Image>();
 
     public BoxType BoxType { get; private set; }
 
@@ -35,7 +39,7 @@ public class BoxWindowView : MonoBehaviour
             var probabilityColorHtml = ColorUtility.ToHtmlStringRGB
                 (ConfigHub.Cards.GetRarityStyle(rarityProbability.Key).textColor);
 
-            string itemRarityName = Localization.GetString($"item_{rarityProbability.Key}");
+            string itemRarityName = Localization.GetString($"{rarityProbability.Key}");
 
             probabilitiesText += $"<color=#{probabilityColorHtml}>{itemRarityName}: " +
                 $"{rarityProbability.Value.ToString("#.##")}%\n";
@@ -49,13 +53,13 @@ public class BoxWindowView : MonoBehaviour
         {
             _groupOpenButton.SetActive(true);
 
-            _singleOpenButtonText.text = "Œ“ –€“‹ ı1";
-            _groupOpenButtonText.text = $"Œ“ –€“‹ ı{BoxCalculator.GetBoxesAmount(boxType)}";
+            _singleOpenButtonText.text =  $"{OpenText} ı1";
+            _groupOpenButtonText.text = $"{OpenText} ı{BoxCalculator.GetBoxesAmount(boxType)}";
         }
         else if (BoxCalculator.GetBoxesAmount(boxType) == 1)
         {
             _groupOpenButton.SetActive(false);
-            _singleOpenButtonText.text = "Œ“ –€“‹ ı1";
+            _singleOpenButtonText.text = $"{OpenText} ı1";
         }
         else
         {
@@ -64,8 +68,8 @@ public class BoxWindowView : MonoBehaviour
             float price = ConfigHub.BaseValues.GetBoxPrice(boxType);
             float groupPrice = price * ConfigHub.Shop.BoxesInGroup;
 
-            _singleOpenButtonText.text = $" ”œ»“‹ ı1\n<sprite=0>{price}";
-            _groupOpenButtonText.text = $" ”œ»“‹ ı{ConfigHub.Shop.BoxesInGroup}\n" +
+            _singleOpenButtonText.text = $"{BuyText} ı1\n<sprite=0>{price}";
+            _groupOpenButtonText.text = $"{BuyText} ı{ConfigHub.Shop.BoxesInGroup}\n" +
                 $"<sprite=0>{groupPrice.ToShortNumber()}";
 
             _singleOpenButtonText.fontSizeMax = _priceMaxTextSize;

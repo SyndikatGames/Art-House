@@ -1,5 +1,6 @@
 using R3;
 using UnityEngine;
+using VG2;
 
 public class MoveCameraTutorialStep : TutorialStep
 {
@@ -24,6 +25,7 @@ public class MoveCameraTutorialStep : TutorialStep
 
         if (_cursor != null) Object.Destroy(_cursor);
         if (_prompt != null) Object.Destroy(_prompt);
+        RaycastBlock.Disable();
     }
 
 
@@ -33,35 +35,50 @@ public class MoveCameraTutorialStep : TutorialStep
 
         TaskController.SetTask(0);
 
-        var cursorTween = Object.Instantiate(Dependencies.PressAndFadeMoveCursorPrefab, UI.Canvas);
-        var promptText = Object.Instantiate(Dependencies.LeftPromptPrefab, UI.Canvas);
         _progressMarker = Object.Instantiate(Dependencies.ProgressMarkerPrefab, UI.Canvas);
         _progressMarker.SetProgress(0f);
 
-
-        Vector2 screenCenter = ScreenCalculator.GetScreenCenter();
-        Vector2 offset = Vector2.up * 100f;
-
-        Vector2 from = screenCenter + new Vector2(200f, 200f) + offset;
-        promptText.transform.position = from;
-        promptText.text = "Проведи по экрану,\nчтобы переместиться";
-
-        _progressMarker.transform.position = screenCenter;
+        RaycastBlock.BlockAll();
 
 
-        Vector2 to = screenCenter + new Vector2(-200f, -200f) + offset;
+        if (DeviceInfo.ControlType == ControlType.Mobile)
+        {
+            var cursorTween = Object.Instantiate(Dependencies.PressAndFadeMoveCursorPrefab, UI.Canvas);
+            var promptText = Object.Instantiate(Dependencies.LeftPromptPrefab, UI.Canvas);
 
-        cursorTween.Run(from, to);
+            Vector2 screenCenter = ScreenCalculator.GetScreenCenter();
+            Vector2 offset = Vector2.up * 100f;
 
-        _cursor = cursorTween.gameObject;
-        _prompt = promptText.gameObject;
+            Vector2 from = screenCenter + new Vector2(200f, 200f) + offset;
+            promptText.transform.position = from;
+            promptText.text = Localization.GetString("move_tutorial_mobile");
+
+            _progressMarker.transform.position = screenCenter;
+
+            Vector2 to = screenCenter + new Vector2(-200f, -200f) + offset;
+
+            cursorTween.Run(from, to);
+
+            _cursor = cursorTween.gameObject;
+            _prompt = promptText.gameObject;
+
+        }
+
+        else if (DeviceInfo.ControlType == ControlType.Desktop)
+        {
+            var promptText = Object.Instantiate(Dependencies.BigCenterPromptPrefab, UI.Canvas);
+            promptText.transform.position = Dependencies.InventoryTopCenterPosition;
+            promptText.text = Localization.GetString("move_tutorial_desktop");
+
+            _prompt = promptText.gameObject;
+        }
 
 
     }
 
     private void OnCameraMoved(Vector2 move)
     {
-        _cursor.SetActive(false);
+        _cursor?.SetActive(false);
         _prompt.SetActive(false);
 
 

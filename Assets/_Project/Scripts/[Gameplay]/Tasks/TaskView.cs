@@ -39,6 +39,8 @@ public class TaskView : ReactiveView
             int imageAmount = (int)Mathf.Min(5, taskData.rewardAmount);
             new EarnAnimation(transform.position, UI.Shop, sprite, imageAmount);
         }
+
+        _moveTween.Return();
     }
 
     protected override void Display()

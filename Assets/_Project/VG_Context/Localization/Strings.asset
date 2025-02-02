@@ -132,38 +132,6 @@ MonoBehaviour:
     ru: "\u041A\u043E\u043C\u043D\u0430\u0442\u0430 \u21161"
     en: "Room \u21161"
     tr: "1 No'lu Oda\r"
-  - key: 
-    ru: 
-    en: 
-    tr: "\r"
-  - key: 
-    ru: 
-    en: 
-    tr: "\r"
-  - key: 
-    ru: 
-    en: 
-    tr: "\r"
-  - key: 
-    ru: 
-    en: 
-    tr: "\r"
-  - key: 
-    ru: 
-    en: 
-    tr: "\r"
-  - key: 
-    ru: 
-    en: 
-    tr: "\r"
-  - key: 
-    ru: 
-    en: 
-    tr: "\r"
-  - key: 
-    ru: 
-    en: 
-    tr: "\r"
   - key: shop_title
     ru: "\u041C\u0430\u0433\u0430\u0437\u0438\u043D"
     en: Store
@@ -330,24 +298,28 @@ MonoBehaviour:
     tr: "\r"
   - key: sell_all_items
     ru: "\u041F\u0440\u043E\u0434\u0430\u0442\u044C \n\u0432\u0441\u0435 \u043A\u0430\u0440\u0442\u044B"
-    en: 
-    tr: "\r"
+    en: "Sell \nall cards"
+    tr: "Satmak \nt\xFCm kartlar\r"
   - key: sell
     ru: "\u041F\u0440\u043E\u0434\u0430\u0442\u044C"
-    en: 
-    tr: "\r"
+    en: Sell
+    tr: "Satmak\r"
   - key: open
     ru: "\u041E\u0422\u041A\u0420\u042B\u0422\u042C"
-    en: 
-    tr: "\r"
+    en: OPEN
+    tr: "A\xC7IK\r"
   - key: small_box_pack_product
     ru: "\u0421\u0442\u0430\u0440\u0442\u043E\u0432\u044B\u0439\n\u043D\u0430\u0431\u043E\u0440"
-    en: 
-    tr: "\r"
+    en: 'Starting
+
+      kit'
+    tr: "Ba\u015Flang\u0131\xE7\nkiti\r"
   - key: big_box_pack_product
     ru: "\u041F\u0440\u0435\u043C\u0438\u0443\u043C\n\u043D\u0430\u0431\u043E\u0440"
-    en: 
-    tr: "\r"
+    en: 'Premium
+
+      kit'
+    tr: "prim\nkiti\r"
   - key: 
     ru: 
     en: 
@@ -358,69 +330,421 @@ MonoBehaviour:
     tr: "\r"
   - key: box_window_Common
     ru: "\u041E\u0431\u044B\u0447\u043D\u0430\u044F \u043A\u043E\u0440\u043E\u0431\u043A\u0430"
-    en: 
-    tr: "\r"
+    en: Regular box
+    tr: "Normal kutu\r"
   - key: box_window_Rare
-    ru: "\u041F\u0440\u0435\u043C\u0438\u0443\u043C \u043A\u043E\u0440\u043E\u0431\u043A\u0430"
-    en: 
-    tr: "\r"
+    ru: "\u0420\u0435\u0434\u043A\u0430\u044F \u043A\u043E\u0440\u043E\u0431\u043A\u0430"
+    en: Rare box
+    tr: "Nadir kutu\r"
   - key: box_window_Epic
-    ru: "\u0423\u043D\u0438\u043A\u0430\u043B\u044C\u043D\u0430\u044F \u043A\u043E\u0440\u043E\u0431\u043A\u0430"
-    en: 
-    tr: "\r"
+    ru: "\u042D\u043F\u0438\u0447\u0435\u0441\u043A\u0430\u044F \u043A\u043E\u0440\u043E\u0431\u043A\u0430"
+    en: Epic box
+    tr: "Destans\u0131 kutu\r"
   - key: box_window_Fantastic
     ru: "\u041B\u0435\u0433\u0435\u043D\u0434\u0430\u0440\u043D\u0430\u044F \u043A\u043E\u0440\u043E\u0431\u043A\u0430"
-    en: 
-    tr: "\r"
+    en: Legendary box
+    tr: "Efsanevi kutu\r"
   - key: Boxes in Shop
     ru: 
     en: 
     tr: "\r"
   - key: common_box
     ru: "\u041E\u0431\u044B\u0447\u043D\u0430\u044F"
-    en: Common
+    en: Regular
     tr: "D\xFCzenli\r"
   - key: rare_box
-    ru: "\u041F\u0440\u0435\u043C\u0438\u0443\u043C"
+    ru: "\u0420\u0435\u0434\u043A\u0430\u044F"
     en: Rare
     tr: "Nadir\r"
   - key: epic_box
-    ru: "\u0423\u043D\u0438\u043A\u0430\u043B\u044C\u043D\u0430\u044F"
+    ru: "\u042D\u043F\u0438\u0447\u0435\u0441\u043A\u0430\u044F"
     en: Epic
     tr: "Destans\u0131\r"
   - key: fantastic_box
     ru: "\u041B\u0435\u0433\u0435\u043D\u0434\u0430\u0440\u043D\u0430\u044F"
-    en: Fantastic
-    tr: "Fantezi\r"
-  - key: Item Rarity
+    en: Legendary
+    tr: "Efsanevi\r"
+  - key: 
     ru: 
     en: 
     tr: "\r"
-  - key: item_Common
-    ru: "\u041E\u0431\u044B\u0447\u043D\u044B\u0439"
-    en: 
-    tr: "\r"
-  - key: item_Rare
-    ru: "\u0420\u0435\u0434\u043A\u0438\u0439"
-    en: 
-    tr: "\r"
-  - key: item_Epic
-    ru: "\u042D\u043F\u0438\u0447\u0435\u0441\u043A\u0438\u0439"
-    en: 
-    tr: "\r"
-  - key: item_Fantastic
-    ru: "\u0424\u0430\u043D\u0442\u0430\u0441\u0442\u0438\u0447\u0435\u0441\u043A\u0438\u0439"
-    en: 
-    tr: "\r"
-  - key: item_Legendary
-    ru: "\u041B\u0435\u0433\u0435\u043D\u0434\u0430\u0440\u043D\u044B\u0439"
-    en: 
-    tr: "\r"
+  - key: non_showed_cards
+    ru: "\u0434\u0440\u0443\u0433\u0438\u0445 \u043A\u0430\u0440\u0442"
+    en: other cards
+    tr: "di\u011Fer kartlar\r"
   - key: 
     ru: 
     en: 
     tr: "\r"
   - key: item_probabilities
     ru: "\u0428\u0430\u043D\u0441\u044B \u043F\u0440\u0435\u0434\u043C\u0435\u0442\u043E\u0432:"
+    en: 'Item Chances:'
+    tr: "E\u015Fya \u015Eanslar\u0131:\r"
+  - key: of_prestige_points
+    ru: "\u043F\u0440\u0435\u0441\u0442\u0438\u0436\u0430"
+    en: prestige
+    tr: "prestij\r"
+  - key: 
+    ru: 
     en: 
-    tr: 
+    tr: "\r"
+  - key: 
+    ru: 
+    en: 
+    tr: "\r"
+  - key: Tutorial
+    ru: 
+    en: 
+    tr: "\r"
+  - key: task_0
+    ru: "\u0423\u0441\u0442\u0430\u043D\u043E\u0432\u0438 10 \u043F\u0440\u0435\u0434\u043C\u0435\u0442\u043E\u0432"
+    en: Install 10 items
+    tr: "10 \xF6\u011Fe y\xFCkle\r"
+  - key: task_1
+    ru: "\u041E\u0442\u043A\u0440\u043E\u0439 5 \u043A\u043E\u0440\u043E\u0431\u043E\u043A"
+    en: Open 5 boxes
+    tr: "5 kutu a\xE7\r"
+  - key: task_2
+    ru: "\u041E\u0431\u044A\u0435\u0434\u0438\u043D\u0438 3 \u043F\u0440\u0435\u0434\u043C\u0435\u0442\u0430"
+    en: Combine 3 items
+    tr: "3 \xF6\u011Feyi birle\u015Ftir\r"
+  - key: task_3
+    ru: "\u0421\u044B\u0433\u0440\u0430\u0439 \u0432 \u0425\u0432\u0430\u0442\u0430\u0439\u043A\u0443
+      1 \u0440\u0430\u0437"
+    en: Play to prize claw 1 time
+    tr: "\xD6d\xFCl pen\xE7esini 1 kez oyna\r"
+  - key: task_4
+    ru: "\u0423\u0432\u0435\u043B\u0438\u0447\u044C \u0440\u0430\u0437\u043C\u0435\u0440
+      \u043A\u043E\u043C\u043D\u0430\u0442\u044B"
+    en: Increase the size of the room
+    tr: "Odan\u0131n boyutunu art\u0131r\u0131n\r"
+  - key: task_5
+    ru: "\u0414\u043E\u0441\u0442\u0438\u0433\u043D\u0438 3 \u0443\u0440\u043E\u0432\u043D\u044F
+      \u043A\u043E\u043C\u043D\u0430\u0442\u044B"
+    en: Reach room level 3
+    tr: "Oda seviyesi 3'e ula\u015F\u0131n\r"
+  - key: 
+    ru: 
+    en: 
+    tr: "\r"
+  - key: hold_and_move_item
+    ru: "\u0417\u0430\u0436\u043C\u0438 \u043F\u0440\u0435\u0434\u043C\u0435\u0442
+      \u0438 \u043F\u0435\u0440\u0435\u043C\u0435\u0441\u0442\u0438 \u0435\u0433\u043E"
+    en: Hold an item and move it
+    tr: "Bir \xF6\u011Feyi tutun ve ta\u015F\u0131y\u0131n\r"
+  - key: click_to_rotate_item
+    ru: "\u041A\u043B\u0438\u043A\u043D\u0438 \u043D\u0430 \u043F\u0440\u0435\u0434\u043C\u0435\u0442,\n\u0447\u0442\u043E\u0431\u044B
+      \u043F\u043E\u0432\u0435\u0440\u043D\u0443\u0442\u044C \u0435\u0433\u043E"
+    en: 'Click on the item
+
+      to turn it'
+    tr: "\xD6\u011Feye t\u0131klay\u0131n\nonu \xE7evirmek\r"
+  - key: move_tutorial_mobile
+    ru: "\u041F\u0440\u043E\u0432\u0435\u0434\u0438 \u043F\u043E \u044D\u043A\u0440\u0430\u043D\u0443,\n\u0447\u0442\u043E\u0431\u044B
+      \u043F\u0435\u0440\u0435\u043C\u0435\u0441\u0442\u0438\u0442\u044C\u0441\u044F"
+    en: 'Swipe across the screen
+
+      to move'
+    tr: "Ekran boyunca kayd\u0131r\u0131n\nhareket etmek\r"
+  - key: move_tutorial_desktop
+    ru: "\u0418\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0439 \u043A\u043B\u0430\u0432\u0438\u0448\u0438
+      WASD \u0434\u043B\u044F \u043F\u0435\u0440\u0435\u043C\u0435\u0449\u0435\u043D\u0438\u044F"
+    en: Use WASD keys to move
+    tr: "Hareket etmek i\xE7in WASD tu\u015Flar\u0131n\u0131 kullan\u0131n\r"
+  - key: scale_tutorial_mobile
+    ru: "\u0418\u0437\u043C\u0435\u043D\u044F\u0439\n\u043C\u0430\u0441\u0448\u0442\u0430\u0431"
+    en: 'Change
+
+      scale'
+    tr: "De\u011Fi\u015Ftirmek\n\xF6l\xE7ek\r"
+  - key: scale_tutorial_desktop
+    ru: "\u0418\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0439 \u043A\u043E\u043B\u0435\u0441\u0438\u043A\u043E
+      \u043C\u044B\u0448\u0438, \u0447\u0442\u043E\u0431\u044B \u0438\u0437\u043C\u0435\u043D\u0438\u0442\u044C
+      \u043C\u0430\u0441\u0448\u0442\u0430\u0431"
+    en: Use the mouse wheel to change the zoom
+    tr: "Yak\u0131nla\u015Ft\u0131rmay\u0131 de\u011Fi\u015Ftirmek i\xE7in fare tekerle\u011Fini
+      kullan\u0131n\r"
+  - key: prestige_tutorial_prompt
+    ru: "\u041A\u0430\u0436\u0434\u044B\u0439 \u043F\u0440\u0435\u0434\u043C\u0435\u0442
+      \u0443\u0432\u0435\u043B\u0438\u0447\u0438\u0432\u0430\u0435\u0442 \u0443\u0440\u043E\u0432\u0435\u043D\u044C
+      \u043F\u0440\u0435\u0441\u0442\u0438\u0436\u0430 \u043A\u043E\u043C\u043D\u0430\u0442\u044B"
+    en: Each item increases the prestige level of the room
+    tr: "Her e\u015Fya odan\u0131n prestij seviyesini artt\u0131r\u0131r\r"
+  - key: open_shop_tutorial
+    ru: "\u041E\u0442\u043A\u0440\u043E\u0439\n\u043C\u0430\u0433\u0430\u0437\u0438\u043D"
+    en: 'Open up
+
+      shop'
+    tr: "A\xE7\nma\u011Faza\r"
+  - key: play_prize_claw_tutorial
+    ru: "\u0421\u044B\u0433\u0440\u0430\u0439 \u0432\n\u0445\u0432\u0430\u0442\u0430\u0439\u043A\u0443"
+    en: 'Play to
+
+      prize claw'
+    tr: "\xD6d\xFCl pen\xE7esine\noyna\r"
+  - key: take_reward
+    ru: "\u0417\u0430\u0431\u0435\u0440\u0438 \u043D\u0430\u0433\u0440\u0430\u0434\u0443!"
+    en: Take your reward!
+    tr: "\xD6d\xFCl\xFCn\xFCz\xFC al\u0131n!\r"
+  - key: expand_room_tutorial
+    ru: "\u0420\u0430\u0441\u0448\u0438\u0440\u044F\u0439\n\u043A\u043E\u043C\u043D\u0430\u0442\u0443"
+    en: 'Expand
+
+      room'
+    tr: "Geni\u015Fletmek\noda\r"
+  - key: change_room_style_tutorial
+    ru: "\u0418\u0437\u043C\u0435\u043D\u0438 \u0441\u0442\u0438\u043B\u044C\n\u043A\u043E\u043C\u043D\u0430\u0442\u044B"
+    en: 'Change your style
+
+      rooms'
+    tr: "Tarz\u0131n\u0131z\u0131 de\u011Fi\u015Ftirin\nodalar\r"
+  - key: task
+    ru: "\u0417\u0430\u0434\u0430\u043D\u0438\u0435"
+    en: Exercise
+    tr: "Egzersiz yapmak\r"
+  - key: 
+    ru: 
+    en: 
+    tr: "\r"
+  - key: 
+    ru: 
+    en: 
+    tr: "\r"
+  - key: room_expansion_window_title
+    ru: "\u0420\u0430\u0441\u0448\u0438\u0440\u0435\u043D\u0438\u0435 \u043A\u043E\u043C\u043D\u0430\u0442\u044B"
+    en: Room expansion
+    tr: "Oda geni\u015Fletme\r"
+  - key: room_expansion_window_subtitle
+    ru: "\u0423\u0432\u0435\u043B\u0438\u0447\u0438\u0442\u044C \u0440\u0430\u0437\u043C\u0435\u0440
+      \u043A\u043E\u043C\u043D\u0430\u0442\u044B \u0437\u0430"
+    en: Increase room size in
+    tr: "Oda boyutunu art\u0131r\u0131n\r"
+  - key: expand
+    ru: "\u0420\u0430\u0441\u0448\u0438\u0440\u0438\u0442\u044C"
+    en: Expand
+    tr: "Geni\u015Fletmek\r"
+  - key: 
+    ru: 
+    en: 
+    tr: "\r"
+  - key: level_up_room_window_title
+    ru: "\u041D\u043E\u0432\u044B\u0439 \u0443\u0440\u043E\u0432\u0435\u043D\u044C!"
+    en: New level!
+    tr: "Yeni seviye!\r"
+  - key: income_upgrade
+    ru: "\u0423\u0432\u0435\u043B\u0438\u0447\u0435\u043D\u0438\u0435 \u043F\u0440\u0438\u0431\u044B\u043B\u0438"
+    en: Increased profits
+    tr: "Artan kar\r"
+  - key: 
+    ru: 
+    en: 
+    tr: "\r"
+  - key: buy
+    ru: "\u041A\u0423\u041F\u0418\u0422\u042C"
+    en: BUY
+    tr: "SATIN ALMAK\r"
+  - key: active
+    ru: "\u0410\u043A\u0442\u0438\u0432\u043D\u043E"
+    en: Actively
+    tr: "Aktif olarak\r"
+  - key: skip_unboxing
+    ru: "\u041F\u0440\u043E\u043F\u0443\u0441\u0442\u0438\u0442\u044C"
+    en: Skip
+    tr: "Atlamak\r"
+  - key: click_to_open
+    ru: "\u041D\u0430\u0436\u043C\u0438, \u0447\u0442\u043E\u0431\u044B \u043E\u0442\u043A\u0440\u044B\u0442\u044C"
+    en: Click to open
+    tr: "A\xE7mak i\xE7in t\u0131klay\u0131n\r"
+  - key: opened_cards_title
+    ru: "\u041F\u043E\u043B\u0443\u0447\u0435\u043D\u044B \u043A\u0430\u0440\u0442\u044B:"
+    en: 'Cards received:'
+    tr: "Al\u0131nan kartlar:"
+  - key: Item Rarities
+    ru: 
+    en: 
+    tr: "\r"
+  - key: Common
+    ru: "\u041E\u0431\u044B\u0447\u043D\u044B\u0439"
+    en: Ordinary
+    tr: "S\u0131radan\r"
+  - key: Rare
+    ru: "\u0420\u0435\u0434\u043A\u0438\u0439"
+    en: Rare
+    tr: "Nadir\r"
+  - key: Epic
+    ru: "\u042D\u043F\u0438\u0447\u0435\u0441\u043A\u0438\u0439"
+    en: Epic
+    tr: "Destans\u0131\r"
+  - key: Fantastic
+    ru: "\u0424\u0430\u043D\u0442\u0430\u0441\u0442\u0438\u0447\u0435\u0441\u043A\u0438\u0439"
+    en: Fantastic
+    tr: "Fantastik\r"
+  - key: Legendary
+    ru: "\u041B\u0435\u0433\u0435\u043D\u0434\u0430\u0440\u043D\u044B\u0439"
+    en: Legendary
+    tr: "Efsanevi\r"
+  - key: Item Names
+    ru: 
+    en: 
+    tr: "\r"
+  - key: BunkBed
+    ru: "\u0414\u0432\u0443\u0445\u044A\u044F\u0440\u0443\u0441\u043D\u0430\u044F
+      \u043A\u0440\u043E\u0432\u0430\u0442\u044C"
+    en: Bunk bed
+    tr: "Ranza\r"
+  - key: SingleBed
+    ru: "\u041A\u0440\u043E\u0432\u0430\u0442\u044C"
+    en: Bed
+    tr: "Yatak\r"
+  - key: SquareClothes
+    ru: "\u041E\u0434\u0435\u0436\u0434\u0430"
+    en: Cloth
+    tr: "Kuma\u015F\r"
+  - key: CarpetFluffy
+    ru: "\u041F\u0443\u0445\u043E\u0432\u044B\u0439 \u043A\u043E\u0432\u0435\u0440"
+    en: Down carpet
+    tr: "A\u015Fa\u011F\u0131 hal\u0131\r"
+  - key: Wardrobe
+    ru: "\u0428\u043A\u0430\u0444"
+    en: Closet
+    tr: "Dolap\r"
+  - key: Armchair
+    ru: "\u0428\u0435\u043B\u043A\u043E\u0432\u043E\u0435 \u043A\u0440\u0435\u0441\u043B\u043E"
+    en: Silk chair
+    tr: "\u0130pek sandalye\r"
+  - key: Door
+    ru: "\u0414\u0432\u0435\u0440\u044C"
+    en: Door
+    tr: "Kap\u0131\r"
+  - key: WallClock
+    ru: "\u041D\u0430\u0441\u0442\u0435\u043D\u043D\u044B\u0435 \u0447\u0430\u0441\u044B"
+    en: Wall clock
+    tr: "Duvar saati\r"
+  - key: SmallWardrobe
+    ru: "\u041A\u043E\u043C\u043E\u0434"
+    en: Dresser
+    tr: "\u015Eifonyer\r"
+  - key: AlarmClock
+    ru: "\u0411\u0443\u0434\u0438\u043B\u044C\u043D\u0438\u043A"
+    en: Alarm
+    tr: "Alarm\r"
+  - key: Cup
+    ru: "\u041A\u0440\u0443\u0436\u043A\u0430"
+    en: Mug
+    tr: "Sald\u0131r\u0131p soymak\r"
+  - key: Plate
+    ru: "\u0422\u0430\u0440\u0435\u043B\u043A\u0430"
+    en: Plate
+    tr: "Plaka\r"
+  - key: RoyalSingleBed
+    ru: "\u0420\u043E\u0441\u043A\u043E\u0448\u043D\u0430\u044F \u043A\u0440\u043E\u0432\u0430\u0442\u044C"
+    en: Luxurious bed
+    tr: "L\xFCks yatak\r"
+  - key: FlowerJar
+    ru: "\u0426\u0432\u0435\u0442\u044B \u0432 \u0433\u043E\u0440\u0448\u043A\u0435"
+    en: Flowers in a pot
+    tr: "Bir tencerede \xE7i\xE7ekler\r"
+  - key: ManShoes
+    ru: "\u0411\u043E\u0442\u0438\u043D\u043A\u0438"
+    en: Boots
+    tr: "bot\r"
+  - key: Kettle
+    ru: "\u0427\u0430\u0439\u043D\u0438\u043A"
+    en: Kettle
+    tr: "Su \u0131s\u0131t\u0131c\u0131s\u0131\r"
+  - key: Apple
+    ru: "\u042F\u0431\u043B\u043E\u043A\u043E"
+    en: Apple
+    tr: "Elma\r"
+  - key: Muffin
+    ru: "\u041A\u0435\u043A\u0441"
+    en: Cupcake
+    tr: "kek\r"
+  - key: SodaBottle
+    ru: "\u0413\u0430\u0437\u0438\u0440\u043E\u0432\u043A\u0430"
+    en: Soda
+    tr: "Soda\r"
+  - key: Fireplace
+    ru: "\u041A\u0430\u043C\u0438\u043D"
+    en: Fireplace
+    tr: "\u015E\xF6mine\r"
+  - key: EmptyBottle
+    ru: "\u0411\u0443\u0442\u044B\u043B\u043A\u0430"
+    en: Bottle
+    tr: "\u015Ei\u015Fe\r"
+  - key: Sneakers
+    ru: "\u041A\u0435\u0434\u044B"
+    en: Sneakers
+    tr: "Spor ayakkab\u0131\r"
+  - key: Chair
+    ru: "\u0421\u0442\u0443\u043B"
+    en: Chair
+    tr: "Sandalye\r"
+  - key: RectPlasticBottle
+    ru: "\u0414\u0435\u0437\u043E\u0434\u043E\u0440\u0430\u043D\u0442"
+    en: Deodorant
+    tr: "Deodorant\r"
+  - key: Fork
+    ru: "\u0412\u0438\u043B\u043A\u0430"
+    en: Fork
+    tr: "\xC7atal\r"
+  - key: RoundedKnife
+    ru: "\u041A\u0443\u0445\u043E\u043D\u043D\u044B\u0439 \u043D\u043E\u0436"
+    en: Kitchen knife
+    tr: "Mutfak b\u0131\xE7a\u011F\u0131\r"
+  - key: Spoon
+    ru: "\u041B\u043E\u0436\u043A\u0430"
+    en: Spoon
+    tr: "Ka\u015F\u0131k\r"
+  - key: Window
+    ru: "\u041E\u043A\u043D\u043E"
+    en: Window
+    tr: "Pencere\r"
+  - key: DoubleWindow
+    ru: "\u0414\u0432\u043E\u0439\u043D\u043E\u0435 \u043E\u043A\u043D\u043E"
+    en: Double window
+    tr: "\xC7ift pencere\r"
+  - key: RectCoffeeTable
+    ru: "\u0414\u043B\u0438\u043D\u043D\u044B\u0439 \u0441\u0442\u043E\u043B"
+    en: Long table
+    tr: "Uzun masa\r"
+  - key: SmallRoundTable
+    ru: "\u0411\u0430\u0440\u043D\u044B\u0439 \u0441\u0442\u043E\u043B\u0438\u043A"
+    en: Bar table
+    tr: "Bar masas\u0131\r"
+  - key: Book
+    ru: "\u041A\u043D\u0438\u0433\u0430"
+    en: Book
+    tr: "Kitap\r"
+  - key: MiniLamp
+    ru: "\u041D\u0430\u0441\u0442\u0435\u043D\u043D\u0430\u044F \u043B\u0430\u043C\u043F\u0430"
+    en: Wall lamp
+    tr: "Duvar lambas\u0131\r"
+  - key: Bear
+    ru: "\u041F\u043B\u044E\u0448\u0435\u0432\u044B\u0439 \u043C\u0438\u0448\u043A\u0430"
+    en: Teddy bear
+    tr: "Oyuncak ay\u0131\r"
+  - key: RoyalSofa
+    ru: "\u0420\u043E\u0441\u043A\u043E\u0448\u043D\u044B\u0439 \u0434\u0438\u0432\u0430\u043D"
+    en: Luxury sofa
+    tr: "L\xFCks kanepe\r"
+  - key: Sofa
+    ru: "\u0414\u0438\u0432\u0430\u043D"
+    en: Sofa
+    tr: "Divan\r"
+  - key: RoundLamp
+    ru: "\u0410\u0442\u043C\u043E\u0441\u0444\u0435\u0440\u043D\u0430\u044F \u043B\u0430\u043C\u043F\u0430"
+    en: Atmospheric lamp
+    tr: "Atmosfer lambas\u0131\r"
+  - key: WomenShoes
+    ru: "\u0422\u0443\u0444\u043B\u0438"
+    en: Shoes
+    tr: "Ayakkab\u0131\r"
+  - key: BigPicture
+    ru: "\u0421\u043E\u0441\u0442\u0430\u0432\u043D\u0430\u044F \u043A\u0430\u0440\u0442\u0438\u043D\u0430"
+    en: Composite picture
+    tr: "Bile\u015Fik resim\r"
+  - key: BigVase
+    ru: "\u0420\u043E\u0441\u043A\u043E\u0448\u043D\u0430\u044F \u0432\u0430\u0437\u0430"
+    en: Luxurious vase
+    tr: "L\xFCks vazo"

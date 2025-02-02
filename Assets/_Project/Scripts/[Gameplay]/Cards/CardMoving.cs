@@ -35,6 +35,7 @@ public class CardMoving : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
             _itemCard.SetData(cardData);
         }
 
+        MobileControl.CurrentState = MobileControl.State.ItemMoving;
         MovingItemFromCard = true;
         _eventController.OnCardTaken.OnNext(Unit.Default);
     }
@@ -44,6 +45,8 @@ public class CardMoving : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     public void OnEndDrag(PointerEventData eventData)
     {
         _itemInteraction.EndDrag();
+
+        MobileControl.CurrentState = MobileControl.State.Free;
         MovingItemFromCard = false;
         _eventController.OnCardReleased.OnNext(Unit.Default);
     }

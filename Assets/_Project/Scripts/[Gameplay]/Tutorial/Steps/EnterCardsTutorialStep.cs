@@ -7,6 +7,11 @@ public class EnterCardsTutorialStep : TutorialStep
 {
     private EventController _eventController;
     private GameObject _cursor;
+    private GameObject _placePrompt;
+    private List<PlaceGridData> _originRoomPlaceGrid;
+
+    private bool _highlightPlace;
+
 
     private readonly List<ItemType> _startItems = new List<ItemType>
     {
@@ -23,9 +28,10 @@ public class EnterCardsTutorialStep : TutorialStep
         ItemType.WallClock,
     };
 
-    public EnterCardsTutorialStep(EventController eventController)
+    public EnterCardsTutorialStep(EventController eventController, bool highlightPlace)
     {
         _eventController = eventController;
+        _highlightPlace = highlightPlace;
     }
 
     private void OnItemPlaced()
@@ -48,6 +54,8 @@ public class EnterCardsTutorialStep : TutorialStep
     {
         base.RestoreContext();
         if (_cursor != null) Object.Destroy(_cursor);
+        if (_placePrompt != null) Object.Destroy(_placePrompt);
+        Dependencies.Room.SetPlaceGridData(_originRoomPlaceGrid);
     }
 
     
@@ -71,11 +79,21 @@ public class EnterCardsTutorialStep : TutorialStep
         var cursorTween = Object.Instantiate(Dependencies.PressAndFadeMoveCursorPrefab, UI.Canvas);
 
         Vector2 from = (Vector2)Dependencies.InventoryRect.position + Vector2.up * 50f;
-        Vector2 to = from + Vector2.up * 500f;
+        Vector2 to = ScreenCalculator.GetScreenCenter();
 
         cursorTween.Run(from, to);
 
         _cursor = cursorTween.gameObject;
+
+        _originRoomPlaceGrid = Dependencies.Room.PlaceGridDataList;
+        
+
+        if (_highlightPlace)
+        {
+            Dependencies.Room.SetPlaceGridData(Dependencies.TutorialRoomPlaceGridDataList);
+            _placePrompt = Object.Instantiate(Dependencies.RoomPlacePromptPrefab, null);
+            _placePrompt.transform.position = Dependencies.RoomPlacePromptPrefab.transform.position;
+        }
 
     }
 

@@ -1,5 +1,6 @@
 using R3;
 using UnityEngine;
+using VG2;
 
 public class ScaleCameraTutorialStep : TutorialStep
 {
@@ -21,6 +22,7 @@ public class ScaleCameraTutorialStep : TutorialStep
     {
         base.RestoreContext();
         if (_prompt != null) Object.Destroy(_prompt);
+        RaycastBlock.Disable();
     }
 
 
@@ -30,17 +32,27 @@ public class ScaleCameraTutorialStep : TutorialStep
 
         TaskController.SetTask(0);
 
-        var promptText = Object.Instantiate(Dependencies.BigCenterPromptPrefab, UI.Canvas);
-        promptText.transform.position = Dependencies.InventoryRect.position + Vector3.up * 140f;
-        promptText.text = "Используй колесико мыши, чтобы изменить масштаб";
-
         _progressMarker = Object.Instantiate(Dependencies.ProgressMarkerPrefab, UI.Canvas);
         _progressMarker.SetProgress(0f);
-
         _progressMarker.transform.position = ScreenCalculator.GetScreenCenter();
 
-        _prompt = promptText.gameObject;
+        RaycastBlock.BlockAll();
 
+        if (DeviceInfo.ControlType == ControlType.Mobile)
+        {
+            var promptText = Object.Instantiate(Dependencies.LeftArrowPromptPrefab, UI.Canvas);
+            promptText.transform.position = Dependencies.MobileControlRect.position;
+            promptText.text = Localization.GetString("scale_tutorial_mobile");
+            _prompt = promptText.gameObject;
+        }
+
+        else if (DeviceInfo.ControlType == ControlType.Desktop)
+        {
+            var promptText = Object.Instantiate(Dependencies.BigCenterPromptPrefab, UI.Canvas);
+            promptText.transform.position = Dependencies.InventoryTopCenterPosition;
+            promptText.text = Localization.GetString("scale_tutorial_desktop");
+            _prompt = promptText.gameObject;
+        }
 
     }
 

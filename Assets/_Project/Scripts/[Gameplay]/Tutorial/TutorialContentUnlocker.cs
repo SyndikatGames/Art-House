@@ -19,8 +19,8 @@ public class TutorialContentUnlocker : ReactiveView
 
     protected override void Subscribe()
     {
-        if (GameState.tutorialCompleted == false)
-            disposables.Add(GameState.tutorialStepIndex.Subscribe(_ => Display()));
+        disposables.Add(GameState.tutorialStepIndex.Subscribe(_ => Display()));
+
     }
 
 

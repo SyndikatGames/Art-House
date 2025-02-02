@@ -1,6 +1,7 @@
 using PrizeClaw;
 using UnityEngine;
 using R3;
+using VG2;
 
 public class PlayPrizeClawTutorialStep : TutorialStep
 {
@@ -21,7 +22,7 @@ public class PlayPrizeClawTutorialStep : TutorialStep
         TaskController.SetTask(3);
 
         var prompt = Object.Instantiate(Dependencies.LeftArrowPromptPrefab, Dependencies.PrizeClawButtonRect);
-        prompt.text = "Сыграй в хватайку!";
+        prompt.text = Localization.GetString("play_prize_claw_tutorial");
         _prompt = prompt.gameObject;
     }
 

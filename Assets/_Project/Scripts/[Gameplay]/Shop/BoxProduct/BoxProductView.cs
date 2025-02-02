@@ -17,7 +17,7 @@ public class BoxProductView : ReactiveView
 
     protected override void Subscribe()
     {
-        disposables.Add(GameState.CurrentRoom.boxesAmount.onChanged.Subscribe(_ => Display()));
+        disposables.Add(GameState.CurrentRoom.boxesAmount.OnChanged.Subscribe(_ => Display()));
     }
 
 

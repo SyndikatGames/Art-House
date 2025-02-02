@@ -11,6 +11,11 @@ public class TutorialController : IInitializable
     public const int PRIZE_CLAW_TUTORIAL_STEP_INDEX = 13;
     public const int SHOW_ROOM_STYLES_LEVEL = 3;
 
+    public static bool ShowOfflineIncomeEnabled => GameState.tutorialStepIndex.Value >= 16;
+    public static bool CameraControlEnabled => GameState.tutorialStepIndex.Value >= 3;
+    public static bool SellAreaEnabled => GameState.tutorialStepIndex.Value >= 13;
+
+
 
     public TutorialController(TutorialSceneDependencies dependencies, PrestigeController prestigeController,
         EventController eventController, CameraController cameraController, TaskController taskController,
@@ -19,12 +24,12 @@ public class TutorialController : IInitializable
     {
         _steps = new List<TutorialStep>
         {
-            new EnterCardsTutorialStep(eventController), // 0
+            new EnterCardsTutorialStep(eventController, highlightPlace: true), // 0
             new HoldAndMoveItemTutorialStep(eventController), // 1
             new RotateItemTutorialStep(eventController), // 2
             new MoveCameraTutorialStep(cameraController), // 3
             new ScaleCameraTutorialStep(cameraController), // 4
-            new EnterCardsTutorialStep(eventController), // 5
+            new EnterCardsTutorialStep(eventController, highlightPlace: false), // 5
             new PrestigeHighlightTutorialStep(eventController), // 6
             new ReachNewLevelTutorialStep(eventController), // 7
             new TakeTaskRewardTutorialStep(0), // 8
@@ -35,8 +40,7 @@ public class TutorialController : IInitializable
             new PlayPrizeClawTutorialStep(prizeClawController), // 13
             new TakeTaskRewardTutorialStep(3), // 14
             new ExpandRoomTutorialStep(roomExpansionController), // 15
-            new EndWindowTutorialStep(), // 16
-            new UseNewStyleTutorialStep(eventController, roomStyleController), // 17
+            new UseNewStyleTutorialStep(eventController, roomStyleController), // 16
         };
 
 
@@ -46,34 +50,30 @@ public class TutorialController : IInitializable
 
     public void Initialize()
     {
-        if (GameState.tutorialCompleted == false) 
-            RunStep(GameState.tutorialStepIndex.Value);
+        if (GameState.tutorialStepIndex.Value < _steps.Count) 
+            RunStep(GameState.tutorialStepIndex.Value, usePreviousContext: false);
     }
 
 
-    private void RunStep(int stepIndex)
+    private void RunStep(int stepIndex, bool usePreviousContext)
     {
         Debug.Log($"Run: {stepIndex}");
-        if (stepIndex > 0) _steps[stepIndex - 1].RestoreContext();
+
+        if (usePreviousContext) 
+            _steps[stepIndex - 1].RestoreContext();
+
         _steps[stepIndex].Run();
         _steps[stepIndex].onCompleted += () =>
         {
             Debug.Log($"Completed: {stepIndex}");
-            int finishedStep = stepIndex;
-
-            if (finishedStep >= _steps.Count - 1)
-            {
-                GameState.tutorialCompleted = true;
-                Debug.Log("Tutorial Completed");
-            }
-                
+            int finishedStepIndex = stepIndex;
 
             GameState.tutorialStepIndex.Value++;
 
-            if (finishedStep < _steps.Count - 1)
-                RunStep(finishedStep + 1);
+            if (finishedStepIndex < _steps.Count - 1)
+                RunStep(finishedStepIndex + 1, usePreviousContext: true);
 
-            else _steps[finishedStep].RestoreContext();
+            else _steps[finishedStepIndex].RestoreContext();
         };
 
     }

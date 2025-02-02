@@ -8,7 +8,8 @@ namespace VG2
 
         public static List<string> localization_tables = new List<string>()
         {
-            "localization_main"
+            "localization_main",
+            "localization_items"
         };
 
 

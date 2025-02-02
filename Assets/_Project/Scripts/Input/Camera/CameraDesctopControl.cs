@@ -1,4 +1,5 @@
 using UnityEngine;
+using VG2;
 
 
 public class CameraDesctopControl : MonoBehaviour
@@ -9,6 +10,8 @@ public class CameraDesctopControl : MonoBehaviour
 
     private void Update()
     {
+        if (!TutorialController.CameraControlEnabled) return;
+
         MoveCamera();
         ZoomCamera();
     }

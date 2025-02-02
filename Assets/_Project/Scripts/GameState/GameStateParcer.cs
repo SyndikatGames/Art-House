@@ -29,12 +29,6 @@ namespace VG2
             GameState.money = new MemoryReactiveProperty<float>
                 (data.ContainsKey(moneyKey) ? float.Parse(data[moneyKey]) : 0);
 
-            GameState.tutorialCompleted = data.ContainsKey(tutorialCompletedKey) ?
-                bool.Parse(data[tutorialCompletedKey]) : false;
-
-            GameState.styleTutorialCompleted = data.ContainsKey(styleTutorialCompletedKey) ?
-                bool.Parse(data[styleTutorialCompletedKey]) : false;
-
             GameState.tutorialStepIndex = new ReactiveProperty<int> 
                 (data.ContainsKey(tutorialStepKey) ? int.Parse(data[tutorialStepKey]) : 0);
 
@@ -42,7 +36,7 @@ namespace VG2
                 (data.ContainsKey(currentRoomIndexKey) ? int.Parse(data[currentRoomIndexKey]) : 0);
 
             GameState.tickets = new ReactiveProperty<float>
-                (data.ContainsKey(ticketsKey) ? float.Parse(data[ticketsKey]) : 5f);
+                (data.ContainsKey(ticketsKey) ? float.Parse(data[ticketsKey]) : 3f);
 
             GameState.lastIncomeTime = data.ContainsKey(lastIncomeTimeKey) ?
                 DateTime.Parse(data[lastIncomeTimeKey]) : DateTime.Now;
@@ -62,8 +56,6 @@ namespace VG2
 
             data.Add(adsEnabledKey, GameState.adsEnabled.ToString());
             data.Add(moneyKey, GameState.money.ToString());
-            data.Add(tutorialCompletedKey, GameState.tutorialCompleted.ToString());
-            data.Add(styleTutorialCompletedKey, GameState.styleTutorialCompleted.ToString());
             data.Add(tutorialStepKey, GameState.tutorialStepIndex.ToString());
             data.Add(currentRoomIndexKey, GameState.currentRoomIndex.ToString());
             data.Add(ticketsKey, GameState.tickets.ToString());

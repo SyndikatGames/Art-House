@@ -4,12 +4,23 @@ using VG2;
 public static class BoxCalculator
 {
     
+
+
     public static int GetBoxesAmount(BoxType boxType)
     {
         if (GameState.CurrentRoom.boxesAmount.ContainsKey(boxType))
             return GameState.CurrentRoom.boxesAmount.Get(boxType);
 
         return 0;
+    }
+
+
+    public static void SetBoxAmount(BoxType boxType, int amount)
+    {
+        if (GameState.CurrentRoom.boxesAmount.ContainsKey(boxType) == false)
+            GameState.CurrentRoom.boxesAmount.Add(boxType, amount);
+
+        else GameState.CurrentRoom.boxesAmount.Set(boxType, amount);
     }
 
     public static void AddBoxes(BoxType boxType, int amount)

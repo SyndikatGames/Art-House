@@ -74,7 +74,7 @@ public class RoomStyleVariantView : MonoBehaviour
             _selectButton.interactable = styleAvailable;
             _lock.SetActive(!styleAvailable);
             _unlockLevelText.gameObject.SetActive(!styleAvailable);
-            _unlockLevelText.text = $"{Localization.GetString("level")} {Index}";
+            _unlockLevelText.text = $"{Localization.GetString("level")} {Index + 1}";
             _selectedMark.SetActive(false);
         }
     }

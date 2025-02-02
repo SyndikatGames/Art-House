@@ -154,6 +154,7 @@ GameObject:
   - component: {fileID: 1310395472419595654}
   - component: {fileID: 9186748696628468307}
   - component: {fileID: 8518988163770349645}
+  - component: {fileID: 4292302543558039588}
   m_Layer: 5
   m_Name: <Purchased>
   m_TagString: Untagged
@@ -208,7 +209,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0410\u043A\u0442\u0438\u0432\u043D\u043E"
+  m_text: <active>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: aea7dbf935b3ccd498085c02f377de53, type: 2}
   m_sharedMaterial: {fileID: -7216278356357123725, guid: aea7dbf935b3ccd498085c02f377de53, type: 2}
@@ -277,6 +278,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4292302543558039588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916329167157797201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77af3c43e77026648aeeb16d29050be1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _key: active
+  _useToken: 0
 --- !u!1 &1490021006968070584
 GameObject:
   m_ObjectHideFlags: 0

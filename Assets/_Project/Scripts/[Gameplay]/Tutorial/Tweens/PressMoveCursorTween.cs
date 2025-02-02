@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,7 +19,7 @@ public class PressMoveCursorTween : MonoBehaviour
 
     private Sequence _sequence;
 
-    public void Run(Vector2 from, Vector2 to)
+    public void Run(Vector2 from, Vector2 to, Action onCompleted = null)
     {
         _sequence?.Kill();
         _sequence = DOTween.Sequence(transform)
@@ -32,7 +33,7 @@ public class PressMoveCursorTween : MonoBehaviour
             .Append(RectTransform.DOMove(to, MOVE_DURATION).SetEase(Ease.OutFlash))
             .Append(RectTransform.DOScale(UNPRESSED_SCALE, PRESS_DURATION).SetEase(Ease.OutFlash))
             .Join(_cursorImage.DOFade(0f, PRESS_DURATION).SetEase(Ease.OutFlash))
-            .SetLoops(-1);
+            .AppendCallback(() => onCompleted?.Invoke());
     }
 
 

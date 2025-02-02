@@ -3,11 +3,10 @@ using UnityEngine;
 
 public class MoveRectTween : MonoBehaviour
 {
-    [SerializeField] private Vector2 _moveOffset;
+    [SerializeField] private RectTransform _moveToTransform;
 
     private RectTransform RectTransform => transform as RectTransform;
-    private Vector2 _originPosition;
-    private Vector2? _targetPosition;
+    private Vector2? _originPosition = null;
     private bool _opened = false;
 
 
@@ -15,22 +14,14 @@ public class MoveRectTween : MonoBehaviour
 
 
 
-    private void Start()
-    {
-        _originPosition = RectTransform.position;
-    }
-
-
     public void Enter()
     {
         if (!_opened)
         {
-            print(RectTransform.position);
+            if (_originPosition == null)
+                _originPosition = transform.position;
 
-            if (_targetPosition == null)
-                _targetPosition = (Vector2)RectTransform.position + _moveOffset;
-
-            RectTransform.DOMove((Vector2)_targetPosition, MOVE_DURATION).SetEase(Ease.OutFlash);
+            RectTransform.DOMove(_moveToTransform.position, MOVE_DURATION).SetEase(Ease.OutFlash);
 
             _opened = true;
         }
@@ -41,7 +32,7 @@ public class MoveRectTween : MonoBehaviour
     {
         if (_opened)
         {
-            RectTransform.DOMove(_originPosition, MOVE_DURATION).SetEase(Ease.OutFlash);
+            RectTransform.DOMove((Vector2)_originPosition, MOVE_DURATION).SetEase(Ease.OutFlash);
             _opened = false;
         }
             

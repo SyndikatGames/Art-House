@@ -9,7 +9,7 @@ namespace PrizeClaw
 
         protected override void Subscribe()
         {
-            disposables.Add(GameState.prizeClaw.rewards.onChanged.Subscribe(_ => Display()));
+            disposables.Add(GameState.prizeClaw.rewards.OnChanged.Subscribe(_ => Display()));
         }
 
         protected override void Display()
