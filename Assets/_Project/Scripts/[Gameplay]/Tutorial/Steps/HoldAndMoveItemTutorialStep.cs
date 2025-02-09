@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using R3;
 using UnityEngine;
 using VG2;
@@ -10,7 +11,8 @@ public class HoldAndMoveItemTutorialStep : TutorialStep
     private GameObject _prompt;
 
     private Vector3Int _originItemPosition;
-
+    private List<PlaceGridData> _originRoomPlaceGrid;
+    private GameObject _placePrompt;
 
 
     public HoldAndMoveItemTutorialStep(EventController eventController)
@@ -43,6 +45,8 @@ public class HoldAndMoveItemTutorialStep : TutorialStep
         if (_cursor != null) Object.Destroy(_cursor);
         if (_prompt != null) Object.Destroy(_prompt);
         RaycastBlock.Disable();
+        if (_placePrompt != null) Object.Destroy(_placePrompt);
+        Dependencies.Room.SetPlaceGridData(_originRoomPlaceGrid);
     }
 
 
@@ -71,6 +75,11 @@ public class HoldAndMoveItemTutorialStep : TutorialStep
         _prompt = promptText.gameObject;
 
         RaycastBlock.Concentrate(placedItem.ClickImage);
+
+        _originRoomPlaceGrid = Dependencies.Room.PlaceGridDataList;
+        Dependencies.Room.SetPlaceGridData(Dependencies.TutorialRoomPlaceGridDataList);
+        _placePrompt = Object.Instantiate(Dependencies.RoomPlacePromptPrefab, null);
+        _placePrompt.transform.position = Dependencies.RoomPlacePromptPrefab.transform.position;
     }
 
 

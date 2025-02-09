@@ -42,8 +42,8 @@ public class CameraMobileControl : MonoBehaviour
 
     private void OnBeginHoldingScaleButton() => MobileControl.CurrentState = MobileControl.State.CameraScaling;
 
-    private void OnHoldingUpScaleButton() => ChangeCameraScale(+1);
-    private void OnHoldingDownScaleButton() => ChangeCameraScale(-1);
+    private void OnHoldingUpScaleButton() => ChangeCameraScale(-1);
+    private void OnHoldingDownScaleButton() => ChangeCameraScale(+1);
 
     private void OnEndHoldingScaleButton() => MobileControl.CurrentState = MobileControl.State.Free;
 

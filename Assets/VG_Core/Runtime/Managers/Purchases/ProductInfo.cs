@@ -2,7 +2,8 @@ namespace VG2
 {
     public struct ProductInfo
     {
-        public ProductKey productKey;
+        public ProductType type;
+        public string key;
         public bool isConsumable;
     }
 }

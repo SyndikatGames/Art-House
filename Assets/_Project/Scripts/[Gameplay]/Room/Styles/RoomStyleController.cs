@@ -5,9 +5,6 @@ using VG2;
 
 public class RoomStyleController : IDisposable
 {
-    public Observable<int> OnStyleIndexChanged => _onStyleIndexChanged;
-    private Subject<int> _onStyleIndexChanged = new();
-
 
     public Observable<RoomStylesScreenView> OnRoomStylesScreenOpened => _onRoomStylesScreenOpened;
     private Subject<RoomStylesScreenView> _onRoomStylesScreenOpened = new();
@@ -40,10 +37,8 @@ public class RoomStyleController : IDisposable
 
     public void SetRoomStyle(int roomStyleIndex)
     {
-        GameState.CurrentRoom.currentStyleIndex.Value = roomStyleIndex;
         GameState.CurrentRoom.newStyleIndices.Remove(roomStyleIndex);
-
-        _onStyleIndexChanged.OnNext(roomStyleIndex);
+        GameState.CurrentRoom.currentStyleIndex.Value = roomStyleIndex;
     }
 
 

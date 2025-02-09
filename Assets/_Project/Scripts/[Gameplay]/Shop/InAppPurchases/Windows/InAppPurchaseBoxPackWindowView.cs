@@ -7,9 +7,9 @@ public class InAppPurchaseBoxPackWindowView : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _descriptionText;
 
 
-    public void Display(ProductKey boxPackProductKey)
+    public void Display(ProductType boxPackProductKey)
     {
-        string description = $"{Localization.GetString("inside_box_pack")}:\n\n";
+        string description = $"{Localization.GetString("inside_box_pack")}\n\n";
 
         foreach (var boxAmount in ConfigHub.Shop.GetBoxesFromBoxPack(boxPackProductKey))
         {

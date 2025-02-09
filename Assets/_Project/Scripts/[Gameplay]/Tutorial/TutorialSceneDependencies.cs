@@ -18,7 +18,7 @@ public class TutorialSceneDependencies : MonoBehaviour
     [field: SerializeField] public GameObject ArrowPromptPrefab { get; private set; }
 
     [field: SerializeField] public RectTransform ShopRect { get; private set; }
-    [field: SerializeField] public TextMeshProUGUI LeftArrowPromptPrefab { get; private set; }
+    [field: SerializeField] public TextContainer LeftArrowPromptPrefab { get; private set; }
     [field: SerializeField] public CardInventoryView CardInventory { get; private set; }
     [field: SerializeField] public RectTransform PrizeClawButtonRect { get; private set; }
     [field: SerializeField] public RectTransform ExpandRoomButtonRect { get; private set; }

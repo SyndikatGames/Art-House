@@ -2,21 +2,21 @@ namespace VG2
 {
     public static class PurchasesHandler
     {
-        public static void HandlePurchase(ProductKey productKey)
+        public static void HandlePurchase(ProductType productKey)
         {
             
             switch (productKey)
             {
-                case ProductKey.NoAds:
+                case ProductType.NoAds:
                     GameState.adsEnabled.Value = false;
                     break;
 
-                case ProductKey.FantasticBox:
+                case ProductType.LegendaryBox:
                     BoxCalculator.AddBoxes(BoxType.Fantastic, 1);
                     break;
 
-                case ProductKey.SmallBoxPack: 
-                case ProductKey.BigBoxPack:
+                case ProductType.SmallBoxPack: 
+                case ProductType.BigBoxPack:
                     foreach (var boxAmount in ConfigHub.Shop.GetBoxesFromBoxPack(productKey))
                         BoxCalculator.AddBoxes(boxAmount.Key, boxAmount.Value);
                     break;

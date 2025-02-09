@@ -15,8 +15,15 @@ public class CollectOfflineIncomeButton : ButtonHandler
 
     protected override void OnClick()
     {
-        float multiplier = _buttonType == ButtonType.Bonus ? BONUS_MULTIPLIER : 1f;
-        _incomeController.CollectOfflineIncome(multiplier);
+        if (_buttonType == ButtonType.Bonus)
+        {
+            Ads.Rewarded.Show(string.Empty, onShown: result =>
+            {
+                if (result == Ads.Rewarded.Result.Success)
+                    _incomeController.CollectOfflineIncome(BONUS_MULTIPLIER);
+            });
+        }
+        else _incomeController.CollectOfflineIncome(1f);
     }
 
 }

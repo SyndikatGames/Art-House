@@ -1,6 +1,6 @@
-using UnityEngine;
+using Cysharp.Threading.Tasks;
 using R3;
-using System.Threading.Tasks;
+using UnityEngine;
 
 
 public class MergeItemsTutorialStep : TutorialStep
@@ -16,10 +16,16 @@ public class MergeItemsTutorialStep : TutorialStep
     }
 
 
+    public override void RestoreContext()
+    {
+        base.RestoreContext();
+        Dependencies.ShopButtonImage.raycastTarget = true;
+    }
+
 
     public override void Run()
     {
-        Disposables.Add(_eventController.OnItemsMerged.Subscribe(_ => OnItemsMerged()));
+        Disposables.Add(_eventController.OnItemsMerged.Subscribe(async _ => await OnItemsMerged()));
         Disposables.Add(_eventController.OnCardTaken.Subscribe(_ => OnCardTaken()));
         Disposables.Add(_eventController.OnCardReleased.Subscribe(_ => OnCardReleased()));
 
@@ -27,6 +33,7 @@ public class MergeItemsTutorialStep : TutorialStep
 
         RunCursorAnimation();
 
+        Dependencies.ShopButtonImage.raycastTarget = false;
     }
 
     private void RunCursorAnimation()
@@ -58,7 +65,7 @@ public class MergeItemsTutorialStep : TutorialStep
         if (_cursor != null) _cursor.SetActive(false);
     }
 
-    private async void OnItemsMerged()
+    private async UniTask OnItemsMerged()
     {
         int mergedItems = 0;
         foreach (var item in ItemPlacing.PlacedItems)
@@ -69,7 +76,7 @@ public class MergeItemsTutorialStep : TutorialStep
 
         else
         {
-            await Task.Delay(100);
+            await UniTask.Yield();
             RunCursorAnimation();
         }
     }

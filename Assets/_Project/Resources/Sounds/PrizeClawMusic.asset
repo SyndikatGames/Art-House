@@ -16,7 +16,7 @@ MonoBehaviour:
   _playType: 1
   _audioClip: {fileID: 8300000, guid: 5192f2518418bb64a99ac5f98c01e818, type: 3}
   _randomAudioClips: []
-  _volume: 0.7
+  _volume: 0.4
   _randomVolume: {x: 0, y: 0}
   _pitch: 1
   _randomPitch: {x: 0, y: 0}

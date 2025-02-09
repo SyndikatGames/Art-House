@@ -6,14 +6,13 @@ public class PlaceGrid : IsometricGrid
     public Item Owner { get; private set; }
 
 
-    public PlaceGrid(Item owner, PlaceGridData data, Vector3Int position)
+    public void SetPlaceGridData(Item owner, PlaceGridData data, Vector3Int position)
     {
         gridType = data.gridType;
         size = data.size;
         base.position = position + data.offset;
         Owner = owner;
     }
-
 
     public bool TryPlaceItem(Item item, Vector2 worldPosition, out Vector3Int resultGridPosition)
     {

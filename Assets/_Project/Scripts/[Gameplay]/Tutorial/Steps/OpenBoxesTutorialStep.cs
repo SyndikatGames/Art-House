@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using R3;
 using UnityEngine;
 using VG2;
@@ -42,7 +43,7 @@ public class OpenBoxesTutorialStep : TutorialStep
 
     public override void Run()
     {
-        Disposables.Add(_shopController.OnShopOpened.Subscribe(shop => OnShopOpened(shop)));
+        Disposables.Add(_shopController.OnShopOpened.Subscribe(async shop => await OnShopOpened(shop)));
 
         TaskController.SetTask(1);
 
@@ -50,20 +51,20 @@ public class OpenBoxesTutorialStep : TutorialStep
         GameState.CurrentRoom.cards.Clear();
 
         var prompt = Object.Instantiate(Dependencies.LeftArrowPromptPrefab, Dependencies.ShopRect);
-        prompt.text = Localization.GetString("open_shop_tutorial");
+        prompt.Text = Localization.GetString("open_shop_tutorial");
         _prompt = prompt.gameObject;
 
         RaycastBlock.Concentrate(Dependencies.ShopButtonImage);
 
     }
 
-    private async void OnShopOpened(ShopView shop)
+    private async UniTask OnShopOpened(ShopView shop)
     {
-        Disposables.Add(_shopController.OnBoxWindowOpened.Subscribe(boxWindow => OnBoxWindowOpened(boxWindow)));
+        Disposables.Add(_shopController.OnBoxWindowOpened.Subscribe(async boxWindow => await OnBoxWindowOpened(boxWindow)));
 
         Object.Destroy(_prompt);
-
-        await Task.Delay(100);
+        
+        await UniTask.Yield();
         _prompt = Object.Instantiate(Dependencies.CicleScaleCursorPrefab, shop.CommonBoxButtonRect);
         _prompt.transform.SetParent(UI.Canvas);
 
@@ -72,16 +73,11 @@ public class OpenBoxesTutorialStep : TutorialStep
         RaycastBlock.Concentrate(shop.CommonBoxButtonImage);
     }
 
-    private async void OnBoxWindowOpened(BoxWindowView boxWindow)
+    private async UniTask OnBoxWindowOpened(BoxWindowView boxWindow)
     {
         Disposables.Add(GameState.CurrentRoom.boxesAmount.OnChanged.Subscribe(_ => OnBoxesAmountChanged()));
 
-        
-    }
-
-    private IEnumerator OnBoxWindowOpenedCoroutine(BoxWindowView boxWindow)
-    {
-        yield return null;
+        await UniTask.Yield();
 
         Object.Destroy(_prompt);
         _prompt = Object.Instantiate(Dependencies.CicleScaleCursorPrefab, boxWindow.OpenButtonRect);
@@ -105,7 +101,6 @@ public class OpenBoxesTutorialStep : TutorialStep
 
         RaycastBlock.Concentrate(boxWindow.OpenButtonImage);
     }
-    
 
 
 

@@ -9,7 +9,7 @@ namespace VG2
     {
         [SerializeField] private bool _useConstantKey = true;
         [ShowIf(nameof(_useConstantKey))]
-        [SerializeField] private ProductKey _productKey = ProductKey.None;
+        [SerializeField] private ProductType _productKey = ProductType.None;
 
 
         private void Start()
@@ -17,7 +17,7 @@ namespace VG2
             GetComponent<TextMeshProUGUI>().text = Purchases.GetPriceString(_productKey);
         }
 
-        public void SetProduct(ProductKey productKey)
+        public void SetProduct(ProductType productKey)
         {
             if (_useConstantKey)
                 Debug.LogWarning("[Purchase Price] Setting product key for constant key!");

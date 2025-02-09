@@ -5,11 +5,13 @@ public class ReachNewLevelTutorialStep : TutorialStep
 {
     private EventController _eventController;
     private GameObject _prompt;
+    private int _taskIndex;
 
 
-    public ReachNewLevelTutorialStep(EventController eventController)
+    public ReachNewLevelTutorialStep(EventController eventController, int taskIndex)
     {
         _eventController = eventController;
+        _taskIndex = taskIndex;
     }
 
 
@@ -22,14 +24,13 @@ public class ReachNewLevelTutorialStep : TutorialStep
 
     public override void Run()
     {
-        // TODO: Add return in game
-
         Disposables.Add(_eventController.OnNewLevelReached.Subscribe(_ => OnNewLevelReached()));
+        TaskController.SetTask(_taskIndex);
     }
 
     private void OnNewLevelReached()
     {
-        TaskController.SetTask(0);
+        
         StepCompleted();
     }
 

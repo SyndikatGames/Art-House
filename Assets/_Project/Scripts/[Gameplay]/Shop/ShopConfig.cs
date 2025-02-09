@@ -9,14 +9,14 @@ public class ShopConfig : ScriptableObject
     [System.Serializable]
     private struct InAppPurchaseWindow
     {
-        public ProductKey productKey;
+        public ProductType productKey;
         public GameObject prefab;
     }
 
     [System.Serializable]
     private struct BoxPackProduct
     {
-        public ProductKey productKey;
+        public ProductType productKey;
         public List<BoxPack> boxes;
     }
 
@@ -42,11 +42,11 @@ public class ShopConfig : ScriptableObject
     [SerializeField] private List<InAppPurchaseWindow> _inAppPurchaseWindows;
 
 
-    public GameObject GetInAppPurchaseWindowPrefab(ProductKey productKey)
+    public GameObject GetInAppPurchaseWindowPrefab(ProductType productKey)
         => _inAppPurchaseWindows.Find(item => item.productKey == productKey).prefab;
 
 
-    public Dictionary<BoxType, int> GetBoxesFromBoxPack(ProductKey boxPackProductKey)
+    public Dictionary<BoxType, int> GetBoxesFromBoxPack(ProductType boxPackProductKey)
     {
         var boxPack = _boxPackProducts.Find(item => item.productKey == boxPackProductKey);
 

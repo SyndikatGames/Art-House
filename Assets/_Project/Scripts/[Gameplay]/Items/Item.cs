@@ -36,7 +36,7 @@ public class Item : MonoBehaviour
 
     public Vector3Int Position { get; private set; }
 
-    public List<PlaceGrid> PlaceGrids { get; private set; }
+    public List<PlaceGrid> PlaceGrids { get; private set; } = new();
     public Bounds SpriteBounds => _sprite.bounds;
 
     public Item ParentItem => ParentGrid == null ? null : ParentGrid.Owner;
@@ -213,9 +213,17 @@ public class Item : MonoBehaviour
 
     private void UpdatePlaceGrids()
     {
-        PlaceGrids = new List<PlaceGrid>(_placeGridDataList.Count);
         foreach (var placeGridData in _placeGridDataList)
-            PlaceGrids.Add(new PlaceGrid(this, placeGridData, Position));
+        {
+            var placeGrid = PlaceGrids.Find(placeGrid => placeGrid.GridType == placeGridData.gridType);
+            if (placeGrid == null)
+            {
+                placeGrid = new PlaceGrid();
+                placeGrid.SetPlaceGridData(this, placeGridData, Position);
+                PlaceGrids.Add(placeGrid);
+            }
+            else placeGrid.SetPlaceGridData(this, placeGridData, Position);
+        }
     }
 
     public void Destroy()

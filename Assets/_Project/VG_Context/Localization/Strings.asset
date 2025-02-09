@@ -364,6 +364,22 @@ MonoBehaviour:
     ru: "\u041B\u0435\u0433\u0435\u043D\u0434\u0430\u0440\u043D\u0430\u044F"
     en: Legendary
     tr: "Efsanevi\r"
+  - key: of_boxes_Common
+    ru: "\u043E\u0431\u044B\u0447\u043D\u044B\u0445 \u043A\u043E\u0440\u043E\u0431\u043E\u043A"
+    en: regular boxes
+    tr: "normal kutular\r"
+  - key: of_boxes_Rare
+    ru: "\u0440\u0435\u0434\u043A\u0438\u0445 \u043A\u043E\u0440\u043E\u0431\u043E\u043A"
+    en: rare boxes
+    tr: "nadir kutular\r"
+  - key: of_boxes_Epic
+    ru: "\u044D\u043F\u0438\u0447\u0435\u0441\u043A\u0438\u0445 \u043A\u043E\u0440\u043E\u0431\u043E\u043A"
+    en: epic boxes
+    tr: "epik kutular\r"
+  - key: 
+    ru: 
+    en: 
+    tr: "\r"
   - key: 
     ru: 
     en: 
@@ -398,8 +414,8 @@ MonoBehaviour:
     tr: "\r"
   - key: task_0
     ru: "\u0423\u0441\u0442\u0430\u043D\u043E\u0432\u0438 10 \u043F\u0440\u0435\u0434\u043C\u0435\u0442\u043E\u0432"
-    en: Install 10 items
-    tr: "10 \xF6\u011Fe y\xFCkle\r"
+    en: Place 10 items
+    tr: "10 \xF6\u011Fe yerle\u015Ftirin\r"
   - key: task_1
     ru: "\u041E\u0442\u043A\u0440\u043E\u0439 5 \u043A\u043E\u0440\u043E\u0431\u043E\u043A"
     en: Open 5 boxes
@@ -558,7 +574,51 @@ MonoBehaviour:
   - key: opened_cards_title
     ru: "\u041F\u043E\u043B\u0443\u0447\u0435\u043D\u044B \u043A\u0430\u0440\u0442\u044B:"
     en: 'Cards received:'
-    tr: "Al\u0131nan kartlar:"
+    tr: "Al\u0131nan kartlar:\r"
+  - key: 
+    ru: 
+    en: 
+    tr: "\r"
+  - key: small_box_pack_title
+    ru: "\u0421\u0442\u0430\u0440\u0442\u043E\u0432\u044B\u0439 \u043D\u0430\u0431\u043E\u0440"
+    en: Starter kit
+    tr: "Ba\u015Flang\u0131\xE7 \u200B\u200Bkiti\r"
+  - key: big_box_pack_title
+    ru: "\u041F\u0440\u0435\u043C\u0438\u0443\u043C \u043D\u0430\u0431\u043E\u0440"
+    en: Premium set
+    tr: "Premium set\r"
+  - key: inside_box_pack
+    ru: "\u0412\u043D\u0443\u0442\u0440\u0438 \u043D\u0430\u0431\u043E\u0440\u0430:"
+    en: 'Inside the set:'
+    tr: "Setin i\xE7inde:\r"
+  - key: 
+    ru: 
+    en: 
+    tr: "\r"
+  - key: sell_cards_window_title
+    ru: "\u041F\u0440\u043E\u0434\u0430\u0436\u0430 \u043A\u0430\u0440\u0442"
+    en: Selling cards
+    tr: "Kart sat\u0131\u015F\u0131\r"
+  - key: sell_cards_window_subtitle
+    ru: "\u0417\u0430 \u043F\u0440\u043E\u0434\u0430\u0436\u0443 \u0432\u0441\u0435\u0445
+      \u0432\u0430\u0448\u0438\u0445\n\u043A\u0430\u0440\u0442 \u0432\u044B \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u0435:"
+    en: 'For selling all yours
+
+      cards you will receive:'
+    tr: "Seninkini satt\u0131\u011F\u0131n i\xE7in\nalaca\u011F\u0131n\u0131z kartlar:\r"
+  - key: 
+    ru: 
+    en: 
+    tr: "\r"
+  - key: income_window_title
+    ru: "\u041E\u0444\u0444\u043B\u0430\u0439\u043D \u043F\u0440\u0438\u0431\u044B\u043B\u044C"
+    en: Offline profit
+    tr: "\xC7evrimd\u0131\u015F\u0131 k\xE2r\r"
+  - key: income_window_subtitle
+    ru: "\u041F\u043E\u043A\u0430 \u0432\u0430\u0441 \u043D\u0435 \u0431\u044B\u043B\u043E
+      \u043A\u043E\u043C\u043D\u0430\u0442\u0430 \u0437\u0430\u0440\u0430\u0431\u043E\u0442\u0430\u043B\u0430:"
+    en: 'While you were away the room started working:'
+    tr: "Siz uzaktayken oda \xE7al\u0131\u015Fmaya ba\u015Flad\u0131:"
   - key: Item Rarities
     ru: 
     en: 

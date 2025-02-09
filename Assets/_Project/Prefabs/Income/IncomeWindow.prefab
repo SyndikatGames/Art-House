@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 4572222235310289144}
   m_Layer: 5
   m_Name: '[GetBonus]'
-  m_TagString: Untagged
+  m_TagString: IgnoreRaycastBlock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1093,7 +1093,7 @@ GameObject:
   - component: {fileID: 4586101341569828934}
   m_Layer: 5
   m_Name: '[Get]'
-  m_TagString: Untagged
+  m_TagString: IgnoreRaycastBlock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

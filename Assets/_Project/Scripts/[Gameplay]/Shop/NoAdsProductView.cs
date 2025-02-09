@@ -14,8 +14,8 @@ public class NoAdsProductView : ReactiveView
 
     protected override void Display()
     {
-        _purchaseButton.SetActive(!GameState.adsEnabled.Value);
-        _purchasedLabel.SetActive(GameState.adsEnabled.Value);
+        _purchaseButton.SetActive(GameState.adsEnabled.Value);
+        _purchasedLabel.SetActive(!GameState.adsEnabled.Value);
     }
 
     

@@ -18,7 +18,7 @@ namespace VG2
             Environment.platform == Environment.Platform.WebGL && !Environment.editor;
 
 
-        public override string GetPriceString(ProductKey productKey)
+        public override string GetPriceString(string productKey)
         {
             if (!_productPrices.ContainsKey(productKey.ToString()))
                 return string.Empty;
@@ -52,15 +52,15 @@ namespace VG2
                 {
                     if (purchasedProductKey == string.Empty) continue;
 
-                    ProductKey productKey = (ProductKey)Enum.Parse(typeof(ProductKey), purchasedProductKey);
-                    PurchasesHandler.HandlePurchase(productKey);
-                    if (Products.Infos.Find(item => item.productKey == productKey).isConsumable)
+                    var productType = Products.GetProductTypeByKey(purchasedProductKey);
+
+                    PurchasesHandler.HandlePurchase(productType);
+                    if (Products.Infos[productType].isConsumable)
                         YG_Purchases.Consume(purchasedProductKey);
                 }
             });
 
-            YG_Purchases.GetPrices((productPrices) 
-                => _productPrices = productPrices);
+            YG_Purchases.GetPrices((productPrices) => _productPrices = productPrices);
 
             yield return new WaitUntil(
                 () => _purchasedProductIds != null && _productPrices != null);
@@ -68,13 +68,13 @@ namespace VG2
             InitCompleted();
         }
 
-        public override void Purchase(ProductKey productKey, Action<bool> onSuccess)
+        public override void Purchase(string productKey, Action<bool> onSuccess)
         {
             onSuccess += (success) =>
             {
-                if (success) YG_Purchases.Consume(productKey.ToString());
+                if (success) YG_Purchases.Consume(productKey);
             };
-            YG_Purchases.Purchase(productKey.ToString(), onSuccess);
+            YG_Purchases.Purchase(productKey, onSuccess);
         }
 
 

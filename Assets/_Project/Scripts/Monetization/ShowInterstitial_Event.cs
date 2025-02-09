@@ -1,25 +1,22 @@
+using R3;
 using VG2;
+using Zenject;
 
-public class ShowInterstitial_Event : ReactiveView
+public class ShowInterstitial_Event : ReactiveEvent
 {
+    [Inject] private EventController _eventController;
 
     protected override void Subscribe()
     {
-        //throw new System.NotImplementedException();
-    }
+        disposables.Add(_eventController.OnItemPlaced.Subscribe(_ => OnItemPlaced()));
 
-    protected override void Display()
-    {
-        //throw new System.NotImplementedException();
     }
 
 
     private void OnItemPlaced()
     {
-        /*
-        if (Saves.Bool[Key_Save.tutorial_completed].Value)
+        if (GameState.adsEnabled.Value && TutorialController.InterstitialAdsAvailable)
             Ads.Interstitial.Show(Key_Ad.interstitial);
-        */
     }
 
     

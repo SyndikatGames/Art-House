@@ -22,7 +22,7 @@ public class PlayPrizeClawTutorialStep : TutorialStep
         TaskController.SetTask(3);
 
         var prompt = Object.Instantiate(Dependencies.LeftArrowPromptPrefab, Dependencies.PrizeClawButtonRect);
-        prompt.text = Localization.GetString("play_prize_claw_tutorial");
+        prompt.Text = Localization.GetString("play_prize_claw_tutorial");
         _prompt = prompt.gameObject;
     }
 

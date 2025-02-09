@@ -1,10 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.LowLevel;
 using UnityEngine.SceneManagement;
-using VG2;
-using Zenject;
 
 
 namespace VG2
@@ -24,6 +24,9 @@ namespace VG2
 
         private void Awake()
         {
+            var loop = PlayerLoop.GetCurrentPlayerLoop();
+            PlayerLoopHelper.Initialize(ref loop);
+
             foreach (var initializable in _initializables)
                 if (initializable.gameObject.activeInHierarchy)
                     initializable.Initialize();

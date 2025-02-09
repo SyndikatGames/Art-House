@@ -84,6 +84,7 @@ public class ItemMoveHandler
         {
             _item.SetPlace(resultGridPosition, placeGrid);
             ItemPlacing.UpdateItems();
+            _eventController.OnItemPlaced.OnNext(_item);
         }
         else
         {
@@ -108,7 +109,7 @@ public class ItemMoveHandler
         DraggableItem = null;
         _item.BlockRaycast = true;
 
-        _eventController.OnItemPlaced.OnNext(_item);
+        
     }
 
 

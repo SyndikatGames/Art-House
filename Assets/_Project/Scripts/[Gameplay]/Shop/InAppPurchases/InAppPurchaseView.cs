@@ -4,7 +4,7 @@ using VG2;
 
 public class InAppPurchaseView : MonoBehaviour
 {
-    [field: SerializeField] public ProductKey ProductKey { get; private set; }
+    [field: SerializeField] public ProductType ProductKey { get; private set; }
 
     [SerializeField] private TextMeshProUGUI _priceText;
 

@@ -9,11 +9,11 @@ namespace VG2
     {
         [SerializeField] private bool _useConstantKey = true;
         [ShowIf(nameof(_useConstantKey))]
-        [SerializeField] private ProductKey _productKey = ProductKey.None;
+        [SerializeField] private ProductType _productKey = ProductType.None;
 
         protected override void OnClick() => Purchases.Purchase(_productKey);
 
-        public void SetProduct(ProductKey productKey)
+        public void SetProduct(ProductType productKey)
         {
             if (_useConstantKey) 
                 Debug.LogWarning("[Purchase Button] Setting product key for constant key!");

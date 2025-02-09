@@ -8,7 +8,7 @@ namespace VG2
 {
     public class Purchases : Manager
     {
-        public delegate void OnPurchased(ProductKey productKey, bool success);
+        public delegate void OnPurchased(ProductType productKey, bool success);
         public static event OnPurchased onPurchased;
 
         private static Purchases instance;
@@ -34,31 +34,32 @@ namespace VG2
         protected override void OnInitialized()
         {
             instance = this;
-            //Saves.Commit();
             Log(Core.Message.Initialized(managerName));
         }
 
-        public static string GetPriceString(ProductKey productKey) => service.GetPriceString(productKey);
+        public static string GetPriceString(ProductType productType) 
+            => service.GetPriceString(Products.Infos[productType].key);
 
 
 
 
-        public static void Purchase(ProductKey productKey, Action<bool> onSuccess = null)
+        public static void Purchase(ProductType productType, Action<bool> onSuccess = null)
         {
-            instance.Log("Product purchase processing: " + productKey);
+            var productKey = Products.Infos[productType].key;
+            instance.Log("Product purchase processing, key:" + productKey);
 
             service.Purchase(productKey, (success) =>
             {
                 if (success)
                 {
                     instance.Log("On purchased: " + productKey);
-                    PurchasesHandler.HandlePurchase(productKey);
+                    PurchasesHandler.HandlePurchase(productType);
                     Saves.Save();
                 }
                 else instance.Log("On not purchased: " + productKey);
 
                 onSuccess?.Invoke(success);
-                onPurchased?.Invoke(productKey, success);
+                onPurchased?.Invoke(productType, success);
             });
         }
 

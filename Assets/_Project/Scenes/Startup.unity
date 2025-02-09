@@ -3989,7 +3989,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e47176fd648b92b4e9ce31d45b6644ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _requestDataBeforeStart: 1
+  _requestDataBeforeStart: 0
   _tables:
   - _key: localization_main
     _webId: 1YJOrSvm4LxN0LXgAzvvVF1RQ-LUns4yN6hbI4onmkNY
@@ -4818,7 +4818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e801097c5017f946838de3e984dc145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _selectedLanguage: 1
+  _selectedLanguage: 0
 --- !u!4 &4111255799130548877
 Transform:
   m_ObjectHideFlags: 0
@@ -5209,7 +5209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e0bf0cfb93f49543991f653025f898c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _debugLogs: 1
+  _debugLogs: 0
   _services:
   - {fileID: 8090846151886812608}
   - {fileID: 2258312118686129026}

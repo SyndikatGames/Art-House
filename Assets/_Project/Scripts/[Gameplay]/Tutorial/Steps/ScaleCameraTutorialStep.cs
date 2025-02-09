@@ -42,7 +42,7 @@ public class ScaleCameraTutorialStep : TutorialStep
         {
             var promptText = Object.Instantiate(Dependencies.LeftArrowPromptPrefab, UI.Canvas);
             promptText.transform.position = Dependencies.MobileControlRect.position;
-            promptText.text = Localization.GetString("scale_tutorial_mobile");
+            promptText.Text = Localization.GetString("scale_tutorial_mobile");
             _prompt = promptText.gameObject;
         }
 

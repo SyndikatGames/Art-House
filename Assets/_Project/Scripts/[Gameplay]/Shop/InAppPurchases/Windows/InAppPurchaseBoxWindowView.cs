@@ -13,7 +13,7 @@ public class InAppPurchaseBoxWindowView : MonoBehaviour
     [SerializeField] private PurchasePrice _purchasePrice;
 
 
-    public void Display(BoxType boxType, ProductKey boxProductKey)
+    public void Display(BoxType boxType, ProductType boxProductKey)
     {
         _boxIcon.sprite = ConfigHub.Unboxing.GetBoxSprite(boxType);
         _boxNameText.text = Localization.GetString($"box_window_{boxType}");
@@ -24,7 +24,7 @@ public class InAppPurchaseBoxWindowView : MonoBehaviour
             var probabilityColorHtml = ColorUtility.ToHtmlStringRGB
                 (ConfigHub.Cards.GetRarityStyle(rarityProbability.Key).textColor);
 
-            string itemRarityName = Localization.GetString($"item_{rarityProbability.Key}");
+            string itemRarityName = Localization.GetString(rarityProbability.Key.ToString());
 
             probabilitiesText += $"<color=#{probabilityColorHtml}>{itemRarityName}: " +
                 $"{rarityProbability.Value.ToString("#.##")}%\n";

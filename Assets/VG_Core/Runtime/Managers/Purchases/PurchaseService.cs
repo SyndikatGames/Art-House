@@ -5,8 +5,8 @@ namespace VG2
 {
     public abstract class PurchaseService : Service
     {
-        public abstract string GetPriceString(ProductKey productKey);
-        public abstract void Purchase(ProductKey productKey, Action<bool> onSuccess);
+        public abstract string GetPriceString(string productKey);
+        public abstract void Purchase(string productKey, Action<bool> onSuccess);
 
     }
 }

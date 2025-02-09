@@ -28,7 +28,7 @@ public class ExpandRoomTutorialStep : TutorialStep
         TaskController.SetTask(4);
 
         var prompt = Object.Instantiate(Dependencies.LeftArrowPromptPrefab, Dependencies.ExpandRoomButtonRect);
-        prompt.text = Localization.GetString("expand_room_tutorial");
+        prompt.Text = Localization.GetString("expand_room_tutorial");
         _prompt = prompt.gameObject;
     }
 

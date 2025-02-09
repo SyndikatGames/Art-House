@@ -43,7 +43,7 @@ public class ShopController
         _onBoxWindowOpened.OnNext(_boxWindow);
     }
 
-    public void OpenInAppPurchaseWindow(ProductKey productKey)
+    public void OpenInAppPurchaseWindow(ProductType productKey)
     {
         Purchases.onPurchased += OnProductPurchased;
 
@@ -51,9 +51,9 @@ public class ShopController
             (ConfigHub.Shop.GetInAppPurchaseWindowPrefab(productKey), UI.Canvas);
 
         
-        if (productKey == ProductKey.FantasticBox)
+        if (productKey == ProductType.LegendaryBox)
             _inAppPurchaseWindow.GetComponent<InAppPurchaseBoxWindowView>()
-                .Display(BoxType.Fantastic, ProductKey.FantasticBox);
+                .Display(BoxType.Fantastic, ProductType.LegendaryBox);
         
         else _inAppPurchaseWindow.GetComponent<InAppPurchaseBoxPackWindowView>()
                 .Display(productKey);
@@ -61,7 +61,7 @@ public class ShopController
         _inAppPurchaseWindow.AttachOnDestroyListener(() => Purchases.onPurchased -= OnProductPurchased);
     }
 
-    private void OnProductPurchased(ProductKey productKey, bool success)
+    private void OnProductPurchased(ProductType productKey, bool success)
     {
         Object.Destroy(_inAppPurchaseWindow);
     }

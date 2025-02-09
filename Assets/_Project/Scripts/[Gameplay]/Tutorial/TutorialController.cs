@@ -11,6 +11,8 @@ public class TutorialController : IInitializable
     public const int PRIZE_CLAW_TUTORIAL_STEP_INDEX = 13;
     public const int SHOW_ROOM_STYLES_LEVEL = 3;
 
+
+    public static bool InterstitialAdsAvailable => GameState.tutorialStepIndex.Value >= 16;
     public static bool ShowOfflineIncomeEnabled => GameState.tutorialStepIndex.Value >= 16;
     public static bool CameraControlEnabled => GameState.tutorialStepIndex.Value >= 3;
     public static bool SellAreaEnabled => GameState.tutorialStepIndex.Value >= 13;
@@ -31,7 +33,7 @@ public class TutorialController : IInitializable
             new ScaleCameraTutorialStep(cameraController), // 4
             new EnterCardsTutorialStep(eventController, highlightPlace: false), // 5
             new PrestigeHighlightTutorialStep(eventController), // 6
-            new ReachNewLevelTutorialStep(eventController), // 7
+            new ReachNewLevelTutorialStep(eventController, 0), // 7
             new TakeTaskRewardTutorialStep(0), // 8
             new OpenBoxesTutorialStep(shopController, unboxingController), // 9
             new TakeTaskRewardTutorialStep(1), // 10
@@ -40,7 +42,10 @@ public class TutorialController : IInitializable
             new PlayPrizeClawTutorialStep(prizeClawController), // 13
             new TakeTaskRewardTutorialStep(3), // 14
             new ExpandRoomTutorialStep(roomExpansionController), // 15
-            new UseNewStyleTutorialStep(eventController, roomStyleController), // 16
+            new TakeTaskRewardTutorialStep(4), // 16
+            new ReachNewLevelTutorialStep(eventController, 5), // 17
+            new TakeTaskRewardTutorialStep(5), // 18
+            //new UseNewStyleTutorialStep(eventController, roomStyleController), // 19
         };
 
 

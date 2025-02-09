@@ -43,7 +43,7 @@ MonoBehaviour:
   - rarityType: 1
     prestigePoints: 100
   - rarityType: 2
-    prestigePoints: 300
+    prestigePoints: 350
   - rarityType: 3
     prestigePoints: 1500
   - rarityType: 4
@@ -52,19 +52,19 @@ MonoBehaviour:
     prestigePoints: 25000
   _itemSellPrices:
   - rarityType: 1
-    price: 150
+    price: 250
   - rarityType: 2
-    price: 1500
+    price: 1000
   - rarityType: 3
-    price: 8000
+    price: 2500
   - rarityType: 4
-    price: 50000
+    price: 5000
   - rarityType: 5
-    price: 100000
+    price: 10000
   _boxPrices:
   - boxType: 1
-    price: 1000
+    price: 500
   - boxType: 2
-    price: 5000
+    price: 2000
   - boxType: 3
-    price: 30000
+    price: 5000
